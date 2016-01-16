@@ -1,0 +1,12 @@
+
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	<h3>{{'CONFIRM_ACTION' | translate}}</h3>
+</div>
+        <div class="modal-body">
+            {{'CONFIRM_DELETE' | translate}} {{itemType}} {{itemName}} ?
+        </div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="ok()">{{'DELETE' | translate}}</button>
+	<button class="btn btn-warning" ng-click="cancel()">{{'CANCEL' | translate}}</button>
+</div>

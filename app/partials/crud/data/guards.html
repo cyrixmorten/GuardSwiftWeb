@@ -1,0 +1,42 @@
+<gs-crud-panel-create 
+	title="Create new guard">
+	<table class="table">
+		<thead>
+			<tr>
+				<td class="col-xs-2 text-center">Guard id</td>
+				<td class="col-xs-8 text-center">Name</td>
+				<td class="col-xs-2"></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr parse-object="parseObject" notify-as="{{'GUARD' | translate}}" saving="saving" gs-crud>
+				<td><input placeholder="Guard id"
+					class="form-control" type="number" ng-model="createData.guardId"
+					ng-disabled="saving" auto-focus focus-on="addSuccess" /></td>
+				<td><input placeholder="Name"
+					class="form-control" type="text" ng-model="createData.name"
+					ng-disabled="saving" /></td>
+	
+				<td data-title="''"><gs-crud-create data="createData"
+						success="notifyDataSetChanged()" /></td>
+			</tr>
+		</tbody>
+	</table>
+</gs-crud-panel-create>
+<gs-crud-panel-update-remove
+	title="Guards in database" >
+	<table ng-table="tableParams" show-filter="true" class="table">
+		<tr ng-repeat="crudObject in $data"  parse-object="parseObject" editing="editMode" notify-as="{{'GUARD' | translate}}" gs-crud>
+			<td data-title="'Guard id'" class="col-xs-2"
+				header-class="'text-center'" sortable="'guardId'"
+				filter="{ 'guardId': 'text' }"><input class="form-control"
+				type="number" ng-readonly="!editMode" ng-model="crudObject.guardId" /></td>
+			<td data-title="'Name'" class="col-xs-8" header-class="'text-center'"
+				sortable="'name'" filter="{ 'name': 'text' }"><input
+				ng-readonly="!editMode" class="form-control" type="text"
+				ng-model="crudObject.name" /></td>
+			<td class="col-xs-2" data-title="''" header-class="''"><gs-crud-update-delete
+					scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+		</tr>
+	</table>
+</gs-crud-panel-update-remove>

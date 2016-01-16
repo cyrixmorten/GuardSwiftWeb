@@ -1,0 +1,319 @@
+<!-- header -->
+<div class="row">
+	<div class="col-xs-8">Firma logo her</div>
+	<!-- <div class="col-xs-4 text-right">Dato: {{report.date | date:'dd-MM-yyyy'}}</div> -->
+</div>
+<!-- headline -->
+<div class="row page-header">
+	<div class="col-xs-3">
+		<!-- left of header -->
+		<img src="{{cooporation.logoUrl}}" alt="{{cooporation.name}}"
+			style="max-width: 300px; max-height: 100px; vertical-align: bottom"
+			ng-show="cooporation" class="pull-left" />
+	</div>
+	<div class="col-xs-6">
+		<h1>
+			<div class="text-center">
+				ALARM <small>PATRULJERAPPORT</small>
+			</div>
+		</h1>
+	</div>
+	<div class="col-xs-3">
+		<!-- right of header -->
+		<img src="{{installer.logoUrl}}" alt="{{installer.name}}"
+			style="max-width: 200px; max-height: 100px; vertical-align: bottom"
+			ng-show="installer" class="pull-right" />
+	</div>
+</div>
+<br />
+<!-- client -->
+<div class="well well-sm">
+	<div class="row">
+		<div class="col-xs-12 text-right">Dato: {{report.date |
+			date:'dd-MM-yyyy'}}</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-xs-3">
+			<b>KUNDENS NAVN:</b>
+		</div> -->
+		<div class="col-xs-9">
+			<b>{{report.client_name}}</b>
+		</div>
+	</div>
+	<!-- client address -->
+	<div class="row">
+		<!--<div class="col-xs-3">
+			<b>ADRESSE:</b>
+		</div> -->
+		<div class="col-xs-9">{{report.client_addressName}}
+			{{report.client_addressNumber}}</div>
+		<!-- <div class="col-xs-5">
+			<b>NR:</b> {{report.client_addressNumber}}
+		</div> -->
+	</div>
+	<!-- client city -->
+	<div class="row">
+		<!--<div class="col-xs-3">
+			<b>BY:</b> 
+		</div> -->
+		<div class="col-xs-9">{{report.client_city}}</div>
+	</div>
+	<br />
+	<!-- Security lvl -->
+	<div class="row">
+		<div class="col-xs-12">Sikrings. niv.: {{securityLevel |
+			default:'10'}}</div>
+	</div>
+	<br>
+	<!-- Alarm triggered -->
+	<div class="row">
+		<div class="col-xs-12">ALARM INDGÅET KL:
+			{{report.time_triggered}}</div>
+	</div>
+</div>
+<br />
+<!-- Form -->
+<!-- Zone and group -->
+<div class="well well-sm">
+	<div class="row">
+		<div class="col-xs-3">Der er konstateret:</div>
+		<div class="col-xs-4">
+			Indk. zone: <b>{{report.zone}}</b>
+		</div>
+		<div class="col-xs-5">
+			Gruppe: <b>{{report.group}}</b>
+		</div>
+	</div>
+	<br />
+	<!-- Open windows -->
+	<div class="row">
+		<div class="col-xs-2">Åbne vinduer:</div>
+		<div class="col-xs-1">
+			<!-- <b>X</b>  -->
+		</div>
+		<div class="col-xs-4">
+			Antal: <b>{{report.open_windows.amount}}</b>
+		</div>
+		<div class="col-xs-5">
+			Placering: <b>{{report.open_windows.location}}</b>
+		</div>
+	</div>
+	<!-- Open doors -->
+	<div class="row">
+		<div class="col-xs-2">Åbne døre:</div>
+		<div class="col-xs-1">
+			<!-- <b>X</b> -->
+		</div>
+		<div class="col-xs-4">
+			Antal: <b>{{report.open_doors.amount}}</b>
+		</div>
+		<div class="col-xs-5">
+			Placering: <b>{{report.open_doors.location}}</b>
+		</div>
+	</div>
+	<br />
+	<!-- Signs of entry -->
+	<div class="row">
+		<div class="col-xs-3">Tegn på indbrud:</div>
+		<div class="col-xs-2">
+			Nej: <span ng-hide="report.signs_of_entry.answer"><b>X</b></span>
+		</div>
+		<div class="col-xs-2">
+			Ja: <span ng-show="report.signs_of_entry.answer"><b>X</b></span>
+		</div>
+
+		<div class="col-xs-5">
+			Hvilke: <b>{{report.signs_of_entry.text}}</b>
+		</div>
+	</div>
+	<!-- People detatined -->
+	<div class="row">
+		<div class="col-xs-3">Personer tilbageholdt:</div>
+		<div class="col-xs-2">
+			Nej: <span ng-hide="report.people_detained.answer"><b>X</b></span>
+		</div>
+		<div class="col-xs-2">
+			Ja: <span ng-show="report.people_detained.answer"><b>X</b></span>
+		</div>
+
+		<div class="col-xs-5">
+			Antal: <b>{{report.people_detained.amount}}</b>
+		</div>
+	</div>
+	<!-- People ducked -->
+	<div class="row">
+		<div class="col-xs-3">Personer undveget:</div>
+		<div class="col-xs-2">
+			Nej: <span ng-hide="report.people_ducked.answer"><b>X</b></span>
+		</div>
+		<div class="col-xs-2">
+			Ja: <span ng-show="report.people_ducked.answer"><b>X</b></span>
+		</div>
+
+		<div class="col-xs-5">
+			Antal: <b>{{report.people_ducked.amount}}</b>
+		</div>
+	</div>
+	<!-- Signs of abbandon -->
+	<div class="row">
+		<div class="col-xs-3">Tegn på stedet lige er foladt:</div>
+		<div class="col-xs-2">
+			Nej: <span ng-hide="report.signs_of_abbandon.answer"><b>X</b></span>
+		</div>
+		<div class="col-xs-2">
+			Ja: <span ng-show="report.signs_of_abbandon.answer"><b>X</b></span>
+		</div>
+
+		<div class="col-xs-5">
+			Hvilke: <b>{{report.signs_of_abbandon.text}}</b>
+		</div>
+	</div>
+	<!-- Signs of technical error -->
+	<div class="row">
+		<div class="col-xs-3">Tegn på teknisk fejl:</div>
+		<div class="col-xs-2">
+			Nej: <span ng-hide="report.signs_of_technical_error.answer"><b>X</b></span>
+		</div>
+		<div class="col-xs-2">
+			Ja: <span ng-show="report.signs_of_technical_error.answer"><b>X</b></span>
+		</div>
+		<div class="col-xs-5">
+			Hvilke: <b>{{report.signs_of_technical_error.text}}</b>
+		</div>
+	</div>
+	<br />
+	<!-- Remarks -->
+	<div class="row">
+		<div class="col-xs-3">Bemærkninger:</div>
+		<div class="col-xs-8">
+			<span style="white-space: pre"><b>{{report.remarks}}</b></span>
+		</div>
+	</div>
+	<br />
+	<!-- Alarm reset -->
+	<div class="row">
+		<div class="col-xs-3">ALARM RESAT:</div>
+		<div class="col-xs-2">
+			Ja: <span ng-show="report.alarm_reset.answer"><b>X</b></span>
+		</div>
+		<div class="col-xs-2">
+			Nej: <span ng-hide="report.alarm_reset.answer"><b>X</b></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">Hvis nej - hvorfor ikke:</div>
+		<div class="col-xs-9">
+			<b>{{report.alarm_reset.text}}</b>
+		</div>
+	</div>
+</div>
+
+<div class="well well-sm">
+	<!-- Guard -->
+	<div class="row">
+		<div class="col-xs-3">
+			<div>
+				Vagt ID: <b>{{report.guardId}}</b>
+			</div>
+		</div>
+		<div class="col-xs-9">
+			<div>
+				Vagt navn: <b>{{report.guardName}}</b>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 text-center">
+		<small>Rapporten er genereret af GuardSwift - elektronisk
+			runderings- og alarmhåndtering via smartphones</small>
+	</div>
+</div>
+
+<div class="row" ng-show="isLoggedIn">
+	<div class="col-xs-12 text-center page-header">
+		<h1>
+			VAGT <small>ALARM-PATRULJE</small>
+		</h1>
+
+	</div>
+</div>
+
+
+<div class="well well-sm" ng-show="isLoggedIn">
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="row col-xs-12">Patrulje tilkaldt kl.</div>
+			<div class="row col-xs-12">Kørt mod stedet kl.</div>
+			<div class="row col-xs-12">Ankommet til stedet kl.</div>
+			<div class="row col-xs-12">Stedet forladt kl.</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="row col-xs-12">
+				<b>{{internal.time_called}}</b>
+			</div>
+			<div class="row col-xs-12">
+				<b>{{internal.time_drive}}</b>
+			</div>
+			<div class="row col-xs-12">
+				<b>{{internal.time_arrived}}</b>
+			</div>
+			<div class="row col-xs-12">
+				<b>{{internal.time_left}}</b>
+			</div>
+
+		</div>
+		<div class="col-xs-5">
+			<div class="row">
+				<div class="col-xs-8">Afdækning/reparation</div>
+				<div class="col-xs-2">
+					Nej: <span ng-hide="internal.repairs.answer"><b>X</b></span>
+				</div>
+				<div class="col-xs-2">
+					Ja: <span ng-show="internal.repairs.answer"><b>X</b></span>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-8">Reaktionstid:</div>
+				<div class="col-xs-4">
+					<b>{{timeReactionMinutes}}</b> min.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-8">Tidsforbrug total:</div>
+				<div class="col-xs-4">
+					<b>{{timeTotalMinutes}}</b> min.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="well well-sm" ng-show="isLoggedIn">
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="row col-xs-12">
+				Alarmcentral: <b>{{internal.central}}</b>
+			</div>
+			<div class="row col-xs-12">
+				Kundenr.: <b>{{internal.clientNo}}</b>
+			</div>
+		</div>
+		<div class="col-xs-9">
+			<div class="row col-xs-12">
+				Inst.firma.: <b>{{internal.installer}}</b>
+			</div>
+			<div class="row col-xs-12">
+				Tlf.nr.: <b>{{internal.client_phonenumber}}</b>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-xs-3">Bemærkninger</div>
+		<div class="col-xs-9">
+			<span style="white-space: pre"><b>{{internal.remarks}}</b></span>
+		</div>
+	</div>
+</div>

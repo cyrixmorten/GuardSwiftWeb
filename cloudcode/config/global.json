@@ -1,0 +1,18 @@
+{
+    "applications": {
+        "GuardSwift": {
+            "applicationId": "gejAg1OFJrBwepcORHB3U7V7fawoDjlymRe8grHJ", 
+            "masterKey": "ljtd179EvUdJ4K4zrGrAxHQVn0EvfspvUPg16EHB"
+        }, 
+        "GuardSwiftDev": {
+            "applicationId": "7fynHGuQW5NZLROiIDcCzLddbINcUSwPdoE0L72d", 
+            "masterKey": "B5hCuMpSLE67dImYzkvX68IcZ1rtJzPPLZYstMqI"
+        }, 
+        "_default": {
+            "link": "GuardSwift"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}

@@ -1,0 +1,62 @@
+
+<div>
+
+
+	<!-- <div class="input-group">
+			Gruppér af koordinater <input bs-switch class="form-control"
+				type="radio" ng-model="map.doCluster"
+				switch-on-text="{{'ON' | translate}}"
+				switch-off-text="{{'OFF' | translate}}">
+		</div> -->
+	<!-- icon="'icon'"  -->
+	<div class="fill">
+		<ui-gmap-google-map id="my-map" bounds="map.bounds"
+			options="map.options" events="map.events" center="map.center"
+			zoom="map.zoom" draggable="true">
+			
+		 <ui-gmap-markers
+			models='eventMarkers' coords="'coords'" 
+			options="'options'" icon="'icon'" labelAnchor="'labelAnchor'"
+			labelClass="'labelClass'" events="map.markerEvents">
+		</ui-gmap-markers>  
+
+		<!-- Collision markers -->	
+		<ui-gmap-markers
+			models='collisionMarkers' fit="false" coords="'coords'"
+			options="'options'" icon="'icon'" labelAnchor="'labelAnchor'"
+			labelClass="'labelClass'" click="'onClick'" events="'events'">
+		</ui-gmap-markers>
+				 
+		<!-- Client markers -->	
+		<ui-gmap-markers
+			models='clientMarkers' fit="true" coords="'coords'"
+			options="'options'" icon="'icon'" labelAnchor="'labelAnchor'"
+			labelClass="'labelClass'" click="'onClick'" events="'events'">
+		</ui-gmap-markers>
+		
+        <ui-gmap-circle ng-repeat="c in geofences track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius="c.radius"
+              visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
+		
+		<!-- Path --> 
+		<ui-gmap-polylines models="map.pathPolys" events="map.polyEvents"
+			path="'path'" stroke="'stroke'" visible="'visible'"
+			geodesic="'geodesic'" control="polylineCtrl" static="true"
+			doRebuildAll="true"></ui-gmap-polylines> 
+		
+		<!-- Path --> 
+		<!-- <ui-gmap-polylines models="map.epolys" events="map.polyEvents"
+			path="'path'" stroke="'stroke'" visible="'visible'"
+			geodesic="'geodesic'" fit="true" control="polylineCtrl" static="true"
+			doRebuildAll="true"></ui-gmap-polylines> --> 
+			
+		<!-- Path start marker -->	
+		<ui-gmap-marker
+			ng-if="startMarker" idKey="'startMarker'" coords="startMarker.coords"
+			options='startMarker.options' /> 
+		<!-- Path end marker -->	
+		<ui-gmap-marker ng-if="endMarker"
+			idKey="'endMarker'" coords="endMarker.coords"
+			options="endMarker.options" /> 
+		</ui-gmap-google-map>
+	</div>
+</div>

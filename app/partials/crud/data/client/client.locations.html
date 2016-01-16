@@ -1,0 +1,50 @@
+<div>
+	<div class="alert alert-info" role="alert">Eksempler: Kontor,
+		Lokale 21, Forhal</div>
+	<form role="form">
+		<table class="table">
+			<thead>
+				<tr>
+					<td class="col-xs-8 text-center">Navn</td>
+					<td class="col-xs-1 text-center">Checkpoint</td>
+					<td class="col-xs-3"></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr gs-crud parse-object="parseObject"
+					notify-as="{{'ROOM_SLASH_CHECKPOINT' | translate}}"
+					state-saving="saving">
+					<td><input class="form-control" type="text"
+						placeholder="{{'NAME' | translate}}"
+						ng-model="createData.location" ng-disabled="saving" auto-focus
+						focus-on="addSuccess" /></td>
+					<td class="vert-align text-center"><input bs-switch
+						type="checkbox" ng-model="createData.isCheckpoint"
+						switch-on-text="{{'YES' | translate}}"
+						switch-off-text="{{'NO' | translate}}" ng-disabled="saving" /></td>
+					<td data-title="''"><gs-crud-create data="createData"
+							success="notifyDataSetChanged()" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<table ng-table="tableParams" show-filter="true" class="table anim" ng-show="$data.length">
+		<tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"
+			notify-as="{{'ROOM_SLASH_CHECKPOINT' | translate}}"
+			editing="editMode">
+			<td data-title="'Navn'" class="col-xs-8" header-class="'text-center'"
+				sortable="'location'" filter="{ 'location': 'text' }"><input
+				ng-readonly="!editMode" class="form-control" type="text"
+				ng-model="crudObject.location" /></td>
+			<td class="vert-align col-xs-1" data-title="'Checkpoint'" header-class="'text-center'">	
+					<input bs-switch  type="checkbox"  
+						switch-active="{{editMode}}" 
+						ng-model="crudObject.isCheckpoint" switch-on-text="{{'YES' | translate}}"
+						switch-off-text="{{'NO' | translate}}" />
+			</td>
+			<td class="col-xs-3" data-title="''" header-class="''"><gs-crud-update-delete
+					scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+		</tr>
+
+	</table>
+</div>

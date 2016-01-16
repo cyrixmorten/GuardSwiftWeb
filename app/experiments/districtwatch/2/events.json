@@ -1,0 +1,3023 @@
+[
+  {
+    "event": "Log ud",
+    "eventCode": 201,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4840932,
+      "longitude": 9.2318833
+    },
+    "positionString": "55.4840932,9.2318833",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-19T20:15:12.004Z",
+    "clientTimestampUnix": 1440015312,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:15:19.049Z",
+    "id": "GajX6OmZxs",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "GajX6OmZxs"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4840932,
+      "longitude": 9.2318833
+    },
+    "positionString": "55.4840932,9.2318833",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:15:09.290Z",
+    "clientTimestampUnix": 1440015309,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:15:16.748Z",
+    "id": "jUvC3T1iHK",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "jUvC3T1iHK"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "tilting",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842197,
+      "longitude": 9.2318456
+    },
+    "positionString": "55.4842197,9.2318456",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-19T20:15:08.550Z",
+    "clientTimestampUnix": 1440015308,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:15:15.755Z",
+    "id": "FACDKXYxgc",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "FACDKXYxgc"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "contactClient": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842197,
+      "longitude": 9.2318456
+    },
+    "positionString": "55.4842197,9.2318456",
+    "clientName": "DW9",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "3",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 3 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:15:00.663Z",
+    "clientTimestampUnix": 1440015300,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:15:14.567Z",
+    "id": "1bCVSmpSM7",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "1bCVSmpSM7"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "contactClient": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842197,
+      "longitude": 9.2318456
+    },
+    "positionString": "55.4842197,9.2318456",
+    "clientName": "DW9",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "3",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 3 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:15:00.301Z",
+    "clientTimestampUnix": 1440015300,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:15:12.359Z",
+    "id": "k8WMvrh4w9",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "k8WMvrh4w9"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "contactClient": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484422,
+      "longitude": 9.2313716
+    },
+    "positionString": "55.484422,9.2313716",
+    "clientName": "DW3",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "16",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 16 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:55.544Z",
+    "clientTimestampUnix": 1440015295,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:15:08.471Z",
+    "id": "YMAGILyiWu",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "YMAGILyiWu"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4845131,
+      "longitude": 9.2306888
+    },
+    "positionString": "55.4845131,9.2306888",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:53.718Z",
+    "clientTimestampUnix": 1440015293,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:15:07.591Z",
+    "id": "OPAwuvofDm",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "OPAwuvofDm"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4845131,
+      "longitude": 9.2306888
+    },
+    "positionString": "55.4845131,9.2306888",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:51.592Z",
+    "clientTimestampUnix": 1440015291,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:15:05.628Z",
+    "id": "Hz8QNmyiup",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Hz8QNmyiup"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4845131,
+      "longitude": 9.2306888
+    },
+    "positionString": "55.4845131,9.2306888",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:51.436Z",
+    "clientTimestampUnix": 1440015291,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:15:01.827Z",
+    "id": "pQ7ckIfq7c",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "pQ7ckIfq7c"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4843593,
+      "longitude": 9.2302964
+    },
+    "positionString": "55.4843593,9.2302964",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:46.949Z",
+    "clientTimestampUnix": 1440015286,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:59.304Z",
+    "id": "FhoruNUE7B",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "FhoruNUE7B"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "contactClient": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4843593,
+      "longitude": 9.2302964
+    },
+    "positionString": "55.4843593,9.2302964",
+    "clientName": "DW3",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "16",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 16 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:44.364Z",
+    "clientTimestampUnix": 1440015284,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:57.970Z",
+    "id": "TQstbmAd7b",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "TQstbmAd7b"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4843593,
+      "longitude": 9.2302964
+    },
+    "positionString": "55.4843593,9.2302964",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:43.565Z",
+    "clientTimestampUnix": 1440015283,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:56.682Z",
+    "id": "D9ZpoftERq",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "D9ZpoftERq"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4843593,
+      "longitude": 9.2302964
+    },
+    "positionString": "55.4843593,9.2302964",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:43.104Z",
+    "clientTimestampUnix": 1440015283,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:53.037Z",
+    "id": "B5KQWvi1E5",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "B5KQWvi1E5"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4843934,
+      "longitude": 9.2289642
+    },
+    "positionString": "55.4843934,9.2289642",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:28.985Z",
+    "clientTimestampUnix": 1440015268,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:32.350Z",
+    "id": "D8ZjKb27gA",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "D8ZjKb27gA"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4843934,
+      "longitude": 9.2289642
+    },
+    "positionString": "55.4843934,9.2289642",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:28.029Z",
+    "clientTimestampUnix": 1440015268,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:30.917Z",
+    "id": "GYCTLxuhHS",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "GYCTLxuhHS"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervænget 4",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4849109,
+      "longitude": 9.2289636
+    },
+    "positionString": "55.4849109,9.2289636",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:00.485Z",
+    "clientTimestampUnix": 1440015240,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:10.464Z",
+    "id": "qUgg2kC3Wm",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "qUgg2kC3Wm"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "contactClient": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervænget 3",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4849109,
+      "longitude": 9.2289636
+    },
+    "positionString": "55.4849109,9.2289636",
+    "clientName": "DW9",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "3",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 3 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:14:00.320Z",
+    "clientTimestampUnix": 1440015240,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:14:07.336Z",
+    "id": "wRj82GtJNc",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "wRj82GtJNc"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484625,
+      "longitude": 9.2288886
+    },
+    "positionString": "55.484625,9.2288886",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:50.435Z",
+    "clientTimestampUnix": 1440015230,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:57.656Z",
+    "id": "1CkhoowOku",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "1CkhoowOku"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484625,
+      "longitude": 9.2288886
+    },
+    "positionString": "55.484625,9.2288886",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:50.021Z",
+    "clientTimestampUnix": 1440015230,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:55.880Z",
+    "id": "sFI7igAz3t",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "sFI7igAz3t"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "0MTskj8GOo"
+    },
+    "contactClient": {
+      "objectId": "0MTskj8GOo"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842736,
+      "longitude": 9.2289594
+    },
+    "positionString": "55.4842736,9.2289594",
+    "clientName": "DW4",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "62",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 62 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:41.297Z",
+    "clientTimestampUnix": 1440015221,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:54.504Z",
+    "id": "idzJKVmXvL",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "idzJKVmXvL"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "0MTskj8GOo"
+    },
+    "contactClient": {
+      "objectId": "0MTskj8GOo"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842736,
+      "longitude": 9.2289594
+    },
+    "positionString": "55.4842736,9.2289594",
+    "clientName": "DW4",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "62",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 62 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:41.224Z",
+    "clientTimestampUnix": 1440015221,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:51.660Z",
+    "id": "3WVI5tGgHT",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "3WVI5tGgHT"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842736,
+      "longitude": 9.2289594
+    },
+    "positionString": "55.4842736,9.2289594",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:40.582Z",
+    "clientTimestampUnix": 1440015220,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:49.321Z",
+    "id": "YWmlYriLLO",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "YWmlYriLLO"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842736,
+      "longitude": 9.2289594
+    },
+    "positionString": "55.4842736,9.2289594",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:40.270Z",
+    "clientTimestampUnix": 1440015220,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:48.110Z",
+    "id": "oe0k2CdNMw",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "oe0k2CdNMw"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "contactClient": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 16",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842766,
+      "longitude": 9.2277295
+    },
+    "positionString": "55.4842766,9.2277295",
+    "clientName": "DW3",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "16",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 16 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:29.739Z",
+    "clientTimestampUnix": 1440015209,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:38.329Z",
+    "id": "DlDZdSJSTQ",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "DlDZdSJSTQ"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484194,
+      "longitude": 9.2271172
+    },
+    "positionString": "55.484194,9.2271172",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:24.573Z",
+    "clientTimestampUnix": 1440015204,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:35.350Z",
+    "id": "w9lLDvuVEh",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "w9lLDvuVEh"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484194,
+      "longitude": 9.2271172
+    },
+    "positionString": "55.484194,9.2271172",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:24.549Z",
+    "clientTimestampUnix": 1440015204,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:33.535Z",
+    "id": "aUigwYkRcl",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "aUigwYkRcl"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484194,
+      "longitude": 9.2271172
+    },
+    "positionString": "55.484194,9.2271172",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:24.489Z",
+    "clientTimestampUnix": 1440015204,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:30.621Z",
+    "id": "xeQTVIvZ5j",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "xeQTVIvZ5j"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484194,
+      "longitude": 9.2271172
+    },
+    "positionString": "55.484194,9.2271172",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:24.141Z",
+    "clientTimestampUnix": 1440015204,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:29.376Z",
+    "id": "4GlGzPBsC6",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "4GlGzPBsC6"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841538,
+      "longitude": 9.2259857
+    },
+    "positionString": "55.4841538,9.2259857",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:19.739Z",
+    "clientTimestampUnix": 1440015199,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:22.788Z",
+    "id": "hXzXSlaBTd",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "hXzXSlaBTd"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841538,
+      "longitude": 9.2259857
+    },
+    "positionString": "55.4841538,9.2259857",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:13:19.642Z",
+    "clientTimestampUnix": 1440015199,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:21.480Z",
+    "id": "Qo0eP2MZWq",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Qo0eP2MZWq"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847952,
+      "longitude": 9.226414
+    },
+    "positionString": "55.4847952,9.226414",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:12:57.287Z",
+    "clientTimestampUnix": 1440015177,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:02.426Z",
+    "id": "JZfmp77Lq8",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "JZfmp77Lq8"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847952,
+      "longitude": 9.226414
+    },
+    "positionString": "55.4847952,9.226414",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:12:57.030Z",
+    "clientTimestampUnix": 1440015177,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:13:00.983Z",
+    "id": "IunwzBxLik",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "IunwzBxLik"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 34",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4849381,
+      "longitude": 9.2276865
+    },
+    "positionString": "55.4849381,9.2276865",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:12:28.912Z",
+    "clientTimestampUnix": 1440015148,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:12:45.502Z",
+    "id": "7On8QWj4Oo",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "7On8QWj4Oo"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4849975,
+      "longitude": 9.2275638
+    },
+    "positionString": "55.4849975,9.2275638",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:12:20.788Z",
+    "clientTimestampUnix": 1440015140,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:12:32.113Z",
+    "id": "eN3vqH3woc",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "eN3vqH3woc"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4849975,
+      "longitude": 9.2275638
+    },
+    "positionString": "55.4849975,9.2275638",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:12:20.458Z",
+    "clientTimestampUnix": 1440015140,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:12:29.246Z",
+    "id": "01sGYa6FnW",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "01sGYa6FnW"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 26",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4849975,
+      "longitude": 9.2275638
+    },
+    "positionString": "55.4849975,9.2275638",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:12:20.287Z",
+    "clientTimestampUnix": 1440015140,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:12:28.106Z",
+    "id": "Xbl12vJrtF",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Xbl12vJrtF"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 42",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4854305,
+      "longitude": 9.2269609
+    },
+    "positionString": "55.4854305,9.2269609",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:11:30.215Z",
+    "clientTimestampUnix": 1440015090,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:11:53.532Z",
+    "id": "42mYdhgybe",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "42mYdhgybe"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 56",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4853979,
+      "longitude": 9.226483
+    },
+    "positionString": "55.4853979,9.226483",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:11:23.350Z",
+    "clientTimestampUnix": 1440015083,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:11:50.781Z",
+    "id": "5j72cc02P6",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "5j72cc02P6"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "in vehicle",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484764,
+      "longitude": 9.2260828
+    },
+    "positionString": "55.484764,9.2260828",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-19T20:11:17.274Z",
+    "clientTimestampUnix": 1440015077,
+    "activityConfidence": 68,
+    "createdAt": "2015-08-19T20:11:47.595Z",
+    "id": "Y7HlOzsAz5",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Y7HlOzsAz5"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484764,
+      "longitude": 9.2260828
+    },
+    "positionString": "55.484764,9.2260828",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:11:13.738Z",
+    "clientTimestampUnix": 1440015073,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:46.454Z",
+    "id": "Ukctod2w0i",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Ukctod2w0i"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484764,
+      "longitude": 9.2260828
+    },
+    "positionString": "55.484764,9.2260828",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:11:13.303Z",
+    "clientTimestampUnix": 1440015073,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:44.613Z",
+    "id": "18nGOb7R2n",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "18nGOb7R2n"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "0MTskj8GOo"
+    },
+    "contactClient": {
+      "objectId": "0MTskj8GOo"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 62",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4844122,
+      "longitude": 9.2258341
+    },
+    "positionString": "55.4844122,9.2258341",
+    "clientName": "DW4",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "62",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 62 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:11:08.110Z",
+    "clientTimestampUnix": 1440015068,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:42.789Z",
+    "id": "UYcBHSSl1N",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "UYcBHSSl1N"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841873,
+      "longitude": 9.2258401
+    },
+    "positionString": "55.4841873,9.2258401",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:11:02.038Z",
+    "clientTimestampUnix": 1440015062,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:39.105Z",
+    "id": "nbo691wfX1",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "nbo691wfX1"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841873,
+      "longitude": 9.2258401
+    },
+    "positionString": "55.4841873,9.2258401",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:11:01.748Z",
+    "clientTimestampUnix": 1440015061,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:37.715Z",
+    "id": "xlTiBEB3oY",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "xlTiBEB3oY"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841066,
+      "longitude": 9.2262999
+    },
+    "positionString": "55.4841066,9.2262999",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:55.028Z",
+    "clientTimestampUnix": 1440015055,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:36.314Z",
+    "id": "XU0KHPSTaf",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "XU0KHPSTaf"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841066,
+      "longitude": 9.2262999
+    },
+    "positionString": "55.4841066,9.2262999",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:54.676Z",
+    "clientTimestampUnix": 1440015054,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:34.221Z",
+    "id": "1eUQvFDmet",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "1eUQvFDmet"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "e8eCiwbNvS"
+    },
+    "contactClient": {
+      "objectId": "e8eCiwbNvS"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 11",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842029,
+      "longitude": 9.2278074
+    },
+    "positionString": "55.4842029,9.2278074",
+    "clientName": "DW2",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "11",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 11 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:47.483Z",
+    "clientTimestampUnix": 1440015047,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:30.340Z",
+    "id": "LW9cJjxcZw",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "LW9cJjxcZw"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842777,
+      "longitude": 9.22848
+    },
+    "positionString": "55.4842777,9.22848",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:42.733Z",
+    "clientTimestampUnix": 1440015042,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:26.990Z",
+    "id": "SExzxxbWLD",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "SExzxxbWLD"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842777,
+      "longitude": 9.22848
+    },
+    "positionString": "55.4842777,9.22848",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:42.229Z",
+    "clientTimestampUnix": 1440015042,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:24.583Z",
+    "id": "9HYlHfHFi6",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "9HYlHfHFi6"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "0MTskj8GOo"
+    },
+    "contactClient": {
+      "objectId": "0MTskj8GOo"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842777,
+      "longitude": 9.22848
+    },
+    "positionString": "55.4842777,9.22848",
+    "clientName": "DW4",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "62",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 62 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:40.350Z",
+    "clientTimestampUnix": 1440015040,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:22.439Z",
+    "id": "EGgKeNljPT",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "EGgKeNljPT"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "0MTskj8GOo"
+    },
+    "contactClient": {
+      "objectId": "0MTskj8GOo"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842777,
+      "longitude": 9.22848
+    },
+    "positionString": "55.4842777,9.22848",
+    "clientName": "DW4",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "62",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 62 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:40.309Z",
+    "clientTimestampUnix": 1440015040,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:21.023Z",
+    "id": "SXDbLCAvN7",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "SXDbLCAvN7"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842777,
+      "longitude": 9.22848
+    },
+    "positionString": "55.4842777,9.22848",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:39.992Z",
+    "clientTimestampUnix": 1440015039,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:12.842Z",
+    "id": "VfEwXJFv56",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "VfEwXJFv56"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "contactClient": {
+      "objectId": "X6EzoSIw3m"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4842777,
+      "longitude": 9.22848
+    },
+    "positionString": "55.4842777,9.22848",
+    "clientName": "DW5",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "56",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 56 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:39.591Z",
+    "clientTimestampUnix": 1440015039,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:09.655Z",
+    "id": "KvRYlzfHDy",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "KvRYlzfHDy"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "contactClient": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.48437,
+      "longitude": 9.2298095
+    },
+    "positionString": "55.48437,9.2298095",
+    "clientName": "DW3",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "16",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 16 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:33.770Z",
+    "clientTimestampUnix": 1440015033,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:06.001Z",
+    "id": "mMLyJOW6Tr",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "mMLyJOW6Tr"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.48437,
+      "longitude": 9.2298095
+    },
+    "positionString": "55.48437,9.2298095",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:30.274Z",
+    "clientTimestampUnix": 1440015030,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:03.775Z",
+    "id": "HnzADfQVvn",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "HnzADfQVvn"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "contactClient": {
+      "objectId": "YZrBRinZ8Y"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.48437,
+      "longitude": 9.2298095
+    },
+    "positionString": "55.48437,9.2298095",
+    "clientName": "DW3",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "16",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 16 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:30.222Z",
+    "clientTimestampUnix": 1440015030,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:11:00.092Z",
+    "id": "adfTF6vNOj",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "adfTF6vNOj"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.48437,
+      "longitude": 9.2298095
+    },
+    "positionString": "55.48437,9.2298095",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:29.860Z",
+    "clientTimestampUnix": 1440015029,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:54.330Z",
+    "id": "9ujOraK0U3",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "9ujOraK0U3"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.48437,
+      "longitude": 9.2298095
+    },
+    "positionString": "55.48437,9.2298095",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:29.482Z",
+    "clientTimestampUnix": 1440015029,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:52.549Z",
+    "id": "gEMxJpmAv1",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "gEMxJpmAv1"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 111,
+    "clientLocation": "Ryttervej 4",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.48437,
+      "longitude": 9.2298095
+    },
+    "positionString": "55.48437,9.2298095",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:29.256Z",
+    "clientTimestampUnix": 1440015029,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:47.903Z",
+    "id": "Krw5oVUdL4",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Krw5oVUdL4"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4844415,
+      "longitude": 9.2304359
+    },
+    "positionString": "55.4844415,9.2304359",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:24.446Z",
+    "clientTimestampUnix": 1440015024,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:32.679Z",
+    "id": "NJhdeiCMjZ",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "NJhdeiCMjZ"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847826,
+      "longitude": 9.230672
+    },
+    "positionString": "55.4847826,9.230672",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:16.606Z",
+    "clientTimestampUnix": 1440015016,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:29.014Z",
+    "id": "VRL9LrwuvY",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "VRL9LrwuvY"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847826,
+      "longitude": 9.230672
+    },
+    "positionString": "55.4847826,9.230672",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:16.341Z",
+    "clientTimestampUnix": 1440015016,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:27.666Z",
+    "id": "aFk6DYBS1q",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "aFk6DYBS1q"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847826,
+      "longitude": 9.230672
+    },
+    "positionString": "55.4847826,9.230672",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:15.706Z",
+    "clientTimestampUnix": 1440015015,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:26.225Z",
+    "id": "aFnKvKq7Ci",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "aFnKvKq7Ci"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847826,
+      "longitude": 9.230672
+    },
+    "positionString": "55.4847826,9.230672",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:15.665Z",
+    "clientTimestampUnix": 1440015015,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:24.318Z",
+    "id": "6gllI1hMOp",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "6gllI1hMOp"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847826,
+      "longitude": 9.230672
+    },
+    "positionString": "55.4847826,9.230672",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:15.603Z",
+    "clientTimestampUnix": 1440015015,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:22.784Z",
+    "id": "zo9lA0oowm",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "zo9lA0oowm"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4847826,
+      "longitude": 9.230672
+    },
+    "positionString": "55.4847826,9.230672",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:10:15.449Z",
+    "clientTimestampUnix": 1440015015,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:10:19.308Z",
+    "id": "PU8gi0kFu0",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "PU8gi0kFu0"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "tilting",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859119,
+      "longitude": 9.2288481
+    },
+    "positionString": "55.4859119,9.2288481",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-19T20:09:50.637Z",
+    "clientTimestampUnix": 1440014990,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:09:57.884Z",
+    "id": "xJKh9mXILW",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "xJKh9mXILW"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "contactClient": {
+      "objectId": "rvxNuzOd2x"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859109,
+      "longitude": 9.2288404
+    },
+    "positionString": "55.4859109,9.2288404",
+    "clientName": "DW1",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:44.135Z",
+    "clientTimestampUnix": 1440014984,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:56.505Z",
+    "id": "zPu8nY8MW3",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "zPu8nY8MW3"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859109,
+      "longitude": 9.2288404
+    },
+    "positionString": "55.4859109,9.2288404",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:42.962Z",
+    "clientTimestampUnix": 1440014982,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:55.582Z",
+    "id": "mpv49zS3FC",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "mpv49zS3FC"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "contactClient": {
+      "objectId": "FsTz9NpXPV"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859109,
+      "longitude": 9.2288404
+    },
+    "positionString": "55.4859109,9.2288404",
+    "clientName": "DW10",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "4",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 4 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:42.232Z",
+    "clientTimestampUnix": 1440014982,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:52.646Z",
+    "id": "ujSYfvwbAq",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "ujSYfvwbAq"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859109,
+      "longitude": 9.2288404
+    },
+    "positionString": "55.4859109,9.2288404",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:41.683Z",
+    "clientTimestampUnix": 1440014981,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:50.638Z",
+    "id": "N73fwJb4H6",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "N73fwJb4H6"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "e8eCiwbNvS"
+    },
+    "contactClient": {
+      "objectId": "e8eCiwbNvS"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859109,
+      "longitude": 9.2288404
+    },
+    "positionString": "55.4859109,9.2288404",
+    "clientName": "DW2",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "11",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 11 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:41.374Z",
+    "clientTimestampUnix": 1440014981,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:47.650Z",
+    "id": "Rwk2D8XuJw",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Rwk2D8XuJw"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "contactClient": {
+      "objectId": "Ja1yUWFPEQ"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859109,
+      "longitude": 9.2288404
+    },
+    "positionString": "55.4859109,9.2288404",
+    "clientName": "DW9",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervænget",
+    "clientAddressNumber": "3",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervænget 3 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:40.962Z",
+    "clientTimestampUnix": 1440014980,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:45.484Z",
+    "id": "1oXWDUTb1f",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "1oXWDUTb1f"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "contactClient": {
+      "objectId": "ODcwo4mIDT"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859109,
+      "longitude": 9.2288404
+    },
+    "positionString": "55.4859109,9.2288404",
+    "clientName": "DW7",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "26",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 26 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:40.904Z",
+    "clientTimestampUnix": 1440014980,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:42.649Z",
+    "id": "zdoF23PZrb",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "zdoF23PZrb"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "contactClient": {
+      "objectId": "H9qoX6jNc5"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859136,
+      "longitude": 9.2287684
+    },
+    "positionString": "55.4859136,9.2287684",
+    "clientName": "DW6",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "42",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 42 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:38.097Z",
+    "clientTimestampUnix": 1440014978,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:40.880Z",
+    "id": "t8xK2GgO75",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "t8xK2GgO75"
+    }
+  },
+  {
+    "districtWatchStarted": {
+      "objectId": "cIrdYkYKkT"
+    },
+    "client": {
+      "objectId": "6upf8c0U5v"
+    },
+    "contactClient": {
+      "objectId": "6upf8c0U5v"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4859136,
+      "longitude": 9.2287684
+    },
+    "positionString": "55.4859136,9.2287684",
+    "clientName": "DW8",
+    "clientCity": "Andst",
+    "clientAddress": "Ryttervej",
+    "clientAddressNumber": "34",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Ryttervej 34 6600 Andst",
+    "timeStartString": "10:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-19T20:09:38.028Z",
+    "clientTimestampUnix": 1440014978,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:39.620Z",
+    "id": "IFqI7ICg3m",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "IFqI7ICg3m"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "in vehicle",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.485965,
+      "longitude": 9.2287184
+    },
+    "positionString": "55.485965,9.2287184",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-19T20:09:31.843Z",
+    "clientTimestampUnix": 1440014971,
+    "activityConfidence": 46,
+    "createdAt": "2015-08-19T20:09:32.814Z",
+    "id": "xvX6T0lD6m",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "xvX6T0lD6m"
+    }
+  },
+  {
+    "event": "Log ind",
+    "eventCode": 200,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841764,
+      "longitude": 9.227863
+    },
+    "positionString": "55.4841764,9.227863",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-19T20:09:26.532Z",
+    "clientTimestampUnix": 1440014966,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-19T20:09:28.070Z",
+    "id": "7zd6sGgPy8",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "7zd6sGgPy8"
+    }
+  }]

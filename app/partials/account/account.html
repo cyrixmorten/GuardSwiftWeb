@@ -1,0 +1,187 @@
+<div class="container">
+	<div class="row row-offcanvas row-offcanvas-left">
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+			<!-- 
+			<div class="panel panel-default">
+				<accordion-group heading="{{ACCOUNT | translate}}" is-open="true"
+					is-disabled="status.isFirstDisabled"> This
+				content is straight in the template. </accordion-group>
+				<accordion-group heading="{{group.title}}"
+					ng-repeat="group in groups"> {{group.content}} </accordion-group>
+				<accordion-group heading="Dynamic Body Content">
+				<p>The body of the accordion group grows to fit the contents</p>
+				<button class="btn btn-default btn-sm" ng-click="addItem()">Add
+					Item</button>
+				<div ng-repeat="item in items">{{item}}</div>
+				</accordion-group>
+				<accordion-group is-open="status.open"> <accordion-heading>
+				I can have markup, too! <i class="pull-right glyphicon"
+					ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+				</accordion-heading> This is just some content to illustrate fancy headings. </accordion-group>
+				</accordion>
+			</div> -->
+			<!-- sidebar -->
+			
+				
+				<ul class="nav thumbnail">
+					<li ng-class="{active: $routeSegment.contains('user')}"><a href="#{{ 'account.user' | routeSegmentUrl }}"><span class="glyphicon glyphicon-user" aria-hidden="true"> Konto</a></li>
+					<!-- <li ng-class="{active: $routeSegment.contains('settings')}"><a href="#{{ 'account.settings' | routeSegmentUrl }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"> Indstillinger</a></li> -->
+					<li ng-class="{active: $routeSegment.contains('purchase')}"><a href="#{{ 'account.purchase' | routeSegmentUrl }}"><span class="glyphicon glyphicon-usd" aria-hidden="true"> Køb hændelser</span></a></li>
+					<!-- <li><a href="#" data-toggle="collapse" data-target="#sub1">Link
+							4 (submenu)</a>
+						<ul class="nav collapse" id="sub1">
+							<li><a href="#">Sub Link 1</a></li>
+							<li><a href="#">Sub Link 2</a></li>
+							<li><a href="#">Sub Link 3</a></li>
+						</ul></li> -->
+				</ul>
+		</div>
+
+
+		<!--  <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                            </span>Content</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-pencil text-primary"></span><a href="http://www.jquery2dotnet.com">Articles</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="http://www.jquery2dotnet.com">News</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-file text-info"></span><a href="http://www.jquery2dotnet.com">Newsletters</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-comment text-success"></span><a href="http://www.jquery2dotnet.com">Comments</a>
+                                        <span class="badge">42</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                            </span>Modules</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Orders</a> <span class="label label-success">$ 320</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Invoices</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Shipments</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Tex</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                            </span>Account</a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Change Password</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Notifications</a> <span class="label label-info">5</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Import/Export</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="http://www.jquery2dotnet.com" class="text-danger">
+                                            Delete Account</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                            </span>Reports</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-usd"></span><a href="http://www.jquery2dotnet.com">Sales</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-user"></span><a href="http://www.jquery2dotnet.com">Customers</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Products</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-shopping-cart"></span><a href="http://www.jquery2dotnet.com">Shopping Cart</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+		<div class="col-sm-9 col-md-9">
+			<!-- inflates one of the HTML files from crud folder depending on URL see app.js for details -->
+			<div class="row anim" app-view-segment="1"></div>
+		</div>
+	</div>
+</div>

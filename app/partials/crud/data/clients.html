@@ -1,0 +1,92 @@
+<gs-crud-panel-create title="{{'CLIENTS_CREATE' | translate}}">
+<table class="table">
+	<thead>
+		<tr>
+			<td class="col-xs-1 text-center">{{'NUMBER' | translate}}</td>
+			<td class="col-xs-2 text-center">{{'NAME' | translate}}</td>
+			<td class="col-xs-2 text-center">{{'ADDRESS' | translate}}</td>
+			<td class="col-xs-1 text-center">{{'STREETNUMBER' | translate}}</td>
+			<td class="col-xs-1 text-center">{{'ZIPCODE' | translate}}</td>
+			<td class="col-xs-2 text-center">{{'CITY' | translate}}</td>
+			<td class="col-xs-3"></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr gs-crud parse-object="parseObject"
+			notify-as="{{'CLIENT' | translate}}" state-saving="saving">
+			<td><input placeholder="{{'NUMBER' | translate}}"
+				class="form-control" type="number" ng-model="createData.number"
+				ng-disabled="saving" auto-focus focus-on="addSuccess" /></td>
+			<td><input placeholder="{{'NAME' | translate}}"
+				class="form-control" type="text" ng-model="createData.name"
+				ng-disabled="saving" /></td>
+			<td><input placeholder="{{'ADDRESS' | translate}}"
+				class="form-control" type="text" ng-model="createData.addressName"
+				ng-disabled="saving" /></td>
+			<td><input placeholder="{{'STREETNUMBER' | translate}}"
+				class="form-control" type="text" ng-model="createData.addressNumber"
+				ng-disabled="saving" /></td>
+			<td><input placeholder="{{'ZIPCODE' | translate}}"
+				class="form-control" type="text" ng-model="createData.zipcode"
+				ng-disabled="saving" /></td>
+
+			<td><input placeholder="{{'CITY' | translate}}"
+				class="form-control" type="text" ng-model="createData.cityName"
+				ng-disabled="saving" /></td>
+			<!-- <td class="col-xs-2"><input
+					placeholder="{{'EMAIL' | translate}}" class="form-control"
+					type="text" ng-model="createData.email" /></td> -->
+
+			<td data-title="''"><gs-crud-create data="createData"
+					success="notifyDataSetChanged()" /></td>
+		</tr>
+	</tbody>
+</table>
+</gs-crud-panel-create>
+<gs-crud-panel-update-remove title="{{'CLIENTS_LIST' | translate}}">
+<table ng-table="tableParams" show-filter="true" class="table">
+	<tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"
+		notify-as="{{'CLIENT' | translate}}" editing="editMode"
+		>
+		<td data-title="'Nr'" class="col-xs-1" header-class="'text-center'"
+			sortable="'number'" filter="{ 'number': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="number"
+			ng-model="crudObject.number" /></td>
+		<td data-title="'Navn'" class="col-xs-2" header-class="'text-center'"
+			sortable="'name'" filter="{ 'name': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="text"
+			ng-model="crudObject.name" /></td>
+		<td data-title="'Adresse'" class="col-xs-2"
+			header-class="'text-center'" sortable="'addressName'"
+			filter="{ 'addressName': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="text"
+			ng-model="crudObject.addressName" /></td>
+		<td data-title="'Husnnr'" class="col-xs-1"
+			header-class="'text-center'" sortable="'addressNumber'"
+			filter="{ 'addressNumber': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="text"
+			ng-model="crudObject.addressNumber" /></td>
+		<td data-title="'Postnr'" class="col-xs-1"
+			header-class="'text-center'" sortable="'zipcode'"
+			filter="{ 'zipcode': 'text' }"><input ng-readonly="!editMode"
+			class="form-control" type="text" ng-model="crudObject.zipcode" /></td>
+		<td data-title="'By'" class="col-xs-2" header-class="'text-center'"
+			sortable="'cityName'" filter="{ 'cityName': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="text"
+			ng-model="crudObject.cityName" /></td>
+
+		<!-- <td data-title="'Email'" header-class="col-xs-1 text-center"
+					sortable="'email'" filter="{ 'email': 'text' }"><input
+					ng-readonly="!crudObject.$edit" class="form-control" type="email"
+					ng-model="crudObject.email" /></td> -->
+		<td data-title="''" class="col-xs-2" header-class="''"><gs-crud-update-delete
+				scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+		<td class="col-xs-1" header-class="'text-right'" data-title="''"
+			ng-if="!editMode"><gs-link-button type="info" size="sm"
+				link="{{ 'client' | routeSegmentUrl : {id : crudObject.id} }}"
+				fa-right="angle-right" button-text="{{'DETAILS' | translate}}" /></td>
+	</tr>
+	<!-- </tbody> -->
+</table>
+</gs-crud-panel-update-remove>
+

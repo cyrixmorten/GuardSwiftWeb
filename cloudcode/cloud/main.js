@@ -1,0 +1,13 @@
+require("cloud/app.js");
+require("cloud/alarmFunctions.js");
+require("cloud/beforeSave.js");
+require("cloud/afterSave.js");
+require("cloud/afterDelete.js");
+require("cloud/cleanUp.js");
+require("cloud/clientReportMails.js");
+require("cloud/compatibility.js");
+require("cloud/mailing.js"); 
+require("cloud/static.js");
+require("cloud/manageCircuitsStarted.js");
+require("cloud/payment.js");
+require("cloud/usageFunctions.js");

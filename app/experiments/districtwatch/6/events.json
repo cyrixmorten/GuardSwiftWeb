@@ -1,0 +1,539 @@
+[
+    {
+        "event": "Log ud",
+        "eventCode": 201,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4840019,
+            "longitude": 9.2318625
+        },
+        "positionString": "55.4840019,9.2318625",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-21T15:30:10.911Z",
+        "clientTimestampUnix": 1440171010,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:30:14.193Z",
+        "id": "mFas1pbTp8",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "mFas1pbTp8"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "FsTz9NpXPV"
+        },
+        "contactClient": {
+            "objectId": "FsTz9NpXPV"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervænget 4",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4849021,
+            "longitude": 9.2289228
+        },
+        "positionString": "55.4849021,9.2289228",
+        "clientName": "DW10",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervænget",
+        "clientAddressNumber": "4",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervænget 4 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:28:46.300Z",
+        "clientTimestampUnix": 1440170926,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:28:59.355Z",
+        "id": "hOJnFH0x4g",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "hOJnFH0x4g"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "Ja1yUWFPEQ"
+        },
+        "contactClient": {
+            "objectId": "Ja1yUWFPEQ"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervænget 3",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4849021,
+            "longitude": 9.2289228
+        },
+        "positionString": "55.4849021,9.2289228",
+        "clientName": "DW9",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervænget",
+        "clientAddressNumber": "3",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervænget 3 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:28:45.713Z",
+        "clientTimestampUnix": 1440170925,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:28:56.739Z",
+        "id": "MS3FrPXoDL",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "MS3FrPXoDL"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "6upf8c0U5v"
+        },
+        "contactClient": {
+            "objectId": "6upf8c0U5v"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 34",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4848284,
+            "longitude": 9.2277224
+        },
+        "positionString": "55.4848284,9.2277224",
+        "clientName": "DW8",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "34",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 34 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:27:20.474Z",
+        "clientTimestampUnix": 1440170840,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:27:26.328Z",
+        "id": "hiPJnQwVQ9",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "hiPJnQwVQ9"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "ODcwo4mIDT"
+        },
+        "contactClient": {
+            "objectId": "ODcwo4mIDT"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 26",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4847725,
+            "longitude": 9.2268818
+        },
+        "positionString": "55.4847725,9.2268818",
+        "clientName": "DW7",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "26",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 26 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:27:09.862Z",
+        "clientTimestampUnix": 1440170829,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:27:16.799Z",
+        "id": "QZB18mwBry",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "QZB18mwBry"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "H9qoX6jNc5"
+        },
+        "contactClient": {
+            "objectId": "H9qoX6jNc5"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 42",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.485272,
+            "longitude": 9.2264544
+        },
+        "positionString": "55.485272,9.2264544",
+        "clientName": "DW6",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "42",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 42 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:26:26.061Z",
+        "clientTimestampUnix": 1440170786,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:26:33.753Z",
+        "id": "F6yHD9Wl8V",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "F6yHD9Wl8V"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "X6EzoSIw3m"
+        },
+        "contactClient": {
+            "objectId": "X6EzoSIw3m"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 56",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.485272,
+            "longitude": 9.2264544
+        },
+        "positionString": "55.485272,9.2264544",
+        "clientName": "DW5",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "56",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 56 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:26:25.784Z",
+        "clientTimestampUnix": 1440170785,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:26:30.718Z",
+        "id": "LOKmkFlhoX",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "LOKmkFlhoX"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "0MTskj8GOo"
+        },
+        "contactClient": {
+            "objectId": "0MTskj8GOo"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 62",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.484845,
+            "longitude": 9.2261165
+        },
+        "positionString": "55.484845,9.2261165",
+        "clientName": "DW4",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "62",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 62 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:26:19.749Z",
+        "clientTimestampUnix": 1440170779,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:26:24.612Z",
+        "id": "AY5PujWKrm",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "AY5PujWKrm"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "YZrBRinZ8Y"
+        },
+        "contactClient": {
+            "objectId": "YZrBRinZ8Y"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 16",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4841508,
+            "longitude": 9.2265462
+        },
+        "positionString": "55.4841508,9.2265462",
+        "clientName": "DW3",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "16",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 16 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:26:05.793Z",
+        "clientTimestampUnix": 1440170765,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:26:12.501Z",
+        "id": "smVAmvyS8D",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "smVAmvyS8D"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "e8eCiwbNvS"
+        },
+        "contactClient": {
+            "objectId": "e8eCiwbNvS"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 11",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4842402,
+            "longitude": 9.2280044
+        },
+        "positionString": "55.4842402,9.2280044",
+        "clientName": "DW2",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "11",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 11 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:25:59.995Z",
+        "clientTimestampUnix": 1440170759,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:26:05.147Z",
+        "id": "H1JOlyI01j",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "H1JOlyI01j"
+        }
+    },
+    {
+        "districtWatchStarted": {
+            "objectId": "qjG8NfHfg0"
+        },
+        "client": {
+            "objectId": "rvxNuzOd2x"
+        },
+        "contactClient": {
+            "objectId": "rvxNuzOd2x"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 111,
+        "clientLocation": "Ryttervej 4",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.484291,
+            "longitude": 9.2299301
+        },
+        "positionString": "55.484291,9.2299301",
+        "clientName": "DW1",
+        "clientCity": "Andst",
+        "clientAddress": "Ryttervej",
+        "clientAddressNumber": "4",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Ryttervej 4 6600 Andst",
+        "timeStartString": "10:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-21T15:25:51.275Z",
+        "clientTimestampUnix": 1440170751,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:25:56.122Z",
+        "id": "5H3m4YlzNs",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "5H3m4YlzNs"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "in vehicle",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4856362,
+            "longitude": 9.2291215
+        },
+        "positionString": "55.4856362,9.2291215",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-21T15:25:25.124Z",
+        "clientTimestampUnix": 1440170725,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:25:27.059Z",
+        "id": "A6yvajwMzM",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "A6yvajwMzM"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4858796,
+            "longitude": 9.2290741
+        },
+        "positionString": "55.4858796,9.2290741",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-21T15:25:08.824Z",
+        "clientTimestampUnix": 1440170708,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:25:10.900Z",
+        "id": "LsjomXhCqN",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "LsjomXhCqN"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "still",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4858796,
+            "longitude": 9.2290741
+        },
+        "positionString": "55.4858796,9.2290741",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-21T15:24:53.262Z",
+        "clientTimestampUnix": 1440170693,
+        "activityConfidence": 41,
+        "createdAt": "2015-08-21T15:24:54.152Z",
+        "id": "x4ST6oGuKw",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "x4ST6oGuKw"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4857692,
+            "longitude": 9.2288558
+        },
+        "positionString": "55.4857692,9.2288558",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-21T15:24:39.673Z",
+        "clientTimestampUnix": 1440170679,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-21T15:24:40.253Z",
+        "id": "KBy3WqxseJ",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "KBy3WqxseJ"
+        }
+    },
+    {
+        "event": "Log ind",
+        "eventCode": 200,
+        "positionString": "",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-21T15:24:32.292Z",
+        "clientTimestampUnix": 1440170672,
+        "activityConfidence": 0,
+        "createdAt": "2015-08-21T15:24:33.793Z",
+        "id": "hT3rf9oUZA",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "hT3rf9oUZA"
+        }
+    }
+]

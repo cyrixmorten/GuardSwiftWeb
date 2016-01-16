@@ -1,0 +1,137 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header" ng-init="navCollapsed = true"
+			ng-click="navCollapsed = !navCollapsed">
+			<a class="navbar-brand" href="#{{ 'home' | routeSegmentUrl }}">GuardSwift</a>
+		</div>
+
+
+		<!--  <button ng-if="ParseAccount.isLoggedIn()" type="button"
+					class="navbar-right btn btn-default navbar-btn" ng-click="logout()">{{'LOGOUT'
+					| translate}}</button>-->
+
+		<div class="btn-group navbar-right ">
+			<button type="button"
+				class="navbar-btn btn btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-expanded="false">
+				<fa name="user"></fa>
+				{{username}} <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li ng-class="{active: $routeSegment.startsWith('account')}"><a
+					href="#{{ 'account.user' | routeSegmentUrl }}"><fa name="cog"></fa>
+						{{'ACCOUNT' | translate}}</a></li>
+				<li role="presentation" class="divider"></li>
+				<li><a href="#" ng-click="logout()"><fa name="power-off"></fa>
+						{{ 'LOGOUT' | translate}}</a></li>
+			</ul>
+		</div>
+
+		<div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'"
+			ng-click="navCollapsed=true">
+
+			<ul class="nav navbar-nav">
+				<!-- Data -->
+				<li class="dropdown" dropdown
+					ng-class="{active: pathContains('data')}"><a href="#"
+					class="dropdown-toggle" dropdown-toggle>{{'DATA' | translate}}
+						<b class="caret"> </b>
+				</a>
+					<ul class="dropdown-menu inverse-dropdown">
+						<li ng-class="{active: ('guards' | routeSegmentEqualsTo)}"><a
+							href="#{{ 'guards' | routeSegmentUrl }}">{{'GUARDS' |
+								translate}}</a></li>
+						<!-- <li ng-class="{active: ('groups' | routeSegmentEqualsTo)}"><a
+							href="#{{ 'groups' | routeSegmentUrl }}">{{'GROUPS' |
+								translate}}</a></li> -->
+						<li ng-class="{active: ('client' | routeSegmentContains)}"><a
+							href="#{{ 'clients' | routeSegmentUrl }}">{{'CLIENTS' |
+								translate}}</a></li>
+						<li ng-class="{active: ('eventtypes' | routeSegmentEqualsTo)}"><a
+							href="#{{ 'eventtypes' | routeSegmentUrl }}">{{'EVENT_TYPES' | translate}}</a></li>
+					</ul></li>
+				<!-- Checklists -->
+				<!-- 
+				<li class="dropdown" dropdown
+					ng-class="{active: pathContains('checklist')}"><a href="#"
+					class="dropdown-toggle" dropdown-toggle>{{'CHECKLISTS' |
+						translate}} <b class="caret"> </b>
+				</a>
+					<ul class="dropdown-menu inverse-dropdown">
+						<li
+							ng-class="{active: $routeSegment.contains('checklist_startup')}"><a
+							href="#{{ 'checklist_startup' | routeSegmentUrl }}">{{'CHECKLIST_STARTUP' |
+								translate}}</a></li>
+						<li
+							ng-class="{active: $routeSegment.contains('checklist_ending')}"><a
+							href="#{{ 'checklist_ending' | routeSegmentUrl }}">{{'CHECKLIST_ENDING' | translate}}</a></li>
+					</ul></li> -->
+				<!-- Plan -->
+				<li class="dropdown" dropdown
+					ng-class="{active: pathContains('plan')}"><a href="#"
+					class="dropdown-toggle" dropdown-toggle>{{'PLANNING' |
+						translate}} <b class="caret"></b>
+				</a>
+					<ul class="dropdown-menu inverse-dropdown">
+						<li ng-class="{active: $routeSegment.contains('circuits')}"><a
+							href="#{{ 'circuits' | routeSegmentUrl }}">{{'CIRCUITS' | translate}}</a></li>
+						<li ng-class="{active: $routeSegment.contains('districtwatches')}"><a
+							href="#{{ 'districtwatches' | routeSegmentUrl }}">{{'DISTRICTWATCH' | translate}}</a></li>
+					</ul></li>
+				<!-- Events -->
+				<li class="dropdown" dropdown
+					ng-class="{active: pathContains('logs')}"><a href="#"
+					class="dropdown-toggle" dropdown-toggle>{{'LOGS' | translate}}
+						<b class="caret"></b>
+				</a>
+					<ul class="dropdown-menu inverse-dropdown">
+						<li ng-class="{active: $routeSegment.contains('eventlog')}"><a
+							href="#{{ 'eventlog' | routeSegmentUrl }}">{{'ALL_EVENTS' | translate}}</a></li>
+						<li role="presentation" class="divider"></li>
+						<li ng-class="{active: $routeSegment.contains('alarm')}"><a
+							href="#{{ 'alarmlog' | routeSegmentUrl }}">{{'ALARMS' | translate}}</a></li>
+						<li ng-class="{active: $routeSegment.contains('circuitlog')}"><a
+							href="#{{ 'circuitlog' | routeSegmentUrl }}">{{'CIRCUITS' | translate}}</a></li>
+						<li ng-class="{active: $routeSegment.contains('districtwatchlog')}"><a
+							href="#{{ 'districtwatchlog' | routeSegmentUrl }}">{{'DISTRICTWATCHES' | translate}}</a></li>
+					</ul></li>
+				<!-- Reports -->
+				<li class="dropdown" dropdown
+					ng-class="{active: pathContains('report')}"><a href="#"
+					class="dropdown-toggle" dropdown-toggle>{{'REPORTS' |
+						translate}} <b class="caret"></b>
+				</a>
+					<ul class="dropdown-menu inverse-dropdown">
+						<li ng-class="{active: $routeSegment.contains('alarmreports')}"><a
+							href="#{{ 'alarmreports' | routeSegmentUrl }}">{{'ALARMREPORTS'
+								| translate}}</a></li>
+						<li
+							ng-class="{active: $routeSegment.contains('circuitunitreports')}"><a
+							href="#{{ 'circuitunitreports' | routeSegmentUrl }}">{{'CIRCUITUNITREPORTS'
+								| translate}}</a></li>
+					</ul></li>
+				<!-- GPS -->
+				<!-- <li class="dropdown" dropdown
+					ng-class="{active: pathContains('gps')}"><a href="#{{ 'gps' | routeSegmentUrl }}">{{'GPSLOG'
+						| translate}}</a></li> -->
+
+			</ul>
+			<!-- <ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Link</a></li>
+						<li class="dropdown" dropdown><a href="#" class="dropdown-toggle" dropdown-toggle 
+							data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
+								<span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul></li>
+					</ul> -->
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+</nav>

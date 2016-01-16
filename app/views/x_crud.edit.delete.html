@@ -1,0 +1,15 @@
+<div ng-if="!crudObject.$updating">
+	<input type="button" ng-if="!crudObject.$edit" ng-hide="performingEdit"
+		class="btn btn-primary btn-sm" ng-click="edit(crudObject)"
+		value="{{'EDIT' | translate}}" /> 
+		<input type="button" ng-if="!crudObject.$edit" ng-hide="performingEdit" class="btn btn-danger btn-sm" ng-click="remove(crudObject)" value="{{'DELETE' | translate}}" /> 
+		<input type="submit"
+		ng-if="crudObject.$edit" class="btn btn-success btn-sm"
+		ng-click="save(crudObject)" value="{{'UPDATE' | translate}}" /> <input
+		type="button" ng-if="crudObject.$edit" class="btn btn-primary btn-sm"
+		ng-click="cancel(crudObject)" value="{{'CANCEL' | translate}}" />
+</div>
+<div ng-if="crudObject.$updating">
+	<IMG ng-src="assets/icon/small-loader.gif"></IMG>
+</div>
+

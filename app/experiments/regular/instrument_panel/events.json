@@ -1,0 +1,1100 @@
+  [{
+    "event": "Log ud",
+    "eventCode": 201,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4938496,
+      "longitude": 9.204861
+    },
+    "positionString": "55.4938496,9.204861",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T17:30:16.519Z",
+    "clientTimestampUnix": 1439746216,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T17:30:18.520Z",
+    "id": "m8pnycz2Bx",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "m8pnycz2Bx"
+    }
+  },
+  {
+    "event": "Log ud",
+    "eventCode": 201,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4938496,
+      "longitude": 9.204861
+    },
+    "positionString": "55.4938496,9.204861",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:18:11.402Z",
+    "clientTimestampUnix": 1439741891,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T16:18:14.891Z",
+    "id": "sIxgRK3ZkE",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "sIxgRK3ZkE"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "tilting",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4938446,
+      "longitude": 9.2048654
+    },
+    "positionString": "55.4938446,9.2048654",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:18:05.134Z",
+    "clientTimestampUnix": 1439741885,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T16:18:07.027Z",
+    "id": "Q6vj1hqOTa",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Q6vj1hqOTa"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "still",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4938645,
+      "longitude": 9.2049552
+    },
+    "positionString": "55.4938645,9.2049552",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:17:51.960Z",
+    "clientTimestampUnix": 1439741871,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T16:17:54.917Z",
+    "id": "fQ3WTkGhGb",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "fQ3WTkGhGb"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "uzgfRPpQfD"
+    },
+    "client": {
+      "objectId": "RNXASVo6i5"
+    },
+    "contactClient": {
+      "objectId": "RNXASVo6i5"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4925915,
+      "longitude": 9.2047431
+    },
+    "positionString": "55.4925915,9.2047431",
+    "clientName": "Client D",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "15",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 15 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "16:00",
+    "timeEndString": "17:00",
+    "clientTimestamp": "2015-08-16T16:17:07.729Z",
+    "clientTimestampUnix": 1439741827,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 71,
+    "createdAt": "2015-08-16T16:17:23.478Z",
+    "id": "lleegcspaM",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "lleegcspaM"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "uzgfRPpQfD"
+    },
+    "client": {
+      "objectId": "RNXASVo6i5"
+    },
+    "contactClient": {
+      "objectId": "RNXASVo6i5"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4925915,
+      "longitude": 9.2047431
+    },
+    "positionString": "55.4925915,9.2047431",
+    "clientName": "Client D",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "15",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 15 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "16:00",
+    "timeEndString": "17:00",
+    "clientTimestamp": "2015-08-16T16:17:07.626Z",
+    "clientTimestampUnix": 1439741827,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 71,
+    "createdAt": "2015-08-16T16:17:22.334Z",
+    "id": "xrAtjHZKGs",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "xrAtjHZKGs"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "in vehicle",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4914383,
+      "longitude": 9.2044865
+    },
+    "positionString": "55.4914383,9.2044865",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:16:59.905Z",
+    "clientTimestampUnix": 1439741819,
+    "activityConfidence": 71,
+    "createdAt": "2015-08-16T16:17:10.699Z",
+    "id": "aiCNyMoEEM",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "aiCNyMoEEM"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "bwTUMsaSuO"
+    },
+    "client": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "contactClient": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4914383,
+      "longitude": 9.2044865
+    },
+    "positionString": "55.4914383,9.2044865",
+    "clientName": "Client C",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "9",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:16:57.318Z",
+    "clientTimestampUnix": 1439741817,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:17:07.303Z",
+    "id": "dtGM6P2j4Q",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "dtGM6P2j4Q"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "bwTUMsaSuO"
+    },
+    "client": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "contactClient": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4914383,
+      "longitude": 9.2044865
+    },
+    "positionString": "55.4914383,9.2044865",
+    "clientName": "Client C",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "9",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:16:57.299Z",
+    "clientTimestampUnix": 1439741817,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:17:06.175Z",
+    "id": "PFbfB514oS",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "PFbfB514oS"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "bwTUMsaSuO"
+    },
+    "client": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "contactClient": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "type": "",
+    "event": "Aborted",
+    "eventCode": 103,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4914383,
+      "longitude": 9.2044865
+    },
+    "positionString": "55.4914383,9.2044865",
+    "clientName": "Client C",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "9",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:16:57.152Z",
+    "clientTimestampUnix": 1439741817,
+    "taskEvent": "ABORT",
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:17:04.527Z",
+    "id": "LXW8dafJq4",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "LXW8dafJq4"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "still",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4896618,
+      "longitude": 9.2041519
+    },
+    "positionString": "55.4896618,9.2041519",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:16:16.188Z",
+    "clientTimestampUnix": 1439741776,
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:16:29.097Z",
+    "id": "7I3T62Au5r",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "7I3T62Au5r"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "bwTUMsaSuO"
+    },
+    "client": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "contactClient": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4896618,
+      "longitude": 9.2041519
+    },
+    "positionString": "55.4896618,9.2041519",
+    "clientName": "Client C",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "9",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:16:16.038Z",
+    "clientTimestampUnix": 1439741776,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:16:27.843Z",
+    "id": "GMg6vm6sNb",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "GMg6vm6sNb"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "bwTUMsaSuO"
+    },
+    "client": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "contactClient": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4885009,
+      "longitude": 9.2031019
+    },
+    "positionString": "55.4885009,9.2031019",
+    "clientName": "Client C",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "9",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:15:39.132Z",
+    "clientTimestampUnix": 1439741739,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:15:45.518Z",
+    "id": "YQ2ZollriT",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "YQ2ZollriT"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "bwTUMsaSuO"
+    },
+    "client": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "contactClient": {
+      "objectId": "3OkeoWz7Cy"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4885009,
+      "longitude": 9.2031019
+    },
+    "positionString": "55.4885009,9.2031019",
+    "clientName": "Client C",
+    "clientCity": "Gamst",
+    "clientAddress": "Rugholmvej",
+    "clientAddressNumber": "9",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:15:38.790Z",
+    "clientTimestampUnix": 1439741738,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:15:44.326Z",
+    "id": "6aReRVlHl3",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "6aReRVlHl3"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "Dyg78fMYGT"
+    },
+    "client": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "contactClient": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4886001,
+      "longitude": 9.2235895
+    },
+    "positionString": "55.4886001,9.2235895",
+    "clientName": "Client B",
+    "clientCity": "Vejen",
+    "clientAddress": "Frederiksbergvej",
+    "clientAddressNumber": "40",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:14:03.475Z",
+    "clientTimestampUnix": 1439741643,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:14:31.488Z",
+    "id": "I7a4XlZD9l",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "I7a4XlZD9l"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "Dyg78fMYGT"
+    },
+    "client": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "contactClient": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4886001,
+      "longitude": 9.2235895
+    },
+    "positionString": "55.4886001,9.2235895",
+    "clientName": "Client B",
+    "clientCity": "Vejen",
+    "clientAddress": "Frederiksbergvej",
+    "clientAddressNumber": "40",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:14:03.309Z",
+    "clientTimestampUnix": 1439741643,
+    "taskEvent": "GEOFENCE_EXIT_GPS",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:14:29.470Z",
+    "id": "IK9KEPutml",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "IK9KEPutml"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "Dyg78fMYGT"
+    },
+    "client": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "contactClient": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "type": "",
+    "event": "Aborted",
+    "eventCode": 103,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4886001,
+      "longitude": 9.2235895
+    },
+    "positionString": "55.4886001,9.2235895",
+    "clientName": "Client B",
+    "clientCity": "Vejen",
+    "clientAddress": "Frederiksbergvej",
+    "clientAddressNumber": "40",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:14:03.087Z",
+    "clientTimestampUnix": 1439741643,
+    "taskEvent": "ABORT",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:14:28.304Z",
+    "id": "4jzmUThETk",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "4jzmUThETk"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "Dyg78fMYGT"
+    },
+    "client": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "contactClient": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4879023,
+      "longitude": 9.2253688
+    },
+    "positionString": "55.4879023,9.2253688",
+    "clientName": "Client B",
+    "clientCity": "Vejen",
+    "clientAddress": "Frederiksbergvej",
+    "clientAddressNumber": "40",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:13:49.495Z",
+    "clientTimestampUnix": 1439741629,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:14:22.424Z",
+    "id": "GJi0PzjJDP",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "GJi0PzjJDP"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "Dyg78fMYGT"
+    },
+    "client": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "contactClient": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4879023,
+      "longitude": 9.2253688
+    },
+    "positionString": "55.4879023,9.2253688",
+    "clientName": "Client B",
+    "clientCity": "Vejen",
+    "clientAddress": "Frederiksbergvej",
+    "clientAddressNumber": "40",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:13:49.370Z",
+    "clientTimestampUnix": 1439741629,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:14:20.053Z",
+    "id": "jmmUlUxB7i",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "jmmUlUxB7i"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "Dyg78fMYGT"
+    },
+    "client": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "contactClient": {
+      "objectId": "eMaWoYMyGD"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4879023,
+      "longitude": 9.2253688
+    },
+    "positionString": "55.4879023,9.2253688",
+    "clientName": "Client B",
+    "clientCity": "Vejen",
+    "clientAddress": "Frederiksbergvej",
+    "clientAddressNumber": "40",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:13:49.180Z",
+    "clientTimestampUnix": 1439741629,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:14:18.668Z",
+    "id": "JDtrPTRDJL",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "JDtrPTRDJL"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "QbbHbxsXOJ"
+    },
+    "client": {
+      "objectId": "2now0SQaXF"
+    },
+    "contactClient": {
+      "objectId": "2now0SQaXF"
+    },
+    "type": "",
+    "event": "Udenfor geofence",
+    "eventCode": 1102,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4841251,
+      "longitude": 9.2319683
+    },
+    "positionString": "55.4841251,9.2319683",
+    "clientName": "Client A",
+    "clientCity": "Vejen",
+    "clientAddress": "Mark Dannersvej",
+    "clientAddressNumber": "23",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:12:58.850Z",
+    "clientTimestampUnix": 1439741578,
+    "taskEvent": "GEOFENCE_EXIT",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:13:02.703Z",
+    "id": "dtJW38xigU",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "dtJW38xigU"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "in vehicle",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4835089,
+      "longitude": 9.2325127
+    },
+    "positionString": "55.4835089,9.2325127",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:12:48.101Z",
+    "clientTimestampUnix": 1439741568,
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:13:00.685Z",
+    "id": "w4ZWM3TS1T",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "w4ZWM3TS1T"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "QbbHbxsXOJ"
+    },
+    "client": {
+      "objectId": "2now0SQaXF"
+    },
+    "contactClient": {
+      "objectId": "2now0SQaXF"
+    },
+    "type": "",
+    "event": "Aborted",
+    "eventCode": 103,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4835089,
+      "longitude": 9.2325127
+    },
+    "positionString": "55.4835089,9.2325127",
+    "clientName": "Client A",
+    "clientCity": "Vejen",
+    "clientAddress": "Mark Dannersvej",
+    "clientAddressNumber": "23",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:12:47.978Z",
+    "clientTimestampUnix": 1439741567,
+    "taskEvent": "ABORT",
+    "activityConfidence": 84,
+    "createdAt": "2015-08-16T16:12:57.410Z",
+    "id": "o0WZw6lVp0",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "o0WZw6lVp0"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "still",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.482564,
+      "longitude": 9.233254
+    },
+    "positionString": "55.482564,9.233254",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:12:07.369Z",
+    "clientTimestampUnix": 1439741527,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T16:12:21.719Z",
+    "id": "bgNmIspaKJ",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "bgNmIspaKJ"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "QbbHbxsXOJ"
+    },
+    "client": {
+      "objectId": "2now0SQaXF"
+    },
+    "contactClient": {
+      "objectId": "2now0SQaXF"
+    },
+    "type": "",
+    "event": "Arrived",
+    "eventCode": 101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.482564,
+      "longitude": 9.233254
+    },
+    "positionString": "55.482564,9.233254",
+    "clientName": "Client A",
+    "clientCity": "Vejen",
+    "clientAddress": "Mark Dannersvej",
+    "clientAddressNumber": "23",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:12:07.188Z",
+    "clientTimestampUnix": 1439741527,
+    "taskEvent": "ARRIVE",
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T16:12:20.307Z",
+    "id": "cpIke0JAoJ",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "cpIke0JAoJ"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "QbbHbxsXOJ"
+    },
+    "client": {
+      "objectId": "2now0SQaXF"
+    },
+    "contactClient": {
+      "objectId": "2now0SQaXF"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4816621,
+      "longitude": 9.2344377
+    },
+    "positionString": "55.4816621,9.2344377",
+    "clientName": "Client A",
+    "clientCity": "Vejen",
+    "clientAddress": "Mark Dannersvej",
+    "clientAddressNumber": "23",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:11:28.969Z",
+    "clientTimestampUnix": 1439741488,
+    "taskEvent": "GEOFENCE_ENTER",
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:11:34.902Z",
+    "id": "AbqXIKtlpW",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "AbqXIKtlpW"
+    }
+  },
+  {
+    "circuitStarted": {
+      "objectId": "wxSbyxRBYf"
+    },
+    "circuitUnit": {
+      "objectId": "QbbHbxsXOJ"
+    },
+    "client": {
+      "objectId": "2now0SQaXF"
+    },
+    "contactClient": {
+      "objectId": "2now0SQaXF"
+    },
+    "type": "",
+    "event": "Indenfor geofence",
+    "eventCode": 1101,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4816621,
+      "longitude": 9.2344377
+    },
+    "positionString": "55.4816621,9.2344377",
+    "clientName": "Client A",
+    "clientCity": "Vejen",
+    "clientAddress": "Mark Dannersvej",
+    "clientAddressNumber": "23",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+    "isExtra": false,
+    "timeStartString": "17:00",
+    "timeEndString": "23:00",
+    "clientTimestamp": "2015-08-16T16:11:28.835Z",
+    "clientTimestampUnix": 1439741488,
+    "taskEvent": "GEOFENCE_ENTER_GPS",
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:11:33.817Z",
+    "id": "Izllidpnkx",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "Izllidpnkx"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "in vehicle",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4794633,
+      "longitude": 9.2369441
+    },
+    "positionString": "55.4794633,9.2369441",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:11:02.895Z",
+    "clientTimestampUnix": 1439741462,
+    "activityConfidence": 92,
+    "createdAt": "2015-08-16T16:11:03.776Z",
+    "id": "es9XIg0Qo6",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "es9XIg0Qo6"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "tilting",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4794504,
+      "longitude": 9.2369365
+    },
+    "positionString": "55.4794504,9.2369365",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:10:40.105Z",
+    "clientTimestampUnix": 1439741440,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T16:10:42.007Z",
+    "id": "v1a6oCRpo8",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "v1a6oCRpo8"
+    }
+  },
+  {
+    "event": "Activity",
+    "remarks": "unknown",
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.4794562,
+      "longitude": 9.2369339
+    },
+    "positionString": "55.4794562,9.2369339",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:10:26.594Z",
+    "clientTimestampUnix": 1439741426,
+    "activityConfidence": 39,
+    "createdAt": "2015-08-16T16:10:27.815Z",
+    "id": "geCZL4uZSa",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "geCZL4uZSa"
+    }
+  },
+  {
+    "event": "Log ind",
+    "eventCode": 200,
+    "position": {
+      "__type": "GeoPoint",
+      "latitude": 55.484359,
+      "longitude": 9.2270123
+    },
+    "positionString": "55.484359,9.2270123",
+    "guardName": "Christina Dahl Olesen",
+    "guardId": 32005,
+    "clientTimestamp": "2015-08-16T16:10:11.095Z",
+    "clientTimestampUnix": 1439741411,
+    "activityConfidence": 100,
+    "createdAt": "2015-08-16T16:10:12.095Z",
+    "id": "wbwNbnyE6P",
+    "objectPointer": {
+      "__type": "Pointer",
+      "className": "EventLog",
+      "objectId": "wbwNbnyE6P"
+    }
+  }]

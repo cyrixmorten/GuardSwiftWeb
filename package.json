@@ -1,0 +1,7 @@
+{
+  "name": "guardswift-web",
+  "description": "",
+  "scripts": {
+	"start" : "cd server && npm start"
+   }
+}

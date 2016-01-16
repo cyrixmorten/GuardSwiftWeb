@@ -1,0 +1,19 @@
+
+<div class="panel panel-primary anim">
+	<div class="panel-heading clearfix">
+		<h3 class="panel-title pull-left">
+			{{'EVENTLOG' | translate}}<span ng-show="name"> - {{name}}</span>
+		</h3>
+		<!-- crud-search search-from-date="searchFromDate"
+				search-to-date="searchToDate" search="search()"
+				export-enabled="true" csv="csv" export-name="exportname()">
+			</search-by-date-table> -->
+	</div>
+	<div class="panel-body">
+		<gs-search-bar-day-date search-options="searchOptions"
+			search-result="searchResult(result)"></gs-search-bar-day-date>
+
+		<gs-table-eventlogs></gs-table-eventlogs>
+		
+	</div>
+</div>

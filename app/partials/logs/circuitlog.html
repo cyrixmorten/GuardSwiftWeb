@@ -1,0 +1,36 @@
+
+<div class="panel panel-primary anim">
+	<div class="panel-heading clearfix">
+		<h3 class="panel-title pull-left">{{'CIRCUITS' | translate}}</h3>
+		<!-- <div class="btn-group pull-right">
+				<crud-search search-from-date="searchFromDate"
+					search-to-date="searchToDate" search="search()">
+				</search-by-date-table>
+			</div>-->
+	</div>
+	<div class="panel-body">
+		<gs-search-bar-day-date search-options="searchOptions"
+			search-result="searchResult(result)"></gs-search-bar-day-date>
+
+		<table ng-table="tableParams" show-filter="true"
+			class="table table-hover table-condensed table-striped table-responsive"
+			export-csv="csv">
+			<tr ng-repeat="crudObject in $data">
+				<td data-title="'Navn'" class="col-xs-10"
+					header-class="'text-center'" sortable="'name'"
+					filter="{ 'name': 'text' }" class="col-md-3">{{crudObject.name}}</td>
+				<td data-title="'Oprettet'" class="col-xs-1"
+					header-class="'text-center'">{{crudObject.createdAt |
+					date:'dd-MM-yyyy'}}</td>
+				<!-- <td data-title="''" header-class="'col-xs-1'"><a
+					class="btn btn-primary btn-sm"
+					href="#{{ 'log.listreports' | routeSegmentUrl}}/?circuit={{crudObject.objectId}}&reports=true&name={{crudObject.name}}">Rapporter</a></td> -->
+				<td data-title="''" class="col-xs-1" header-class="''"><gs-link-button
+						type="info" size="sm"
+						link="{{ 'circuiteventlog' | routeSegmentUrl : {id : crudObject.id} }}"
+						fa-left="tags" fa-right="angle-right"
+						button-text="{{'SHOW_EVENTS' | translate}}" /></td>
+			</tr>
+		</table>
+	</div>
+</div>

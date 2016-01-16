@@ -1,0 +1,1311 @@
+    [{
+        "event": "Log ud",
+        "eventCode": 201,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4937569,
+            "longitude": 9.2050512
+        },
+        "positionString": "55.4937569,9.2050512",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:34:33.797Z",
+        "clientTimestampUnix": 1439836473,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:34:37.749Z",
+        "id": "VD9JUsezaG",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "VD9JUsezaG"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4937569,
+            "longitude": 9.2050512
+        },
+        "positionString": "55.4937569,9.2050512",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:34:29.649Z",
+        "clientTimestampUnix": 1439836469,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:34:32.063Z",
+        "id": "RW1Jifh6DT",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "RW1Jifh6DT"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "on foot",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4938265,
+            "longitude": 9.204961
+        },
+        "positionString": "55.4938265,9.204961",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:34:18.847Z",
+        "clientTimestampUnix": 1439836458,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:34:21.040Z",
+        "id": "EdJop5wUw3",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "EdJop5wUw3"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4938517,
+            "longitude": 9.2050424
+        },
+        "positionString": "55.4938517,9.2050424",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:33:57.804Z",
+        "clientTimestampUnix": 1439836437,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:34:17.558Z",
+        "id": "EOCMVJfQqj",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "EOCMVJfQqj"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "bwTUMsaSuO"
+        },
+        "client": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "contactClient": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "type": "",
+        "event": "Udenfor geofence",
+        "eventCode": 1102,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4936608,
+            "longitude": 9.2050565
+        },
+        "positionString": "55.4936608,9.2050565",
+        "clientName": "Client C",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "9",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:33:39.603Z",
+        "clientTimestampUnix": 1439836419,
+        "taskEvent": "GEOFENCE_EXIT",
+        "activityConfidence": 51,
+        "createdAt": "2015-08-17T18:33:57.963Z",
+        "id": "s05dOe70ze",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "s05dOe70ze"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "uzgfRPpQfD"
+        },
+        "client": {
+            "objectId": "RNXASVo6i5"
+        },
+        "contactClient": {
+            "objectId": "RNXASVo6i5"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4936608,
+            "longitude": 9.2050565
+        },
+        "positionString": "55.4936608,9.2050565",
+        "clientName": "Client D",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "15",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 15 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "16:00",
+        "timeEndString": "17:00",
+        "clientTimestamp": "2015-08-17T18:33:39.310Z",
+        "clientTimestampUnix": 1439836419,
+        "taskEvent": "GEOFENCE_ENTER",
+        "activityConfidence": 51,
+        "createdAt": "2015-08-17T18:33:54.518Z",
+        "id": "oBauQwPEPB",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "oBauQwPEPB"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "bwTUMsaSuO"
+        },
+        "client": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "contactClient": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "type": "",
+        "event": "Udenfor geofence",
+        "eventCode": 1102,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4936608,
+            "longitude": 9.2050565
+        },
+        "positionString": "55.4936608,9.2050565",
+        "clientName": "Client C",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "9",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:33:39.055Z",
+        "clientTimestampUnix": 1439836419,
+        "taskEvent": "GEOFENCE_EXIT_GPS",
+        "activityConfidence": 51,
+        "createdAt": "2015-08-17T18:33:52.080Z",
+        "id": "FaaUTohAlG",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "FaaUTohAlG"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "uzgfRPpQfD"
+        },
+        "client": {
+            "objectId": "RNXASVo6i5"
+        },
+        "contactClient": {
+            "objectId": "RNXASVo6i5"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4936608,
+            "longitude": 9.2050565
+        },
+        "positionString": "55.4936608,9.2050565",
+        "clientName": "Client D",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "15",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 15 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "16:00",
+        "timeEndString": "17:00",
+        "clientTimestamp": "2015-08-17T18:33:38.679Z",
+        "clientTimestampUnix": 1439836418,
+        "taskEvent": "GEOFENCE_ENTER_GPS",
+        "activityConfidence": 51,
+        "createdAt": "2015-08-17T18:33:50.856Z",
+        "id": "7Sr83X9ULw",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "7Sr83X9ULw"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "bwTUMsaSuO"
+        },
+        "client": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "contactClient": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4903225,
+            "longitude": 9.2042762
+        },
+        "positionString": "55.4903225,9.2042762",
+        "clientName": "Client C",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "9",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:33:21.087Z",
+        "clientTimestampUnix": 1439836401,
+        "taskEvent": "GEOFENCE_ENTER_GPS",
+        "activityConfidence": 51,
+        "createdAt": "2015-08-17T18:33:31.904Z",
+        "id": "z56Pv718mK",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "z56Pv718mK"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "in vehicle",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4903225,
+            "longitude": 9.2042762
+        },
+        "positionString": "55.4903225,9.2042762",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:33:13.526Z",
+        "clientTimestampUnix": 1439836393,
+        "activityConfidence": 51,
+        "createdAt": "2015-08-17T18:33:28.411Z",
+        "id": "sm0nzcB5Uo",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "sm0nzcB5Uo"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "bwTUMsaSuO"
+        },
+        "client": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "contactClient": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "type": "",
+        "event": "Aborted",
+        "eventCode": 103,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4903225,
+            "longitude": 9.2042762
+        },
+        "positionString": "55.4903225,9.2042762",
+        "clientName": "Client C",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "9",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:33:13.387Z",
+        "clientTimestampUnix": 1439836393,
+        "taskEvent": "ABORT",
+        "activityConfidence": 51,
+        "createdAt": "2015-08-17T18:33:27.391Z",
+        "id": "cez9qok7DI",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "cez9qok7DI"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4896285,
+            "longitude": 9.2041038
+        },
+        "positionString": "55.4896285,9.2041038",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:32:36.890Z",
+        "clientTimestampUnix": 1439836356,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:32:43.491Z",
+        "id": "6otsca1Tit",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "6otsca1Tit"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "on foot",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4896075,
+            "longitude": 9.204057
+        },
+        "positionString": "55.4896075,9.204057",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:32:27.098Z",
+        "clientTimestampUnix": 1439836347,
+        "activityConfidence": 85,
+        "createdAt": "2015-08-17T18:32:38.612Z",
+        "id": "EJcZB8k4fi",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "EJcZB8k4fi"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4895588,
+            "longitude": 9.2041165
+        },
+        "positionString": "55.4895588,9.2041165",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:32:15.960Z",
+        "clientTimestampUnix": 1439836335,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:32:36.868Z",
+        "id": "EIrbHNQVXM",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "EIrbHNQVXM"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "bwTUMsaSuO"
+        },
+        "client": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "contactClient": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4895588,
+            "longitude": 9.2041165
+        },
+        "positionString": "55.4895588,9.2041165",
+        "clientName": "Client C",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "9",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:32:15.768Z",
+        "clientTimestampUnix": 1439836335,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:32:35.095Z",
+        "id": "K4yXJtCa79",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "K4yXJtCa79"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "bwTUMsaSuO"
+        },
+        "client": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "contactClient": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4885959,
+            "longitude": 9.2030275
+        },
+        "positionString": "55.4885959,9.2030275",
+        "clientName": "Client C",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "9",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:31:43.469Z",
+        "clientTimestampUnix": 1439836303,
+        "taskEvent": "GEOFENCE_ENTER",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:31:52.889Z",
+        "id": "gawmAiZVjU",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "gawmAiZVjU"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "bwTUMsaSuO"
+        },
+        "client": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "contactClient": {
+            "objectId": "3OkeoWz7Cy"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4885959,
+            "longitude": 9.2030275
+        },
+        "positionString": "55.4885959,9.2030275",
+        "clientName": "Client C",
+        "clientCity": "Gamst",
+        "clientAddress": "Rugholmvej",
+        "clientAddressNumber": "9",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Rugholmvej 9 6600 Gamst",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:31:43.181Z",
+        "clientTimestampUnix": 1439836303,
+        "taskEvent": "GEOFENCE_ENTER_GPS",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:31:48.975Z",
+        "id": "sfDad3Gc9r",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "sfDad3Gc9r"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "Dyg78fMYGT"
+        },
+        "client": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "contactClient": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "type": "",
+        "event": "Udenfor geofence",
+        "eventCode": 1102,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4882348,
+            "longitude": 9.224418
+        },
+        "positionString": "55.4882348,9.224418",
+        "clientName": "Client B",
+        "clientCity": "Vejen",
+        "clientAddress": "Frederiksbergvej",
+        "clientAddressNumber": "40",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:30:04.773Z",
+        "clientTimestampUnix": 1439836204,
+        "taskEvent": "GEOFENCE_EXIT",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:30:31.338Z",
+        "id": "ABFS9Pf5LP",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "ABFS9Pf5LP"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "Dyg78fMYGT"
+        },
+        "client": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "contactClient": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "type": "",
+        "event": "Udenfor geofence",
+        "eventCode": 1102,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4882348,
+            "longitude": 9.224418
+        },
+        "positionString": "55.4882348,9.224418",
+        "clientName": "Client B",
+        "clientCity": "Vejen",
+        "clientAddress": "Frederiksbergvej",
+        "clientAddressNumber": "40",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:30:04.584Z",
+        "clientTimestampUnix": 1439836204,
+        "taskEvent": "GEOFENCE_EXIT_GPS",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:30:27.837Z",
+        "id": "IIzymyHONC",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "IIzymyHONC"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "Dyg78fMYGT"
+        },
+        "client": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "contactClient": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "type": "",
+        "event": "Aborted",
+        "eventCode": 103,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4882348,
+            "longitude": 9.224418
+        },
+        "positionString": "55.4882348,9.224418",
+        "clientName": "Client B",
+        "clientCity": "Vejen",
+        "clientAddress": "Frederiksbergvej",
+        "clientAddressNumber": "40",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:30:04.432Z",
+        "clientTimestampUnix": 1439836204,
+        "taskEvent": "ABORT",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:30:26.564Z",
+        "id": "g25wdLQ1Tr",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "g25wdLQ1Tr"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "Dyg78fMYGT"
+        },
+        "client": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "contactClient": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4874848,
+            "longitude": 9.2262064
+        },
+        "positionString": "55.4874848,9.2262064",
+        "clientName": "Client B",
+        "clientCity": "Vejen",
+        "clientAddress": "Frederiksbergvej",
+        "clientAddressNumber": "40",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:29:51.671Z",
+        "clientTimestampUnix": 1439836191,
+        "taskEvent": "GEOFENCE_ENTER_GPS",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:30:19.773Z",
+        "id": "kvU9xb5sP6",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "kvU9xb5sP6"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "Dyg78fMYGT"
+        },
+        "client": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "contactClient": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4874848,
+            "longitude": 9.2262064
+        },
+        "positionString": "55.4874848,9.2262064",
+        "clientName": "Client B",
+        "clientCity": "Vejen",
+        "clientAddress": "Frederiksbergvej",
+        "clientAddressNumber": "40",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:29:51.505Z",
+        "clientTimestampUnix": 1439836191,
+        "taskEvent": "GEOFENCE_ENTER",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:30:17.288Z",
+        "id": "NlCjjsa4e8",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "NlCjjsa4e8"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "Dyg78fMYGT"
+        },
+        "client": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "contactClient": {
+            "objectId": "eMaWoYMyGD"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4874848,
+            "longitude": 9.2262064
+        },
+        "positionString": "55.4874848,9.2262064",
+        "clientName": "Client B",
+        "clientCity": "Vejen",
+        "clientAddress": "Frederiksbergvej",
+        "clientAddressNumber": "40",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Frederiksbergvej 40 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:29:51.325Z",
+        "clientTimestampUnix": 1439836191,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:30:16.050Z",
+        "id": "xtbqIsWaWI",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "xtbqIsWaWI"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "QbbHbxsXOJ"
+        },
+        "client": {
+            "objectId": "2now0SQaXF"
+        },
+        "contactClient": {
+            "objectId": "2now0SQaXF"
+        },
+        "type": "",
+        "event": "Udenfor geofence",
+        "eventCode": 1102,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4844718,
+            "longitude": 9.2311932
+        },
+        "positionString": "55.4844718,9.2311932",
+        "clientName": "Client A",
+        "clientCity": "Vejen",
+        "clientAddress": "Mark Dannersvej",
+        "clientAddressNumber": "23",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:29:19.511Z",
+        "clientTimestampUnix": 1439836159,
+        "taskEvent": "GEOFENCE_EXIT",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:29:26.015Z",
+        "id": "whLfGLtW6u",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "whLfGLtW6u"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "QbbHbxsXOJ"
+        },
+        "client": {
+            "objectId": "2now0SQaXF"
+        },
+        "contactClient": {
+            "objectId": "2now0SQaXF"
+        },
+        "type": "",
+        "event": "Udenfor geofence",
+        "eventCode": 1102,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4844718,
+            "longitude": 9.2311932
+        },
+        "positionString": "55.4844718,9.2311932",
+        "clientName": "Client A",
+        "clientCity": "Vejen",
+        "clientAddress": "Mark Dannersvej",
+        "clientAddressNumber": "23",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:29:19.202Z",
+        "clientTimestampUnix": 1439836159,
+        "taskEvent": "GEOFENCE_EXIT_GPS",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:29:24.840Z",
+        "id": "RMI4ZE7YLE",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "RMI4ZE7YLE"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "QbbHbxsXOJ"
+        },
+        "client": {
+            "objectId": "2now0SQaXF"
+        },
+        "contactClient": {
+            "objectId": "2now0SQaXF"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.483935,
+            "longitude": 9.2322415
+        },
+        "positionString": "55.483935,9.2322415",
+        "clientName": "Client A",
+        "clientCity": "Vejen",
+        "clientAddress": "Mark Dannersvej",
+        "clientAddressNumber": "23",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:29:11.658Z",
+        "clientTimestampUnix": 1439836151,
+        "taskEvent": "GEOFENCE_ENTER_GPS",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:29:15.794Z",
+        "id": "uit4iESguQ",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "uit4iESguQ"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "in vehicle",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4832599,
+            "longitude": 9.2325945
+        },
+        "positionString": "55.4832599,9.2325945",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:28:57.932Z",
+        "clientTimestampUnix": 1439836137,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:29:07.788Z",
+        "id": "FsgRLxkHO8",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "FsgRLxkHO8"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "QbbHbxsXOJ"
+        },
+        "client": {
+            "objectId": "2now0SQaXF"
+        },
+        "contactClient": {
+            "objectId": "2now0SQaXF"
+        },
+        "type": "",
+        "event": "Aborted",
+        "eventCode": 103,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4832599,
+            "longitude": 9.2325945
+        },
+        "positionString": "55.4832599,9.2325945",
+        "clientName": "Client A",
+        "clientCity": "Vejen",
+        "clientAddress": "Mark Dannersvej",
+        "clientAddressNumber": "23",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:28:57.816Z",
+        "clientTimestampUnix": 1439836137,
+        "taskEvent": "ABORT",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:29:06.551Z",
+        "id": "PW3A4tq4GL",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "PW3A4tq4GL"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4824965,
+            "longitude": 9.23327
+        },
+        "positionString": "55.4824965,9.23327",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:28:15.840Z",
+        "clientTimestampUnix": 1439836095,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:28:16.901Z",
+        "id": "omkCnrPejm",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "omkCnrPejm"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "on foot",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4823832,
+            "longitude": 9.2331497
+        },
+        "positionString": "55.4823832,9.2331497",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:28:07.066Z",
+        "clientTimestampUnix": 1439836087,
+        "activityConfidence": 92,
+        "createdAt": "2015-08-17T18:28:14.011Z",
+        "id": "TSD9sYXyCV",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "TSD9sYXyCV"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4825628,
+            "longitude": 9.2332374
+        },
+        "positionString": "55.4825628,9.2332374",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:27:56.123Z",
+        "clientTimestampUnix": 1439836076,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:28:10.191Z",
+        "id": "Req1SAdV9o",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "Req1SAdV9o"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "QbbHbxsXOJ"
+        },
+        "client": {
+            "objectId": "2now0SQaXF"
+        },
+        "contactClient": {
+            "objectId": "2now0SQaXF"
+        },
+        "type": "",
+        "event": "Arrived",
+        "eventCode": 101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4825628,
+            "longitude": 9.2332374
+        },
+        "positionString": "55.4825628,9.2332374",
+        "clientName": "Client A",
+        "clientCity": "Vejen",
+        "clientAddress": "Mark Dannersvej",
+        "clientAddressNumber": "23",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:27:56.033Z",
+        "clientTimestampUnix": 1439836076,
+        "taskEvent": "ARRIVE",
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:28:06.718Z",
+        "id": "20vRleuKCb",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "20vRleuKCb"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "QbbHbxsXOJ"
+        },
+        "client": {
+            "objectId": "2now0SQaXF"
+        },
+        "contactClient": {
+            "objectId": "2now0SQaXF"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4814155,
+            "longitude": 9.2346972
+        },
+        "positionString": "55.4814155,9.2346972",
+        "clientName": "Client A",
+        "clientCity": "Vejen",
+        "clientAddress": "Mark Dannersvej",
+        "clientAddressNumber": "23",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:27:23.365Z",
+        "clientTimestampUnix": 1439836043,
+        "taskEvent": "GEOFENCE_ENTER",
+        "activityConfidence": 54,
+        "createdAt": "2015-08-17T18:27:26.284Z",
+        "id": "DHg2NPAPUK",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "DHg2NPAPUK"
+        }
+    },
+    {
+        "circuitStarted": {
+            "objectId": "RToVsQDiCd"
+        },
+        "circuitUnit": {
+            "objectId": "QbbHbxsXOJ"
+        },
+        "client": {
+            "objectId": "2now0SQaXF"
+        },
+        "contactClient": {
+            "objectId": "2now0SQaXF"
+        },
+        "type": "",
+        "event": "Indenfor geofence",
+        "eventCode": 1101,
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4814155,
+            "longitude": 9.2346972
+        },
+        "positionString": "55.4814155,9.2346972",
+        "clientName": "Client A",
+        "clientCity": "Vejen",
+        "clientAddress": "Mark Dannersvej",
+        "clientAddressNumber": "23",
+        "guardName": "John",
+        "guardId": 123,
+        "clientFullAddress": "Mark Dannersvej 23 6600 Vejen",
+        "isExtra": false,
+        "timeStartString": "17:00",
+        "timeEndString": "23:00",
+        "clientTimestamp": "2015-08-17T18:27:23.213Z",
+        "clientTimestampUnix": 1439836043,
+        "taskEvent": "GEOFENCE_ENTER_GPS",
+        "activityConfidence": 54,
+        "createdAt": "2015-08-17T18:27:25.213Z",
+        "id": "7pzhZGEtzx",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "7pzhZGEtzx"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "in vehicle",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4798252,
+            "longitude": 9.2367642
+        },
+        "positionString": "55.4798252,9.2367642",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:27:09.034Z",
+        "clientTimestampUnix": 1439836029,
+        "activityConfidence": 54,
+        "createdAt": "2015-08-17T18:27:10.115Z",
+        "id": "kwucdHx3Ha",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "kwucdHx3Ha"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "tilting",
+        "position": {
+            "__type": "GeoPoint",
+            "latitude": 55.4793916,
+            "longitude": 9.2369664
+        },
+        "positionString": "55.4793916,9.2369664",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:26:43.587Z",
+        "clientTimestampUnix": 1439836003,
+        "activityConfidence": 100,
+        "createdAt": "2015-08-17T18:26:44.683Z",
+        "id": "bUQdyAz0lL",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "bUQdyAz0lL"
+        }
+    },
+    {
+        "event": "Activity",
+        "remarks": "still",
+        "positionString": "",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:26:26.762Z",
+        "clientTimestampUnix": 1439835986,
+        "activityConfidence": 42,
+        "createdAt": "2015-08-17T18:26:27.733Z",
+        "id": "mWKvx30ixF",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "mWKvx30ixF"
+        }
+    },
+    {
+        "event": "Log ind",
+        "eventCode": 200,
+        "positionString": "",
+        "guardName": "John",
+        "guardId": 123,
+        "clientTimestamp": "2015-08-17T18:25:58.003Z",
+        "clientTimestampUnix": 1439835958,
+        "activityConfidence": 0,
+        "createdAt": "2015-08-17T18:25:58.554Z",
+        "id": "O9Y1Xvlg64",
+        "objectPointer": {
+            "__type": "Pointer",
+            "className": "EventLog",
+            "objectId": "O9Y1Xvlg64"
+        }
+    }
+]

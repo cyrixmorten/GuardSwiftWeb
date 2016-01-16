@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-12">
+				<wysiwyg textarea-id="question" textarea-class="form-control"
+					textarea-height="300px" textarea-name="textareaQuestion"
+					textarea-required ng-model="scopedObject.description"
+					enable-bootstrap-title="true"
+					textarea-menu="{{richText.customMenu}}" disabled="true">
+				</wysiwyg>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-12" gs-crud parse-object="parseObject"
+				notify-as="{{'DESCRIPTION' | translate}}">
+				<gs-crud-update scoped-object="scopedObject" />
+			</div>
+		</div>
+	</div>
+</div>

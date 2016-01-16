@@ -1,0 +1,55 @@
+		<table ng-table="tableParams" show-filter="true"
+			class="table table-hover table-condensed table-striped table-responsive"
+			export-csv="csv" cg-busy="detailsPromise">
+			<!-- <tbody ng-repeat="group in $groups">
+				<tr class="ng-table-group">
+					<td colspan="{{$columns.length}}"><a href=""
+						ng-click="group.$hideRows = !group.$hideRows"> <span
+							class="glyphicon"
+							ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+							<strong>{{ group.value }}</strong>
+					</a></td>
+				</tr> 
+				<tr ng-hide="group.$hideRows" ng-repeat="crudObject in group.data"-->
+				
+			<tr ng-repeat="crudObject in $data" 
+				ng-class="(crudObject.isExtra) ? 'success' : ''">
+				<td data-title="'Kunde'" class="col-xs-2"
+					header-class="'text-center'" sortable="'clientName'"
+					filter="{ 'clientName': 'text' }">{{crudObject.clientName}}</td>				
+				<td data-title="'Hændelse'" class="col-xs-2"
+					header-class="'text-center'" sortable="'event'"
+					filter="{ 'event': 'text' }">{{crudObject.event}}</td>
+				<td data-title="'Antal'" class="col-xs-1"
+					header-class="'text-center'" sortable="'amount'"
+					filter="{ 'amount': 'text' }">{{crudObject.amount}}</td>
+				<!-- <td class="col-md-3" data-title="'Vagt'" header-class="'text-center'"
+					sortable="'guardName'" filter="{ 'guardName': 'text' }">{{crudObject.guardName}}</td> -->
+				<td data-title="'Personer'" class="col-xs-2"
+					header-class="'text-center'" sortable="'people'"
+					filter="{ 'people': 'text' }">{{crudObject.people}}</td>
+				<td data-title="'Placering'" class="col-xs-2"
+					header-class="'text-center'" sortable="'clientLocation'"
+					filter="{ 'clientLocation': 'text' }">{{crudObject.clientLocation}}</td>
+				<td data-title="'Bemærkninger'" class="col-xs-2"
+					header-class="'text-center'" sortable="'remarks'"
+					filter="{ 'remarks': 'text' }">{{crudObject.remarks}}</td>
+				<!-- <td data-title="'Vægter'" class="col-xs-2"
+					header-class="'text-center'" sortable="'guardName'"
+					filter="{ 'guardName': 'text' }">{{crudObject.guardName}}</td> -->
+				<td data-title="'Oprettet'" class="col-xs-1"
+					header-class="'text-center'">{{crudObject.clientTimestamp |
+					date:'HH:mm dd-MM'}}</td>
+				<td data-title="''" class="col-xs-1" header-class="''" details-promise="detailsPromise" object-id="{{crudObject.id}}" gs-event-log-details>
+					<gs-link-button
+						type="info" size="sm"
+						fa-left="tag" button-text="{{'DETAILS' | translate}}" /></td>
+				<!--  <td class="col-xs-1 text-right"><a class="btn btn-primary"
+				href="#{{ 'details.eventlog' | routeSegmentUrl: {id: crudObject.objectId} }}">{{
+					'DETAILS' | translate}}</a></td>-->
+				<!-- <td class="col-xs-1 text-right"><button class="btn btn-primary btn-sm"
+				ng-click="showDetails(crudObject.objectId)">{{
+					'DETAILS' | translate}}</button></td> -->
+			</tr>
+			<!-- </tbody> -->
+		</table>

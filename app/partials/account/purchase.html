@@ -1,0 +1,123 @@
+<!--  <form action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_2JvQjb4kJprBcvIVWbnftdOW"
+    data-amount="2000"
+    data-currency="dkk"
+    data-label="Gå til betaling"
+    data-name="Demo Site"
+    data-description="2 widgets ($20.00)"
+    >
+  </script>
+</form>-->
+
+
+<div class="panel panel-default anim">
+	<div class="panel-heading">
+		<h3 class="panel-title">Forbrug af hændelser</h3>
+	</div>
+	<div class="panel-body">
+	
+		<div  class="fading"
+			ng-show="eventsAdded">
+			<alert type="success">Der er nu tilføjet {{eventsAdded}}
+			hændelser til kontoen</alert>
+		</div>
+		<progressbar max="eventStatus.max" value="eventStatus.count"
+			type="{{eventStatus.type}}"> <span
+			style="color: white; white-space: nowrap;">{{eventStatus.count}}
+			/ {{eventStatus.max}}</span></progressbar>
+
+
+	</div>
+</div>
+
+<div class="panel panel-default anim">
+	<div class="panel-heading">
+		<h3 class="panel-title">Tilgængelige pakker</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row text-center">
+			<div class="col-md-4 col-sm-6 hero-feature">
+				<div class="thumbnail">
+					<!-- <img src="http://placehold.it/800x500" alt=""> -->
+					<div class="caption">
+						<h3>{{packages.small.name}}</h3>
+						<h4>{{packages.small.numOfItems}} stk</h4>
+						<h5>
+							<span style="visibility: hidden">Spar
+								{{packages.small.discount}}%</span>
+						</h5>
+						<!-- <p>Beskrivelse af pakken</p> -->
+						<div class="well well-sm">
+							Samlet pris: <b>{{packages.small.total}}{{packages.small.currency}}</b>
+						</div>
+						<p>
+							<a href="#" class="btn btn-primary"
+								ng-click="buyPackage(packages.small)">Køb</a>
+							<!-- <a href="#"
+						class="btn btn-default">More Info</a> -->
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-6 hero-feature">
+				<div class="thumbnail">
+					<!-- <img src="http://placehold.it/800x500" alt=""> -->
+					<div class="caption">
+						<h3>{{packages.medium.name}}</h3>
+						<h4>{{packages.medium.numOfItems}} stk</h4>
+						<h5>
+							<span style="visibility: hidden">Spar
+								{{packages.medium.discount}}%</span>
+						</h5>
+						<!-- <p>Beskrivelse af pakken</p> -->
+						<div class="well well-sm">
+							Samlet pris: <b>{{packages.medium.total}}{{packages.medium.currency}}</b>
+						</div>
+						<p>
+							<a href="#" class="btn btn-primary"
+								ng-click="buyPackage(packages.medium)">Køb</a>
+							<!-- <a href="#"
+						class="btn btn-default">More Info</a> -->
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-6 hero-feature">
+				<div class="thumbnail">
+					<!-- <img src="http://placehold.it/800x500" alt=""> -->
+					<div class="caption">
+						<h3>{{packages.large.name}}</h3>
+						<h4>{{packages.large.numOfItems}} stk</h4>
+						<h5>
+							<span style="visibility: hidden">Spar
+								{{packages.large.discount}}%</span>
+						</h5>
+						<!-- <p>Beskrivelse af pakken</p> -->
+						<div class="well well-sm">
+							Samlet pris: <b>{{packages.large.total}}{{packages.large.currency}}</b>
+						</div>
+						<p>
+							<a href="#" class="btn btn-primary"
+								ng-click="buyPackage(packages.large)">Køb</a>
+							<!-- <a href="#"
+						class="btn btn-default">More Info</a> -->
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /row -->
+
+	</div>
+</div>
+
+
+
+
+
+

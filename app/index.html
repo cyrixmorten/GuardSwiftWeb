@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en" ng-app="GuardSwiftApp">
+<head>
+<meta charset="utf-8">
+<title>GuardSwift</title>
+
+<link rel="stylesheet" media="all"
+	href="bower_components/ng-table/dist/ng-table.min.css">
+<link rel="stylesheet" media="all"
+	href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+	type="text/css" />
+<link rel="stylesheet" media="all"
+	href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"
+	type="text/css" />
+
+<link rel="stylesheet"
+	href="bower_components/bootstrap-multiselect/dist/css/bootstrap-multiselect.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+
+<link
+	href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.min.css"
+	rel="stylesheet">
+
+<link href="bower_components/angular-busy/dist/angular-busy.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="bower_components/font-awesome/css/font-awesome.min.css">
+
+<link rel="stylesheet"
+	href="bower_components/angular-payments/lib/angular-payments.css">
+
+<link rel="stylesheet"
+	href="bower_components/ladda/dist/ladda-themeless.min.css">
+
+<link rel="stylesheet"
+	href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">	
+	
+<link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">	
+	
+
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/signin.css">
+<link rel="stylesheet" href="css/nganimate.css">
+<link rel="stylesheet" href="css/bootstrap-modifications.css">
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+</head>
+<body ng-controller="MainCtrl">
+
+
+	<div ng-cloak ng-if="isLoggedIn && !isPublic" class="hidden-print">
+		<gs-navbar-logged-in />
+	</div>
+
+
+
+	<div class="container" id="content" ng-if="!pathContains('gps')">
+		<div class="row anim" app-view-segment="0"></div>
+	</div>
+	
+	<div class="container-fluid" id="content" ng-if="pathContains('gps')">
+		<div class="row anim" app-view-segment="0"></div>
+	</div>
+
+
+	<div ng-show="loader.show" class="center-block">
+		<div ng-include="'views/loading.html'"></div>
+	</div>
+
+
+
+
+	<!-- JQuery -->
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+
+
+	<!-- Parse -->
+	<script src="bower_components/parse-js-sdk/lib/parse.min.js"></script>
+
+	<!-- Angular -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+
+
+
+
+
+	<!-- Bootstrap -->
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script
+		src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script
+		src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+	<script
+		src="bower_components/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+		
+	<!-- Chat.js -->
+	<script src="bower_components/Chart.js/Chart.min.js"></script>
+
+
+	<!-- Angular helper libraries -->
+	<script
+		src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.min.js"></script>
+	<script
+		src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+
+	<script src="bower_components/ng-table/dist/ng-table.min.js"></script>
+
+	<script src="bower_components/ng-table-export/ng-table-export.js"></script>
+
+	<script
+		src="bower_components/parse-angular-patch/dist/parse-angular.js"></script>
+	<!--  <script src="lib/angular-route-segment.js"></script> -->
+	<script
+		src="bower_components/angular-translate/angular-translate.min.js"></script>
+	<script
+		src="bower_components/angular-fontawesome/dist/angular-fontawesome.min.js"></script>
+	<script src="bower_components/angular-busy/dist/angular-busy.min.js"></script>
+	<script
+		src="bower_components/angular-route-segment/build/angular-route-segment.js"></script>
+	<script src="bower_components/angular-wysiwyg/angular-wysiwyg.js"></script>
+	<script src="bower_components/ladda/dist/spin.min.js"></script>
+	<script src="bower_components/ladda/dist/ladda.min.js"></script>
+	<script src="bower_components/angular-ladda/dist/angular-ladda.min.js"></script>
+	<script src="bower_components/ng-focus-on/ng-focus-on.min.js"></script>
+	<script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+	<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+	
+
+
+
+	<!-- Google Maps -->
+	<script src="bower_components/lodash/lodash.min.js"></script>
+	<script
+		src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+		
+	    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>	
+
+
+	<!-- Moment -->
+	<script src="bower_components/moment/min/moment.min.js"></script>
+
+	<!-- Stripe -->
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<!-- test: pk_test_2JvQjb4kJprBcvIVWbnftdOW -->
+	<!-- live: pk_live_ghvZQV2y0CV8x5XZD2kgN7oj -->
+	<script>
+	  Stripe.setPublishableKey('pk_live_ghvZQV2y0CV8x5XZD2kgN7oj');
+	</script>
+	<script src="bower_components/angular-payments/lib/angular-payments.js"></script>
+
+	<!-- Internal libraries -->
+	<script src="js/app.js"></script>
+
+	<!-- Filters -->
+	<script src="js/filters.js"></script>
+
+	<!-- Directives -->
+	<script src="js/directives.js"></script>
+	<script src="js/directives/map.js"></script>
+	<script src="js/directives/log.js"></script>
+	<script src="js/directives/crud.js"></script>
+	<script src="js/directives/search.js"></script>
+	<script src="js/directives/loading.indicator.js"></script>
+	<script src="js/directives/multiselect.dropdown.js"></script>
+	<script src="js/directives/navigation.js"></script>
+	<script src="js/directives/chart.js"></script>
+
+	<!-- Services -->
+	<script src="js/services.js"></script>
+	<script src="js/services/timeStrings.js"></script>
+	<script src="js/services/parseAccount.js"></script>
+	<script src="js/services/parseSearch.js"></script>
+	<script src="js/services/parseObjects.js"></script>
+	<script src="js/services/standardParseObject.js"></script>
+	<script src="js/services/tableParams.js"></script>
+	<script src="js/services/mapMarkers.js"></script>
+
+	<!-- Controllers -->
+	<script src="js/controllers.js"></script>
+	<script src="js/controllers/translate.js"></script>
+	<script src="js/controllers/global.js"></script>
+	<script src="js/controllers/account.js"></script>
+	<script src="js/controllers/error.js"></script>
+	<script src="js/controllers/report.js"></script>
+	<script src="js/controllers/crud.js"></script>
+	<script src="js/controllers/data.js"></script>
+	<script src="js/controllers/dialogs.js"></script>
+	<script src="js/controllers/details.js"></script>
+	<script src="js/controllers/planning.js"></script>
+	<script src="js/controllers/logs.js"></script>
+
+
+</body>
+</html>

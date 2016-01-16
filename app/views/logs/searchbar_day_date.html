@@ -1,0 +1,82 @@
+<div class="form-group" ng-if="ctrl.searchOptions">
+	<div class="btn-toolbar" role="toolbar">
+		<p class="input-group">
+			<select class="multiselect" ng-model="ctrl.daysBack"
+				ng-options="option.value as option.text for option in ctrl.daysBackOptions"
+				singleselect-dropdown>
+			</select>
+		</p>
+		<!-- <div class="btn-group" role="group">
+			<input class="form-control" placeholder="dd-MM-yyy"
+				ng-model="searchToDate" type="datetime-local" />
+		</div> -->
+		<!-- <div class="btn-group" role="group"> -->
+
+		<!-- <div class="input-group">Eller søg i perioden:</div> -->
+		<div class="col-xs-5">
+			<form class="form-horizontal" role="form" ng-submit="ctrl.search()">
+				<div class="input-group">
+
+						<input type="text" class="form-control" show-button-bar="false"
+							placeholder="{{'FROM_DATE' | translate}}"
+							datepicker-popup="{{ctrl.format}}" ng-model="ctrl.dt_datefrom"
+							is-open="ctrl.opened_datefrom"
+							ng-click="ctrl.open_datefrom($event)"
+							datepicker-options="ctrl.dateOptionsFrom" ng-required="true" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="ctrl.open_datefrom($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+
+						<input type="text" class="form-control col-xs-2" show-button-bar="false"
+							placeholder="{{'TO_DATE' | translate}}"
+							datepicker-popup="{{ctrl.format}}" ng-model="ctrl.dt_dateto"
+							is-open="ctrl.opened_dateto" ng-click="ctrl.open_dateto($event)"
+							datepicker-options="ctrl.dateOptionsTo" ng-required="true" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="ctrl.open_dateto($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span> <span class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span>
+
+				</div>
+			</form>
+		</div>
+		<!-- <div class="col-xs-3">
+			<p class="input-group">
+				<input type="text" class="form-control" show-button-bar="false"
+					placeholder="Til dato" datepicker-popup="{{format}}"
+					ng-model="dt_dateto" is-open="opened_dateto"
+					datepicker-options="dateOptions" ng-required="true" /> <span
+					class="input-group-btn">
+					<button type="button" class="btn btn-default"
+						ng-click="open_dateto($event)">
+						<i class="glyphicon glyphicon-calendar"></i>
+					</button>
+				</span>
+			</p>
+		</div> -->
+
+		<!-- </div> -->
+		<div class="pull-right">
+			<div ng-show="ctrl.searching">
+				<loader-circle-small />
+			</div>
+			<div ng-hide="ctrl.searching">
+				<div ng-if="ctrl.resultCount > 0">Fandt {{ctrl.resultCount}}
+					resultater</div>
+				<div ng-if="ctrl.resultCount === 0">{{'NO_RESULTS_FOUND' |
+					translate}}</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,108 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	<h3 class="panel-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+	<!-- <div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{title}}</h3>
+		</div>
+		<div class="panel-body" ng-if="loading">
+			<loader-horizontal-small />
+		</div>
+		<div class="panel-body anim fade in" ng-if="!loading"> -->
+			<div class="row">
+				<div class="col-xs-12 col-md-6 pull-right">
+					<div class="panel panel-default" ng-if="showMap">
+						<div class="panel-body">
+							<ui-gmap-google-map id="my-map" bounds="map.bounds" events="map.events" options="map.options"
+								center="map.center" control="map.control" zoom="map.zoom" draggable="true" pan="true"
+								refresh="map.refresh"> <ui-gmap-marker
+								ng-if="positionMarker" idKey="positionMarker.id" coords="positionMarker.coords"
+								icon="positionMarker.icon"> </ui-gmap-marker> <ui-gmap-marker
+								ng-if="targetMarker" idKey="positionMarker.id" coords="targetMarker.coords"
+								icon="targetMarker.icon"> </ui-gmap-marker> </ui-gmap-google-map>
+						</div>
+						<div class="panel-footer">
+							<div class="text-left">
+								<strong ng-if="address">{{address}}</strong> <br> <span
+									ng-if="distance">{{'DISTANCE_TO_ADDRESS' | translate}} :
+									{{distance}} {{'METERS' | translate}}</span>
+							</div>
+							<br>
+							<div class="text-right" ng-if="eventlog.position")>lat:
+								{{eventlog.position.latitude}} lng:
+								{{eventlog.position.longitude}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<table class="table log">
+						<tr>
+							<td class="col-xs-4"><strong>Dato:</strong></td>
+							<td>{{eventlog.createdAt | date:'dd-MM-yyyy'}}</td>
+						</tr>
+						<tr>
+							<td><strong>Tid:</strong></td>
+							<td>{{eventlog.createdAt | date:'HH:mm'}}</td>
+						</tr>
+						<tr>
+							<td><strong>Vægter:</strong></td>
+							<td>{{eventlog.guardName}}</td>
+						</tr>
+					</table>
+					<table class="table log" ng-if="circuitStarted">
+						<tr>
+							<td class="col-xs-4"><strong>Kreds:</strong></td>
+							<td>{{circuitStarted.name}}</td>
+						</tr>
+						<tr>
+							<td><strong>Tilsyn:</strong></td>
+							<td>{{circuitUnit.name}}</td>
+						</tr>
+						<tr>
+							<td><strong>Planlagt tid:</strong></td>
+							<td>{{circuitUnit.timeStart}} - {{circuitUnit.timeEnd}}</td>
+						</tr>
+					</table>
+					<table class="table log" ng-if="client">
+						<tr>
+							<td class="col-xs-4"><strong>Kunde:</strong></td>
+							<td>{{eventlog.clientName}}</td>
+						</tr>
+						<tr>
+							<td><strong>By:</strong></td>
+							<td>{{city}}</td>
+						</tr>
+						<tr>
+							<td><strong>Adresse:</strong></td>
+							<td>{{address}}</td>
+						</tr>
+					</table>
+					<table class="table log">
+						<tr>
+							<td class="col-xs-4"><strong>Hændelse:</strong></td>
+							<td>{{eventlog.event}}</td>
+						</tr>
+						<tr>
+							<td><strong>Antal:</strong></td>
+							<td>{{eventlog.amount}}</td>
+						</tr>
+						<tr ng-if="client">
+							<td><strong>Placering:</strong></td>
+							<td>{{eventlog.clientLocation}}</td>
+						</tr>
+						<tr>
+							<td><strong>Bemærkninger:</strong></td>
+							<td>{{eventlog.remarks}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		<!-- </div>
+	</div> -->
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" data-dismiss="modal" ng-click="close()">{{'CLOSE'
+		| translate}}</button>
+</div>

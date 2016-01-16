@@ -1,0 +1,89 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="col-xs-12 col-md-6 pull-right">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<gs-map-single-marker position="scopedObject.position" />
+				</div>
+				<div class="panel-footer">
+					<div class="text-right">lat:
+						{{scopedObject.position.latitude}} lng:
+						{{scopedObject.position.longitude}}</div>
+				</div>
+			</div>
+			<!-- <client-locations client="scopedObjects[0]" parse-object="clientObject" /> -->
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<form role="form-vertical">
+				<div class="form-group">
+					<div class="input-group col-xs-4">
+						<span class="input-group-addon">Nummer</span> <input type="number"
+							class="form-control" placeholder="Nr"
+							ng-model="scopedObject.number" auto-focus focus-on="updateSuccess" >
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group col-xs-6">
+						<span class="input-group-addon">Name</span> <input type="text"
+							class="form-control" placeholder="Navn"
+							ng-model="scopedObject.name">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group col-xs-4">
+						<span class="input-group-addon">Postnr.</span> <input type="text"
+							class="form-control" placeholder="Postnummer"
+							ng-model="scopedObject.zipcode">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group col-xs-5">
+						<span class="input-group-addon">By</span> <input type="text"
+							class="form-control" placeholder="By"
+							ng-model="scopedObject.cityName">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group col-xs-8">
+						<span class="input-group-addon">Adresse</span> <input type="text"
+							class="form-control" placeholder="Adresse"
+							ng-model="scopedObject.addressName">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group col-xs-4">
+						<span class="input-group-addon">Husnr.</span> <input type="text"
+							class="form-control" placeholder="Husnummer"
+							ng-model="scopedObject.addressNumber">
+					</div>
+				</div>
+				<!-- 
+				<div class="form-group">
+					<div class="input-group col-xs-8">
+						<span class="input-group-addon">Email</span> <input type="email"
+							class="form-control" placeholder="Email"
+							ng-model="scopedObject.email">
+					</div>
+				</div>
+				<div class="checkbox">
+					<label> <input type="checkbox"
+						ng-model="scopedObject.receiveEventEmail"> Ønsker at
+						modtage automatisk email med hændelser
+					</label>
+				</div> -->
+				<div class="form-group">
+					<div class="col-xs-10" gs-crud parse-object="parseObject"
+						notify-as="{{'CLIENT' | translate}}">
+						<gs-crud-update scoped-object="scopedObject" />
+					</div>
+				</div>
+			</form>
+			<!-- <br> <br>
+				<div class="form-group">
+					<a class="btn btn-warning"
+						href="#{{ 'details.scopedObjects[0]report' | routeSegmentUrl: {id: scopedObjects[0].objectId}  }}">{{'GENERATE_EVENT_REPORT'
+						| translate}}<a />
+				</div> -->
+		</div>
+	</div>
+</div>

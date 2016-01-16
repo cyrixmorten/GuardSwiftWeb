@@ -1,0 +1,131 @@
+/* app css stylesheet */
+body {
+	padding: 10px !important;
+	height: 100%;
+}
+
+.table-scrollable {
+	overflow: auto;
+}
+
+.table-row-span {
+	display: block;
+	overflow: hidden;
+	padding-right: 10px;
+}
+
+}
+.table-row-input {
+	width: 95%;
+}
+
+#content {
+	margin-top: 60px;
+}
+
+.navbar .label {
+	position: relative;
+	top: 11px;
+}
+
+.top-row {
+	text-align: center;
+	margin: 10px 0;
+}
+
+.top-row a div {
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.anim.ng-enter {
+	transition: opacity 1s;
+	opacity: 0.0;
+}
+
+.anim.ng-enter-active {
+	opacity: 1.0;
+}
+
+.anim.ng-leave {
+	display: none;
+}
+
+#loading {
+	position: absolute;
+	width: 300px;
+	top: 10px;
+	left: 500px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	z-index: 1040;
+}
+
+.ng-table-rowselected tr {
+	cursor: pointer;
+}
+
+.angular-google-map-container {
+	height: 400px; 
+}
+
+#scrollable-area {
+	height: 400px;
+	overflow-y: scroll; /* <-- here is what is important*/
+}
+
+.table tbody>tr>td.vert-align {
+	vertical-align: middle;
+}
+
+caption {
+	font-weight: bold;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #666666;
+	background-color: LightGray;
+	padding-left: 10px;
+}
+
+.centered {
+           margin-left: auto;
+           margin-right: auto;
+}
+
+/* angular-google-maps */
+.map-menu {
+	top: 75px;
+	left: 100px;
+    position: absolute;
+    z-index: 100;	
+}
+
+.fill {
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    width: auto;
+    height: auto;
+    z-index: 0;
+}
+
+.fill .angular-google-map-container { height: 100%; width: 100%; position: absolute; top: 0; left: 0; }
+
+.marker-labels {
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: black;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    /*border: 1px solid black;*/
+    white-space: nowrap;
+}
+
+/** FIX for Bootstrap and Google Maps Info window styes problem **/
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+  max-width: none;
+}

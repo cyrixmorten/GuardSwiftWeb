@@ -1,0 +1,130 @@
+<!-- 
+<div class="panel panel-default clearfix">
+	<div class="panel-body">
+		<div class="dropdown pull-left">
+			<button class="btn btn-default dropdown-toggle" type="button"
+				id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+				{{selectionEmpty}} <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+
+				<li ng-repeat="object in scopedParentObjects | orderBy:'name'"
+					ng-class="{active: $routeSegment.$routeParams.id==object.objectId}"><a
+					href="{{childUrl}}{{object.objectId}}">{{object.name}}</a></li>
+			</ul>
+		</div>
+		<div class="btn-group pull-right">
+			<a class="btn btn-success" href="{{parentUrl}}">{{parentCreate}}</a>
+		</div>
+	</div>
+</div>
+ -->
+<gs-crud-panel-create title="{{'DISTRICTWATCH_CREATE' | translate}}">
+<table class="table">
+	<thead>
+		<tr>
+			<td class="col-xs-2 text-center">Kunde</td>
+			<td class="col-xs-2 text-center">Type</td>
+			<td class="col-xs-2 text-center">Adresse</td>
+			<td class="col-xs-2 text-center">Husnumre</td>
+			<td class="col-xs-1 text-center">Antal tilsyn</td>
+			<td class="col-xs-1 text-center">Dage</td>
+			<td class="col-xs-2"></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr gs-crud parse-object="parseObject"
+			notify-as="{{'DISTRICTWATCH' | translate}}" state-saving="saving">
+			<!-- <td>{{createData.addressNumbers | json}}</td> -->
+			<td><gs-client-select ng-model="createData.client"
+					address-name="createData.address"
+					address-numbers="createData.addressNumbers" ng-disabled="saving"
+					auto-focus focus-on="addSuccess" /></td>
+			<td><input placeholder="{{'TYPE' | translate}}"
+				class="form-control" type="text" ng-model="createData.type"
+				ng-disabled="saving" /></td>
+			<td><input placeholder="{{'ADDRESS' | translate}}"
+				class="form-control" type="text" ng-model="createData.address"
+				ng-disabled="saving" /></td>
+			<td><input placeholder="{{'STREETNUMBERS' | translate}}"
+				class="form-control" ng-model="createData.addressNumbers" ng-list
+				ng-disabled="saving" /></td>
+			<td><input placeholder="{{'SUPERVISIONS' | translate}}"
+				class="form-control" type="number"
+				ng-model="createData.supervisions" ng-disabled="saving" /></td>
+			<td><select class="multiselect" ng-model="createData.days"
+				ng-options="item.id as item.name for item in days"
+				multiple="multiple" multiselect-dropdown-input-days
+				ng-disabled="saving">
+			</select></td>
+			<td class="col-xs-2" data-title="''"><gs-crud-create
+					data="createData" success="notifyDataSetChanged()" /></td>
+		</tr>
+	</tbody>
+</table>
+</gs-crud-panel-create>
+<gs-crud-panel-update-remove
+	title="{{'DISTRICTWATCHUNITS_LIST' | translate}}">
+<table ng-table="tableParams" show-filter="true" class="table">
+	<tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"
+		notify-as="{{'DISTRICTWATCH' | translate}}" editing="editMode">
+		<td class="vert-align col-xs-2" data-title="'Kunde'"
+			header-class="'text-center'" sortable="'clientName'"
+			filter="{ 'clientName': 'text' }"><input ng-readonly="true"
+			class="form-control" type="text" ng-model="crudObject.clientName" /></td>
+		<td class="vert-align col-xs-2" data-title="'Type'"
+			header-class="'text-center'" sortable="'type'"
+			filter="{ 'type': 'text' }"><input ng-readonly="!editMode"
+			class="form-control" type="text" ng-model="crudObject.type" /></td>
+		<td class="vert-align col-xs-2" data-title="'Adresse'"
+			header-class="'text-center'" sortable="'address'"
+			filter="{ 'address': 'text' }"><input ng-readonly="!editMode"
+			class="form-control" type="text" ng-model="crudObject.address" /></td>
+		<td class="vert-align col-xs-2" data-title="'Husnumre'"
+			header-class="'text-center'" sortable="'addressNumbers'"
+			filter="{ 'addressNumbers': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="text"
+			ng-model="crudObject.addressNumbers" ng-list /></td>
+		<td class="vert-align col-xs-1" data-title="'Tilsyn'"
+			header-class="'text-center'" sortable="'supervisions'"
+			filter="{ 'supervisions': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="number"
+			ng-model="crudObject.supervisions" /></td>
+		<td class="vert-align col-xs-1" data-title="'Dage'"
+			header-class="'text-center'">
+			
+										<select class="multiselect"
+			ng-model="crudObject.days"
+			ng-options="item.id as item.name for item in days"
+			multiple="multiple" multiselect-dropdown-input-days
+			ng-disabled="!editMode">
+		</select>
+		<!-- 
+			<div ng-if="!editMode">
+				<select class="multiselect" ng-model="crudObject.days"
+					ng-options="item.id as item.name for item in days"
+					multiple="multiple" multiselect-dropdown-input-days
+					disabled="false">
+				</select>
+			</div>
+			<div ng-if="editMode">
+				<select class="multiselect" ng-model="crudObject.days"
+					ng-options="item.id as item.name for item in days"
+					multiple="multiple" multiselect-dropdown-input-days>
+				</select>
+			</div> -->
+		</td>
+		<!-- <td data-title="''" header-class="'text-center'"
+					ng-click="showMap(crudObject.position, '', crudObject.address)">
+					<span ng-if="crudObject.position" class="btn btn-default btn-sm"><i
+						class="glyphicon glyphicon-map-marker"></i><i style="color: green"
+						class="glyphicon glyphicon-ok"></i></span> <span
+					ng-if="!crudObject.position" class="btn btn-default btn-sm"><i
+						class="glyphicon glyphicon-map-marker"></i><i
+						style="color: orange" class="glyphicon glyphicon-warning-sign"></i></span>
+				</td> -->
+		<td class="col-xs-2" data-title="''" header-class="''"><gs-crud-update-delete
+				scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+	</tr>
+</table>
+</gs-crud-panel-update-remove>

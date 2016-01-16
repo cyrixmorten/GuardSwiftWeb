@@ -1,0 +1,118 @@
+<!-- header -->
+<div class="row">
+	<div class="col-xs-12">
+		<img ng-src="{{report.headerLogo}}" width="100%"></img>
+	</div>
+	<!-- <div class="col-xs-4 text-right">Dato: {{report.createdAt | date:'dd-MM-yyyy'}}</div> -->
+</div>
+<!-- headline -->
+<div class="row page-header">
+	<div class="col-xs-12">
+		<h1>
+			<div class="text-center">
+				RAPPORT <small>VAGT</small>
+			</div>
+		</h1>
+	</div>
+</div>
+<br />
+<!-- client -->
+<div class="well well-sm">
+	<div class="row">
+		<div class="col-xs-12 text-right">Dato: {{report.deviceTimestamp |
+			date:'dd-MM-yyyy'}}</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-xs-3">
+			<b>KUNDENS NAVN:</b>
+		</div> -->
+		<div class="col-xs-9">
+			<b>{{report.clientName}}</b>
+		</div>
+	</div>
+	<!-- client address -->
+	<div class="row">
+		<div class="col-xs-9">
+			{{report.clientAddress}} {{report.clientAddressNumber}}
+		</div>
+		<!--<div class="col-xs-12">
+			<b>ADRESSE:</b> {{report.clientAddress}}
+			{{report.clientAddressNumber}}
+		</div>
+		 <div class="col-xs-5">
+			<b>NR:</b> 
+		</div> -->
+	</div>
+	<!-- client city -->
+	<div class="row">
+		<div class="col-xs-9">
+			{{report.clientCity}}
+		</div>
+		<!-- <div class="col-xs-12">
+			<b>BY:</b> {{report.clientCity}}
+		</div> -->
+	</div>
+	<br>
+	<div class="row"
+		ng-repeat="eventlog in entries | filter:{taskEvent:'ARRIVE'}">
+		<div class="col-xs-12">ANKOMMET KL: {{eventlog.deviceTimestamp |
+			date:'HH:mm'}}</div>
+	</div>
+</div>
+<br />
+<div class="well well-sm">
+	<div class="row">
+		<div class="col-xs-2">
+			<b>Hændelse</b>
+		</div>
+		<div class="col-xs-1">
+			<b>Antal</b>
+		</div>
+		<div class="col-xs-2">
+			<b>Personer</b>
+		</div>
+		<div class="col-xs-2">
+			<b>Placering</b>
+		</div>
+		<div class="col-xs-5">
+			<b>Bemærkninger</b>
+		</div>
+	</div>
+	<hr>
+	<div class="row"
+		ng-repeat="eventlog in entries | filter:{taskEvent:'OTHER'}">
+		<div class="col-xs-2">{{eventlog.event}}</div>
+		<div class="col-xs-1">{{eventlog.amount | default}}</div>
+		<div class="col-xs-2">{{eventlog.people}}</div>
+		<div class="col-xs-2">{{eventlog.clientLocation}}</div>
+		<div class="col-xs-5">{{eventlog.remarks}}</div>
+	</div>
+	<br />
+</div>
+
+<div class="well well-sm">
+	<!-- Guard -->
+	<div class="row">
+		<div class="col-xs-3">
+			<div>
+				Vagt ID: <b>{{report.guardId}}</b>
+			</div>
+		</div>
+		<div class="col-xs-9">
+			<div>
+				Vagt navn: <b>{{report.guardName}}</b>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 text-center">
+		<large>YDERLIGERE OPLYSNINGER PÅ TLF. 86 16 46 44</large>
+	</div>
+	<div class="col-xs-12 text-center">
+		<small>Rapporten er genereret af GuardSwift - elektronisk
+			runderings- og alarmhåndtering via smartphones</small>
+	</div>
+</div>
+

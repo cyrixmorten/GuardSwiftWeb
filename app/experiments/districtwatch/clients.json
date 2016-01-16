@@ -1,0 +1,12 @@
+[
+{"number" : 1, "name":"1", "latitude" : 55.484432, "longitude" : 9.229949999999999, "radius" : 30},
+{"number" : 2, "name":"2", "latitude" : 55.48421, "longitude" : 9.2287459, "radius" : 30},
+{"number" : 3, "name":"3", "latitude" : 55.484285, "longitude" : 9.227084999999999, "radius" : 30},
+{"number" : 4, "name":"4", "latitude" : 55.484467, "longitude" : 9.225693, "radius" : 30},
+{"number" : 5, "name":"5", "latitude" : 55.48515, "longitude" : 9.225935, "radius" : 30},
+{"number" : 6, "name":"6", "latitude" : 55.48522, "longitude" : 9.226932, "radius" : 30},
+{"number" : 7, "name":"7", "latitude" : 55.484698, "longitude" : 9.227166, "radius" : 30},
+{"number" : 8, "name":"8", "latitude" : 55.48493999999999, "longitude" : 9.2274049, "radius" : 30},
+{"number" : 9, "name":"9", "latitude" : 55.484725, "longitude" : 9.2285715, "radius" : 30},
+{"number" : 10, "name":"10", "latitude" : 55.48484699999999, "longitude" : 9.229002999999999, "radius" : 30}
+]

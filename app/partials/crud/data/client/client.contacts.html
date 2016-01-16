@@ -1,0 +1,86 @@
+<div>
+	<!-- 	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{'EVENT_TYPE_CREATE' | translate}}</h3>
+		</div>
+		<div class="panel-body"> -->
+	<div class="alert alert-info" role="alert">Vægtere kan ringe til
+		kontaktpersoner direkte fra app'en.</div>
+	<form name="crudForm" novalidate>
+		<table class="table">
+			<thead>
+				<tr>
+					<td class="col-xs-3 text-center">{{'NAME' | translate}}</td>
+					<td class="col-xs-2 text-center">{{'DESCRIPTION' | translate}}</td>
+					<td class="col-xs-2 text-center">{{'NUMBER' | translate}}</td>
+					<td class="col-xs-2 text-center">{{'EMAIL' | translate}}</td>
+					<td class="col-xs-1 text-center">{{'RECEIVE_REPORTS' | translate}}</td>
+					<td class="col-xs-2"></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr gs-crud parse-object="parseObject"
+					notify-as="{{'CONTACT' | translate}}" state-saving="saving">
+					<td><input placeholder="{{'NAME' | translate}}"
+						class="form-control" type="text" ng-model="createData.name"
+						ng-disabled="saving" auto-focus focus-on="addSuccess" /></td>
+					<td><input placeholder="{{'DESCRIPTION' | translate}}"
+						class="form-control" type="text" ng-model="createData.desc"
+						ng-disabled="saving" /></td>
+					<td><input placeholder="{{'NUMBER' | translate}}"
+						class="form-control" type="text" ng-model="createData.phoneNumber"
+						ng-disabled="saving" /></td>
+						
+					<td><input placeholder="{{'EMAIL' | translate}}"
+						class="form-control" type="email" ng-model="createData.email"
+						ng-disabled="saving" /></td>
+						
+					<td class="vert-align text-center"><input bs-switch
+						type="checkbox" ng-model="createData.receiveReports" 
+						switch-on-text="{{'YES' | translate}}"
+						switch-off-text="{{'NO' | translate}}"></td>
+
+					<td data-title="''"><gs-crud-create
+							data="createData" success="notifyDataSetChanged()" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	
+	<table ng-table="tableParams" show-filter="true" class="table" ng-show="$data.length">
+			<tr ng-repeat="crudObject in $data" gs-crud
+				parse-object="parseObject" notify-as="{{'CONTACT' | translate}}"
+				editing="editMode">
+				
+				
+				<td data-title="'Navn'" class="col-xs-3"
+					header-class="'text-center'" sortable="'name'"
+					filter="{ 'name': 'text' }"><input ng-readonly="!editMode"
+					class="form-control" type="text" ng-model="crudObject.name" /></td>
+				<td data-title="'Beskrivelse'" class="col-xs-2"
+					header-class="'text-center'" sortable="'desc'"
+					filter="{ 'desc': 'text' }"><input ng-readonly="!editMode"
+					class="form-control" type="text" ng-model="crudObject.desc" /></td>
+				<td data-title="'Nummer'" class="col-xs-2"
+					header-class="'text-center'" sortable="'phoneNumber'"
+					filter="{ 'phoneNumber': 'text' }"><input
+					ng-readonly="!editMode" class="form-control" type="text"
+					ng-model="crudObject.phoneNumber" /></td>
+				<td data-title="'Email'" class="col-xs-2"
+					header-class="'text-center'" sortable="'email'"
+					filter="{ 'email': 'text' }"><input
+					ng-readonly="!editMode" class="form-control" type="email"
+					ng-model="crudObject.email" /></td>
+				
+				<td class="vert-align col-xs-1" data-title="'Modtag rapporter'" header-class="'text-center'">	
+					<input bs-switch  type="checkbox"  
+						switch-active="{{editMode}}" 
+						ng-model="crudObject.receiveReports" switch-on-text="{{'YES' | translate}}"
+						switch-off-text="{{'NO' | translate}}" />
+				</td>
+		
+				<td class="col-xs-2" data-title="''" header-class="''"><gs-crud-update-delete
+						scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+			</tr>
+	</table>
+</div>

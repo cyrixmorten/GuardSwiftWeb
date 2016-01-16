@@ -1,0 +1,66 @@
+
+<div>
+	<div class="map-menu">
+		<gs-search-bar-day-date ng-if="!isPublic"
+			search-options="searchOptions" search-result="searchResult(result)"></gs-search-bar-day-date>
+	</div>
+
+	<!-- <div class="input-group">
+			Gruppér af koordinater <input bs-switch class="form-control"
+				type="radio" ng-model="map.doCluster"
+				switch-on-text="{{'ON' | translate}}"
+				switch-off-text="{{'OFF' | translate}}">
+		</div> -->
+	<!-- icon="'icon'"  -->
+	<div class="fill">
+		<ui-gmap-google-map id="my-map" bounds="map.bounds"
+			options="map.options" events="map.events" center="map.center"
+			zoom="map.zoom" draggable="true">
+			
+		<ui-gmap-markers
+			models='map.pathMarkers' fit="true" coords="'coords'" 
+			options="'options'" icon="'icon'" labelAnchor="'labelAnchor'"
+			labelClass="'labelClass'" events="map.markerEvents">
+		</ui-gmap-markers> 
+		 
+		<!-- Client markers -->	
+		<ui-gmap-markers
+			models='clientMarkers' fit="true" coords="'coords'"
+			options="'options'" icon="'icon'" labelAnchor="'labelAnchor'"
+			labelClass="'labelClass'" click="'onClick'" events="'events'">
+		</ui-gmap-markers>
+		
+		<!-- Path --> 
+		<ui-gmap-polylines models="map.pathPolys" events="map.polyEvents"
+			path="'path'" stroke="'stroke'" visible="'visible'"
+			geodesic="'geodesic'" fit="false" control="polylineCtrl" static="true"
+			doRebuildAll="true"></ui-gmap-polylines> 
+		
+		<!-- Path --> 
+		<!-- <ui-gmap-polylines models="map.epolys" events="map.polyEvents"
+			path="'path'" stroke="'stroke'" visible="'visible'"
+			geodesic="'geodesic'" fit="true" control="polylineCtrl" static="true"
+			doRebuildAll="true"></ui-gmap-polylines> --> 
+			
+		<!-- Path start marker -->	
+		<ui-gmap-marker
+			ng-if="startMarker" idKey="'startMarker'" coords="startMarker.coords"
+			options='startMarker.options' /> 
+		<!-- Path end marker -->	
+		<ui-gmap-marker ng-if="endMarker"
+			idKey="'endMarker'" coords="endMarker.coords"
+			options="endMarker.options" /> 
+			
+		<!-- Details marker -->
+		<ui-gmap-marker ng-if="marker"
+			idKey="'selectedMarker'" coords="marker.coords"
+			options='marker.options' icon="marker.icon"> <ui-gmap-window
+			show="marker.show">
+		<div>
+			Dato: {{marker.timeStamp | date:'dd-MM-yyyy'}}<br> Tid:
+			{{marker.timeStamp | date:'HH:mm:ss'}}<br> Hast.:
+			{{marker.velocityKm}} km/t
+		</div>
+		</ui-gmap-window> </ui-gmap-marker> </ui-gmap-google-map>
+	</div>
+</div>

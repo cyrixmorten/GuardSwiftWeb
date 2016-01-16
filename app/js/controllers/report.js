@@ -1,0 +1,61 @@
+'use strict';
+
+var controllerModule = angular.module('GuardSwiftApp.controllers');
+
+
+controllerModule.controller('ReportCtrl', ['$scope', 'ParseEventLog', 'reportObject',
+		function($scope, ParseEventLog, reportObject) {
+
+			$scope.report = reportObject;
+			
+			if (reportObject.reportEntries) { // backwards compatibility < 3.0.0
+				$scope.entries = reportObject.reportEntries;
+			} else if (reportObject.eventLogs) {
+				$scope.entries = reportObject.eventLogs;
+			}
+			
+			console.log(reportObject);
+
+
+		}]);
+
+controllerModule.controller('AlarmReportCtrl', ['$scope', 'scopedAlarm',
+		function($scope, scopedAlarm) {
+
+			var report = scopedAlarm.report;
+			
+			$scope.securityLevel = scopedAlarm.securityLevel;
+			
+			$scope.timeReactionMinutes = moment(scopedAlarm.timeStarted).diff(moment(scopedAlarm.timeStartedDriving), 'minutes');
+			$scope.timeTotalMinutes = moment(scopedAlarm.timeEnded).diff(moment(scopedAlarm.timeStartedDriving), 'minutes');;
+			
+			console.log(scopedAlarm.timeStartedDriving);
+			console.log(scopedAlarm.timeEnded);
+			console.log($scope.timeReactionMinutes);
+			console.log($scope.timeTotalMinutes);
+
+			
+			$scope.report = report.report;
+			$scope.internal = report.internal;
+
+			var installer = scopedAlarm.installer_company;
+			if (installer) {
+				$scope.installer = {
+					name : scopedAlarm.installer_company.get("name"),
+					logoUrl : scopedAlarm.installer_company.get("logoUrl")
+
+				}
+				console.log($scope.installer);
+			} else {
+				console.log("installer not found");
+			}
+
+			var in_cooporation_with = true
+			if (in_cooporation_with) {
+				$scope.cooporation = {
+					name : "Sikringsvagten",
+					logoUrl : "http://guardswift.com/logo/sikringsvagten.png"
+				}
+			}
+
+		}]);

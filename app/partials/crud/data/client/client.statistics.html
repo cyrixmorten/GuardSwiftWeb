@@ -1,0 +1,15 @@
+
+<gs-search-bar-day-date search-options="searchOptions"
+	search-result="searchResult(result)"></gs-search-bar-day-date>
+
+<div ng-if="scopedObjects.length > 0">
+		<div class="col-sm-6">
+			<gs-event-pie-chart scoped-event-logs="scopedObjects"></gs-event-pie-chart>
+		</div>
+		<div class="col-sm-6">
+			<gs-event-bar-chart scoped-event-logs="scopedObjects"></gs-event-bar-chart>
+		</div>
+		<!-- <canvas id="pie" class="chart chart-pie" data="data" legend="true"
+			labels="labels"></canvas> -->
+	<gs-table-eventlogs></gs-table-eventlogs>
+</div>

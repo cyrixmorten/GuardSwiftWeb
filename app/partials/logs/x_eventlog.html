@@ -1,0 +1,44 @@
+
+<div class="panel panel-primary anim">
+	<div class="panel-heading clearfix">
+		<h3 class="panel-title pull-left">{{'EVENTLOG' | translate}}<span ng-show="name"> - {{name}}</span></h3>
+		<!-- crud-search search-from-date="searchFromDate"
+				search-to-date="searchToDate" search="search()"
+				export-enabled="true" csv="csv" export-name="exportname()">
+			</search-by-date-table> -->
+	</div>
+	<div class="panel-body" ng-hide="disableSearchBar">
+		<search-bar></search-bar>
+	</div>
+	<table ng-table="tableParams" show-filter="true" class="table table-hover table-condensed table-striped table-responsive"
+		export-csv="csv">
+		
+		<tr ng-repeat="crudObject in $data" ng-click="showDetails(crudObject.objectId)" ng-class="(crudObject.isExtra) ? 'success' : ''">
+			<td class="col-xs-1" data-title="'Hændelse'"
+				header-class="text-center" sortable="'event'"
+				filter="{ 'event': 'text' }">{{crudObject.event}}</td>
+			<td class="col-xs-1" data-title="'Antal'" header-class="text-center"
+				sortable="'amount'" filter="{ 'amount': 'text' }">{{crudObject.amount}}</td>
+			<td class="col-xs-2" data-title="'Kunde'" header-class="text-center"
+				sortable="'clientName'" filter="{ 'clientName': 'text' }">{{crudObject.clientName}}</td>
+			<!-- <td class="col-md-3" data-title="'Vagt'" header-class="text-center"
+					sortable="'guardName'" filter="{ 'guardName': 'text' }">{{crudObject.guardName}}</td> -->
+			<td class="col-xs-2" data-title="'Placering'"
+				header-class="text-center" sortable="'clientLocation'"
+				filter="{ 'clientLocation': 'text' }">{{crudObject.clientLocation}}</td>
+			<td class="col-xs-2" data-title="'Bemærkninger'"
+				header-class="text-center" sortable="'remarks'"
+				filter="{ 'remarks': 'text' }">{{crudObject.remarks}}</td>
+			<td class="col-xs-2" data-title="'Vægter'" header-class="text-center"
+				sortable="'guardName'" filter="{ 'guardName': 'text' }">{{crudObject.guardName}}</td>
+			<td class="col-xs-2 text-center" data-title="'Oprettet'"
+				header-class="text-center">{{crudObject.createdAt | date:'HH:mm dd-MM-yyyy'}}</td>
+			<!--  <td class="col-xs-1 text-right"><a class="btn btn-primary"
+				href="#{{ 'details.eventlog' | routeSegmentUrl: {id: crudObject.objectId} }}">{{
+					'DETAILS' | translate}}</a></td>-->
+			<!-- <td class="col-xs-1 text-right"><button class="btn btn-primary btn-sm"
+				ng-click="showDetails(crudObject.objectId)">{{
+					'DETAILS' | translate}}</button></td> -->
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,64 @@
+
+<gs-crud-panel-create 
+	title="{{'GROUPS_CREATE' | translate}}">
+		<table class="table">
+			<thead>
+				<tr>
+					<td class="col-xs-7 text-center">{{'NAME' | translate}}</td>
+					<td class="col-xs-1 text-center"
+						ng-class="{hidden: broadcast_alarms}">Ansvarlig</td>
+					<td class="col-xs-4"></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr gs-crud parse-object="parseObject"
+					notify-as="{{'GROUP' | translate}}" state-saving="saving">
+					<td><input placeholder="{{'NAME' | translate}}"
+						class="form-control" type="text" ng-model="createData.name"
+						ng-disabled="saving" auto-focus focus-on="addSuccess" /></td>
+					</td>
+
+					<td class="vert-align text-center"
+						ng-class="{hidden: broadcast_alarms}"><input bs-switch
+						type="checkbox" ng-model="createData.responsible"
+						ng-disabled="saving" switch-on-text="{{'YES' | translate}}"
+						switch-off-text="{{'NO' | translate}}"></td>
+
+					<td data-title="''"><gs-crud-create
+							data="createData" success="notifyDataSetChanged()" /></td>
+				</tr>
+			</tbody>
+		</table>
+		</gs-crud-panel-create>
+<gs-crud-panel-update-remove title="{{'GROUPS_LIST' | translate}}">
+	<table ng-table="tableParams" show-filter="true" class="table">
+		<tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"
+			notify-as="{{'GROUP' | translate}}" editing="editMode"
+			>
+			<td data-title="'Navn'" class="col-xs-7" header-class="'text-center'"
+				sortable="'name'" filter="{ 'name': 'text' }"><input
+				ng-readonly="!editMode" class="form-control" type="text"
+				ng-model="crudObject.name" /></td>
+
+			<td class="vert-align" data-title="'Ansvarlig'" class="col-xs-1"
+				header-class="'text-center'" ng-show="!broadcast_alarms">
+
+				<div ng-if="!editMode">
+					<input class="form-control text-center"
+						value="{{(crudObject.responsible ? 'YES' : 'NO') | translate}}"
+						disabled />
+				</div>
+
+				<div ng-show="editMode">
+					<input bs-switch switch-active="true" type="checkbox"
+						ng-model="crudObject.responsible"
+						switch-on-text="{{'YES' | translate}}"
+						switch-off-text="{{'NO' | translate}}" />
+				</div>
+			</td>
+			<td data-title="''" class="col-xs-4" header-class="''"><gs-crud-update-delete
+					scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+		</tr>
+	</table>
+</gs-crud-panel-update-remove>
+

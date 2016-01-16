@@ -1,0 +1,42 @@
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{scopedObject.name}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="nav nav-tabs">
+					<li role="presentation"
+						ng-class="{active: $routeSegment.contains('data')}"><a
+						href="#{{ 'client.data' | routeSegmentUrl: {id: scopedObject.id} }}">Data</a></li>
+					<li role="presentation"
+						ng-class="{active: $routeSegment.contains('contacts')}"><a
+						href="#{{ 'client.contacts' | routeSegmentUrl: {id: scopedObject.id} }}">Kontaktpersoner</a></li>
+					<li role="presentation"
+						ng-class="{active: $routeSegment.contains('locations')}"><a
+						href="#{{ 'client.locations' | routeSegmentUrl: {id: scopedObject.id} }}">Lokaler
+							& Checkpoints</a></li>
+					<li role="presentation"
+						ng-class="{active: $routeSegment.contains('messages')}"><a
+						href="#{{ 'client.messages' | routeSegmentUrl: {id: scopedObject.id} }}">Beskeder</a></li>
+					<li role="presentation"
+						ng-class="{active: $routeSegment.contains('eventtypes')}"><a
+						href="#{{ 'client.eventtypes' | routeSegmentUrl: {id: scopedObject.id} }}">Hændelsestyper</a></li>
+					
+					<li role="presentation"
+						ng-class="{active: $routeSegment.contains('history')}"><a
+						href="#{{ 'client.history' | routeSegmentUrl: {id: scopedObject.id} }}">Historik</a></li> 
+					<li role="presentation"
+						ng-class="{active: $routeSegment.contains('statistics')}"><a
+						href="#{{ 'client.statistics' | routeSegmentUrl: {id: scopedObject.id} }}">Statistik</a></li> 
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<br>
+			<div class="anim col-xs-12" app-view-segment="1"></div>
+		</div>
+	</div>
+
+</div>

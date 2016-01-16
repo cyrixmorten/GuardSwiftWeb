@@ -1,0 +1,28 @@
+
+<gs-crud-panel-create title="{{'CREATE_ENTRY' | translate}}">
+<table class="table">
+	<tr gs-crud parse-object="parseObject"
+		notify-as="{{'ENTRY' | translate}}" state-saving="saving">
+		<td class="col-xs-10"><input
+			placeholder="{{'ENTRY' | translate}}" class="form-control"
+			type="text" ng-model="createData.item" ng-disabled="saving"
+			auto-focus focus-on="addSuccess" /></td>
+
+		<td class="col-xs-2" data-title="''"><gs-crud-create
+				data="createData" success="notifyDataSetChanged()" /></td>
+	</tr>
+</table>
+</gs-crud-panel-create>
+<gs-crud-panel-update-remove title="{{'ENTRY' | translate}}">
+<table ng-table="tableParams" class="table">
+	<tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"
+		notify-as="{{'ENTRY' | translate}}" editing="editMode">
+		<td data-title="'Punkt'" header-class="'text-center col-xs-10'"
+			sortable="'item'" filter="{ 'item': 'text' }"><input
+			ng-readonly="!editMode" class="form-control" type="text"
+			ng-model="crudObject.item" /></td>
+		<td data-title="''" header-class="col-xs-2"><gs-crud-update-delete
+				scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+	</tr>
+</table>
+</gs-crud-panel-update-remove>
