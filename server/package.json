@@ -2,7 +2,7 @@
   "name": "guardswift-web-server",
   "description": "",
   "scripts" : {
-	"start" : "nodejs web-server.js"
+	"start" : "node web-server.js"
   },
   "dependencies": {
     "node": "0.0.0",
