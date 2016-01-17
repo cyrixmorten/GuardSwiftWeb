@@ -2,7 +2,8 @@
   "name": "guardswift-web",
   "description": "",
   "scripts": {
-	"start": "node server/web-server.js",
-	"postinstall": "cd app && bower install"
+        "install": "cd app && npm install",
+	"postinstall": "cd app && node_modules/.bin/bower --config.analytics=false install",
+	"start": "node server/web-server.js"
    }
 }
