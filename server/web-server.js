@@ -40,7 +40,7 @@ function HttpServer(handlers) {
 
 HttpServer.prototype.start = function(port) {
   this.port = port;
-  this.server.listen(port);
+  this.server.listen(process.env.PORT || 5000)
   util.puts('Http Server running at http://localhost:' + port + '/');
 };
 
@@ -90,7 +90,6 @@ StaticServlet.prototype.handleRequest = function(req, res) {
   var path = ('./' + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
     return String.fromCharCode(parseInt(hex, 16));
   });
-  console.log('PATH: ' + path);
   var parts = path.split('/').filter(function(e){return e});;
   var dir = parts[parts.length-1];
   if (dir === '.' || dir === 'server')
