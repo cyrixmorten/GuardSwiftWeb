@@ -39,9 +39,9 @@ function HttpServer(handlers) {
 }
 
 HttpServer.prototype.start = function(port) {
-  this.port = port;
-  this.server.listen(process.env.PORT || 5000)
-  util.puts('Http Server running at http://localhost:' + port + '/');
+  this.port = process.env.PORT || 5000;
+  this.server.listen(this.port)
+  console.log('Http Server running at http://localhost:' + this.port + '/');
 };
 
 HttpServer.prototype.parseUrl_ = function(urlString) {
@@ -85,15 +85,21 @@ StaticServlet.MimeMap = {
   'svg': 'image/svg+xml'
 };
 
+var WEB_DIR = './app/';
+
 StaticServlet.prototype.handleRequest = function(req, res) {
   var self = this;
-  var path = ('./' + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
+  var path = (WEB_DIR + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
     return String.fromCharCode(parseInt(hex, 16));
   });
-  var parts = path.split('/').filter(function(e){return e});;
-  var dir = parts[parts.length-1];
-  if (dir === '.' || dir === 'server')
-    return self.sendForbidden_(req, res, path);
+  //var parts = path.split('/').filter(function(e){return e});;
+  //var dir = parts[parts.length-1];
+  if (path === WEB_DIR) {
+	// append root dir with index.html
+	path = path + 'index.html';
+  } 
+  //if (dir !== 'downloads')
+  //  return self.sendForbidden_(req, res, path);
   fs.stat(path, function(err, stat) {
     if (err)
       return self.sendMissing_(req, res, path);
