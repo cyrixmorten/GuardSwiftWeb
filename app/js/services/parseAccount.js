@@ -4,7 +4,7 @@ var app = angular.module('GuardSwiftApp.services');
 
 app.service('ParseService', function() {
 
-	if (document.location.hostname != "localhost") {
+	if (document.location.hostname == "localhost") {
 		// Development
 		Parse.initialize("7fynHGuQW5NZLROiIDcCzLddbINcUSwPdoE0L72d",
 				"nauoHYYcCFXHNIBvEfjmC0plOQKxJKTCVZbgaytg");
