@@ -18,7 +18,8 @@
   ],
   "dependencies": {
     "Chart.js": "~1.0.1",
-    "angular-animate": "~1.4.7",
+    "angular": ">=1.4.7",
+    "angular-animate": ">=1.4.7",
     "angular-bootstrap-colorpicker": ">= 3.0.0",
     "angular-bootstrap-switch": "~0.4.0",
     "angular-bootstrap": "~0.13.0",
@@ -41,5 +42,9 @@
     "ng-table": "~0.5.4",
     "parse-angular-patch": "~0.1.2",
     "parse-js-sdk": "~1.4.0"
+  },
+  "resolutions": {
+    "angular-animate": ">=1.4.7",
+    "angular": ">=1.4.7"
   }
 }
