@@ -25,6 +25,12 @@ myApp.directive('gsMapSingleMarker', [function() {
 				updateMap();
 			})
 
+			var position =  {
+						latitude : $scope.position.latitude,
+						longitude : $scope.position.longitude
+					}
+			console.log('position');
+			console.log(position);
 //			$scope.$on('updateSuccess', function(event) {
 //				console.log('updateSuccess');
 //				updateMap();

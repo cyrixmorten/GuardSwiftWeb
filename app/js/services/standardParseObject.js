@@ -638,7 +638,7 @@ app
 									return query;
 								};
 
-								this.get = function(objectId, incladudes) {
+								this.get = function(objectId, includes) {
 									console.log('get: ' + construct.objectname
 											+ " - " + objectId);
 									var promise = new Parse.Promise();

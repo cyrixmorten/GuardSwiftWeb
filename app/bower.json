@@ -41,7 +41,8 @@
     "ng-table-export": "*",
     "ng-table": "~0.5.4",
     "parse-angular-patch": "~0.1.2",
-    "parse-js-sdk": "~1.4.0"
+    "parse-js-sdk": "~1.4.0",
+    "lodash": "~3.8.0"
   },
   "resolutions": {
     "angular-animate": ">=1.4.7",
