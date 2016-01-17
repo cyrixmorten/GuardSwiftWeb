@@ -2,6 +2,6 @@
   "name": "guardswift-web",
   "description": "",
   "scripts": {
-	"start" : "cd server && npm start"
+	"start" : "node server/web-server.js"
    }
 }

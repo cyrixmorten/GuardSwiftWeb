@@ -7,7 +7,6 @@ var util = require('util'),
     events = require('events');
 
 var DEFAULT_PORT = 8000;
-var APP_PATH = "../";
 
 function main(argv) {
   new HttpServer({
@@ -88,11 +87,13 @@ StaticServlet.MimeMap = {
 
 StaticServlet.prototype.handleRequest = function(req, res) {
   var self = this;
-  var path = (APP_PATH + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
+  var path = ('./' + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
     return String.fromCharCode(parseInt(hex, 16));
   });
-  var parts = path.split('/');
-  if (parts[parts.length-1].charAt(0) === '.')
+  console.log('PATH: ' + path);
+  var parts = path.split('/').filter(function(e){return e});;
+  var dir = parts[parts.length-1];
+  if (dir === '.' || dir === 'server')
     return self.sendForbidden_(req, res, path);
   fs.stat(path, function(err, stat) {
     if (err)
