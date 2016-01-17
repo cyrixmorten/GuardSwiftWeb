@@ -7,13 +7,21 @@ controllerModule.controller('ReportCtrl', ['$scope', 'ParseEventLog', 'reportObj
 		function($scope, ParseEventLog, reportObject) {
 
 			$scope.report = reportObject;
-			
-			if (reportObject.reportEntries) { // backwards compatibility < 3.0.0
-				$scope.entries = reportObject.reportEntries;
-			} else if (reportObject.eventLogs) {
+
+			if (reportObject.eventLogs) { 
 				$scope.entries = reportObject.eventLogs;
 			}
-			
+
+			// backwards compatibility < 3.0.0	
+			if (reportObject.reportEntries) {
+				$scope.entries = [];
+				angular.forEach(reportObject.reportEntries, function(reportEntry) {
+					reportEntry.taskEvent = reportEntry.task_event;
+					$scope.entries.push(reportEntry);
+				});
+				$scope.entries = reportObject.reportEntries; 
+			}			
+
 			console.log(reportObject);
 
 
