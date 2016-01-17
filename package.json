@@ -2,6 +2,7 @@
   "name": "guardswift-web",
   "description": "",
   "scripts": {
-	"start" : "node server/web-server.js"
+	"start": "node server/web-server.js",
+	"postinstall": "cd app && bower install"
    }
 }
