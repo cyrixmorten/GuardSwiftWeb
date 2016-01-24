@@ -3,10 +3,10 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('GuardSwiftApp', [
-  'chart.js',                               
-  'angularPayments',                               
+  'chart.js',
+  'angularPayments',
   'ngRoute',
-  'route-segment', 
+  'route-segment',
   'view-segment',
   'ngTable',
   'picardy.fontawesome',
@@ -28,24 +28,24 @@ angular.module('GuardSwiftApp', [
 	  minDuration: 700
 	})
 .config(['$routeSegmentProvider', '$routeProvider', 'uiGmapGoogleMapApiProvider', function($routeSegmentProvider, $routeProvider, uiGmapGoogleMapApiProvider) {
-	
+
 	uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyBJxeP1LuaYrWmzOKDKo3l4a_nc4G7OaFU',
         v: '3.17',
         libraries: 'weather,geometry,visualization'
     });
-	
+
 	// Configuring provider options
-	
+
 	$routeSegmentProvider.options.autoLoadTemplates = true;
 
 	var smallHorizontalLoader = 'views/loading/smallHorizontal.html';
-	
+
     // Setting routes. This consists of two parts:
     // 1. `when` is similar to vanilla $route `when` but takes segment name
 	// instead of params hash
     // 2. traversing through segment tree to set it up
-  
+
 	$routeSegmentProvider.
 	when('/login', 'login').
 	when('/logout', 'logout').
@@ -56,8 +56,8 @@ angular.module('GuardSwiftApp', [
 	when('/account/user', 'account.user').
 	when('/account/settings', 'account.settings').
 	when('/account/purchase', 'account.purchase').
-	
-	
+
+
 	// -- Data
 	when('/data/groups', 'groups').
 	when('/data/guards', 'guards').
@@ -71,7 +71,7 @@ angular.module('GuardSwiftApp', [
 	when('/data/client/:id/history', 'client.history').
 	when('/data/client/:id/statistics', 'client.statistics').
 	when('/data/eventtypes', 'eventtypes').
-	
+
 	// -- Details
 //	when('/details', 'details').
 //	when('/details/client/:id/data', 'details.client.crud.data').
@@ -82,12 +82,12 @@ angular.module('GuardSwiftApp', [
 //	when('/details/client/log', 'details.client.log').
 //	when('/details/client/log/:id/history', 'details.client.log.history').
 //	when('/details/client/log/:id/statistics', 'details.client.log.statistics').
-	
+
 //	when('/details/circuitunit/:id/description', 'details.circuitunit.crud.description').
 //	when('/details/circuitunit/:id/messages', 'details.circuitunit.crud.messages').
-	
+
 //	when('/details/eventlog/:id', 'details.eventlog').
-	
+
 	// -- Checklist
 	when('/checklist/startup', 'checklist_startup').
 	when('/checklist/ending', 'checklist_ending').
@@ -96,11 +96,11 @@ angular.module('GuardSwiftApp', [
 	when('/plan/circuits', 'circuits').
 	when('/plan/circuitunits/:circuitId', 'circuitunits'). // list circuitunits under specific circuit
 	when('/plan/circuitunit/:id', 'circuitunit'). // details of specific circuitunit
-	when('/plan/circuitunit/:id/description', 'circuitunit.description'). 
+	when('/plan/circuitunit/:id/description', 'circuitunit.description').
 	when('/plan/districtwatches', 'districtwatches').
 	when('/plan/districtwatchunits/:districtWatchId', 'districtwatchunits').
 
-	
+
 	// -- Logs
 	when('/logs/eventlog', 'eventlog'). // all events
 	when('/logs/alarm', 'alarmlog'). // alarms
@@ -109,17 +109,17 @@ angular.module('GuardSwiftApp', [
 	when('/logs/circuit/:id', 'circuiteventlog'). // events for selected circuit
 	when('/logs/districtwatch', 'districtwatchlog'). // districtwatches started
 	when('/logs/districtwatch/:id', 'districtwatcheventlog'). // events for selected districtwatch
-	
+
 	// -- Reports
 	when('/report/view/:reportId', 'report'). // any report identified by reportId
 	when('/report/alarm', 'alarmreports'). // all alarm reports
 	when('/report/alarm/:id', 'alarmreport'). // report for selected alarm
 	when('/report/circuitunit', 'circuitunitreports'). // all circuitunit reports
 	when('/report/circuitunit/:id', 'circuitunitreport').  // report for selected circuitunit
-	
+
 	// -- GPS
 	when('/gps', 'gps'). // searchable GPS tracker
-	when('/gps/regular_panel', 'experiments_regular_panel'). 
+	when('/gps/regular_panel', 'experiments_regular_panel').
 	when('/gps/regular_pocket', 'experiments_regular_pocket').
 	when('/gps/regular_upper', 'experiments_regular_upper').
 	when('/gps/dw_1', 'experiments_dw1').
@@ -129,15 +129,15 @@ angular.module('GuardSwiftApp', [
 	when('/gps/dw_5', 'experiments_dw5').
 	when('/gps/dw_6', 'experiments_dw6').
 	when('/gps/dw_7', 'experiments_dw7').
-	
+
 	// -- Public logs
 //	when('/public/logs/gps/:id', 'log.gpspublic').
 //	when('/public/alarm/:id', 'report.alarm').
-	
+
 	segment('login', {templateUrl: 'partials/login.html', controller: 'LoginCtrl'}).
-	
+
 	segment('home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'}).
-	
+
 	/**
 	 * --
 	 * SECTION ACCOUNT
@@ -145,7 +145,7 @@ angular.module('GuardSwiftApp', [
 	 */
 	segment('account', {templateUrl: 'partials/account/account.html', controller: 'AccountCtrl'}).
 	within(). // account
-		segment('user', {templateUrl: 'partials/account/user.html', controller: 'UserCtrl', 			
+		segment('user', {templateUrl: 'partials/account/user.html', controller: 'UserCtrl',
 			resolve : {
 				parseUser : function() {
 					return Parse.User.current().fetch();
@@ -162,15 +162,15 @@ angular.module('GuardSwiftApp', [
 			}
 			, untilResolved: {
 	            templateUrl: smallHorizontalLoader
-	        }}).	
+	        }}).
 		segment('purchase', {templateUrl: 'partials/account/purchase.html', controller: 'PurchaseCtrl'}).
 	up().
-	
+
 //	segment('report', {templateUrl: 'partials/report/report.html', controller: 'ReportCtrl'}).
 //	within(). // report
 
 //	up().
-	
+
 	// segment('client_eventtypes', {templateUrl:
 	// 'partials/crud/data/eventtypes.html', controller: 'EventTypeCtrl'}).
 	/**
@@ -178,7 +178,7 @@ angular.module('GuardSwiftApp', [
 	 * SECTION DATA
 	 * --
 	 */
-	segment('guards', {templateUrl: 'partials/crud/data/guards.html', controller: 'StandardCRUDCtrl', 
+	segment('guards', {templateUrl: 'partials/crud/data/guards.html', controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject : function(ParseGuard) {
 				return ParseGuard;
@@ -192,7 +192,7 @@ angular.module('GuardSwiftApp', [
         }}).
 //		segment('crud', {templateUrl: 'partials/crud/crud.html', controller: 'CRUDCtrl'}).
 //	    within(). // crud
-	segment('groups', {templateUrl: 'partials/crud/data/groups.html', controller: 'StandardCRUDCtrl', 
+	segment('groups', {templateUrl: 'partials/crud/data/groups.html', controller: 'StandardCRUDCtrl',
 			resolve : {
 				ParseObject : function(ParseGroup) {
 					return ParseGroup;
@@ -203,8 +203,8 @@ angular.module('GuardSwiftApp', [
 			}
 			, untilResolved: {
                 templateUrl: smallHorizontalLoader
-            }}).    
-	segment('clients', {templateUrl: 'partials/crud/data/clients.html', controller: 'StandardCRUDCtrl', 
+            }}).
+	segment('clients', {templateUrl: 'partials/crud/data/clients.html', controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject : function(ParseClient) {
 				return ParseClient;
@@ -217,9 +217,9 @@ angular.module('GuardSwiftApp', [
             templateUrl: smallHorizontalLoader
         }}).
     // details segment for client
-    segment('client', { 
+    segment('client', {
     	templateUrl : 'partials/crud/data/client/client.details_nav.html',
-    	dependencies : ['id'], 
+    	dependencies : ['id'],
     	controller: 'ParseDetailsCtrl',
     	resolve : {
     		ParseObject : ['ParseClient', function(ParseClient) {
@@ -228,16 +228,16 @@ angular.module('GuardSwiftApp', [
     		scopedObject : ['$routeParams', 'ParseClient', function($routeParams, ParseClient) {
     			// !!!!
     			return ParseClient.get($routeParams.id);//, ['contacts', 'roomLocations', 'messages']);
-    		}], 
+    		}],
     	}}).
     within()
     	// available details segments for client
     	.segment('data', {
     		default : true,
-    		templateUrl: 'partials/crud/data/client/client.data.html',	
+    		templateUrl: 'partials/crud/data/client/client.data.html',
     	})
     	.segment('contacts', {
-			templateUrl: 'partials/crud/data/client/client.contacts.html',     	
+			templateUrl: 'partials/crud/data/client/client.contacts.html',
 			controller: 'ParseArrayPointerCtrl',
 	    	resolve : {
 	    		ParentParseObject : ['ParseClient', function(ParseClient) {
@@ -245,19 +245,19 @@ angular.module('GuardSwiftApp', [
 	    		}],
 	    		scopedParentObject : ['ParseClient', function(ParseClient) {
 	    			return ParseClient.getScopedObjectFromRouteParamId('id', 'contacts');
-	    		}], 
+	    		}],
 	    		ParseObject : ['ParseClientContact', function(ParseClientContact) {
 	    			return ParseClientContact;
 	    		}],
 	    		arrayName : function() {
 	    			return "contacts";
-	    		}, 
+	    		},
 	    	}
 			, untilResolved: {
 		        templateUrl: smallHorizontalLoader
 		    }})
     	.segment('locations', {
-			templateUrl: 'partials/crud/data/client/client.locations.html',     	
+			templateUrl: 'partials/crud/data/client/client.locations.html',
 			controller: 'ParseArrayPointerCtrl',
 	    	resolve : {
 	    		ParentParseObject : ['ParseClient', function(ParseClient) {
@@ -265,19 +265,19 @@ angular.module('GuardSwiftApp', [
 	    		}],
 	    		scopedParentObject : ['ParseClient', function(ParseClient) {
 	    			return ParseClient.getScopedObjectFromRouteParamId('id', 'roomLocations');
-	    		}], 
+	    		}],
 	    		ParseObject : ['ParseClientLocation', function(ParseClientLocation) {
 	    			return ParseClientLocation;
 	    		}],
 	    		arrayName : function() {
 	    			return "roomLocations";
-	    		}, 
+	    		},
 	    	}
 			, untilResolved: {
 		        templateUrl: smallHorizontalLoader
 		    }})
     	.segment('messages', {
-			templateUrl: 'partials/crud/data/client/client.messages.html',     	
+			templateUrl: 'partials/crud/data/client/client.messages.html',
 			controller: 'ParseArrayPointerCtrl',
 	    	resolve : {
 	    		ParentParseObject : ['ParseClient', function(ParseClient) {
@@ -285,19 +285,19 @@ angular.module('GuardSwiftApp', [
 	    		}],
 	    		scopedParentObject : ['ParseClient', function(ParseClient) {
 	    			return ParseClient.getScopedObjectFromRouteParamId('id', 'messages');
-	    		}], 
+	    		}],
 	    		ParseObject : ['ParseMessage', function(ParseMessage) {
 	    			return ParseMessage;
 	    		}],
 	    		arrayName : function() {
 	    			return "messages";
-	    		}, 
+	    		},
 	    	}
 			, untilResolved: {
 		        templateUrl: smallHorizontalLoader
 		    }})
     	.segment('eventtypes', {templateUrl: 'partials/crud/data/client/client.eventtypes.html',
-    		controller: 'StandardCRUDCtrl', 
+    		controller: 'StandardCRUDCtrl',
     		resolve : {
     			ParseObject : ['ParseEventType', 'ParseClient', function(ParseEventType, ParseClient) {
     				var pointer = ParseClient.getPointerObjectFromRouteParamId('id');
@@ -324,7 +324,7 @@ angular.module('GuardSwiftApp', [
 					var clientPointer = ParseClient.getPointerObjectFromRouteParamId('id');
 					query.equalTo('client', clientPointer);
 					//query.equalTo('task_event', "OTHER");
-					
+
 					return query;
 				}]
 			}
@@ -337,13 +337,13 @@ angular.module('GuardSwiftApp', [
 					var clientPointer = ParseClient.getPointerObjectFromRouteParamId('id');
 					query.equalTo('client', clientPointer);
 					query.equalTo('task_event', "OTHER");
-					
+
 					return query;
 				}]
 			}
 		})
     .up()
-    .segment('eventtypes', {templateUrl: 'partials/crud/data/eventtypes.html', controller: 'StandardCRUDCtrl', 
+    .segment('eventtypes', {templateUrl: 'partials/crud/data/eventtypes.html', controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject : function(ParseEventType) {
 				return ParseEventType;
@@ -360,7 +360,7 @@ angular.module('GuardSwiftApp', [
 	 * SECTION CHECKLISTS
 	 * --
 	 */
-	segment('checklist_startup', {templateUrl: 'partials/crud/checklist/startup.html', controller: 'StandardCRUDCtrl', 
+	segment('checklist_startup', {templateUrl: 'partials/crud/checklist/startup.html', controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject : function(ParseChecklistStart) {
 				return ParseChecklistStart;
@@ -372,7 +372,7 @@ angular.module('GuardSwiftApp', [
 		, untilResolved: {
             templateUrl: smallHorizontalLoader
         }}).
-	segment('checklist_ending', {templateUrl: 'partials/crud/checklist/ending.html', controller: 'StandardCRUDCtrl', 
+	segment('checklist_ending', {templateUrl: 'partials/crud/checklist/ending.html', controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject : function(ParseChecklistEnd) {
 				return ParseChecklistEnd;
@@ -389,7 +389,7 @@ angular.module('GuardSwiftApp', [
 	 * SECTION PLANNING
 	 * --
 	 */
-	segment('circuits', {templateUrl: 'partials/crud/planning/circuits.html', controller: 'StandardCRUDCtrl', 
+	segment('circuits', {templateUrl: 'partials/crud/planning/circuits.html', controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject : function(ParseCircuit) {
 				return ParseCircuit;
@@ -404,7 +404,7 @@ angular.module('GuardSwiftApp', [
     .segment('circuitunits', {
         templateUrl: 'partials/crud/planning/circuitunits.html',
         dependencies: ['circuitId'],
-        controller: 'StandardCRUDCtrl', 
+        controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject: ['ParseCircuitUnit', 'ParseCircuit', function(ParseCircuitUnit, ParseCircuit) {
 				var pointer = ParseCircuit.getPointerObjectFromRouteParamId('circuitId');
@@ -422,8 +422,8 @@ angular.module('GuardSwiftApp', [
 		, untilResolved: {
             templateUrl: smallHorizontalLoader
         }}).
-    // details segment for circuitunit    
-    segment('circuitunit', { 
+    // details segment for circuitunit
+    segment('circuitunit', {
     	templateUrl : 'partials/crud/planning/circuitunit/details_nav.html',
     	dependencies : ['id'],
     	controller: 'ParseDetailsCtrl',
@@ -433,7 +433,7 @@ angular.module('GuardSwiftApp', [
     		}],
     		scopedObject : ['ParseCircuitUnit', function(ParseCircuitUnit) {
     			return ParseCircuitUnit.getScopedObjectFromRouteParamId('id', 'client');
-    		}], 
+    		}],
     	}
 		, untilResolved: {
 	        templateUrl: smallHorizontalLoader
@@ -444,7 +444,7 @@ angular.module('GuardSwiftApp', [
     		default : true,
     		templateUrl: 'partials/crud/planning/circuitunit/description.html'}).
     up().
-//	segment('circuitselect', {templateUrl: 'partials/crud/crud-parent-select.html', controller: 'CircuitSelectCtrl', 
+//	segment('circuitselect', {templateUrl: 'partials/crud/crud-parent-select.html', controller: 'CircuitSelectCtrl',
 //		resolve : {
 //			scopedCircuits : function(ParseCircuit) {
 //				return ParseCircuit.getAllScopedObjects();
@@ -476,7 +476,7 @@ angular.module('GuardSwiftApp', [
 //    .segment('circuitunits', {
 //        templateUrl: 'partials/crud/planning/circuitunits.html',
 //        dependencies: ['circuitId'],
-//        controller: 'CircuitUnitCtrl', 
+//        controller: 'CircuitUnitCtrl',
 //		resolve : {
 //			ParseCircuitUnit: function(ParseCircuitUnit) {
 //				return ParseCircuitUnit.getParseObject();
@@ -495,7 +495,7 @@ angular.module('GuardSwiftApp', [
 //            templateUrl: smallHorizontalLoader
 //        }})
 //        .up().
-    segment('districtwatches', {templateUrl: 'partials/crud/planning/districtwatch.html', controller: 'StandardCRUDCtrl', 
+    segment('districtwatches', {templateUrl: 'partials/crud/planning/districtwatch.html', controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject : function(ParseDistrictWatch) {
 				return ParseDistrictWatch;
@@ -511,7 +511,7 @@ angular.module('GuardSwiftApp', [
     .segment('districtwatchunits', {
         templateUrl: 'partials/crud/planning/districtwatchunits.html',
         dependencies: ['districtWatchId'],
-        controller: 'StandardCRUDCtrl', 
+        controller: 'StandardCRUDCtrl',
 		resolve : {
 			ParseObject: ['ParseDistrictWatchUnit', 'ParseDistrictWatch', function(ParseDistrictWatchUnit, ParseDistrictWatch) {
 				var pointer = ParseDistrictWatch.getPointerObjectFromRouteParamId('districtWatchId');
@@ -530,7 +530,7 @@ angular.module('GuardSwiftApp', [
             templateUrl: smallHorizontalLoader
         }}).
 //    .up()
-	        
+
 //	.segment('details', {templateUrl: 'partials/details/details.html', controller: 'DetailsCtrl'}).
 //	within(). // details
 //		segment('eventlog', {templateUrl: 'partials/details/eventlog.html', dependencies: ['id'], controller: 'EventlogDetailsCtrl'}).
@@ -550,7 +550,7 @@ angular.module('GuardSwiftApp', [
 //				},
 //				scopedClientFromId : function(ParseClient) {
 //					return ParseClient.getScopedObjectFromId(["contacts", "roomLocations", "messages"]);
-//				} 
+//				}
 //			}, untilResolved: {
 //                templateUrl: smallHorizontalLoader
 //            }}).
@@ -561,7 +561,7 @@ angular.module('GuardSwiftApp', [
 //				segment('contacts', {templateUrl: 'partials/details/client/client.contacts.html', controller: 'ClientContactsCtrl'}).
 //				segment('locations', {templateUrl: 'partials/details/client/client.locations.html', controller: 'ClientLocationsCtrl'}).
 //				segment('messages', {templateUrl: 'partials/details/client/client.messages.html', controller: 'ClientMessagesCtrl'}).
-//				segment('eventtypes', {templateUrl: 'partials/details/client/client.eventtypes.html', controller: 'EventTypeCtrl', 
+//				segment('eventtypes', {templateUrl: 'partials/details/client/client.eventtypes.html', controller: 'EventTypeCtrl',
 //					resolve : {
 //						ParseEventType : function(ParseEventType) {
 //							return ParseEventType.getParseObject();
@@ -574,7 +574,7 @@ angular.module('GuardSwiftApp', [
 //		                templateUrl: smallHorizontalLoader
 //		            }}).
 //		    up(). // details.client
-//            segment('log', {templateUrl: 'partials/details/client/client.container.html', controller: 'LogsCtrl', 
+//            segment('log', {templateUrl: 'partials/details/client/client.container.html', controller: 'LogsCtrl',
 //        		resolve : {
 //        			EventLogObject : function(ParseEventLog) {
 //        				return ParseEventLog.getParseObject();
@@ -607,7 +607,7 @@ angular.module('GuardSwiftApp', [
 ////					},
 //					scopedCircuitUnitFromId : function(ParseCircuitUnit) {
 //						return ParseCircuitUnit.getScopedObjectFromId(["client","messages"]);
-//					} 
+//					}
 //			}, untilResolved: {
 //                templateUrl: smallHorizontalLoader
 //            }}).
@@ -618,8 +618,8 @@ angular.module('GuardSwiftApp', [
 //				segment('messages', {templateUrl: 'partials/details/circuitunit/circuitunit.messages.html', controller: 'CircuitUnitMessagesCtrl'}).
 //			up(). // details.circuitunit
 //		up(). // details
-//	up(). // 
-//	segment('log', {templateUrl: 'partials/logs/log.html', controller: 'LogsCtrl', 
+//	up(). //
+//	segment('log', {templateUrl: 'partials/logs/log.html', controller: 'LogsCtrl',
 //		resolve : {
 ////			EventLogObject : function(ParseEventLog) {
 ////				return ParseEventLog.getParseObject();
@@ -632,19 +632,19 @@ angular.module('GuardSwiftApp', [
 //            templateUrl: smallHorizontalLoader
 //        }}).
 //	within(). // log
-	
+
 	/**
 	 * --
 	 * SECTION HISTORY
 	 * --
 	 */
-	    // shows the complete set of events 
+	    // shows the complete set of events
 		segment('eventlog', {templateUrl: 'partials/logs/eventlog.html', controller: 'StandardParseSearchCtrl',
 			resolve : {
 				ParseObject : ['ParseEventLog', function(ParseEventLog) {return ParseEventLog}]
 			}
 		}).
-		// alarms 
+		// alarms
 		segment('alarmlog', {templateUrl: 'partials/logs/alarmlog.html', controller: 'StandardParseSearchCtrl',
 			resolve : {
 				ParseObject : ['ParseAlarm', function(ParseAlarm) {return ParseAlarm}]
@@ -717,22 +717,22 @@ angular.module('GuardSwiftApp', [
 			, untilResolved: {
             templateUrl: smallHorizontalLoader
         }}).
-        
+
 //		segment('listeventlogs', {templateUrl: 'partials/logs/eventlog.html', controller: 'EventLogListCtrl'}).
 //		segment('listreports', {templateUrl: 'partials/logs/reportslog.html', controller: 'ReportListCtrl'}).
-		
+
 		/**
 		 * --
 		 * SECTION REPORTS
 		 * --
 		 */
         // TODO should work for any type of report
-		segment('report', {templateUrl: 'partials/report/circuitunit_report.html', dependencies: ['reportId'], controller: 'ReportCtrl',
+		segment('report', {templateUrl: 'partials/report/report_switch.html', dependencies: ['reportId'], controller: 'ReportCtrl',
 			resolve : {
 				reportObject : ['ParseReport', function(ParseReport) {
-					return ParseReport.findScopedObjectEqualToParam('reportId', 'reportId', ['owner', 'eventLogs']);
+					return ParseReport.findScopedObjectEqualToParam('reportId', 'reportId', ['owner', 'owner.staticReportSettings', 'eventLogs']);
 				}]
-			},        
+			},
 			resolveFailed: {
 	            templateUrl: 'partials/error/report_not_found.html'
 	          }
@@ -749,7 +749,7 @@ angular.module('GuardSwiftApp', [
 				scopedAlarm : ['ParseAlarm', function(ParseAlarm) {
 					return ParseAlarm.getScopedObjectFromRouteParamId('id');
 				}]
-			},        
+			},
 			resolveFailed: {
 	            templateUrl: 'partials/error/alarm_report_not_found.html'
 	          }
@@ -761,13 +761,13 @@ angular.module('GuardSwiftApp', [
 					ParseObject : ['ParseReport', function(ParseReport) {return ParseReport}],
 					parseQuery : ['ParseReport', function(ParseReport) {return ParseReport.circuitUnitsQuery()}]
 				}
-			}).      
+			}).
 		segment('circuitunitreport', {templateUrl: 'partials/report/circuitunit_report.html', dependencies: ['id'], controller: 'ReportCtrl',
 			resolve : {
 				reportObject : ['ParseReport', function(ParseReport) {
 					return ParseReport.getScopedObjectFromRouteParamId('id');
 				}]
-			},        
+			},
 			resolveFailed: {
 	            templateUrl: 'partials/error/report_not_found.html'
 	          }
@@ -865,8 +865,8 @@ angular.module('GuardSwiftApp', [
 			clientData : ['$http', function($http) {return $http.get('experiments/districtwatch/7/clients.json')}]
 		}
 	});
-	
-	
+
+
 //	when('/gps/dw_1', 'experiments_dw1').
 //		segment('gpspublic', {templateUrl: 'partials/logs/gps.html', controller: 'PublicGPSLogCtrl',
 //		resolve : {
@@ -881,10 +881,10 @@ angular.module('GuardSwiftApp', [
 //		, untilResolved: {
 //            templateUrl: smallHorizontalLoader
 //        }});
-//	up(). //	
+//	up(). //
 
 
 //     .up();
-	
+
 	$routeProvider.otherwise({redirectTo: '/login'});
 }]);

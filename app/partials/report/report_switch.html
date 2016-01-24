@@ -1,0 +1,15 @@
+<div ng-switch on="report.taskTypeName">
+    <div ng-switch-when="STATIC">
+        <div ng-include src="'partials/report/static_report.html'"></div>
+    </div>
+    <div ng-switch-when="ALARM">
+        <div ng-include src="'partials/report/alarm_report.html'"></div>
+    </div>
+    <div ng-switch-when="REGULAR">
+        <div ng-include src="'partials/report/circuitunit_report.html'"></div>
+    </div>
+
+    <div ng-switch-default>
+        <div ng-include src="'partials/report/circuitunit_report.html'"></div>
+    </div>
+</div>

@@ -3,22 +3,22 @@
 var app = angular.module('GuardSwiftApp.services');
 
 
-app.factory('ParseFactory' , [ 
-             'ParseClient', 'ParseGuard', 'ParseGroup',  
+app.factory('ParseFactory' , [
+             'ParseClient', 'ParseGuard', 'ParseGroup',
              'ParseEventType', 'ParseMessage',
              'ParseClientContact', 'ParseClientLocation',
              'ParseChecklistStart', 'ParseChecklistEnd',
-             'ParseCircuit', 'ParseCircuitStarted', 'ParseCircuitUnit', 
+             'ParseCircuit', 'ParseCircuitStarted', 'ParseCircuitUnit',
              'ParseDistrictWatch', 'ParseDistrictWatchUnit', 'ParseDistrictWatchStarted',
              'ParseAlarm', 'ParseReport', 'ParseEventLog', 'ParseGPSTracker',
-             function(ParseClient, ParseGuard, ParseGroup, 
-                     ParseChecklistStart, ParseChecklistEnd, 
-                     ParseEventType, ParseMessage, 
+             function(ParseClient, ParseGuard, ParseGroup,
+                     ParseChecklistStart, ParseChecklistEnd,
+                     ParseEventType, ParseMessage,
                      ParseClientContact, ParseClientLocation,
-                     ParseCircuit, ParseCircuitStarted, ParseCircuitUnit, 
+                     ParseCircuit, ParseCircuitStarted, ParseCircuitUnit,
                      ParseDistrictWatch, ParseDistrictWatchUnit, ParseDistrictWatchStarted,
                      ParseAlarm, ParseReport, ParseEventLog, ParseGPSTracker) {
-             
+
              var data = {
             		 'Client' : ParseClient,
             		 'Guard' : ParseGuard,
@@ -40,14 +40,14 @@ app.factory('ParseFactory' , [
             		 'EventLog' : ParseEventLog,
             		 'GPSTracker' : ParseGPSTracker
              }
-            	 
-            	 
+
+
              return {
             	 getAll : function() {
             		 return data;
             	 }
-             }	 
-	
+             }
+
 }]);
 /**
  * DATA
@@ -100,7 +100,7 @@ app.factory('ParseClient', [
 			});
 		}]);
 
-app.factory('ParseGuard', ['StandardParseObject', 
+app.factory('ParseGuard', ['StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
 				objectname : 'Guard',
@@ -124,7 +124,7 @@ app.factory('ParseGuard', ['StandardParseObject',
 			});
 		}]);
 
-app.factory('ParseGroup', ['StandardParseObject', 
+app.factory('ParseGroup', ['StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
 				objectname : 'Group',
@@ -170,7 +170,7 @@ app.factory('ParseChecklistStart', ['StandardParseObject',
 			});
 		}]);
 
-app.factory('ParseChecklistEnd', ['StandardParseObject', 
+app.factory('ParseChecklistEnd', ['StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
 				objectname : 'ChecklistCircuitEnding',
@@ -220,7 +220,7 @@ app.factory('ParseEventType', ['StandardParseObject', 'ParseClient',
 			});
 		}]);
 
-app.factory('ParseMessage', ['StandardParseObject', 
+app.factory('ParseMessage', ['StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
 				objectname : 'Message',
@@ -646,12 +646,12 @@ var diffMinutes = function(date1, date2) {
 }
 
 app.factory('ParseReport', [
-		'StandardParseObject', 'ParseCircuitStarted', 'ParseEventLog', 
+		'StandardParseObject', 'ParseCircuitStarted', 'ParseEventLog',
 		function(StandardParseObject, ParseCircuitStarted, ParseEventLog) {
 			var ParseObject = new StandardParseObject(
 					{
 						objectname : 'Report',
-						attrs : ['reportId', 'circuitStarted', 'circuitUnit',
+						attrs : ['reportId', 'taskTypeName', 'circuitStarted', 'circuitUnit',
 								'districtWatchStarted', 'alarm', 'client',
 								'clientName', 'clientAddress',
 								'clientAddressNumber', 'clientCity', 'guardId',
@@ -661,6 +661,7 @@ app.factory('ParseReport', [
 								'reportEntries', 'deviceTimestamp', 'headerLogo', 'eventLogs'],
 						emptyTemplate : {
 							reportId : '',
+              taskTypeName: '',
 							circuitStarted : '',
 							circuitUnit : '',
 							districtWatchStarted : '',
@@ -687,6 +688,7 @@ app.factory('ParseReport', [
 						filledTemplate : function(object) {
 							return {
 								reportId : object.getReportId(),
+                taskTypeName : object.getTaskTypeName(),
 								circuitStarted : ParseCircuitStarted.getScopedObject(object.getCircuitStarted()),
 								circuitName : function() {
 									var circuitStarted = ParseCircuitStarted.getScopedObject(object.getCircuitStarted());
@@ -728,12 +730,12 @@ app.factory('ParseReport', [
 			return angular.extend(ParseObject, {
 				circuitUnitsQuery : function() {
 					var query = ParseObject.fetchAllQuery();
-					
+
 					query.exists('circuitStarted');
 					query.exists('circuitUnit');
-					
+
 					query.include('circuitStarted');
-					
+
 					return query;
 				},
 				alarmsQuery : function() {
@@ -853,7 +855,7 @@ app
 														.getTimeEndString(),
 												clientTimestamp : eventlog
 														.getClientTimestamp(),
-												deviceTimestamp : eventlog.getDeviceTimestamp(),		
+												deviceTimestamp : eventlog.getDeviceTimestamp(),
 												clientTimestampUnix :  moment(eventlog.getClientTimestamp()).unix(),
 												taskEvent : eventlog.getTask_event(),
 												gpsSummary : eventlog
@@ -875,7 +877,7 @@ app
 									query.notContainedIn('eventCode',
 											eventCodes);
 									return query;
-								}			
+								}
 							});
 						}]);
 
