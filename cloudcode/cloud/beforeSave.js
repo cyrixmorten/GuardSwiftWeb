@@ -2,7 +2,7 @@ var _ = require('underscore');
 var Static = require("cloud/static.js");
 var Mailing = require("cloud/mailing.js");
 
-//** SETUP NEW 
+//** SETUP NEW
 Parse.Cloud.beforeSave("_User", function(request, response) {
 	var user = request.object;
 	if (!user.has('broadcast_alarms')) {
@@ -20,16 +20,18 @@ Parse.Cloud.beforeSave("_User", function(request, response) {
 Parse.Cloud.beforeSave("Report", function(request, response) {
 
 	Parse.Cloud.useMasterKey();
-	
+
 	var Report = request.object;
 
 	if (Report.isNew()) {
 		var columnName = "";
 		if (Report.has('alarm'))
 			columnName = "alarmReports";
+		if (Report.has('staticTask'))
+				columnName = "staticTaskReports";
 		if (Report.has('circuitUnit'))
 			columnName = "regularReports";
-		
+
 		if (columnName) {
 			incrementUsageCount(request, [columnName, "reports"]).then(function() {
 				response.success();
@@ -66,8 +68,8 @@ var incrementUsageCount = function(request, columnNames) {
 	} else {
 		console.error('incrementUsageCount - missing user');
 		return new Parse.Promise.error('missing user');
-	}	
-	
+	}
+
 }
 
 var timeStringHour = function(timeString) {
@@ -159,7 +161,7 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 		Alarm.unset('ignoredBy');
 		Alarm.addUnique('ignoredBy', guard);
 	}
-	
+
 
 	response.success();
 
@@ -167,7 +169,7 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 
 // var newCircuitStartedMail = function(circuitStarted) {
 // var promise = new Parse.Promise();
-//	
+//
 // var circuitName = circuitStarted.get('name');
 // var timeString = new Date().toLocaleTimeString();
 // var User = circuitStarted.get('owner');
@@ -179,7 +181,7 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 // msg += "Servertime: " + timeString + "\n";
 // msg += "Circuit timesStart " + circuit.get('timeStart') + "\n";
 // msg += "Circuit timesEnd " + circuit.get('timeEnd');
-//			
+//
 // Mailing.sendTextEmail("cyrixmorten@gmail.com", subject, msg).then(function()
 // {
 // promise.resolve();
@@ -187,7 +189,7 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 // console.log("Send mail: " + error.message);
 // promise.error(error.message);
 // });
-//			
+//
 // }, function(error) {
 // console.log("Fetch circuit: " + error.message);
 // promise.error(error.message);
@@ -196,18 +198,23 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 // console.log("Fetch user: " + error.message);
 // promise.error(error.message);
 // });
-//	
+//
 // return promise;
 // };
 
 Parse.Cloud.beforeSave("EventLog", function(request, response) {
-	var EventType = request.object;
+	var EventLog = request.object;
 
 	// avoid 'undefined' for automatic
-	var automatic = EventType.get('automatic');
+	var automatic = EventLog.get('automatic');
 	if (!automatic) {
-		EventType.set('automatic', false);
+		EventLog.set('automatic', false);
 	}
+
+	var acl = new Parse.ACL();
+	acl.setPublicReadAccess(true);
+	acl.setPublicWriteAccess(false);
+	EventLog.set('ACL', acl);
 
 	response.success();
 });
@@ -283,10 +290,10 @@ Parse.Cloud
 
 										DistrictWatchClient.set('supervisions', districtWatchUnit.get('supervisions'));
 										DistrictWatchClient.set('days', districtWatchUnit.get('days'));
-										
+
 										if (!DistrictWatchClient.has('completed'))
 											DistrictWatchClient.set('completed', false)
-										
+
 //										ResponsibleClient
 //												.fetch()
 //												.then(
@@ -385,8 +392,8 @@ Parse.Cloud.beforeSave("Client", function(request, response) {
 	if (lookupAddress) {
 		console.log("do addAddressToClient");
 		addAddressToClient(Client, response);
-		
-		
+
+
 //			var CircuitUnit = Parse.Object.extend("CircuitUnit");
 //			var query = new Parse.Query(CircuitUnit);
 //			query.equalTo('client', Client);
@@ -404,9 +411,9 @@ Parse.Cloud.beforeSave("Client", function(request, response) {
 		console.log("no address lookup");
 		response.success();
 	}
-	
+
 //	response.success();
-	
+
 
 });
 
@@ -432,7 +439,7 @@ var addAddressToClient = function(Client, response) {
 		lookupAddress(searchAddress).then(function(point) {
 
 			Client.set("position", point);
-			
+
 			console.log('setting new position:');
 			console.log(point);
 

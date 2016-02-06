@@ -1,5 +1,39 @@
 var _ = require('underscore');
 
+Parse.Cloud.job("PublicReadableEventLogs", function(request, status) {
+	Parse.Cloud.useMasterKey();
+
+	var promise = Parse.Promise.as();
+
+	var query = new Parse.Query("EventLog");
+	query.limit(1000);
+	query.addDescending('createdAt');
+	query.find().then(function(objects) {
+		_.each(objects, function(object) {
+
+			promise = promise.then(function() {
+				var acl = object.getACL();
+				acl.setPublicReadAccess(true);
+				acl.setPublicWriteAccess(false);
+				object.setACL(acl);
+
+				console.log(acl);
+
+				return object.save();
+			});
+
+		});
+
+	return promise;
+	}).then(function() {
+		status.success("completed successfully.");
+	}, function(err) {
+		console.error(err);
+		status.error(err.message);
+	});
+
+});
+
 Parse.Cloud.job("MarkAllCircuitStartedMailsSent", function(request, status) {
 	Parse.Cloud.useMasterKey();
 
@@ -61,7 +95,7 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 	Parse.Cloud.useMasterKey();
 
 	/*
-	 * Define which pointers and arrays that needs testing of orphan pointers 
+	 * Define which pointers and arrays that needs testing of orphan pointers
 	 */
 	var inspectJobs = [{
 		className : "Client",
@@ -75,37 +109,37 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 	];
 
 	var jobPromises = [];
-	
+
 	_.each(inspectJobs, function(job) {
-		
+
 		var className = job.className;
 		var pointerNames = job.pointerNames;
 		var arrayNames = job.pointerArrayNames;
-		
+
 		console.log("Running job for " + className + " with " + pointerNames.length + " pointerNames and " +  arrayNames.length + " pointerArrays ...");
-		
+
 		var query = new Parse.Query(className);
-		
+
 		// include pointers
 		_.each(pointerNames, function(pointerName) {
 			query.include(pointerName);
 		});
-		
+
 		// include array of pointers
 		_.each(arrayNames, function(arrayName) {
 			query.include(arrayName);
 		});
-		
+
 		var counter = 0;
-		
+
 		var jobPromise = query.each(function(object) {
-	
+
 			var promises = [];
 
 			// inspect pointerNames specified in job
 			_.each(pointerNames, function(pointerName) {
 				var pointer = object.get(pointerName);
-				
+
 				if (pointer && pointer.createdAt) {
 					// valid
 				} else {
@@ -118,7 +152,7 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 					promises.push(object.destroy());
 				}
 			});
-			
+
 			// inspect arrayNames specified in job
 			_.each(arrayNames, function(arrayName) {
 				var pointers = object.get(arrayName);
@@ -128,14 +162,14 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 						// valid
 					} else {
 						console.log(className + ": invalid pointer in array: " + arrayName + " in object: " + object.id);
-						
+
 						/*
 						 * Example reaction to an array containing invalid pointer:
 						 * Clearing the array
 						 */
 						object.set(arrayName, []);
 						promises.push(object.save());
-					}					
+					}
 				});
 			});
 			return Parse.Promise.when(promises).then(function() {
@@ -149,10 +183,10 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 		}, function(error) {
 			console.error("Error running job for class " + className + " message " + error.message);
 		});
-		
+
 		jobPromises.push(jobPromise);
 	});
-	
+
 	Parse.Promise.when(jobPromises).then().then(function() {
 		console.log("Background job complete!");
 		status.success("completed successfully.");

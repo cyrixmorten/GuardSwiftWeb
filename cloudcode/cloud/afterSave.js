@@ -67,17 +67,17 @@ var pushPinUpdate = function(pin, request) {
 };
 
 var pushNewAlarm = function(alarm) {
-	
+
 	Parse.Cloud.useMasterKey();
-	
+
 	var promise = new Parse.Promise();
 
 	alarm.get('owner').fetch().then(function(user) {
-	
+
 		if (!user.get('broadcast_alarms')) {
 			// locate responsible group
 			console.log('locating responsible alarmgroup');
-			
+
 			var query = new Parse.Query("AlarmGroup");
 			query.equalTo('owner', user);
 			return query.find();
@@ -85,14 +85,14 @@ var pushNewAlarm = function(alarm) {
 			// no need to enforce additional restrictions on query
 			return new Parse.Promise.as([]);
 		}
-		
+
 	}).then(function(alarmGroups) {
-		
+
 		console.log("found alarmGroups: " + alarmGroups.length);
-		
+
 		var installationQuery = new Parse.Query(Parse.Installation);
 		installationQuery.equalTo('owner', alarm.get('owner'));
-		
+
 		var responsibleGroups = [];
 		alarmGroups.forEach(function(alarmGroup) {
 			var responsible = alarmGroup.get('responsible');
@@ -106,7 +106,7 @@ var pushNewAlarm = function(alarm) {
 		if (responsibleGroups.length != 0) {
 			installationQuery.containedIn('alarmGroupName', responsibleGroups);
 		}
-		
+
 		return new Parse.Promise.as(installationQuery);
 	}).then(function(installationQuery) {
 		Parse.Push.send({
@@ -127,7 +127,7 @@ var pushNewAlarm = function(alarm) {
 	}, function(error) {
 		console.error(error.message);
 	});
-	
+
 
 
 	return promise;
@@ -330,36 +330,37 @@ Parse.Cloud.afterSave("EventLog", function(request) {
 
 	Parse.Cloud.useMasterKey();
 
-	var EventLog = request.object; 
+	var EventLog = request.object;
+
 	if (EventLog.get('eventCode') == 125) {
 		// alarm report event
 		var Alarm = EventLog.get('alarm');
 		Alarm.fetch().then(function(Alarm) {
-			
+
 			var Central = Alarm.get('central');
-			
+
 			if (!Central) {
 				console.error('missing central')
 			} else {
-			
+
 				var event = EventLog.get('event');
 				var amount = (EventLog.get('amount') != 0) ? EventLog.get('amount') : '';
 				var location = EventLog.get('clientLocation')
 				var remarks = EventLog.get('remarks')
-				
+
 				var message = '';
 				message += (event) ? "Hændelse: " + event + "\n" : '';
 				message += (amount) ? "Antal: " + amount + "\n" : '';
 				message += (location) ? "Placering: " + amount + "\n" : '';
 				message += (remarks) ? "\nBemærkninger:\n" + remarks : '';
-				
-				
+
+
 				sendResponseToCentralPointer(Central, Alarm,
 						central_responses.EVENT, message).then(function() {
 					console.log("Alarm event sent to central: " + event);
 				});
 			}
-			
+
 		});
 	}
 
@@ -406,9 +407,9 @@ Parse.Cloud.afterSave("DistrictWatchUnit", function(request) {
 
 	// pushPinUpdate(Pins.DISTRICTWATCH_UNIT, request);
 
-	
+
 	var districtWatch = districtWatchUnit.get("districtWatch");
-	
+
 	var addressName = districtWatchUnit.get("address");
 	var addressNumbers = districtWatchUnit.get("addressNumbers");
 
