@@ -82,7 +82,8 @@ StaticServlet.MimeMap = {
   'jpeg': 'image/jpeg',
   'gif': 'image/gif',
   'png': 'image/png',
-  'svg': 'image/svg+xml'
+  'svg': 'image/svg+xml',
+  'apk': 'application/vnd.android.package-archive'
 };
 
 var WEB_DIR = './app/';
