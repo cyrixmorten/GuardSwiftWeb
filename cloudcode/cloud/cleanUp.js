@@ -94,6 +94,12 @@ Parse.Cloud.job("DistrictWatchUnitSupervisions", function(request, status) {
 Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 	Parse.Cloud.useMasterKey();
 
+//	,{
+//		className : "CircuitUnit",
+//		pointerNames : ["client", "circuit"],
+//		pointerArrayNames: ["messages"]
+//	}
+
 	/*
 	 * Define which pointers and arrays that needs testing of orphan pointers
 	 */
@@ -101,10 +107,6 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 		className : "Client",
 		pointerNames : [],
 		pointerArrayNames: ["roomLocations", "contacts", "messages"]
-	},{
-		className : "CircuitUnit",
-		pointerNames : ["client", "circuit"],
-		pointerArrayNames: ["messages"]
 	}
 	];
 
@@ -134,6 +136,7 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 
 		var jobPromise = query.each(function(object) {
 
+
 			var promises = [];
 
 			// inspect pointerNames specified in job
@@ -153,9 +156,11 @@ Parse.Cloud.job("cleanupOrphanPointers", function(request, status) {
 				}
 			});
 
+
 			// inspect arrayNames specified in job
 			_.each(arrayNames, function(arrayName) {
 				var pointers = object.get(arrayName);
+
 				// inspect pointers in arrayName
 				_.each(pointers, function(pointer) {
 					if (pointer && pointer.createdAt) {
