@@ -481,7 +481,7 @@ app
 
 									var parseObject = holder.object;
 									if (parseObject) {
-										console.error("performing destroy");
+										console.error("performing archive");
 										// if configured to store in an array
 										if (configuration
 												&& configuration.toArray) {
@@ -513,7 +513,10 @@ app
 														.log("configured to store to array but missing 'arrayHolder' or 'arrayName'");
 											}
 										}
-										promises.push(parseObject.destroy());
+
+										parseObject.set('archive', true);
+
+										promises.push(parseObject.save());
 									} else {
 										console
 												.error('Did not find a parseObject with id '
@@ -556,26 +559,23 @@ app
 									return promise;
 								};
 
-								// this.fetchAllScoped = function(query) {
-								// var promise = new Parse.Promise();
-								// this
-								// .fetchAll(query)
-								// .then(
-								// function(parseObjects) {
-								// _this
-								// .storeParseObjects(parseObjects);
-								// promise.resolve();
-								// }, function(error) {
-								// promise.reject(error);
-								// });
-								// return promise;
-								// };
 
 								var fetchAllRecursive = function fetchRecursive(query, promise, loopCount, partialResults) {
 
 									clearStoredParseObjects();
-
 									loopCount = (loopCount) ? loopCount : 0;
+
+                                    if (loopCount == 0) {
+
+                                        query
+                                            .equalTo('owner', Parse.User
+                                                .current());
+
+
+                                        query.doesNotExist('archive');
+
+                                    }
+
 									partialResults = (partialResults)
 											? partialResults
 											: [];
@@ -583,9 +583,8 @@ app
 									var limit = 1000;
 									var skip = limit * loopCount;
 									console.log("skipping " + skip);
-									query
-											.equalTo('owner', Parse.User
-													.current());
+
+
 									query.limit(limit);
 									query.skip(skip);
 									query

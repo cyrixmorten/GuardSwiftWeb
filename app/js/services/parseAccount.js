@@ -2,6 +2,7 @@
 
 var app = angular.module('GuardSwiftApp.services');
 
+
 app.service('ParseService', function() {
 
 	if (document.location.hostname == "localhost") {
