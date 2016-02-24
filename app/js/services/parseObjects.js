@@ -104,15 +104,21 @@ app.factory('ParseGuard', ['StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
 				objectname : 'Guard',
-				attrs : ['guardId', 'name'],
+				attrs : ['guardId', 'name', 'accessStatic', 'accessRegular', 'accessDistrict'],
 				emptyTemplate : {
 					guardId : '',
-					name : ''
+					name : '',
+                    accessStatic: true,
+                    accessRegular: true,
+                    accessDistrict: true
 				},
 				filledTemplate : function(guard) {
 					return {
 						guardId : guard.getGuardId(),
-						name : guard.getName()
+						name : guard.getName(),
+                        accessStatic: guard.getAccessStatic(),
+                        accessRegular: guard.getAccessRegular(),
+                        accessDistrict: guard.getAccessDistrict()
 					};
 				}
 			});
@@ -661,7 +667,7 @@ app.factory('ParseReport', [
 								'reportEntries', 'deviceTimestamp', 'headerLogo', 'eventLogs'],
 						emptyTemplate : {
 							reportId : '',
-              taskTypeName: '',
+                            taskTypeName: '',
 							circuitStarted : '',
 							circuitUnit : '',
 							districtWatchStarted : '',
@@ -676,7 +682,6 @@ app.factory('ParseReport', [
 							type : '',
 							extraTimeSpent : '',
 							position : '',
-							clientName : '',
 							isExtra : '',
 							timeStartString : '',
 							timeEndString : '',
@@ -708,7 +713,6 @@ app.factory('ParseReport', [
 								type : object.getType(),
 								extraTimeSpent : object.getExtraTimeSpent(),
 								position : object.getPosition(),
-								clientName : object.getClientName(),
 								isExtra : object.getIsExtra(),
 								timeStartString : object.getTimeStartString(),
 								timeEndString : object.getTimeEndString(),
@@ -735,6 +739,13 @@ app.factory('ParseReport', [
 					query.exists('circuitUnit');
 
 					query.include('circuitStarted');
+
+					return query;
+				},
+				staticSupervisionQuery: function() {
+					var query = ParseObject.fetchAllQuery();
+
+					query.equalTo('taskTypeName', 'STATIC');
 
 					return query;
 				},

@@ -8,7 +8,7 @@ controllerModule.controller('StandardParseSearchCtrl', ['$scope',
 
 			$scope.searchOptions = {
 				search : {
-					parseObject : ParseObject,
+					parseObject : ParseObject
 				}
 			};
 

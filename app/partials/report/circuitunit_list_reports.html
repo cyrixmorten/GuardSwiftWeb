@@ -29,7 +29,7 @@
 					sortable="'circuitName'" filter="{ 'circuitName': 'text' }">{{crudObject.circuitName}}</td>
 				<td data-title="'Type'" header-class="'col-xs-1 text-center'"
 					sortable="'type'" filter="{ 'type': 'text' }">{{crudObject.type}}</td>
-				<td data-title="'Kunde'" header-class="'col-xs-2 text-center'"
+				<td data-title="'Kunde'" header-class="'col-xs-5 text-center'"
 					sortable="'clientName'" filter="{ 'clientName': 'text' }">{{crudObject.clientName}}</td>
 				<td data-title="'Extra tid'" header-class="'col-xs-1 text-center'"
 					sortable="'extraTimeSpent'" filter="{ 'extraTimeSpent': 'text' }">{{crudObject.extraTimeSpent}}</td>
@@ -44,6 +44,7 @@
 					sortable="'guardName'" filter="{ 'guardName': 'text' }">{{crudObject.guardName}}</td> -->
 				<td data-title="'Oprettet'" header-class="'col-xs-2 text-center'">{{crudObject.deviceTimestamp
 					| date:'HH:mm dd-MM-yyyy'}}</td>
+				<!--<td data-title="'Hændelser'" header-class="'col-xs-1 text-center'">{{crudObject.eventLogs.length}}</td>-->
 				<td class="col-xs-1 text-right"><gs-link-button type="info"
 						size="sm" target="_blank"
 						link="{{ 'report' | routeSegmentUrl : {reportId : crudObject.reportId} }}"

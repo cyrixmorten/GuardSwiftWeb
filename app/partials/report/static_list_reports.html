@@ -1,0 +1,39 @@
+<div class="panel panel-primary anim">
+    <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">
+            {{'STATIC_SUPERVISION_REPORTS' | translate}}
+        </h3>
+
+    </div>
+    <div class="panel-body" cg-busy="detailsPromise">
+        <gs-search-bar-day-date search-options="searchOptions"
+                                search-result="searchResult(result)"></gs-search-bar-day-date>
+
+        <table ng-table="tableParams" show-filter="true"
+               class="table table-hover table-condensed table-striped table-responsive">
+
+            <tr ng-repeat="crudObject in $data"
+                ng-click="showDetails(crudObject)">
+
+                <td data-title="'Kunde'" header-class="'col-xs-4 text-center'"
+                    sortable="'clientName'" filter="{ 'clientName': 'text' }">{{crudObject.clientName}}
+                </td>
+
+                <td data-title="'Vægter'" header-class="'col-xs-4 text-center'"
+                    sortable="'guardName'" filter="{ 'guardName': 'text' }">{{crudObject.guardName}}
+                </td>
+                <td data-title="'Hændelser'" header-class="'col-xs-1 text-center'">{{crudObject.eventLogs.length}}</td>
+                <td data-title="'Oprettet'" header-class="'col-xs-2 text-center'">{{crudObject.deviceTimestamp
+                    | date:'HH:mm dd-MM-yyyy'}}
+                </td>
+                <td class="col-xs-1 text-right">
+                    <gs-link-button type="info"
+                                    size="sm" target="_blank"
+                                    link="{{ 'report' | routeSegmentUrl : {reportId : crudObject.reportId} }}"
+                                    fa-left="file-text-o" fa-right="angle-right"
+                                    button-text="{{
+							'SHOW_REPORT' | translate}}"></gs-link-button>
+            </tr>
+        </table>
+    </div>
+</div>
