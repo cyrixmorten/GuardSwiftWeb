@@ -16,9 +16,7 @@ Parse.Cloud.job("GeneratePDFReports", function (request, status) {
         Parse.Cloud.httpRequest({
             method: 'POST',
             url: 'http://www.guardswift.com/api/pdfmake',
-            body: {
-                doc: JSON.stringify(createDocDefinition(report))
-            }
+            body: JSON.stringify(createDocDefinition(report))
         }, function (httpResponse) {
             promise.resolve(httpResponse);
         }, function (httpResponse) {
