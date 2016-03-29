@@ -12,8 +12,11 @@ exports.pdfmake = function(req, res) {
   var printer = new PdfPrinter(fonts);
 
 
-  if (req.body && req.body.content) {
-    var pdfDoc = printer.createPdfKitDocument(req.body);
+  if (req.body && req.body.doc) {
+    res.writeHead(200, {
+      'Content-Type': 'application/pdf'
+    });
+    var pdfDoc = printer.createPdfKitDocument(req.body.doc);
     //pdfDoc.pipe(fs.createWriteStream('basics.pdf'));
     pdfDoc.pipe(res);
     pdfDoc.end();

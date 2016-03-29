@@ -1,7 +1,5 @@
-var pdfMake = require('cloud/lib/pdfmake/pdfmake.js');
-var vfs_fonts = require('cloud/lib/pdfmake/vfs_fonts.js');
 var moment = require('cloud/lib/moment/moment.min.js');
-var _ = require('underscore');
+var _ = require('cloud/lib/underscore.js');
 
 
 
@@ -13,11 +11,32 @@ Parse.Cloud.job("GeneratePDFReports", function(request, status) {
 	query.doesNotExist("pdf_test");
 	query.first(function(report) {
 
-		var pdf = createPDF(report);
+		return Parse.Cloud.httpRequest({
+			method: 'POST',
+			url: 'http://www.guardswift.com/api/pdfmake',
+			body : {
+				doc: createDocDefinition(report)
+			}
+		}).then(function(httpResponse) {
+			// success
+			console.log('pdf received');
 
-		report.set("pdf_test", pdf);
+			var file = new Parse.File("report.pdf", httpResponse.buffer);
 
-		return object.save();
+			return file.save().then(function() {
+				console.log('pdf saved', file.url);
+
+				report.set("pdf", file);
+
+				return report.save();
+			}, function(error) {
+				console.error(error);
+			});
+
+		},function(httpResponse) {
+			// error
+			console.error('Request failed with response code ' + httpResponse.status);
+		});
 	}).then(function() {
 		status.success("completed successfully.");
 	}, function(err) {
@@ -27,7 +46,7 @@ Parse.Cloud.job("GeneratePDFReports", function(request, status) {
 
 });
 
-var createPDF = function (report) {
+var createDocDefinition = function (report) {
 
 	var client = {
 		name: report.clientName,
@@ -109,7 +128,7 @@ var createPDF = function (report) {
 	};
 
 
-	return pdfMake.createPdf(docDefinition);
+	return docDefinition;
 
 
 };

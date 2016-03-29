@@ -11,4 +11,4 @@ require("cloud/static.js");
 require("cloud/manageCircuitsStarted.js");
 require("cloud/payment.js");
 require("cloud/usageFunctions.js");
-require("cloud/pdf_generation.js");
+require("cloud/pdfReports.js");
