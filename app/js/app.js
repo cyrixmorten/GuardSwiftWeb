@@ -102,9 +102,13 @@ angular.module('GuardSwiftApp', [
         when('/gps', 'gps'). // searchable GPS tracker
         when('/gps/regular_panel', 'experiments_regular_panel').when('/gps/regular_pocket', 'experiments_regular_pocket').when('/gps/regular_upper', 'experiments_regular_upper').when('/gps/dw_1', 'experiments_dw1').when('/gps/dw_2', 'experiments_dw2').when('/gps/dw_3', 'experiments_dw3').when('/gps/dw_4', 'experiments_dw4').when('/gps/dw_5', 'experiments_dw5').when('/gps/dw_6', 'experiments_dw6').when('/gps/dw_7', 'experiments_dw7').
 
+
         // -- Public logs
         //	when('/public/logs/gps/:id', 'log.gpspublic').
         //	when('/public/alarm/:id', 'report.alarm').
+
+
+        segment('home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'}).
 
         segment('login', {
             templateUrl: 'partials/login.html',

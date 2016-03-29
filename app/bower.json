@@ -42,7 +42,9 @@
     "ng-table": "~0.5.4",
     "parse-angular-patch": ">=0.1.2",
     "parse-js-sdk": ">=1.4.0",
-    "lodash": "~3.8.0"
+    "lodash": "~3.8.0",
+    "jspdf": "^1.2.61",
+    "pdfmake": "^0.1.20"
   },
   "resolutions": {
     "angular-animate": ">=1.4.7",

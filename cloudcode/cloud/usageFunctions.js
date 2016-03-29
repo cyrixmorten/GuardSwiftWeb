@@ -1,4 +1,4 @@
-var moment = require('cloud/moment/moment-timezone.js');
+var moment = require('cloud/lib/moment/moment-timezone.js');
 var _ = require('underscore');
 
 var Base64 = {
@@ -439,7 +439,7 @@ Parse.Cloud.job("usageEventLogs", function(request, status) {
 			// The file has been saved to Parse.
 			var statistics = new Parse.Object("Statistics");
 
-			statistics.set("dayliEventLogs", file);
+			statistics.set("dailyEventLogs", file);
 			statistics.save().then(function() {
 				status.success("completed successfully.");
 			});

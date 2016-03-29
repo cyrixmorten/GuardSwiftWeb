@@ -1,4 +1,4 @@
-var SendGrid = require("cloud/sendgrid.js");
+var SendGrid = require("cloud/lib/sendgrid.js");
 var _ = require('underscore');
 
 SendGrid.initialize("cyrixmorten", "spinK27N2");
@@ -42,7 +42,7 @@ var emailSendFailed = function(email_failed, result) {
 		console.error(JSON.stringify(email));
 		console.error("---");
 
-}
+};
 
 exports.sendTextEmail = function(to, replyto, subject, mail, from) {
 
@@ -78,7 +78,7 @@ exports.createEmail = function(options) {
 	
 	console.log("createEmail: " + JSON.stringify(options));
 
-	var fromMail = (options.from) ? options.from : "noreply@guardswift.com";
+	var fromMail = (options.from) ? options.from : "jvh@guardswift.com";
 	var replyMail = (options.replyTo) ? options.replyTo : "cyrixmorten@gmail.com";
 
 	var email = SendGrid.Email({
@@ -86,6 +86,7 @@ exports.createEmail = function(options) {
 	});
 	email.setSubject(options.subject);
 	email.setHTML(options.html);
+	email.setText(options.html);
 	email.addBcc(options.bcc);
 	email.setReplyTo(replyMail);
 	email.setFrom(fromMail);
@@ -99,7 +100,7 @@ exports.sendMail = function(email) {
 			.fail(function(result) {
 				emailSendFailed(email, result)
 			});
-}
+};
 
 exports.sendHTMLEmail = function(to, replyTo, subject, html, from) {
 
@@ -108,7 +109,7 @@ exports.sendHTMLEmail = function(to, replyTo, subject, html, from) {
 		replyTo: replyTo,
 		subject: subject,
 		html: html,
-		from: from,
+		from: from
 	});
 
 	return exports.sendMail(email);

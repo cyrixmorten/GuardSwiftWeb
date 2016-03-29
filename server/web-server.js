@@ -11,7 +11,8 @@ var DEFAULT_PORT = 8000;
 function main(argv) {
   new HttpServer({
     'GET': createServlet(StaticServlet),
-    'HEAD': createServlet(StaticServlet)
+    'HEAD': createServlet(StaticServlet),
+    'POST': createServlet(StaticServlet)
   }).start(Number(argv[2]) || DEFAULT_PORT);
 }
 
@@ -36,11 +37,12 @@ function createServlet(Class) {
 function HttpServer(handlers) {
   this.handlers = handlers;
   this.server = http.createServer(this.handleRequest_.bind(this));
+
 }
 
 HttpServer.prototype.start = function(port) {
   this.port = process.env.PORT || 5000;
-  this.server.listen(this.port)
+  this.server.listen(this.port);
   console.log('Http Server running at http://localhost:' + this.port + '/');
 };
 
@@ -51,19 +53,53 @@ HttpServer.prototype.parseUrl_ = function(urlString) {
 };
 
 HttpServer.prototype.handleRequest_ = function(req, res) {
+  var self = this;
   var logEntry = req.method + ' ' + req.url;
-  if (req.headers['user-agent']) {
-    logEntry += ' ' + req.headers['user-agent'];
-  }
-  util.puts(logEntry);
-  req.url = this.parseUrl_(req.url);
-  var handler = this.handlers[req.method];
-  if (!handler) {
-    res.writeHead(501);
-    res.end();
+  if (req.method === 'POST') {
+    if (req.url === '/pdfmake') {
+      var fonts = {
+        Roboto: {
+          normal: './server/fonts/Roboto-Regular.ttf',
+          bold: './server/fonts/Roboto-Medium.ttf',
+          italics: './server/fonts/Roboto-Italic.ttf',
+          bolditalics: './server/fonts/Roboto-Italic.ttf'
+        }
+      };
+
+      var PdfPrinter = require('pdfmake/src/printer');
+      var printer = new PdfPrinter(fonts);
+
+      console.log(req);
+
+      if (req.body) {
+        var pdfDoc = printer.createPdfKitDocument(req.body);
+        //pdfDoc.pipe(fs.createWriteStream('basics.pdf'));
+        pdfDoc.pipe(res);
+        pdfDoc.end();
+      } else {
+        res.writeHead(500, {
+          'Content-Type': 'text/html'
+        });
+        res.write('Document definition missing');
+        res.end();
+      }
+
+    }
   } else {
-    handler.call(this, req, res);
+    if (req.headers['user-agent']) {
+      logEntry += ' ' + req.headers['user-agent'];
+    }
+    util.puts(logEntry);
+    req.url = this.parseUrl_(req.url);
+    var handler = this.handlers[req.method];
+    if (!handler) {
+      res.writeHead(501);
+      res.end();
+    } else {
+      handler.call(this, req, res);
+    }
   }
+
 };
 
 /**
@@ -98,7 +134,8 @@ StaticServlet.prototype.handleRequest = function(req, res) {
   if (path === WEB_DIR) {
 	// append root dir with index.html
 	path = path + 'index.html';
-  } 
+  }
+
   //if (dir !== 'downloads')
   //  return self.sendForbidden_(req, res, path);
   fs.stat(path, function(err, stat) {
@@ -106,9 +143,10 @@ StaticServlet.prototype.handleRequest = function(req, res) {
       return self.sendMissing_(req, res, path);
     if (stat.isDirectory())
       return self.sendDirectory_(req, res, path);
+
     return self.sendFile_(req, res, path);
   });
-}
+};
 
 StaticServlet.prototype.sendError_ = function(req, res, error) {
   res.writeHead(500, {

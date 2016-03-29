@@ -1,7 +1,8 @@
-var moment = require('cloud/moment/moment-timezone.js');
-var Mailing = require("cloud/mailing.js");
+var moment = require('cloud/lib/moment/moment-timezone.js');
 var s = require("cloud/lib/underscore.string.min.js");
 var _ = require('underscore');
+
+var Mailing = require("cloud/mailing.js");
 
 var timeZone = 'Europe/Copenhagen'; // todo load from user(owner)
 
@@ -257,7 +258,8 @@ var sendCombinedReportToDeveloper = function(allMailReportsForUsers, momentdate)
 
 		if (mailReports.length > 0) {
 			// send to company
-			var companySubject = mailSubject + " " + user.get('username');
+			var companyName =  user.get('username');
+			var companySubject = mailSubject + " " + companyName;
 			var companyReport = createGuardingCompanyReport(user, mailReports);
 			var companyReceivers = user.get('notificationEmails') || [];
 

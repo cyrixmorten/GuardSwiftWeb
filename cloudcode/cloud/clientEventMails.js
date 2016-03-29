@@ -1,4 +1,4 @@
-var moment = require('cloud/moment/moment-timezone.js');
+var moment = require('cloud/lib/moment/moment-timezone.js');
 
 var Mailing = require("cloud/mailing.js");
 

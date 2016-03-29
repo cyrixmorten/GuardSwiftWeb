@@ -515,7 +515,7 @@ var lookupAddress = function(searchAddress) {
 				console.error(httpResponse);
 				promise.reject("Failed to locate coordinate for : "
 						+ searchAddress);
-			};
+			}
 
 		},
 		error : function(httpResponse) {

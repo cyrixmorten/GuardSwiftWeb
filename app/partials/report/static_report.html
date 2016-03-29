@@ -1,69 +1,79 @@
-<!-- header -->
+<!-- Options bar -->
 <div class="row">
-	<div class="col-xs-8">
-	</div>
-	<div class="col-xs-4 text-right">
-		<img ng-src="{{headerLogo1Url}}" width="150" height="200"></img>
-	</div>
-	<!-- <div class="col-xs-4 text-right">Dato: {{report.createdAt | date:'dd-MM-yyyy'}}</div> -->
+    <div class="col-xs-12">
+        <button class="button" ng-click="initDownloadPDF()">Download PDF</button>
+    </div>
 </div>
-<!-- headline -->
-<div class="row page-header">
-	<div class="col-xs-12">
-		<h1>
-			<div class="text-center">
-				{{report.clientName}} <small>{{report.clientAddress}} {{report.clientAddressNumber}}</small>
-			</div>
-		</h1>
-	</div>
-</div>
-<br />
-<!-- client -->
-<div class="well well-sm">
-	<div class="row">
-		<div class="col-xs-12 text-right">Dato: {{report.deviceTimestamp |
-			date:'dd-MM-yyyy'}}</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3">
-			<div>
-				Vagt ID: <b>{{report.guardId}}</b>
-			</div>
-		</div>
-		<div class="col-xs-9">
-			<div>
-				Vagt navn: <b>{{report.guardName}}</b>
-			</div>
-		</div>
-	</div>
-</div>
-<br />
-<div class="well well-sm">
-	<div class="row">
-		<div class="col-xs-2">
-			<b>Tidspunkt</b>
-		</div>
-		<div class="col-xs-10">
-			<b>Bemærkning</b>
-		</div>
-	</div>
-	<hr>
-	<div class="row"
-		ng-repeat="eventlog in entries | filter:{taskEvent:'OTHER'}">
-		<div class="col-xs-2">{{eventlog.deviceTimestamp | date: 'HH:mm'}}</div>
-		<div class="col-xs-5">{{eventlog.remarks}}</div>
-	</div>
-	<br />
-</div>
+<div id="report">
+    <!-- header -->
+    <div class="row">
+        <div class="col-xs-8">
+        </div>
+        <div class="col-xs-4 text-right">
+            <img ng-src="{{headerLogo1Url}}" width="150" height="200"></img>
+        </div>
+        <!-- <div class="col-xs-4 text-right">Dato: {{report.createdAt | date:'dd-MM-yyyy'}}</div> -->
+    </div>
+    <!-- headline -->
+    <div class="row page-header">
+        <div class="col-xs-12">
+            <h1>
+                <div class="text-center">
+                    {{report.clientName}}
+                    <small>{{report.clientAddress}} {{report.clientAddressNumber}}</small>
+                </div>
+            </h1>
+        </div>
+    </div>
+    <br/>
+    <!-- client -->
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-xs-12 text-right">Dato: {{report.deviceTimestamp |
+                date:'dd-MM-yyyy'}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <div>
+                    Vagt ID: <b>{{report.guardId}}</b>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div>
+                    Vagt navn: <b>{{report.guardName}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-xs-2">
+                <b>Tidspunkt</b>
+            </div>
+            <div class="col-xs-10">
+                <b>Bemærkning</b>
+            </div>
+        </div>
+        <hr>
+        <div class="row"
+             ng-repeat="eventlog in entries | filter:{taskEvent:'OTHER'}">
+            <div class="col-xs-2">{{eventlog.deviceTimestamp | date: 'HH:mm'}}</div>
+            <div class="col-xs-5">{{eventlog.remarks}}</div>
+        </div>
+        <br/>
+    </div>
 
 
-
-<div class="row">
-	<div class="col-xs-12 text-center">
-		<large>YDERLIGERE OPLYSNINGER PÅ TLF. 86 16 46 44</large>
-	</div>
-	<div class="col-xs-12 text-center">
-		<small>Rapporten er genereret af GuardSwift - elektronisk
-			runderings- og alarmhåndtering via smartphones</small>
-	</div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <large>YDERLIGERE OPLYSNINGER PÅ TLF. 86 16 46 44</large>
+        </div>
+        <div class="col-xs-12 text-center">
+            <small>Rapporten er genereret af GuardSwift - elektronisk
+                runderings- og alarmhåndtering via smartphones
+            </small>
+        </div>
+    </div>
 </div>

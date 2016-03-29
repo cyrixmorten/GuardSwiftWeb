@@ -17,7 +17,25 @@ Parse.Cloud.beforeSave("_User", function(request, response) {
     response.success();
 });
 
+var updateLogACL = function(request) {
+
+	Parse.Cloud.useMasterKey();
+
+	if (request.object.isNew()) {
+		var acl = new Parse.ACL();
+		acl.setPublicReadAccess(true);
+		acl.setPublicWriteAccess(false);
+		if (request.user) {
+			acl.setReadAccess(request.user.id, true)
+			acl.setWriteAccess(request.user.id, true)
+		}
+		request.object.setACL(acl);
+	}
+};
+
 Parse.Cloud.beforeSave("Report", function(request, response) {
+
+	updateLogACL(request);
 
 	Parse.Cloud.useMasterKey();
 
@@ -31,6 +49,8 @@ Parse.Cloud.beforeSave("Report", function(request, response) {
 				columnName = "staticTaskReports";
 		if (Report.has('circuitUnit'))
 			columnName = "regularReports";
+
+
 
 		if (columnName) {
 			incrementUsageCount(request, [columnName, "reports"]).then(function() {
@@ -49,7 +69,7 @@ Parse.Cloud.beforeSave("GPSTracker", function(request, response) {
 	if (request.object.isNew()) {
 		return incrementUsageCount(request, 'gpsTracker').then(function() {
 			response.success();
-		};
+		})
 	} else {
 		response.success();
 	}
@@ -203,6 +223,8 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 // };
 
 Parse.Cloud.beforeSave("EventLog", function(request, response) {
+	updateLogACL(request);
+
 	var EventLog = request.object;
 
 	// avoid 'undefined' for automatic
@@ -211,10 +233,6 @@ Parse.Cloud.beforeSave("EventLog", function(request, response) {
 		EventLog.set('automatic', false);
 	}
 
-	var acl = new Parse.ACL();
-	acl.setPublicReadAccess(true);
-	acl.setPublicWriteAccess(false);
-	EventLog.set('ACL', acl);
 
 	response.success();
 });

@@ -137,7 +137,7 @@ app.factory('ParseGroup', ['StandardParseObject',
 				attrs : ['name', 'responsible'],
 				emptyTemplate : {
 					name : '',
-					responsible : false,
+					responsible : false
 				},
 				filledTemplate : function(object) {
 					return {
