@@ -2,9 +2,11 @@
   "name": "guardswift-web",
   "description": "",
   "scripts": {
-    "install": "cd app && npm install",
+    "install": "npm run install:server && npm run install:client",
+    "install:server": "cd server && npm install",
+    "install:client": "cd app && npm install",
     "postinstall": "cd app && node_modules/.bin/bower --config.analytics=false install",
-    "start": "node server/app.js"
+    "start": "cd server && node app.js"
   },
   "dependencies": {
   }
