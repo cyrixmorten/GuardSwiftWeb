@@ -693,7 +693,7 @@ app.factory('ParseReport', [
 						filledTemplate : function(object) {
 							return {
 								reportId : object.getReportId(),
-                taskTypeName : object.getTaskTypeName(),
+                				taskTypeName : object.getTaskTypeName(),
 								circuitStarted : ParseCircuitStarted.getScopedObject(object.getCircuitStarted()),
 								circuitName : function() {
 									var circuitStarted = ParseCircuitStarted.getScopedObject(object.getCircuitStarted());

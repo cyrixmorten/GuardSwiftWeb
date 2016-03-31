@@ -8,11 +8,6 @@ var emailSendFailed = function(email_failed, result) {
 			return;
 		}
 
-		console.error("Error sending mail:");
-		console.error(JSON.stringify(email_failed));
-		console.error(JSON.stringify(result));
-		console.error("---");
-
 		var message = 'Hej, der var desværre problemer med at afsende en eller flere emails <br/><br/>'
 				+ 'Detaljer om mailen:<br/>'
 				+ '------------------<br/>'
@@ -86,8 +81,12 @@ exports.createEmail = function(options) {
 	});
 	email.setSubject(options.subject);
 	email.setHTML(options.html);
-	email.setText(options.html);
-	email.addBcc(options.bcc);
+	if (options.text) {
+		email.setText(options.text);
+	}
+	if (options.bcc) {
+		email.addBcc(options.bcc);
+	}
 	email.setReplyTo(replyMail);
 	email.setFrom(fromMail);
 
@@ -144,9 +143,6 @@ Parse.Cloud.define("sendHTMLmail", function(request, response) {
 
 	var email = exports.createEmail(options);
 
-	console.log("sendHTMLmail");
-	console.log(JSON.stringify(email));
-	console.log("----");
 
 	exports.sendMail(email).done(function() {
 		response.success("Email successfully sent!");

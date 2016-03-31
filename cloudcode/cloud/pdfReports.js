@@ -2,46 +2,49 @@ var moment = require('cloud/lib/moment/moment.min.js');
 var _ = require('cloud/lib/underscore.js');
 
 
-Parse.Cloud.job("GeneratePDFReports", function (request, status) {
+Parse.Cloud.define("generatePDFReport", function (request, response) {
     Parse.Cloud.useMasterKey();
 
-    var file;
+    if (!request.params.reportId) {
+        response.error('missing reportId');
+        return;
+    }
 
     var query = new Parse.Query("Report");
-    query.doesNotExist("pdf_test");
-    query.first(function (report) {
+    query.equalTo('objectId', request.params.reportId);
+    query.include('client');
+    query.include('eventLogs');
+    query.first().then(function(report) {
 
-        var promise = new Parse.Promise();
-
-        Parse.Cloud.httpRequest({
+        return Parse.Cloud.httpRequest({
             method: 'POST',
             url: 'http://www.guardswift.com/api/pdfmake',
-            body: JSON.stringify(createDocDefinition(report))
-        }, function (httpResponse) {
-            promise.resolve(httpResponse);
-        }, function (httpResponse) {
-            promise.reject(httpResponse);
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: createDocDefinition(report)
+        }).then(function (httpResponse) {
+
+            var file = new Parse.File("report.pdf", {
+                base64: httpResponse.buffer.toString('base64', 0, httpResponse.buffer.length)
+            }, 'application/pdf');
+
+            return file.save().then(function () {
+
+                report.set("pdf", file);
+
+                return report.save();
+            }).then(function (report) {
+                response.success(httpResponse);
+            })
+        }, function (error) {
+            console.error(error);
+            response.error(error);
         });
 
-        return promise;
-
-    }).then(function (httpResponse) {
-        console.log('pdf received', JSON.stringify(httpResponse));
-
-        file = new Parse.File("report.pdf", httpResponse.buffer, 'application/pdf');
-
-        return file.save();
-    }).then(function () {
-        console.log('pdf saved', file.url);
-
-        report.set("pdf", file);
-
-        return report.save();
-    }).then(function () {
-        status.success("completed successfully.");
     }).fail(function (err) {
         console.error(err);
-        status.error(err.message);
+        response.error(err.message);
     });
 
 });
@@ -49,22 +52,28 @@ Parse.Cloud.job("GeneratePDFReports", function (request, status) {
 var createDocDefinition = function (report) {
 
     var client = {
-        name: report.clientName,
-        address: report.clientAddress + ' ' + report.clientAddressNumber,
+        name: report.get('clientName'),
+        address: report.get('clientAddress') + ' ' + report.get('clientAddressNumber'),
     };
 
     var guard = {
-        id: report.guardId,
-        name: report.guardName
+        id: report.get('guardId'),
+        name: report.get('guardName')
     };
 
-    var reportentries = _.where(report.eventLogs, {taskEvent: 'OTHER'});
-
-    var timestamps = _.map(reportentries, function (entry) {
-        return moment(entry.deviceTimestamp).format('MM:SS')
+    var reportEntries = _.filter(report.get('eventLogs'), function(eventLog) {
+        return eventLog.get('task_event') === 'OTHER';
     });
 
-    var remarks = _.map(reportentries, 'remarks');
+    var timestamps = _.map(reportEntries, function (entry) {
+        return moment(entry.get('deviceTimestamp')).format('MM:SS');
+    });
+
+    var remarks = _.map(reportEntries, function(entry) {
+        return entry.get('remarks');
+    });
+
+    var reportContent = _.zip(timestamps, remarks);
 
     var docDefinition = {
         pageMargins: [40, 60, 40, 60],
@@ -96,7 +105,7 @@ var createDocDefinition = function (report) {
             {
                 table: {
                     headerRows: 0,
-                    body: _.zip(timestamps, remarks)
+                    body: _.isEmpty(reportContent) ? [[]] : reportContent
                 },
                 layout: 'noBorders',
                 margin: [0, 30]
@@ -126,8 +135,6 @@ var createDocDefinition = function (report) {
 
     };
 
-
     return docDefinition;
-
 
 };

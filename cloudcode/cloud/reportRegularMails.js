@@ -40,12 +40,11 @@ var findReports = function(user, fromTime, toTime) {
 	var reportQuery = new Parse.Query("Report");
 
 	reportQuery.equalTo('owner', user);
+	reportQuery.notEqualTo('taskTypeName', 'STATIC');
 	reportQuery.greaterThan("deviceTimestamp", fromTime);
 	reportQuery.lessThan("deviceTimestamp", toTime);
-
 	reportQuery.include(['owner', 'client', 'client.contacts']);
-
-	reportQuery.ascending("deviceTimestamp")
+	reportQuery.ascending("deviceTimestamp");
 
 	return reportQuery.find();
 };

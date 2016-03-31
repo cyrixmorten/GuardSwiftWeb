@@ -21,8 +21,8 @@
 (function() {
 
   /*
-  SMTPAPI Library for Parse
-  */
+   SMTPAPI Library for Parse
+   */
 
   function smtpapi(header) {
     header = header || {};
@@ -118,8 +118,8 @@
   };
 
   /*
-  SendGrid.Email implementation for Parse
-  */
+   SendGrid.Email implementation for Parse
+   */
 
   function Email(mail) {
     if (!(this instanceof Email)) {
@@ -129,9 +129,6 @@
     mail = mail || {};
     smtpapi.call(this, mail['x-smtpapi']);
     this.body = {};
-    this.toCounter = 0;
-    this.bccCounter = 0;
-    this.tonameCounter = 0;
     this.addTo(mail.to || mail['to[]']);
     this.addToName(mail.toname || mail['toname[]']);
     this.addBcc(mail.bcc || mail['bcc[]']);
@@ -150,33 +147,15 @@
 
   Email.prototype.addTo = function(email) {
     smtpapi.prototype.addTo.call(this, email);
-    if (Array.isArray(email)) {
-      for (var i = 0, len = email.length; i < len; i++) {
-        this.body['to[' + this.toCounter++ +']'] = email[i];
-      }
-    } else {
-      this.body['to['+ this.toCounter++ +']'] = email;
-    }
+    this.body['to[]'] = email;
   };
 
   Email.prototype.addToName = function(name) {
-    if (Array.isArray(name)) {
-      for (var i = 0, len = name.length; i < len; i++) {
-        this.body['toname[' + this.tonameCounter++ +']'] = name[i];
-      }
-    } else {
-      this.body['toname['+ this.tonameCounter++ +']'] = name;
-    }
+    this.body['toname[]'] = name;
   };
 
   Email.prototype.addBcc = function(bcc) {
-    if (Array.isArray(bcc)) {
-      for (var i = 0, len = bcc.length; i < len; i++) {
-        this.body['bcc[' + this.bccCounter++ + ']'] = bcc[i];
-      }
-    } else {
-      this.body['bcc['+ this.bccCounter++ +']'] = bcc;
-    }
+    this.body['bcc[]'] = bcc;
   };
 
   Email.prototype.setFrom = function(email) {
@@ -263,7 +242,7 @@
    * Initialize the SendGrid module with the proper credentials
    * @param {String} apiUser Your SendGrid apiUser
    * @param {String} apiKey Your SendGrid apiKey
-  */
+   */
 
   function SendGrid() {
     //Private
@@ -282,6 +261,7 @@
       }
       mail.api_user = credentials.api_user;
       mail.api_key = credentials.api_key;
+
       return mail;
     };
 
@@ -289,10 +269,11 @@
     this.send = function (email, cb) {
       var promise = new Parse.Promise();
 
+
       Parse.Cloud.httpRequest({
         method: options.method,
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-				url: options.uri,
+        url: options.uri,
         body: _buildBody(email),
         success: function(httpResponse) {
           if (cb && cb.success) {
