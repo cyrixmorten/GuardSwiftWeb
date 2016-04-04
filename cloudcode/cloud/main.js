@@ -1,15 +1,33 @@
 require("cloud/app.js");
-require("cloud/alarmFunctions.js");
+
+// global variables API keys etc,..
+require("cloud/static.js");
+
+//require("cloud/alarmFunctions.js");
+
+// trigger functions
 require("cloud/beforeSave.js");
 require("cloud/afterSave.js");
 require("cloud/afterDelete.js");
-require("cloud/cleanUp.js");
-require("cloud/static.js");
+
+// helper functions
+require("cloud/fileDelete.js");
 require("cloud/mailing.js");
-require("cloud/reportRegularMails.js");
-require("cloud/reportStaticMails.js");
+
+// cleanup/statistics
+require("cloud/cleanUp.js");
 require("cloud/compatibility.js");
-require("cloud/manageCircuitsStarted.js");
-require("cloud/payment.js");
 require("cloud/usageFunctions.js");
-require("cloud/pdfReports.js");
+
+// payment
+require("cloud/payment.js");
+
+// daily upkeep
+require("cloud/manageDailyReset.js");
+
+// reports
+//require("cloud/reportRegularMails.js");
+require("cloud/reportToPDF.js");
+require("cloud/reportSend.js");
+require("cloud/reportSendDaily.js");
+
