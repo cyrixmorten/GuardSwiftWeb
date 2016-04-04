@@ -97,6 +97,7 @@ var manageCircuits = function(now_dayOfWeek, now_hour, forceUpdate) {
 	if (!forceUpdate) {
 		queryCircuits.notEqualTo('createdDay', now_dayOfWeek);
 	}
+	queryCircuits.doesNotExist('archive');
 	queryCircuits
 			.find()
 			.then(
@@ -232,6 +233,7 @@ var manageDistrictWatches = function(now_dayOfWeek, now_hour, forceUpdate) {
 	if (!forceUpdate) {
 		queryDistrictWatches.notEqualTo('createdDay', now_dayOfWeek);	
 	}
+	queryDistrictWatches.doesNotExist('archive');
 	queryDistrictWatches
 			.find()
 			.then(
