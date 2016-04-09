@@ -1,13 +1,13 @@
 var moment = require('cloud/lib/moment/moment-timezone.js');
+var s = require("cloud/lib/underscore.string.min.js");
 var _ = require('cloud/lib/underscore.js');
 
 // todo store/retrieve from user
 var timeZone = 'Europe/Copenhagen';
 
-var createDocDefinition = function(report) {
+var createDocDefinition = function (report) {
 
     if (report.has('circuitUnit')) {
-        //return staticReportDefinition(report);
         return regularReportDefinition(report);
     }
     if (report.has('staticTask')) {
@@ -34,6 +34,8 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
         report: {},
         httpResponse: {}
     };
+
+    var documentDefinition = {};
 
     query.first().then(function (report) {
 
@@ -74,39 +76,45 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
 
                 if (report.has('pdf')) {
 
-                    console.log('Deleting previous report for ' + report.id);
-
                     promise = Parse.Cloud.run('fileDelete', {
                         file: report.get('pdf')
                     });
                 }
 
                 return promise;
-           };
+            };
 
             /**
              *  Create a new PDF report and store it
              */
 
 
-            //console.log(JSON.stringify(createDocDefinition(report)));
 
-            return deletePromise(report).then(function() {
+            documentDefinition = createDocDefinition(report);
+
+            console.log('creating document definition: ');
+            console.log(JSON.stringify(documentDefinition));
+
+            return deletePromise(report).then(function () {
                 return Parse.Cloud.httpRequest({
                     method: 'POST',
                     url: 'http://www.guardswift.com/api/pdfmake',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8'
                     },
-                    body: createDocDefinition(report)
+                    body: documentDefinition
                 })
-            }, function(error) {
+            }, function (error) {
                 console.error('Error deleting report');
-                console.error(error);
+                console.error({
+                    message: 'Error deleting report',
+                    error: error,
+                    documentDefinition: documentDefinition
+                });
             });
         }
 
-    }).then(function(httpResponse) {
+    }).then(function (httpResponse) {
 
         result.httpResponse = httpResponse;
 
@@ -118,7 +126,7 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
                 base64: httpResponse.buffer.toString('base64', 0, httpResponse.buffer.length)
             }, 'application/pdf');
 
-            promise = promise.then(function() {
+            promise = promise.then(function () {
                     return file.save()
                 })
                 .then(function () {
@@ -136,19 +144,155 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
 
         return promise;
 
-    }).then(function() {
+    }).then(function () {
 
-        console.log('pdf done', result);
+            console.log('pdf done', result);
 
-        response.success(result);
-    })
-    .fail(function (err) {
-        console.error(err);
+            response.success(result);
+        })
+        .fail(function (error) {
+            console.error(error);
 
-        response.error(err);
-    });
+            response.error({
+                message: error.message,
+                error: error,
+                documentDefinition : documentDefinition
+            });
+
+        });
 
 });
+
+/**
+ * Doc info and margins
+ *
+ * @param report
+ * @returns {{info: {title: string, author: string}, pageMargins: number[]}}
+ */
+var defaultDoc = function (report) {
+    return {
+        info: {
+            title: report.get('clientName') + ' ' + moment(report.get('createdAt')).tz(timeZone).format('DD-MM-YYYY'),
+            author: 'GuardSwift'
+        },
+
+        pageMargins: [40, 60, 40, 60]
+    }
+};
+
+/**
+ * Top content of document
+ *
+ * @param report
+ * @returns {{header: {columns: *[], margin: number[]}}}
+ */
+var defaultHeader = function (report) {
+
+    var guard = {
+        id: report.get('guardId'),
+        name: report.get('guardName')
+    };
+
+    return {
+        columns: [
+            {
+                width: 'auto',
+                text: [
+                    {text: 'Vagt: ', bold: true}, guard.name + ' ' + guard.id
+                ]
+            },
+            {
+                width: '*',
+                text: 'Dato: ' + moment(report.get('createdAt')).tz(timeZone).format('DD-MM-YYYY'),
+                alignment: 'right'
+            }
+        ],
+        margin: [10, 10]
+    }
+};
+
+var defaultContentHeader = function (report) {
+
+    var client = {
+        name: report.get('clientName'),
+        address: report.get('clientAddress') + ' ' + report.get('clientAddressNumber'),
+    };
+
+    return {
+        text: [
+            {text: client.name, style: 'header'}, ' ', {text: client.address, style: ['header', 'subHeader']}
+        ],
+        margin: [0, 0, 0, 40]
+    }
+};
+
+var defaultFooter = function (report) {
+    return [
+        {text: 'YDERLIGERE OPLYSNINGER PÅ TLF. 86 16 46 44', alignment: 'center'},
+        {
+            text: 'Rapporten er genereret af GuardSwift - elektroniske vagtrapporter via smartphones',
+            alignment: 'center'
+        }
+    ]
+};
+
+var defaultStyles = {
+    header: {
+        fontSize: 22,
+        bold: true,
+        alignment: 'center'
+    },
+    subHeader: {
+        fontSize: 16,
+        color: 'grey'
+    },
+    tableHeader: {
+        bold: true,
+        fontSize: 13,
+        color: 'black'
+    }
+};
+
+/**
+ * Extracts content information for given report
+ *
+ * @param report
+ * @returns {{events_task_other: Array, timestamps: Array, eventName: Array, amount: Array, people: Array, location: Array, remarks: Array}}
+ */
+var reportContentMap = function (report) {
+
+    var eventLogs = _.filter(report.get('eventLogs'), function (eventLog) {
+        return eventLog.get('task_event') === 'OTHER';
+    });
+
+    return {
+        timestamps: _.map(eventLogs, function (log) {
+            var timeStamp = log.get('deviceTimestamp');
+
+            return moment(timeStamp).tz(timeZone).format('HH:mm');
+        }),
+
+        eventName: _.map(eventLogs, function (log) {
+            return log.get('event') || '';
+        }),
+
+        amount: _.map(eventLogs, function (log) {
+            return log.has('amount') ? log.get('amount').toString() : '';
+        }),
+
+        people: _.map(eventLogs, function (log) {
+            return log.get('people') || '';
+        }),
+
+        location: _.map(eventLogs, function (log) {
+            return log.get('clientLocation') || '';
+        }),
+
+        remarks: _.map(eventLogs, function (log) {
+            return log.get('remarks') || '';
+        })
+    };
+};
 
 
 /**
@@ -160,107 +304,51 @@ var regularReportDefinition = function (report) {
 
     console.log(JSON.stringify('regularReportDefinition'));
 
-    var client = {
-        name: report.get('clientName'),
-        address: report.get('clientAddress') + ' ' + report.get('clientAddressNumber'),
+    var contentMap = reportContentMap(report);
+
+    var tableHeaderWidths = ['*', 50, '*', '*', '*'];
+    var reportContent = _.zip(contentMap.eventName, contentMap.amount, contentMap.people, contentMap.location, contentMap.remarks);
+
+    var contentWithHeader = function (reportContent) {
+        // define header
+        var tableHeaderRaw = ['Hændelse', 'Antal', 'Personer', 'Placering', 'Bemærkninger'];
+        var tableHeader = [{text: tableHeaderRaw[0], style: 'tableHeader'}, {
+            text: tableHeaderRaw[1],
+            style: 'tableHeader'
+        }, {text: tableHeaderRaw[2], style: 'tableHeader'}, {
+            text: tableHeaderRaw[3],
+            style: 'tableHeader'
+        }, {text: tableHeaderRaw[4], style: 'tableHeader'}];
+
+        // insert header
+        reportContent.unshift(tableHeader);
+
+        return reportContent;
     };
 
-    var guard = {
-        id: report.get('guardId'),
-        name: report.get('guardName')
-    };
+    return _.extend(defaultDoc(report), {
 
-    var eventLogs = _.filter(report.get('eventLogs'), function (eventLog) {
-        return eventLog.get('task_event') === 'OTHER';
-    });
-
-    var timestamps = _.map(eventLogs, function (log) {
-        var timeStamp = log.get('deviceTimestamp');
-
-        return moment(timeStamp).tz(timeZone).format('HH:mm');
-    });
-
-    var event = _.map(eventLogs, function (log) {
-        return log.get('event') || '';
-    });
-    //console.log(JSON.stringify(event));
-
-    var amount = _.map(eventLogs, function (log) {
-        return log.has('amount') ? log.get('amount').toString() : '';
-    });
-    //console.log(JSON.stringify(amount));
-
-    var people = _.map(eventLogs, function (log) {
-        return log.get('people') || '';
-    });
-    //console.log(JSON.stringify(people));
-
-    var location = _.map(eventLogs, function (log) {
-        return log.get('clientLocation') || '';
-    });
-    //console.log(JSON.stringify(location));
-
-    var remarks = _.map(eventLogs, function (log) {
-        return log.get('remarks') || '';
-    });
-    //console.log(JSON.stringify(remarks));
-
-    var reportContent = _.zip(event, amount, people, location, remarks);
-
-    // define header
-    var tableHeaderWidths = [ '*', 50, '*', '*', '*'];
-    var tableHeaderRaw = ['Hændelse', 'Antal', 'Personer', 'Placering', 'Bemærkninger'];
-    var tableHeader = [{ text: tableHeaderRaw[0], style: 'tableHeader' }, { text: tableHeaderRaw[1], style: 'tableHeader'}, { text: tableHeaderRaw[2], style: 'tableHeader' }, { text: tableHeaderRaw[3], style: 'tableHeader' }, { text: tableHeaderRaw[4], style: 'tableHeader' }];
-
-    // insert header
-    reportContent.unshift(tableHeader);
-
-    console.log(reportContent);
-
-    return {
-        pageMargins: [40, 60, 40, 60],
-
-        header: {
-            columns: [
-                {
-                    width: 'auto',
-                    text: [
-                        {text: 'Vagt: ', bold: true}, guard.name + ' ' + guard.id
-                    ]
-                },
-                {
-                    width: '*',
-                    text: 'Dato: ' + moment(report.get('createdAt')).tz(timeZone).format('DD-MM-YYYY'),
-                    alignment: 'right'
-                }
-            ],
-            margin: [10, 10]
-        },
+        header: defaultHeader(report),
 
         content: [
-            {
-                text: [
-                    {text: client.name, style: 'header'}, ' ', {text: client.address, style: ['header', 'subHeader']}
-                ],
-                margin: [0, 0, 0, 40]
-            },
+            defaultContentHeader(report),
             {
                 table: {
                     widths: tableHeaderWidths,
                     headerRows: 1,
-                    body: reportContent
+                    body: _.isEmpty(reportContent) ? [[]] : contentWithHeader(reportContent)
                 },
                 layout: {
-                    hLineWidth: function(i, node) {
+                    hLineWidth: function (i, node) {
                         return (i === 0 || i === node.table.body.length) ? 2 : 1;
                     },
-                    vLineWidth: function(i, node) {
+                    vLineWidth: function (i, node) {
                         return (i === 0 || i === node.table.widths.length) ? 2 : 1;
                     },
-                    hLineColor: function(i, node) {
+                    hLineColor: function (i, node) {
                         return (i === 0 || i === node.table.body.length) ? 'black' : 'gray';
                     },
-                    vLineColor: function(i, node) {
+                    vLineColor: function (i, node) {
                         return (i === 0 || i === node.table.widths.length) ? 'black' : 'gray';
                     }
                 },
@@ -268,33 +356,12 @@ var regularReportDefinition = function (report) {
             }
         ],
 
-        footer: [
-            {text: 'YDERLIGERE OPLYSNINGER PÅ TLF. 86 16 46 44', alignment: 'center'},
-            {
-                text: 'Rapporten er genereret af GuardSwift - elektroniske vagtrapporter via smartphones',
-                alignment: 'center'
-            }
-        ],
+        footer: defaultFooter(report),
 
 
-        styles: {
-            header: {
-                fontSize: 22,
-                bold: true,
-                alignment: 'center'
-            },
-            subHeader: {
-                fontSize: 16,
-                color: 'grey'
-            },
-            tableHeader: {
-                bold: true,
-                fontSize: 13,
-                color: 'black'
-            }
-        }
+        styles: defaultStyles
 
-    };
+    });
 };
 
 /**
@@ -306,64 +373,21 @@ var staticReportDefinition = function (report) {
 
     console.log(JSON.stringify('staticReportDefinition'));
 
-    var client = {
-        name: report.get('clientName'),
-        address: report.get('clientAddress') + ' ' + report.get('clientAddressNumber'),
-    };
+    var contentMap = reportContentMap(report);
 
-    var guard = {
-        id: report.get('guardId'),
-        name: report.get('guardName')
-    };
+    var tableHeaderWidths = [50, '*'];
+    var reportContent = _.zip(contentMap.timestamps, contentMap.remarks);
 
-    var eventLogs = _.filter(report.get('eventLogs'), function (eventLog) {
-        return eventLog.get('task_event') === 'OTHER';
-    });
 
-    var timestamps = _.map(eventLogs, function (log) {
-        var timeStamp = log.get('deviceTimestamp');
+    return _.extend(defaultDoc(report), {
 
-        return moment(timeStamp).tz(timeZone).format('HH:mm');
-    });
-
-    var remarks = _.map(eventLogs, function (entry) {
-        return entry.get('remarks') || '';
-    });
-
-    var tableWidths = [  50, '*'];
-
-    var reportContent = _.zip(timestamps, remarks);
-
-    return {
-        pageMargins: [40, 60, 40, 60],
-
-        header: {
-            columns: [
-                {
-                    width: 'auto',
-                    text: [
-                        {text: 'Vagt: ', bold: true}, guard.name + ' ' + guard.id
-                    ]
-                },
-                {
-                    width: '*',
-                    text: 'Dato: ' + moment(report.get('createdAt')).tz(timeZone).format('DD-MM-YYYY'),
-                    alignment: 'right'
-                }
-            ],
-            margin: [10, 10]
-        },
+        header: defaultHeader(report),
 
         content: [
-            {
-                text: [
-                    {text: client.name, style: 'header'}, ' ', {text: client.address, style: ['header', 'subHeader']}
-                ],
-                margin: [0, 0, 0, 40]
-            },
+            defaultContentHeader(report),
             {
                 table: {
-                    widths: tableWidths,
+                    widths: tableHeaderWidths,
                     headerRows: 0,
                     body: _.isEmpty(reportContent) ? [[]] : reportContent
                 },
@@ -372,26 +396,10 @@ var staticReportDefinition = function (report) {
             }
         ],
 
-        footer: [
-            {text: 'YDERLIGERE OPLYSNINGER PÅ TLF. 86 16 46 44', alignment: 'center'},
-            {
-                text: 'Rapporten er genereret af GuardSwift - elektroniske vagtrapporter via smartphones',
-                alignment: 'center'
-            }
-        ],
+        footer: defaultFooter(report),
 
 
-        styles: {
-            header: {
-                fontSize: 22,
-                bold: true,
-                alignment: 'center'
-            },
-            subHeader: {
-                fontSize: 16,
-                color: 'grey'
-            }
-        }
+        styles: defaultStyles
 
-    };
+    });
 };

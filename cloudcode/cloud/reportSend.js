@@ -1,5 +1,4 @@
 var moment = require('cloud/lib/moment/moment.min.js');
-var s = require("cloud/lib/underscore.string.min.js");
 var _ = require('cloud/lib/underscore.js');
 
 var Mailer = require("cloud/lib/sendgrid-mailer.js");
@@ -65,7 +64,7 @@ Parse.Cloud.define("sendReport", function (request, response) {
         toNames: [],
         toEmails: [],
 
-        status: '',
+        status: {},
         errors: false
     };
 
@@ -99,9 +98,6 @@ Parse.Cloud.define("sendReport", function (request, response) {
 
         return report.get('owner').get(taskSettings(report).settingsPointerName).fetch();
     }).then(function(reportSettings) {
-
-        //console.log('reportSettings');
-        //console.log(reportSettings);
 
         mailSetup.replytoName = reportSettings.get('replytoName') || '';
         mailSetup.replytoEmail = reportSettings.get('replytoEmail') || '';
@@ -182,7 +178,7 @@ Parse.Cloud.define("sendReport", function (request, response) {
     }).then(function (httpResponse) {
 
         mailSetup.errors = false;
-        mailSetup.status = httpResponse.text;
+        mailSetup.status = httpResponse;
 
         _report.set('mailStatus', mailSetup);
 
@@ -201,7 +197,7 @@ Parse.Cloud.define("sendReport", function (request, response) {
         _report.set('mailStatus', mailSetup);
 
         _report.save().then(function() {
-            response.error(error);
+            response.error(mailSetup);
         });
 
     });
