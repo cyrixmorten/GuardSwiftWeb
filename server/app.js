@@ -54,6 +54,7 @@ app.get('/', routes.index);
 
 // JSON API
 app.post('/api/pdfmake', api.pdfmake);
+app.post('/api/datauri', api.datauri);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
