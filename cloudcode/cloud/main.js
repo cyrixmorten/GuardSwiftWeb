@@ -12,6 +12,7 @@ require("cloud/afterDelete.js");
 
 // helper functions
 require("cloud/fileDelete.js");
+require("cloud/fileToDatauri.js");
 require("cloud/mailing.js");
 
 // cleanup/statistics

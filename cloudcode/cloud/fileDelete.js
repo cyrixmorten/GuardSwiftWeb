@@ -1,5 +1,8 @@
 var static = require('cloud/static.js');
 
+/**
+ * Delete a file written to Parse
+ */
 Parse.Cloud.define("fileDelete", function (request, response) {
     Parse.Cloud.useMasterKey();
 

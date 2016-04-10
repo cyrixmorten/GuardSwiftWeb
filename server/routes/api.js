@@ -27,15 +27,15 @@ exports.pdfmake = function (req, res) {
 };
 
 exports.datauri = function (req, res) {
-    if (!req.body || !req.body.buffer || !req.body.extension) {
-        sendError(res, 'Param is missing, expects {buffer: [23 42..], extension: "jpeg"}');
+    if (!req.body || !req.body.buffer || !req.body.filetype) {
+        sendError(res, 'Param is missing, expects {buffer: [23 42..], filetype: "jpeg"}');
         return;
     }
 
     var Datauri = require('datauri');
     var datauri = new Datauri();
 
-    datauri.format('.'+req.body.extension, req.body.buffer);
+    datauri.format('.'+req.body.filetype, req.body.buffer);
 
     res.send(datauri.content);
 };

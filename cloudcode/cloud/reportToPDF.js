@@ -5,14 +5,31 @@ var _ = require('cloud/lib/underscore.js');
 // todo store/retrieve from user
 var timeZone = 'Europe/Copenhagen';
 
+var fetchReportSettings = function(user, settingsCol) {
+    return user.fetch().then(function(user) {
+      return user.get(settingsCol).fetch();
+    });
+};
+
+
 var createDocDefinition = function (report) {
 
+    var promise = new Parse.Promise.error('No definition matching report');
+
+    var owner = report.get('owner');
+
     if (report.has('circuitUnit')) {
-        return regularReportDefinition(report);
+        promise = fetchReportSettings(owner, 'regularReportSettings').then(function(settings) {
+            return regularReportDefinition(report, settings);
+        });
     }
     if (report.has('staticTask')) {
-        return staticReportDefinition(report);
+        promise = fetchReportSettings(owner, 'staticReportSettings').then(function(settings) {
+            return regularReportDefinition(report, settings);
+        });
     }
+
+    return promise;
 };
 
 Parse.Cloud.define("reportToPDF", function (request, response) {
@@ -89,22 +106,19 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
              */
 
 
-
-            documentDefinition = createDocDefinition(report);
-
-            console.log('creating document definition: ');
-            console.log(JSON.stringify(documentDefinition));
-
             return deletePromise(report).then(function () {
+                return createDocDefinition(report);
+            }).then(function(docDefinition) {
+
                 return Parse.Cloud.httpRequest({
                     method: 'POST',
                     url: 'http://www.guardswift.com/api/pdfmake',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8'
                     },
-                    body: documentDefinition
+                    body: docDefinition
                 })
-            }, function (error) {
+            }).fail(function (error) {
                 console.error('Error deleting report');
                 console.error({
                     message: 'Error deleting report',
@@ -211,6 +225,32 @@ var defaultHeader = function (report) {
     }
 };
 
+var defaultHeaderImages = function(report, settings) {
+
+    var result = '';
+
+    if (settings.has('headerLogo')) {
+        var headerLogo = settings.get('headerLogo');
+
+        if (headerLogo.datauri) {
+            result = {
+                image: settings.get('headerLogo'),
+            };
+        }
+
+        if (headerLogo.allignment) {
+            result.allignment = headerLogo.allignment;
+
+            if (headerLogo.allignment == "center") {
+                result.width = (21 / 2.54) * 72 - (2 * 40) // (cm / 2.54) * dpi - margin
+            }
+        }
+    }
+
+
+    return '';
+};
+
 var defaultContentHeader = function (report) {
 
     var client = {
@@ -222,7 +262,7 @@ var defaultContentHeader = function (report) {
         text: [
             {text: client.name, style: 'header'}, ' ', {text: client.address, style: ['header', 'subHeader']}
         ],
-        margin: [0, 0, 0, 40]
+        margin: [20, 0, 0, 40]
     }
 };
 
@@ -300,7 +340,7 @@ var reportContentMap = function (report) {
  *
  * @param report
  */
-var regularReportDefinition = function (report) {
+var regularReportDefinition = function (report, settings) {
 
     console.log(JSON.stringify('regularReportDefinition'));
 
@@ -331,6 +371,7 @@ var regularReportDefinition = function (report) {
         header: defaultHeader(report),
 
         content: [
+            defaultHeaderImages(report, settings),
             defaultContentHeader(report),
             {
                 table: {
