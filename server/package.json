@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "body-parser": "^1.0.2",
+    "consolidate": "^0.14.0",
     "datauri": "^1.0.4",
     "error-handler": "^0.1.4",
     "express": "~4.1.1",
@@ -14,6 +15,7 @@
     "morgan": "^1.0.0",
     "node": "0.0.0",
     "nodejs": "0.0.0",
-    "pdfmake": "^0.1.18"
+    "pdfmake": "^0.1.18",
+    "swig": "^1.4.2"
   }
 }

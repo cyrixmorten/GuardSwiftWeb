@@ -27,7 +27,6 @@ myApp.directive('gsLinkButton', function () {
         },
         link: function (scope, element, attrs) {
             if (scope.link) {
-                console.log(element.children());
                 element.children().attr('href', '#'+scope.link);
                 $compile(element)(scope);
             }

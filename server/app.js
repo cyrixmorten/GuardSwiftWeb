@@ -20,17 +20,23 @@ var app = module.exports = express();
  * Configuration
  */
 
+var clientPath = path.join(__dirname, '../app');
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '../app');
-app.set('view engine', 'html');
 app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(methodOverride());
-app.use(express.static(path.join(__dirname, '../app')));
+app.use(express.static(clientPath));
+
+var cons = require('consolidate');
+
+// view engine setup
+app.engine('html', cons.swig)
+app.set('views', clientPath);
+app.set('view engine', 'html');
 
 var env = process.env.NODE_ENV || 'development';
 
