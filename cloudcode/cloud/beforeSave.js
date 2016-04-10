@@ -17,25 +17,60 @@ Parse.Cloud.beforeSave("_User", function(request, response) {
     response.success();
 });
 
-var updateLogACL = function(request) {
+//Parse.Cloud.beforeSave("ReportSettings", function(request, response) {
+//
+//	var reportSettings = request.object;
+//
+//	if (!reportSettings.has('headerLogo1_dataUri')) {
+//		var file = reportSettings.get('headerLogo1');
+//
+//		console.log('generate datauri for headerLogo1');
+//
+//		return Parse.Cloud.httpRequest({url: file.url()}).then(function(response) {
+//
+//			var buffer = response.buffer;
+//			var filetype = s(file.name()).strRightBack('.');
+//
+//			console.log('filetype: ' + filetype);
+//
+//			return Parse.Cloud.run('fileToDatauri', {
+//				filetype: filetype,
+//				buffer: buffer
+//			})
+//		}).then(function(datauri) {
+//			console.log('datauri generated');
+//
+//			reportSettings.set('headerLogo')
+//			response.success('datauri generated');
+//		}).fail(function(error) {
+//			response.error(error);
+//		});
+//	}
+//
+//	response.success('No data was missing');
+//
+//
+//});
 
-	Parse.Cloud.useMasterKey();
-
-	if (request.object.isNew()) {
-		var acl = new Parse.ACL();
-		acl.setPublicReadAccess(true);
-		acl.setPublicWriteAccess(false);
-		if (request.user) {
-			acl.setReadAccess(request.user.id, true)
-			acl.setWriteAccess(request.user.id, true)
-		}
-		request.object.setACL(acl);
-	}
-};
+//var updateLogACL = function(request) {
+//
+//	Parse.Cloud.useMasterKey();
+//
+//	if (request.object.isNew()) {
+//		var acl = new Parse.ACL();
+//		acl.setPublicReadAccess(true);
+//		acl.setPublicWriteAccess(false);
+//		if (request.user) {
+//			acl.setReadAccess(request.user.id, true)
+//			acl.setWriteAccess(request.user.id, true)
+//		}
+//		request.object.setACL(acl);
+//	}
+//};
 
 Parse.Cloud.beforeSave("Report", function(request, response) {
 
-	updateLogACL(request);
+	//updateLogACL(request);
 
 	Parse.Cloud.useMasterKey();
 
@@ -90,86 +125,86 @@ var incrementUsageCount = function(request, columnNames) {
 		return new Parse.Promise.error('missing user');
 	}
 
-}
-
-var timeStringHour = function(timeString) {
-	if (timeString.indexOf('.') != -1) {
-		return parseInt(timeString.substring(0, timeString.indexOf('.')));
-	} else {
-		return parseInt(timeString);
-	}
 };
 
-var timeStringMinute = function(timeString) {
-	if (timeString.indexOf('.') != -1) {
-		return parseInt(timeString.substring(timeString.indexOf('.') + 1));
-	} else {
-		return 0;
-	}
-};
+//var timeStringHour = function(timeString) {
+//	if (timeString.indexOf('.') != -1) {
+//		return parseInt(timeString.substring(0, timeString.indexOf('.')));
+//	} else {
+//		return parseInt(timeString);
+//	}
+//};
+//
+//var timeStringMinute = function(timeString) {
+//	if (timeString.indexOf('.') != -1) {
+//		return parseInt(timeString.substring(timeString.indexOf('.') + 1));
+//	} else {
+//		return 0;
+//	}
+//};
 
-// TODO export as module
-var pushPinUpdate = function(pin, request) {
+//// TODO export as module
+//var pushPinUpdate = function(pin, request) {
+//
+//	console.log("Push on pin " + pin);
+//
+//	if (!request || !request.user || !request.object) {
+//		var msg = "";
+//		if (!request)
+//			msg = "missing request";
+//		else if (!request.user)
+//			msg = "missing user";
+//		else if (!request.object)
+//			msg = "missing object";
+//
+//		console.log("Push cancel on pin " + pin + " " + msg);
+//
+//		return new Parse.Promise.error(msg);
+//	}
+//
+//	var user = request.user;
+//	var parseObject = request.object;
+//	var installationId = request.installationId;
+//
+//	Parse.Cloud.useMasterKey();
+//
+//	var allInstallations = new Parse.Query(Parse.Installation);
+//	allInstallations.equalTo('owner', user);
+//	if (installationId) {
+//		// exluding installationId
+//		console.log("excluding installationId	: " + installationId);
+//		allInstallations.notEqualTo('installationId', installationId);
+//	} else {
+//		console.log("missing installationId: " + installationId);
+//	}
+//	return Parse.Push.send({
+//		where : allInstallations,
+//		expiration_interval : 600,
+//		data : {
+//			action : "com.guardswift.UPDATE_SERVERDATA",
+//			pin : pin,
+//			object : parseObject
+//		}
+//	});
+//};
 
-	console.log("Push on pin " + pin);
-
-	if (!request || !request.user || !request.object) {
-		var msg = "";
-		if (!request)
-			msg = "missing request";
-		else if (!request.user)
-			msg = "missing user";
-		else if (!request.object)
-			msg = "missing object";
-
-		console.log("Push cancel on pin " + pin + " " + msg);
-
-		return new Parse.Promise.error(msg);
-	}
-
-	var user = request.user;
-	var parseObject = request.object;
-	var installationId = request.installationId;
-
-	Parse.Cloud.useMasterKey();
-
-	var allInstallations = new Parse.Query(Parse.Installation);
-	allInstallations.equalTo('owner', user);
-	if (installationId) {
-		// exluding installationId
-		console.log("excluding installationId	: " + installationId);
-		allInstallations.notEqualTo('installationId', installationId);
-	} else {
-		console.log("missing installationId: " + installationId);
-	}
-	return Parse.Push.send({
-		where : allInstallations,
-		expiration_interval : 600,
-		data : {
-			action : "com.guardswift.UPDATE_SERVERDATA",
-			pin : pin,
-			object : parseObject
-		}
-	});
-};
-
-Parse.Cloud.beforeSave("CircuitStarted", function(request, response) {
-	Parse.Cloud.useMasterKey();
-	var CircuitStarted = request.object;
-	if (CircuitStarted.isNew()) {
-		request.user = CircuitStarted.get('owner');
-		pushPinUpdate("CircuitStarted", request).then(function() {
-			console.log("Pushed new CircuitStarted");
-			response.success();
-		}, function(error) {
-			console.error("Failed to CircuitStarted push error: ");
-			console.error(error);
-			response.success();
-		});
-	} else {
-		response.success();
-	}
-});
+//Parse.Cloud.beforeSave("CircuitStarted", function(request, response) {
+//	Parse.Cloud.useMasterKey();
+//	var CircuitStarted = request.object;
+//	if (CircuitStarted.isNew()) {
+//		request.user = CircuitStarted.get('owner');
+//		pushPinUpdate("CircuitStarted", request).then(function() {
+//			console.log("Pushed new CircuitStarted");
+//			response.success();
+//		}, function(error) {
+//			console.error("Failed to CircuitStarted push error: ");
+//			console.error(error);
+//			response.success();
+//		});
+//	} else {
+//		response.success();
+//	}
+//});
 
 Parse.Cloud.beforeSave("Alarm", function(request, response) {
 
@@ -223,7 +258,7 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 // };
 
 Parse.Cloud.beforeSave("EventLog", function(request, response) {
-	updateLogACL(request);
+	//updateLogACL(request);
 
 	var EventLog = request.object;
 
