@@ -30,7 +30,7 @@ Parse.Cloud.job("forceManageActiveCircuitsStartedDebug", function(request, statu
            'forceUpdate': true
         }
     });
-})
+});
 
 Parse.Cloud.job("forceManageActiveCircuitsStartedRelease", function(request, status) {
 	Parse.Cloud.useMasterKey();
@@ -46,7 +46,7 @@ Parse.Cloud.job("forceManageActiveCircuitsStartedRelease", function(request, sta
            'forceUpdate': true
         }
     });
-})
+});
 
 Parse.Cloud.job("manageActiveCircuitsStarted", function(request, status) {
 	Parse.Cloud.useMasterKey();

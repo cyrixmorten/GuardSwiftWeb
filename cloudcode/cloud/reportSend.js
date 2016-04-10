@@ -45,8 +45,6 @@ var taskSettings = function(report) {
 Parse.Cloud.define("sendReport", function (request, response) {
     Parse.Cloud.useMasterKey();
 
-    console.log('App ID: ' + Parse.applicationId);
-
     if (!request.params.reportId) {
         response.error('missing reportId');
         return;
@@ -90,7 +88,7 @@ Parse.Cloud.define("sendReport", function (request, response) {
 
 
         if (!taskSettings(report).settingsPointerName) {
-            response.error('Unable to get taskSettings')
+            response.error('Unable to get taskSettings');
             return;
         }
 

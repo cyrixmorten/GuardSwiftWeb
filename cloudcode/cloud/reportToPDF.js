@@ -5,9 +5,9 @@ var _ = require('cloud/lib/underscore.js');
 // todo store/retrieve from user
 var timeZone = 'Europe/Copenhagen';
 
-var fetchReportSettings = function(user, settingsCol) {
-    return user.fetch().then(function(user) {
-      return user.get(settingsCol).fetch();
+var fetchReportSettings = function (user, settingsCol) {
+    return user.fetch().then(function (user) {
+        return user.get(settingsCol).fetch();
     });
 };
 
@@ -19,13 +19,13 @@ var createDocDefinition = function (report) {
     var owner = report.get('owner');
 
     if (report.has('circuitUnit')) {
-        promise = fetchReportSettings(owner, 'regularReportSettings').then(function(settings) {
+        promise = fetchReportSettings(owner, 'regularReportSettings').then(function (settings) {
             return regularReportDefinition(report, settings);
         });
     }
     if (report.has('staticTask')) {
-        promise = fetchReportSettings(owner, 'staticReportSettings').then(function(settings) {
-            return regularReportDefinition(report, settings);
+        promise = fetchReportSettings(owner, 'staticReportSettings').then(function (settings) {
+            return staticReportDefinition(report, settings);
         });
     }
 
@@ -49,10 +49,9 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
     var result = {
         createdPDF: true,
         report: {},
-        httpResponse: {}
+        httpResponse: {},
+        documentDefinition: {}
     };
-
-    var documentDefinition = {};
 
     query.first().then(function (report) {
 
@@ -108,7 +107,9 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
 
             return deletePromise(report).then(function () {
                 return createDocDefinition(report);
-            }).then(function(docDefinition) {
+            }).then(function (docDefinition) {
+
+                result.documentDefinition = docDefinition;
 
                 return Parse.Cloud.httpRequest({
                     method: 'POST',
@@ -170,7 +171,7 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
             response.error({
                 message: error.message,
                 error: error,
-                documentDefinition : documentDefinition
+                documentDefinition: documentDefinition
             });
 
         });
@@ -225,44 +226,84 @@ var defaultHeader = function (report) {
     }
 };
 
-var defaultHeaderImages = function(report, settings) {
+/**
+ * Header image is set as background to allow header and image on same horizontal space
+ * for 'left' and 'right' alignment
+ *
+ * @param report
+ * @param settings
+ * @returns {{}}
+ */
+var defaultBackgroundHeaderImage = function (settings) {
 
-    var result = '';
+    var result = {};
 
     if (settings.has('headerLogo')) {
         var headerLogo = settings.get('headerLogo');
 
         if (headerLogo.datauri) {
             result = {
-                image: settings.get('headerLogo'),
-            };
-        }
-
-        if (headerLogo.allignment) {
-            result.allignment = headerLogo.allignment;
-
-            if (headerLogo.allignment == "center") {
-                result.width = (21 / 2.54) * 72 - (2 * 40) // (cm / 2.54) * dpi - margin
+                image: headerLogo.datauri,
+                margin: [15, 60, 15, 0]
             }
         }
+
+        /** defaults **/
+        result.alignment = "center";
+
+
+        if (headerLogo.alignment) {
+            result.alignment = headerLogo.alignment;
+        }
+
+        if (headerLogo.stretch) {
+            // make image take up full width
+            result.width = (21 / 2.54) * 72 - (2 * 40); // (cm / 2.54) * dpi - margin
+        } else {
+            if (headerLogo.width) {
+                result.width = headerLogo.width
+            }
+
+
+            if (headerLogo.height) {
+                result.height = headerLogo.height
+            }
+
+            // if neither height or width is specified, set width to 3cm
+            // from pdfmake: if you specify width, image will scale proportionally
+            if (!headerLogo.width && !headerLogo.height) {
+                result.width = (3 / 2.54) * 72;
+            }
+        }
+
+
     }
 
-
-    return '';
+    return result;
 };
 
-var defaultContentHeader = function (report) {
+/**
+ * Title of the document, takes an optional backgroundHeaderImage argument to determine whether to
+ * add additional margin due to image taking up space over the title.
+ *
+ * @param report
+ * @param backgroundHeaderImage
+ * @returns {{text: *[], margin: number[]}}
+ */
+var defaultContentHeader = function (report, backgroundHeaderImage) {
+
+    var pushTopMargin = (backgroundHeaderImage && backgroundHeaderImage.alignment && backgroundHeaderImage.alignment === 'center') ? 60 : 0;
 
     var client = {
         name: report.get('clientName'),
-        address: report.get('clientAddress') + ' ' + report.get('clientAddressNumber'),
+        address: report.get('clientAddress') + ' ' + report.get('clientAddressNumber')
     };
 
     return {
         text: [
             {text: client.name, style: 'header'}, ' ', {text: client.address, style: ['header', 'subHeader']}
         ],
-        margin: [20, 0, 0, 40]
+        margin: [50, 40 + pushTopMargin, 50, 0]
     }
 };
 
@@ -276,21 +317,26 @@ var defaultFooter = function (report) {
     ]
 };
 
-var defaultStyles = {
-    header: {
-        fontSize: 22,
-        bold: true,
-        alignment: 'center'
-    },
-    subHeader: {
-        fontSize: 16,
-        color: 'grey'
-    },
-    tableHeader: {
-        bold: true,
-        fontSize: 13,
-        color: 'black'
-    }
+var defaultStyles = function () {
+    return {
+        header: {
+            fontSize: 22,
+            bold: true,
+            alignment: 'center'
+        },
+        subHeader: {
+            fontSize: 16,
+            color: 'grey'
+        },
+        tableHeader: {
+            bold: true,
+            fontSize: 13,
+            color: 'black'
+        },
+        boldFont: {
+            bold: true
+        }
+    };
 };
 
 /**
@@ -301,11 +347,21 @@ var defaultStyles = {
  */
 var reportContentMap = function (report) {
 
+    var arrivedLogs = _.filter(report.get('eventLogs'), function (eventLog) {
+        return eventLog.get('task_event') === 'ARRIVE';
+    });
+
     var eventLogs = _.filter(report.get('eventLogs'), function (eventLog) {
         return eventLog.get('task_event') === 'OTHER';
     });
 
     return {
+        arrivedTimestamps: _.map(arrivedLogs, function (log) {
+            var timeStamp = log.get('deviceTimestamp');
+
+            return moment(timeStamp).tz(timeZone).format('HH:mm');
+        }),
+
         timestamps: _.map(eventLogs, function (log) {
             var timeStamp = log.get('deviceTimestamp');
 
@@ -366,13 +422,29 @@ var regularReportDefinition = function (report, settings) {
         return reportContent;
     };
 
+    var guardArrivalText = function () {
+        if (_.isEmpty(contentMap.arrivedTimestamps)) {
+            return '';
+        }
+
+        return {
+            text: 'Vægter ankom på adressen kl: ' + contentMap.arrivedTimestamps[0],
+            margin: [0, 10],
+            style: 'boldFont'
+        }
+    };
+
+    var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
+
     return _.extend(defaultDoc(report), {
+
+        background: backgroundHeaderImage,
 
         header: defaultHeader(report),
 
         content: [
-            defaultHeaderImages(report, settings),
-            defaultContentHeader(report),
+            defaultContentHeader(report, backgroundHeaderImage),
+            guardArrivalText(),
             {
                 table: {
                     widths: tableHeaderWidths,
@@ -400,7 +472,7 @@ var regularReportDefinition = function (report, settings) {
         footer: defaultFooter(report),
 
 
-        styles: defaultStyles
+        styles: defaultStyles()
 
     });
 };
@@ -410,7 +482,7 @@ var regularReportDefinition = function (report, settings) {
  *
  * @param report
  */
-var staticReportDefinition = function (report) {
+var staticReportDefinition = function (report, settings) {
 
     console.log(JSON.stringify('staticReportDefinition'));
 
@@ -420,12 +492,16 @@ var staticReportDefinition = function (report) {
     var reportContent = _.zip(contentMap.timestamps, contentMap.remarks);
 
 
+    var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
+
     return _.extend(defaultDoc(report), {
+
+        background: backgroundHeaderImage,
 
         header: defaultHeader(report),
 
         content: [
-            defaultContentHeader(report),
+            defaultContentHeader(report, backgroundHeaderImage),
             {
                 table: {
                     widths: tableHeaderWidths,
@@ -440,7 +516,7 @@ var staticReportDefinition = function (report) {
         footer: defaultFooter(report),
 
 
-        styles: defaultStyles
+        styles: defaultStyles()
 
     });
 };
