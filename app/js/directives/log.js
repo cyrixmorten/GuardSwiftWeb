@@ -26,17 +26,16 @@ myApp.directive('gsEventLogDetails', ['ParseEventLog', '$modal',
 
 			    		console.log(scope);
 			    		
-						// to show busyLoader
-						scope.detailsPromise = ParseEventLog.get(scope.objectId, [
-								'client', 'circuitStarted', 'circuitUnit']);
-
-
 						$modal.open({
 							templateUrl : 'views/dialog/eventlog.html',
 							controller : 'EventlogDetailsDialogCtrl',
 							size : 'lg',
 							resolve : {
 								eventLog : function() {
+									// to show busyLoader
+									scope.detailsPromise = ParseEventLog.get(scope.objectId, [
+										'client', 'circuitStarted', 'circuitUnit']);
+
 									return scope.detailsPromise;
 								}
 							}
