@@ -194,7 +194,7 @@ Parse.Cloud.define("sendReport", function (request, response) {
 
         _report.set('mailStatus', mailSetup);
 
-        _report.save().then(function() {
+        _report.save().always(function() {
             response.error(mailSetup);
         });
 

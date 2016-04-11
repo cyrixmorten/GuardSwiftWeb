@@ -49,8 +49,7 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
     var result = {
         createdPDF: true,
         report: {},
-        httpResponse: {},
-        documentDefinition: {}
+        httpResponse: {}
     };
 
     query.first().then(function (report) {
@@ -97,6 +96,13 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
                     });
                 }
 
+                promise.fail(function(error) {
+                    console.error({
+                        message: 'Error deleting report',
+                        error: error
+                    });
+                });
+
                 return promise;
             };
 
@@ -105,11 +111,12 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
              */
 
 
-            return deletePromise(report).then(function () {
+            return deletePromise(report).always(function () {
+                // no matter the outcome of the delete, we continue creating the report
                 return createDocDefinition(report);
             }).then(function (docDefinition) {
 
-                result.documentDefinition = docDefinition;
+                console.log(JSON.stringify(docDefinition));
 
                 return Parse.Cloud.httpRequest({
                     method: 'POST',
@@ -120,11 +127,9 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
                     body: docDefinition
                 })
             }).fail(function (error) {
-                console.error('Error deleting report');
                 console.error({
-                    message: 'Error deleting report',
-                    error: error,
-                    documentDefinition: documentDefinition
+                    message: 'Error during PDF creation',
+                    error: error
                 });
             });
         }
@@ -154,6 +159,13 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
                 .then(function (report) {
                     // update result report
                     result.report = report;
+                }).fail(function(error) {
+                    console.error(
+                        {
+                            message: 'Error saving PDF report',
+                            error: error
+                        }
+                    )
                 });
         }
 
@@ -166,13 +178,8 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
             response.success(result);
         })
         .fail(function (error) {
-            console.error(error);
 
-            response.error({
-                message: error.message,
-                error: error,
-                documentDefinition: documentDefinition
-            });
+            response.error(error);
 
         });
 
@@ -395,6 +402,7 @@ var reportContentMap = function (report) {
  * Generate regular report doc definition
  *
  * @param report
+ * @param settings
  */
 var regularReportDefinition = function (report, settings) {
 
@@ -481,6 +489,7 @@ var regularReportDefinition = function (report, settings) {
  * Generate static report doc definition
  *
  * @param report
+ * @param settings
  */
 var staticReportDefinition = function (report, settings) {
 
@@ -492,16 +501,19 @@ var staticReportDefinition = function (report, settings) {
     var reportContent = _.zip(contentMap.timestamps, contentMap.remarks);
 
 
-    var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
+    //var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
+    //
+    //console.log(backgroundHeaderImage);
+    //console.log(backgroundHeaderImage.image.length);
 
     return _.extend(defaultDoc(report), {
 
-        background: backgroundHeaderImage,
+        //background: backgroundHeaderImage,
 
         header: defaultHeader(report),
 
         content: [
-            defaultContentHeader(report, backgroundHeaderImage),
+            defaultContentHeader(report),
             {
                 table: {
                     widths: tableHeaderWidths,

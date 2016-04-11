@@ -10,9 +10,6 @@ Parse.Cloud.job("dailyMailReports", function (request, status) {
     var query = new Parse.Query(Parse.User);
     query.each(
         function (user) {
-
-            console.log('Sending reports for user ' + user.get('username'));
-
             return sendReportsMatching(user, 'REGULAR', yesterday.toDate(), now.toDate());
         })
         .then(function () {
@@ -38,12 +35,18 @@ var sendReportsMatching = function (user, taskType, fromDate, toDate) {
     console.log('from: ' + moment(fromDate).format('DD/MM-HH:mm'));
     console.log('to: ' + moment(toDate).format('DD/MM-HH:mm'));
 
-    return reportQuery.each(function (report) {
-        console.log('Sending report ' + report.id);
-        return Parse.Cloud.run('sendReport', {
-            reportId: report.id
+    return reportQuery.count().then(function(count) {
+        console.log('Sending ' + count +' reports for user ' + user.get('username'));
+        return new Parse.Promise.as(count);
+    }).then(function() {
+        return reportQuery.each(function (report) {
+            console.log('Sending report ' + report.id);
+            return Parse.Cloud.run('sendReport', {
+                reportId: report.id
+            });
         });
-    });
+    })
+
 };
 
 
