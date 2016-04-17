@@ -61,7 +61,7 @@ app.get('/', routes.index);
 
 // JSON API
 app.get('/api/version', function(req, res) {
-  res.send(GuardSwiftVersion);
+  res.send(GuardSwiftVersion.toString());
 });
 app.get('/api/apk', function(req, res, next){
   var file = req.params.file
