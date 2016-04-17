@@ -63,6 +63,12 @@ app.get('/', routes.index);
 app.get('/api/version', function(req, res) {
   res.send(GuardSwiftVersion);
 });
+app.get('/api/apk', function(req, res, next){
+  var file = req.params.file
+      , path = __dirname  + 'guardswift.apk';
+
+  res.download(path);
+});
 app.post('/api/pdfmake', api.pdfmake);
 app.post('/api/datauri', api.datauri);
 
