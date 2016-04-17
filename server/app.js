@@ -1,8 +1,8 @@
+var GuardSwiftVersion = 315;
 
 /**
  * Module dependencies
  */
-
 var express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
@@ -55,14 +55,18 @@ if (env === 'production') {
  * Routes
  */
 
-// serve index
+// Serve Index
 app.get('/', routes.index);
 
+
 // JSON API
+app.get('/api/version', function(req, res) {
+  res.send(GuardSwiftVersion);
+});
 app.post('/api/pdfmake', api.pdfmake);
 app.post('/api/datauri', api.datauri);
 
-// redirect all others to the index (HTML5 history)
+// Redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 
 

@@ -310,7 +310,8 @@ var defaultContentHeader = function (report, backgroundHeaderImage) {
         text: [
             {text: client.name, style: 'header'}, ' ', {text: client.address, style: ['header', 'subHeader']}
         ],
-        margin: [50, 40 + pushTopMargin, 50, 0]
+        // margin: [left, top, right, bottom]
+        margin: [50, 40 + pushTopMargin, 50, 30]
     }
 };
 
@@ -501,14 +502,11 @@ var staticReportDefinition = function (report, settings) {
     var reportContent = _.zip(contentMap.timestamps, contentMap.remarks);
 
 
-    //var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
-    //
-    //console.log(backgroundHeaderImage);
-    //console.log(backgroundHeaderImage.image.length);
+    var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
 
     return _.extend(defaultDoc(report), {
 
-        //background: backgroundHeaderImage,
+        background: backgroundHeaderImage,
 
         header: defaultHeader(report),
 

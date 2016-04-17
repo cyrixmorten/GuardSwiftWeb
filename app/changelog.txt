@@ -1,0 +1,9 @@
+3.1.5
+
+Android App:
+
+  - Giver besked ved ny opdatering, og giver brugeren mulighed for at åbne GMail så opdateringen kan hentes og installeres
+
+Fastvagt:
+
+    - Viser nu kun rapporter for de seneste 7 dage
