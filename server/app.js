@@ -4,6 +4,7 @@ var GuardSwiftVersion = 315;
  * Module dependencies
  */
 var express = require('express'),
+  router = require('express').Router(),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
   errorHandler = require('error-handler'),
@@ -55,25 +56,41 @@ if (env === 'production') {
  * Routes
  */
 
-// Serve Index
-app.get('/', routes.index);
+var baseRouter = express.Router();
 
+/**
+ * Base
+ */
+
+baseRouter.route('/').get(function(req, res) {
+  res.render('index');
+});
+
+app.use('/', baseRouter);
+
+/**
+ * API
+ */
+
+var apiRouter = express.Router();
 
 // JSON API
-app.get('/api/version', function(req, res) {
+apiRouter.route('/pdfmake').post(api.pdfmake);
+apiRouter.route('/datauri').post(api.datauri);
+
+apiRouter.route('/version').get(function(req, res) {
   res.send(GuardSwiftVersion.toString());
 });
-app.get('/api/apk', function(req, res, next){
-  var file = req.params.file
-      , path = __dirname  + 'guardswift.apk';
 
+apiRouter.route('/download').get(function(req, res){
+  var path = __dirname  + '/files/guardswift.apk';
   res.download(path);
 });
-app.post('/api/pdfmake', api.pdfmake);
-app.post('/api/datauri', api.datauri);
+
+app.use('/api', apiRouter);
 
 // Redirect all others to the index (HTML5 history)
-app.get('*', routes.index);
+//app.get('*', routes.index);
 
 
 /**
