@@ -1,4 +1,4 @@
 
-<a class="btn btn-{{type}} btn-{{size}}" target="{{target}}">
+<a ng-class="getClasses()" target="{{target}}" ladda="working" ng-attr-href="#{{link}}">
 	<fa name="{{faLeft}}" ng-if="faLeft" /> {{ buttonText }} <fa name="{{faRight}}" ng-if="faRight" />
 </a>

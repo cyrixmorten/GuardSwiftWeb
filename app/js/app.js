@@ -761,7 +761,7 @@ angular.module('GuardSwiftApp', [
          */
         // TODO should work for any type of report
         segment('report', {
-            templateUrl: 'partials/report/report_switch.html', dependencies: ['reportId'], controller: 'ReportCtrl',
+             dependencies: ['reportId'], controller: 'ReportCtrl',
             resolve: {
                 reportObject: ['ParseReport', function (ParseReport) {
                     return ParseReport.findScopedObjectEqualToParam('reportId', 'reportId', ['owner', 'owner.staticReportSettings', 'eventLogs']);

@@ -27,9 +27,10 @@
                     | date:'HH:mm dd-MM-yyyy'}}
                 </td>
                 <td class="col-xs-1 text-right">
+                    <!--link="{{ 'report' | routeSegmentUrl : {reportId : crudObject.reportId} }}"-->
                     <gs-link-button type="info"
                                     size="sm" target="_blank"
-                                    link="{{ 'report' | routeSegmentUrl : {reportId : crudObject.reportId} }}"
+                                    report="crudObject"
                                     fa-left="file-text-o" fa-right="angle-right"
                                     button-text="{{
 							'SHOW_REPORT' | translate}}"></gs-link-button>

@@ -49,6 +49,7 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
     var result = {
         createdPDF: true,
         report: {},
+        pdfUrl: '',
         httpResponse: {}
     };
 
@@ -66,6 +67,7 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
             console.log('fetching pdf');
 
             result.createdPDF = false;
+            result.pdfUrl = report.get('pdf').url();
 
             /**
              * Save time and resources by simply returning the stored report
@@ -73,7 +75,7 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
 
             return Parse.Cloud.httpRequest({
                 method: 'GET',
-                url: report.get('pdf').url(),
+                url: result.pdfUrl,
                 headers: {
                     'Content-Type': 'application/pdf'
                 }
@@ -159,6 +161,7 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
                 .then(function (report) {
                     // update result report
                     result.report = report;
+                    result.pdfUrl = report.get('pdf').url();
                 }).fail(function(error) {
                     console.error(
                         {
@@ -407,8 +410,6 @@ var reportContentMap = function (report) {
  */
 var regularReportDefinition = function (report, settings) {
 
-    console.log(JSON.stringify('regularReportDefinition'));
-
     var contentMap = reportContentMap(report);
 
     var tableHeaderWidths = ['*', 50, '*', '*', '*'];
@@ -493,8 +494,6 @@ var regularReportDefinition = function (report, settings) {
  * @param settings
  */
 var staticReportDefinition = function (report, settings) {
-
-    console.log(JSON.stringify('staticReportDefinition'));
 
     var contentMap = reportContentMap(report);
 

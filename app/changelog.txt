@@ -1,9 +1,13 @@
 3.1.5
 
+Guardswift.com
+
+  - Alle PDF rapporter kan hentes fra hjemmesiden
+
 Android App:
 
   - Giver besked ved ny opdatering, og giver brugeren mulighed for at åbne GMail så opdateringen kan hentes og installeres
 
 Fastvagt:
 
-    - Viser nu kun rapporter for de seneste 7 dage
+    - Viser kun rapporter for de seneste 7 dage
