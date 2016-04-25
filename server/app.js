@@ -1,4 +1,4 @@
-var GuardSwiftVersion = 315;
+var GuardSwiftVersion = 316;
 
 /**
  * Module dependencies
