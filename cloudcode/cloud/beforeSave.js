@@ -3,17 +3,17 @@ var Static = require("cloud/static.js");
 var Mailing = require("cloud/mailing.js");
 
 //** SETUP NEW
-Parse.Cloud.beforeSave("_User", function(request, response) {
-	var user = request.object;
-	if (!user.has('broadcast_alarms')) {
-		user.set('broadcast_alarms', false);
-	}
-	if (!user.has('totalSavedEvents')) {
-		user.set('totalSavedEvents', 0);
-	}
-	if (!user.has('paidEvents')) {
-		user.set('paidEvents', 1000)
-	}
+Parse.Cloud.beforeSave("_User", function (request, response) {
+    var user = request.object;
+    if (!user.has('broadcast_alarms')) {
+        user.set('broadcast_alarms', false);
+    }
+    if (!user.has('totalSavedEvents')) {
+        user.set('totalSavedEvents', 0);
+    }
+    if (!user.has('paidEvents')) {
+        user.set('paidEvents', 1000)
+    }
     response.success();
 });
 
@@ -68,62 +68,61 @@ Parse.Cloud.beforeSave("_User", function(request, response) {
 //	}
 //};
 
-Parse.Cloud.beforeSave("Report", function(request, response) {
+Parse.Cloud.beforeSave("Report", function (request, response) {
 
-	//updateLogACL(request);
+    //updateLogACL(request);
 
-	Parse.Cloud.useMasterKey();
+    Parse.Cloud.useMasterKey();
 
-	var Report = request.object;
+    var Report = request.object;
 
-	if (Report.isNew()) {
-		var columnName = "";
-		if (Report.has('alarm'))
-			columnName = "alarmReports";
-		if (Report.has('staticTask'))
-				columnName = "staticTaskReports";
-		if (Report.has('circuitUnit'))
-			columnName = "regularReports";
+    if (Report.isNew()) {
+        var columnName = "";
+        if (Report.has('alarm'))
+            columnName = "alarmReports";
+        if (Report.has('staticTask'))
+            columnName = "staticTaskReports";
+        if (Report.has('circuitUnit'))
+            columnName = "regularReports";
 
 
-
-		if (columnName) {
-			incrementUsageCount(request, [columnName, "reports"]).then(function() {
-				response.success();
-			});
-		}
-	} else {
-		response.success();
-	}
+        if (columnName) {
+            incrementUsageCount(request, [columnName, "reports"]).then(function () {
+                response.success();
+            });
+        }
+    } else {
+        response.success();
+    }
 });
 
-Parse.Cloud.beforeSave("GPSTracker", function(request, response) {
+Parse.Cloud.beforeSave("GPSTracker", function (request, response) {
 
-	Parse.Cloud.useMasterKey();
+    Parse.Cloud.useMasterKey();
 
-	if (request.object.isNew()) {
-		return incrementUsageCount(request, 'gpsTracker').then(function() {
-			response.success();
-		})
-	} else {
-		response.success();
-	}
+    if (request.object.isNew()) {
+        return incrementUsageCount(request, 'gpsTracker').then(function () {
+            response.success();
+        })
+    } else {
+        response.success();
+    }
 
 });
 
-var incrementUsageCount = function(request, columnNames) {
-	var User = request.user;
-	if (User) {
-		// to accept single string arguments
-		var columnNamesArray = [].concat(columnNames);
-		for (i=0; i<columnNamesArray.length; ++i) {
-			User.increment(columnNamesArray[i]);
-		}
-		return User.save();
-	} else {
-		console.error('incrementUsageCount - missing user');
-		return new Parse.Promise.error('missing user');
-	}
+var incrementUsageCount = function (request, columnNames) {
+    var User = request.user;
+    if (User) {
+        // to accept single string arguments
+        var columnNamesArray = [].concat(columnNames);
+        for (i = 0; i < columnNamesArray.length; ++i) {
+            User.increment(columnNamesArray[i]);
+        }
+        return User.save();
+    } else {
+        console.error('incrementUsageCount - missing user');
+        return new Parse.Promise.error('missing user');
+    }
 
 };
 
@@ -206,19 +205,19 @@ var incrementUsageCount = function(request, columnNames) {
 //	}
 //});
 
-Parse.Cloud.beforeSave("Alarm", function(request, response) {
+Parse.Cloud.beforeSave("Alarm", function (request, response) {
 
-	var Alarm = request.object;
+    var Alarm = request.object;
 
-	if (Alarm.get('aborted')) {
-		console.log("-- aborted --");
-		var guard = Alarm.get('guard');
-		Alarm.unset('ignoredBy');
-		Alarm.addUnique('ignoredBy', guard);
-	}
+    if (Alarm.get('aborted')) {
+        console.log("-- aborted --");
+        var guard = Alarm.get('guard');
+        Alarm.unset('ignoredBy');
+        Alarm.addUnique('ignoredBy', guard);
+    }
 
 
-	response.success();
+    response.success();
 
 });
 
@@ -257,95 +256,91 @@ Parse.Cloud.beforeSave("Alarm", function(request, response) {
 // return promise;
 // };
 
-Parse.Cloud.beforeSave("EventLog", function(request, response) {
-	//updateLogACL(request);
+Parse.Cloud.beforeSave("EventLog", function (request, response) {
 
-	var EventLog = request.object;
+    var EventLog = request.object;
 
-	// avoid 'undefined' for automatic
-	var automatic = EventLog.get('automatic');
-	if (!automatic) {
-		EventLog.set('automatic', false);
-	}
+    // avoid 'undefined' for automatic
+    var automatic = EventLog.get('automatic');
+    if (!automatic) {
+        EventLog.set('automatic', false);
+    }
+
+    response.success();
 
 
-	response.success();
 });
+
 
 /*
  * Auto set timesUsed to 0 if not defined
  */
-Parse.Cloud.beforeSave("EventType", function(request, response) {
-	var EventType = request.object;
+Parse.Cloud.beforeSave("EventType", function (request, response) {
+    var EventType = request.object;
 
-	var timesUsed = EventType.get('timesUsed');
-	if (!timesUsed) {
-		var timesUsedCount = (EventType.has('client')) ? 1000 : 0;
-		EventType.set('timesUsed', timesUsedCount);
-	} else {
-		EventType.increment('timesUsed');
-	}
+    var timesUsed = EventType.get('timesUsed');
+    if (!timesUsed) {
+        var timesUsedCount = (EventType.has('client')) ? 1000 : 0;
+        EventType.set('timesUsed', timesUsedCount);
+    } else {
+        EventType.increment('timesUsed');
+    }
 
-	response.success();
+    response.success();
 });
 
-Parse.Cloud.beforeSave("CircuitUnit", function(request, response) {
-	Parse.Cloud.useMasterKey();
+Parse.Cloud.beforeSave("CircuitUnit", function (request, response) {
+    Parse.Cloud.useMasterKey();
 
-	var CircuitUnit = request.object;
+    var CircuitUnit = request.object;
 
-	// Set default values
-	if (!CircuitUnit.has('highPriority')) {
-		CircuitUnit.set('highPriority', false);
-	}
+    // Set default values
+    if (!CircuitUnit.has('highPriority')) {
+        CircuitUnit.set('highPriority', false);
+    }
 
-	if (!CircuitUnit.has('timeStarted')) {
-		CircuitUnit.set('timeStarted', new Date(1970));
-	}
+    if (!CircuitUnit.has('timeStarted')) {
+        CircuitUnit.set('timeStarted', new Date(1970));
+    }
 
-	if (!CircuitUnit.has('timeEnded')) {
-		CircuitUnit.set('timeEnded', new Date(1970));
-	}
+    if (!CircuitUnit.has('timeEnded')) {
+        CircuitUnit.set('timeEnded', new Date(1970));
+    }
 
-	// inherit client position
-	var clientPointer = CircuitUnit.get('client');
-	if (clientPointer) {
-		clientPointer.fetch().then(function(client) {
-			CircuitUnit.set('clientPosition', client.get('position'));
-			response.success();
-		}, function(error) {
-			console.error("error at clientPointer " + error.message);
-			response.success();
-		});
-	} else {
-		response.success();
-	}
+    // inherit client position
+    var clientPointer = CircuitUnit.get('client');
+    if (clientPointer) {
+        clientPointer.fetch().then(function (client) {
+            CircuitUnit.set('clientPosition', client.get('position'));
+            response.success();
+        }, function (error) {
+            console.error("error at clientPointer " + error.message);
+            response.success();
+        });
+    } else {
+        response.success();
+    }
 
 });
 
-Parse.Cloud
-		.beforeSave(
-				"DistrictWatchClient",
-				function(request, response) {
-					Parse.Cloud.useMasterKey();
+Parse.Cloud.beforeSave(
+    "DistrictWatchClient",
+    function (request, response) {
+        Parse.Cloud.useMasterKey();
 
-					var DistrictWatchClient = request.object;
+        var DistrictWatchClient = request.object;
 
-					var DistrictWatchUnit = DistrictWatchClient
-							.get('districtWatchUnit');
+        var DistrictWatchUnit = DistrictWatchClient.get('districtWatchUnit');
 
-					DistrictWatchUnit
-							.fetch()
-							.then(
-									function(districtWatchUnit) {
-										var ResponsibleClient = districtWatchUnit
-												.get('client');
+        DistrictWatchUnit.fetch().then(
+            function (districtWatchUnit) {
+                var ResponsibleClient = districtWatchUnit.get('client');
 
-										DistrictWatchClient.set('supervisions', districtWatchUnit.get('supervisions'));
-										DistrictWatchClient.set('days', districtWatchUnit.get('days'));
+                DistrictWatchClient.set('supervisions', districtWatchUnit.get('supervisions'));
+                DistrictWatchClient.set('days', districtWatchUnit.get('days'));
 
-										if (!DistrictWatchClient.has('completed'))
-											DistrictWatchClient.set('completed', false)
+                if (!DistrictWatchClient.has('completed'))
+                    DistrictWatchClient.set('completed', false)
 
 //										ResponsibleClient
 //												.fetch()
@@ -357,94 +352,84 @@ Parse.Cloud
 //																			responsibleClient
 //																					.get('name'));
 
-															var addressName = DistrictWatchClient
-																	.get("addressName");
-															var addressNumber = DistrictWatchClient
-																	.get("addressNumber");
-															var zipcode = DistrictWatchClient
-																	.get("zipcode");
-															var cityName = DistrictWatchClient
-																	.get("cityName");
+                var addressName = DistrictWatchClient.get("addressName");
+                var addressNumber = DistrictWatchClient.get("addressNumber");
+                var zipcode = DistrictWatchClient.get("zipcode");
+                var cityName = DistrictWatchClient.get("cityName");
 
-															DistrictWatchClient
-																	.set(
-																			'fullAddress',
-																			addressName
-																					+ " "
-																					+ addressNumber);
+                DistrictWatchClient.set(
+                    'fullAddress',
+                    addressName
+                    + " "
+                    + addressNumber);
 
-															var searchAddress = addressName
-																	+ " "
-																	+ addressNumber
-																	+ ","
-																	+ zipcode
-																	+ " "
-																	+ cityName;
+                var searchAddress = addressName
+                    + " "
+                    + addressNumber
+                    + ","
+                    + zipcode
+                    + " "
+                    + cityName;
 
-															if (addressName.length == 0) {
-																response
-																		.error("Address must not be empty");
-															} else if (zipcode == 0) {
-																if (cityName.length == 0) {
-																	response
-																			.error("Zipcode and city name must not be empty");
-																}
-															} else {
-																lookupAddress(
-																		searchAddress)
-																		.then(
-																				function(point) {
+                if (addressName.length == 0) {
+                    response.error("Address must not be empty");
+                } else if (zipcode == 0) {
+                    if (cityName.length == 0) {
+                        response.error("Zipcode and city name must not be empty");
+                    }
+                } else {
+                    lookupAddress(
+                        searchAddress).then(
+                        function (point) {
 
-																					DistrictWatchClient
-																							.set(
-																									"position",
-																									point);
+                            DistrictWatchClient.set(
+                                "position",
+                                point);
 
-																					response
-																							.success();
-																				},
-																				function(error) {
-																					response
-																							.error("Address not found: "
-																									+ searchAddress);
-																				});
-															};
+                            response.success();
+                        },
+                        function (error) {
+                            response.error("Address not found: "
+                                + searchAddress);
+                        });
+                }
+                ;
 //														},
 //														function(error) {
 //															response
 //																	.error("ResponsibleClient not found: "
 //																			+ searchAddress);
 //														});
-									}, function(error) {
-										console.error('missing districtWatchUnit');
-										DistrictWatchClient.destroy();
-										response.success();
-									});
+            }, function (error) {
+                console.error('missing districtWatchUnit');
+                DistrictWatchClient.destroy();
+                response.success();
+            });
 
-				});
+    });
 
 /*
  * Sanity check and obtain a GPS position for Client
  */
-Parse.Cloud.beforeSave("Client", function(request, response) {
-	Parse.Cloud.useMasterKey();
+Parse.Cloud.beforeSave("Client", function (request, response) {
+    Parse.Cloud.useMasterKey();
 
-	var Client = request.object;
+    var Client = request.object;
 
-	var dirtyKeys = Client.dirtyKeys();
-	var lookupAddress = false;
-	var addressKeys = ["cityName", "zipcode", "addressName", "addressNumber"]
-	for (dirtyKey in dirtyKeys) {
-		var dirtyValue = dirtyKeys[dirtyKey];
-		if (_.contains(addressKeys, dirtyValue)) {
-			lookupAddress = true;
-		}
-		console.log(dirtyValue + ": " + lookupAddress);
-	}
+    var dirtyKeys = Client.dirtyKeys();
+    var lookupAddress = false;
+    var addressKeys = ["cityName", "zipcode", "addressName", "addressNumber"]
+    for (dirtyKey in dirtyKeys) {
+        var dirtyValue = dirtyKeys[dirtyKey];
+        if (_.contains(addressKeys, dirtyValue)) {
+            lookupAddress = true;
+        }
+        console.log(dirtyValue + ": " + lookupAddress);
+    }
 
-	if (lookupAddress) {
-		console.log("do addAddressToClient");
-		addAddressToClient(Client, response);
+    if (lookupAddress) {
+        console.log("do addAddressToClient");
+        addAddressToClient(Client, response);
 
 
 //			var CircuitUnit = Parse.Object.extend("CircuitUnit");
@@ -460,187 +445,171 @@ Parse.Cloud.beforeSave("Client", function(request, response) {
 //			}, function(err) {
 //				console.error(err.message);
 //			});
-	} else {
-		console.log("no address lookup");
-		response.success();
-	}
+    } else {
+        console.log("no address lookup");
+        response.success();
+    }
 
 //	response.success();
 
 
 });
 
-var addAddressToClient = function(Client, response) {
+var addAddressToClient = function (Client, response) {
 
-	var addressName = Client.get("addressName");
-	var addressNumber = Client.get("addressNumber");
-	var zipcode = Client.get("zipcode");
-	var cityName = Client.get("cityName");
+    var addressName = Client.get("addressName");
+    var addressNumber = Client.get("addressNumber");
+    var zipcode = Client.get("zipcode");
+    var cityName = Client.get("cityName");
 
-	Client.set('fullAddress', addressName + " " + addressNumber);
+    Client.set('fullAddress', addressName + " " + addressNumber);
 
-	var searchAddress = addressName + " " + addressNumber + "," + zipcode + " "
-			+ cityName;
+    var searchAddress = addressName + " " + addressNumber + "," + zipcode + " "
+        + cityName;
 
-	if (addressName.length == 0) {
-		response.error("Address must not be empty");
-	} else if (zipcode == 0) {
-		if (cityName.length == 0) {
-			response.error("Zipcode and city name must not be empty");
-		}
-	} else {
-		lookupAddress(searchAddress).then(function(point) {
+    if (addressName.length == 0) {
+        response.error("Address must not be empty");
+    } else if (zipcode == 0) {
+        if (cityName.length == 0) {
+            response.error("Zipcode and city name must not be empty");
+        }
+    } else {
+        lookupAddress(searchAddress).then(function (point) {
 
-			Client.set("position", point);
+            Client.set("position", point);
 
-			console.log('setting new position:');
-			console.log(point);
+            console.log('setting new position:');
+            console.log(point);
 
-			response.success();
-		}, function(error) {
-			response.error("Address not found: " + searchAddress);
-		});
-	};
+            response.success();
+        }, function (error) {
+            response.error("Address not found: " + searchAddress);
+        });
+    }
+    ;
 };
 
 /*
  * Sanity check and obtain a GPS position for first addressNumber
  */
-Parse.Cloud
-		.beforeSave(
-				"DistrictWatchUnit",
-				function(request, response) {
-					Parse.Cloud.useMasterKey();
+Parse.Cloud.beforeSave(
+    "DistrictWatchUnit",
+    function (request, response) {
+        Parse.Cloud.useMasterKey();
 
-					var unit = request.object;
+        var unit = request.object;
 
-					var addressName = unit.get("address");
-					var addressNumbers = unit.get("addressNumbers");
+        var addressName = unit.get("address");
+        var addressNumbers = unit.get("addressNumbers");
 
-					if (addressName.length == 0) {
-						response.error("Address must not be empty");
-					}
+        if (addressName.length == 0) {
+            response.error("Address must not be empty");
+        }
 
-					if (addressNumbers.length == 0) {
-						response.error("Streetnumbers must not be empty");
-					}
+        if (addressNumbers.length == 0) {
+            response.error("Streetnumbers must not be empty");
+        }
 
-					var DistrictWatch = unit.get('districtWatch');
+        var DistrictWatch = unit.get('districtWatch');
 
-					DistrictWatch
-							.fetch()
-							.then(
-									function(districtWatch) {
+        DistrictWatch.fetch().then(
+            function (districtWatch) {
 
-										var zipcode = districtWatch
-												.get("zipcode");
-										var cityName = districtWatch
-												.get("city");
+                var zipcode = districtWatch.get("zipcode");
+                var cityName = districtWatch.get("city");
 
-										var searchAddress = addressName + " "
-												+ addressNumbers[0] + ","
-												+ zipcode + " " + cityName;
+                var searchAddress = addressName + " "
+                    + addressNumbers[0] + ","
+                    + zipcode + " " + cityName;
 
-										if (zipcode == 0) {
-											if (cityName.length == 0) {
-												response
-														.error("Zipcode and city name must not be empty");
-											}
-										} else {
-											lookupAddress(searchAddress)
-													.then(
-															function(point) {
-																unit
-																		.set(
-																				"position",
-																				point);
-																if (unit
-																		.isNew()) {
-																	response
-																			.success();
-																} else {
-																	var DistrictWatchClient = Parse.Object
-																			.extend("DistrictWatchClient");
-																	var cleanUpQuery = new Parse.Query(
-																			DistrictWatchClient);
-																	cleanUpQuery
-																			.equalTo(
-																					'districtWatchUnit',
-																					unit);
-																	cleanUpQuery
-																			.each(
-																					function(object) {
-																						// remove
-																						// all
-																						// earlier
-																						// associated
-																						// DistrictWatchClient's
-																						return object
-																								.destroy();
-																					})
-																			.then(
-																					function() {
-																						response
-																								.success();
-																					},
-																					function(error) {
-																						console
-																								.error(error.message);
-																						response
-																								.error(error.message);
-																					});
-																}
-															},
-															function(error) {
-																response
-																		.error("Address not found: "
-																				+ searchAddress);
-															});
-										};
-									}, function(error) {
-										console.error(error.message);
-										console.error(DistrictWatch);
-										unit.set("invalidPointer", true)
-										response.success();
-									});
+                if (zipcode == 0) {
+                    if (cityName.length == 0) {
+                        response.error("Zipcode and city name must not be empty");
+                    }
+                } else {
+                    lookupAddress(searchAddress).then(
+                        function (point) {
+                            unit.set(
+                                "position",
+                                point);
+                            if (unit.isNew()) {
+                                response.success();
+                            } else {
+                                var DistrictWatchClient = Parse.Object.extend("DistrictWatchClient");
+                                var cleanUpQuery = new Parse.Query(
+                                    DistrictWatchClient);
+                                cleanUpQuery.equalTo(
+                                    'districtWatchUnit',
+                                    unit);
+                                cleanUpQuery.each(
+                                    function (object) {
+                                        // remove
+                                        // all
+                                        // earlier
+                                        // associated
+                                        // DistrictWatchClient's
+                                        return object.destroy();
+                                    }).then(
+                                    function () {
+                                        response.success();
+                                    },
+                                    function (error) {
+                                        console.error(error.message);
+                                        response.error(error.message);
+                                    });
+                            }
+                        },
+                        function (error) {
+                            response.error("Address not found: "
+                                + searchAddress);
+                        });
+                }
+                ;
+            }, function (error) {
+                console.error(error.message);
+                console.error(DistrictWatch);
+                unit.set("invalidPointer", true)
+                response.success();
+            });
 
-				});
+    });
 
-var lookupAddress = function(searchAddress) {
-	var promise = new Parse.Promise();
-	Parse.Cloud.httpRequest({
-		url : 'https://maps.googleapis.com/maps/api/geocode/json',
-		params : {
-			address : searchAddress,
-			key : Static.GOOGLE_GEOCODE_API_KEY
-		},
-		success : function(httpResponse) {
-			var data = httpResponse.data;
-			if (data.status == "OK") {
+var lookupAddress = function (searchAddress) {
+    var promise = new Parse.Promise();
+    Parse.Cloud.httpRequest({
+        url: 'https://maps.googleapis.com/maps/api/geocode/json',
+        params: {
+            address: searchAddress,
+            key: Static.GOOGLE_GEOCODE_API_KEY
+        },
+        success: function (httpResponse) {
+            var data = httpResponse.data;
+            if (data.status == "OK") {
 
-				var latlng = data.results[0].geometry.location;
+                var latlng = data.results[0].geometry.location;
 
-				var lat = latlng.lat;
-				var lng = latlng.lng;
+                var lat = latlng.lat;
+                var lng = latlng.lng;
 
-				var point = new Parse.GeoPoint({
-					latitude : lat,
-					longitude : lng
-				});
+                var point = new Parse.GeoPoint({
+                    latitude: lat,
+                    longitude: lng
+                });
 
-				promise.resolve(point);
+                promise.resolve(point);
 
-			} else {
-				console.error(httpResponse);
-				promise.reject("Failed to locate coordinate for : "
-						+ searchAddress);
-			};
+            } else {
+                console.error(httpResponse);
+                promise.reject("Failed to locate coordinate for : "
+                    + searchAddress);
+            }
+            ;
 
-		},
-		error : function(httpResponse) {
-			promise.reject(httpResponse);
-			console.error(httpResponse);
-		}
-	});
-	return promise;
+        },
+        error: function (httpResponse) {
+            promise.reject(httpResponse);
+            console.error(httpResponse);
+        }
+    });
+    return promise;
 };
