@@ -1,4 +1,4 @@
-var GuardSwiftVersion = 317;
+var GuardSwiftVersion = 318;
 
 /**
  * Module dependencies
@@ -35,7 +35,7 @@ app.use(express.static(clientPath));
 var cons = require('consolidate');
 
 // view engine setup
-app.engine('html', cons.swig)
+app.engine('html', cons.swig);
 app.set('views', clientPath);
 app.set('view engine', 'html');
 

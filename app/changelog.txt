@@ -1,3 +1,19 @@
+3.1.8
+
+  - Bugfixes
+  - Opdatere hver gang skærm tændes så der sorteres efter afstand
+  - Rapporter skrives nu til rapport automatisk baseret på log hændelser
+    Før denne opdatering sørgede app'en for at lokalisere og skrive til den rigtige rapport
+
+3.1.7
+
+  - Satte minimum SDK ned til 19 igen
+
+3.1.6
+
+  - Bugfixes
+  - Opdatering af biblioteker
+
 3.1.5
 
 Guardswift.com
