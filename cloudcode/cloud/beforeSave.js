@@ -50,8 +50,8 @@ Parse.Cloud.beforeSave("Client", function (request, response) {
         var dirtyValue = dirtyKeys[dirtyKey];
         if (_.contains(addressKeys, dirtyValue)) {
             lookupAddress = true;
+            console.log(dirtyValue + ": " + lookupAddress);
         }
-        console.log(dirtyValue + ": " + lookupAddress);
     }
 
     if (lookupAddress) {
@@ -128,13 +128,12 @@ Parse.Cloud.beforeSave(
 
         DistrictWatchUnit.fetch().then(
             function (districtWatchUnit) {
-                var ResponsibleClient = districtWatchUnit.get('client');
 
                 DistrictWatchClient.set('supervisions', districtWatchUnit.get('supervisions'));
                 DistrictWatchClient.set('days', districtWatchUnit.get('days'));
 
                 if (!DistrictWatchClient.has('completed'))
-                    DistrictWatchClient.set('completed', false)
+                    DistrictWatchClient.set('completed', false);
 
 
                 var addressName = DistrictWatchClient.get("addressName");
@@ -336,8 +335,6 @@ var lookupAddress = function (searchAddress) {
                 promise.reject("Failed to locate coordinate for : "
                     + searchAddress);
             }
-            ;
-
         },
         error: function (httpResponse) {
             promise.reject(httpResponse);
