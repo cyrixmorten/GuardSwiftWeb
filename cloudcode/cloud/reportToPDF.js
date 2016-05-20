@@ -437,8 +437,29 @@ var regularReportDefinition = function (report, settings) {
             return '';
         }
 
+
+        var arrivals = '';
+        var delimiter = ', ';
+        _.each(contentMap.arrivedTimestamps, function(timestamp) {
+           arrivals += timestamp + delimiter;
+        });
+
         return {
-            text: 'Vægter ankom på adressen kl: ' + contentMap.arrivedTimestamps[0],
+            columns: [
+                {
+                    width: 'auto',
+                    text: [
+                        'Vægter var ved adressen kl: ', {text: s(arrivals).rtrim(delimiter).value(), bold: true}
+                    ]
+                },
+                {
+                    width: '*',
+                    text: [
+                        {text: 'Rapport id: ' + report.get('reportId'), color: 'grey'}
+                    ],
+                    alignment: 'right'
+                }
+            ],
             margin: [0, 10],
             style: 'boldFont'
         }
