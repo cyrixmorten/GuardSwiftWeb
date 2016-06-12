@@ -28,6 +28,7 @@ require("cloud/manageDailyReset.js");
 
 // reports
 //require("cloud/reportRegularMails.js");
+require("cloud/reportUtils.js");
 require("cloud/pdfUtils.js");
 require("cloud/reportToPDF.js");
 require("cloud/reportSend.js");

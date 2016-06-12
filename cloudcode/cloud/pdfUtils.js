@@ -1,53 +1,5 @@
-var moment = require('cloud/lib/moment/moment-timezone.js');
 var _ = require('cloud/lib/underscore.js');
 
-/**
- * Extracts categorised event information for given report
- */
-exports.eventsMap = function (report, timeZone) {
-
-	var arrivedLogs = _.filter(report.get('eventLogs'), function (eventLog) {
-		return eventLog.get('task_event') === 'ARRIVE';
-	});
-
-	var eventLogs = _.filter(report.get('eventLogs'), function (eventLog) {
-		return eventLog.get('task_event') === 'OTHER';
-	});
-
-	return {
-		arrivedTimestamps: _.map(arrivedLogs, function (log) {
-			var timeStamp = log.get('deviceTimestamp');
-
-			return moment(timeStamp).tz(timeZone).format('HH:mm');
-		}),
-
-		timestamps: _.map(eventLogs, function (log) {
-			var timeStamp = log.get('deviceTimestamp');
-
-			return moment(timeStamp).tz(timeZone).format('HH:mm');
-		}),
-
-		eventName: _.map(eventLogs, function (log) {
-			return log.get('event') || '';
-		}),
-
-		amount: _.map(eventLogs, function (log) {
-			return log.has('amount') ? log.get('amount').toString() : '';
-		}),
-
-		people: _.map(eventLogs, function (log) {
-			return log.get('people') || '';
-		}),
-
-		location: _.map(eventLogs, function (log) {
-			return log.get('clientLocation') || '';
-		}),
-
-		remarks: _.map(eventLogs, function (log) {
-			return log.get('remarks') || '';
-		})
-	};
-};
 
 exports.header = function (header, subHeader, pushTopMargin) {
 	return {

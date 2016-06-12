@@ -2,6 +2,7 @@ var moment = require('cloud/lib/moment/moment-timezone.js');
 var s = require("cloud/lib/underscore.string.min.js");
 var _ = require('cloud/lib/underscore.js');
 
+var reportUtils = require('cloud/reportUtils.js');
 var pdfUtils = require('cloud/pdfUtils.js');
 
 // todo store/retrieve from user
@@ -10,42 +11,15 @@ var timeZone = 'Europe/Copenhagen';
 
 var createDocDefinition = function (report) {
 
-    var fetchReportSettings = function (user, settingsCol) {
-        return user.fetch().then(function (user) {
-            return user.get(settingsCol).fetch();
-        });
-    };
-
-    var promise = new Parse.Promise.error('No definition matching report');
-
-    var createRegularReportDefinition = function(report) {
-        var owner = report.get('owner');
-
+    return reportUtils.getReportSettings(report).then(function(settings) {
         if (report.has('circuitUnit')) {
-            return fetchReportSettings(owner, 'regularReportSettings').then(function (settings) {
-                return regularReportDefinition(report, settings);
-            });
+            return regularReportDefinition(report, settings);
         }
-    };
-
-    var createStaticReportDefinition = function(report) {
-        var owner = report.get('owner');
-
         if (report.has('staticTask')) {
-            return fetchReportSettings(owner, 'staticReportSettings').then(function (settings) {
-                return staticReportDefinition(report, settings);
-            });
+            return staticReportDefinition(report, settings);
         }
-    };
-
-    var strategies = [createRegularReportDefinition, createStaticReportDefinition];
-
-    _.each(strategies, function(strategy) {
-        var definitionPromise = strategy(report);
-        promise = definitionPromise ? definitionPromise: promise;
     });
 
-    return promise;
 };
 
 Parse.Cloud.define("reportToPDF", function (request, response) {
@@ -338,7 +312,7 @@ var defaultFooter = function (report) {
  */
 var regularReportDefinition = function (report, settings) {
 
-    var contentMap = pdfUtils.eventsMap(report, timeZone);
+    var contentMap = reportUtils.reportEventsMap(report, timeZone);
 
     var guardArrivalText = function () {
         if (_.isEmpty(contentMap.arrivedTimestamps)) {
@@ -398,7 +372,7 @@ var regularReportDefinition = function (report, settings) {
  */
 var staticReportDefinition = function (report, settings) {
 
-    var contentMap = pdfUtils.eventsMap(report, timeZone);
+    var contentMap = reportUtils.reportEventsMap(report, timeZone);
 
 
     console.log('!!');

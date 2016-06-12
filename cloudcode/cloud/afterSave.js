@@ -30,10 +30,8 @@ Parse.Cloud.afterSave("EventLog", function (request) {
     var findReport = function () {
         console.log('findReport');
 
-        console.log('reportId ' + getReportId());
 
         var query = new Parse.Query(Parse.Object.extend('Report'));
-        query.equalTo('reportId', getReportId());
 
         return query.first().then(function (report) {
             return (report) ? report : Parse.Promise.error(reportNotFoundError);
