@@ -2,32 +2,48 @@ var moment = require('cloud/lib/moment/moment-timezone.js');
 var s = require("cloud/lib/underscore.string.min.js");
 var _ = require('cloud/lib/underscore.js');
 
+var pdfUtils = require('cloud/pdfUtils.js');
+
 // todo store/retrieve from user
 var timeZone = 'Europe/Copenhagen';
-
-var fetchReportSettings = function (user, settingsCol) {
-    return user.fetch().then(function (user) {
-        return user.get(settingsCol).fetch();
-    });
-};
 
 
 var createDocDefinition = function (report) {
 
+    var fetchReportSettings = function (user, settingsCol) {
+        return user.fetch().then(function (user) {
+            return user.get(settingsCol).fetch();
+        });
+    };
+
     var promise = new Parse.Promise.error('No definition matching report');
 
-    var owner = report.get('owner');
+    var createRegularReportDefinition = function(report) {
+        var owner = report.get('owner');
 
-    if (report.has('circuitUnit')) {
-        promise = fetchReportSettings(owner, 'regularReportSettings').then(function (settings) {
-            return regularReportDefinition(report, settings);
-        });
-    }
-    if (report.has('staticTask')) {
-        promise = fetchReportSettings(owner, 'staticReportSettings').then(function (settings) {
-            return staticReportDefinition(report, settings);
-        });
-    }
+        if (report.has('circuitUnit')) {
+            return fetchReportSettings(owner, 'regularReportSettings').then(function (settings) {
+                return regularReportDefinition(report, settings);
+            });
+        }
+    };
+
+    var createStaticReportDefinition = function(report) {
+        var owner = report.get('owner');
+
+        if (report.has('staticTask')) {
+            return fetchReportSettings(owner, 'staticReportSettings').then(function (settings) {
+                return staticReportDefinition(report, settings);
+            });
+        }
+    };
+
+    var strategies = [createRegularReportDefinition, createStaticReportDefinition];
+
+    _.each(strategies, function(strategy) {
+        var definitionPromise = strategy(report);
+        promise = definitionPromise ? definitionPromise: promise;
+    });
 
     return promise;
 };
@@ -218,22 +234,13 @@ var defaultHeader = function (report) {
         name: report.get('guardName')
     };
 
-    return {
-        columns: [
-            {
-                width: 'auto',
-                text: [
-                    {text: 'Vagt: ', bold: true}, guard.name + ' ' + guard.id
-                ]
-            },
-            {
-                width: '*',
-                text: 'Dato: ' + moment(report.get('createdAt')).tz(timeZone).format('DD-MM-YYYY'),
-                alignment: 'right'
-            }
+    return pdfUtils.leftRightAlignedContent({
+        textLeft: [
+            {text: 'Vagt: ', bold: true}, guard.name + ' ' + guard.id
         ],
+        textRight: 'Dato: ' + moment(report.get('createdAt')).tz(timeZone).format('DD-MM-YYYY'),
         margin: [10, 10]
-    }
+    })
 };
 
 /**
@@ -309,13 +316,7 @@ var defaultContentHeader = function (report, backgroundHeaderImage) {
         address: report.get('clientAddress') + ' ' + report.get('clientAddressNumber')
     };
 
-    return {
-        text: [
-            {text: client.name, style: 'header'}, ' ', {text: client.address, style: ['header', 'subHeader']}
-        ],
-        // margin: [left, top, right, bottom]
-        margin: [50, 40 + pushTopMargin, 50, 30]
-    }
+    return pdfUtils.header(client.name, client.address, pushTopMargin)
 };
 
 var defaultFooter = function (report) {
@@ -328,79 +329,6 @@ var defaultFooter = function (report) {
     ]
 };
 
-var defaultStyles = function () {
-    return {
-        header: {
-            fontSize: 22,
-            bold: true,
-            alignment: 'center'
-        },
-        subHeader: {
-            fontSize: 16,
-            color: 'grey'
-        },
-        tableHeader: {
-            bold: true,
-            fontSize: 13,
-            color: 'black'
-        },
-        boldFont: {
-            bold: true
-        }
-    };
-};
-
-/**
- * Extracts content information for given report
- *
- * @param report
- * @returns {{events_task_other: Array, timestamps: Array, eventName: Array, amount: Array, people: Array, location: Array, remarks: Array}}
- */
-var reportContentMap = function (report) {
-
-    var arrivedLogs = _.filter(report.get('eventLogs'), function (eventLog) {
-        return eventLog.get('task_event') === 'ARRIVE';
-    });
-
-    var eventLogs = _.filter(report.get('eventLogs'), function (eventLog) {
-        return eventLog.get('task_event') === 'OTHER';
-    });
-
-    return {
-        arrivedTimestamps: _.map(arrivedLogs, function (log) {
-            var timeStamp = log.get('deviceTimestamp');
-
-            return moment(timeStamp).tz(timeZone).format('HH:mm');
-        }),
-
-        timestamps: _.map(eventLogs, function (log) {
-            var timeStamp = log.get('deviceTimestamp');
-
-            return moment(timeStamp).tz(timeZone).format('HH:mm');
-        }),
-
-        eventName: _.map(eventLogs, function (log) {
-            return log.get('event') || '';
-        }),
-
-        amount: _.map(eventLogs, function (log) {
-            return log.has('amount') ? log.get('amount').toString() : '';
-        }),
-
-        people: _.map(eventLogs, function (log) {
-            return log.get('people') || '';
-        }),
-
-        location: _.map(eventLogs, function (log) {
-            return log.get('clientLocation') || '';
-        }),
-
-        remarks: _.map(eventLogs, function (log) {
-            return log.get('remarks') || '';
-        })
-    };
-};
-
 
 /**
  * Generate regular report doc definition
@@ -410,59 +338,30 @@ var reportContentMap = function (report) {
  */
 var regularReportDefinition = function (report, settings) {
 
-    var contentMap = reportContentMap(report);
-
-    var tableHeaderWidths = ['*', 50, '*', '*', '*'];
-    var reportContent = _.zip(contentMap.eventName, contentMap.amount, contentMap.people, contentMap.location, contentMap.remarks);
-
-    var contentWithHeader = function (reportContent) {
-        // define header
-        var tableHeaderRaw = ['Hændelse', 'Antal', 'Personer', 'Placering', 'Bemærkninger'];
-        var tableHeader = [{text: tableHeaderRaw[0], style: 'tableHeader'}, {
-            text: tableHeaderRaw[1],
-            style: 'tableHeader'
-        }, {text: tableHeaderRaw[2], style: 'tableHeader'}, {
-            text: tableHeaderRaw[3],
-            style: 'tableHeader'
-        }, {text: tableHeaderRaw[4], style: 'tableHeader'}];
-
-        // insert header
-        reportContent.unshift(tableHeader);
-
-        return reportContent;
-    };
+    var contentMap = pdfUtils.eventsMap(report, timeZone);
 
     var guardArrivalText = function () {
         if (_.isEmpty(contentMap.arrivedTimestamps)) {
             return '';
         }
 
+        var arrivalTimestamps = function() {
+            var arrivals = '';
+            var delimiter = ', ';
+            _.each(contentMap.arrivedTimestamps, function(timestamp) {
+                arrivals += timestamp + delimiter;
+            });
 
-        var arrivals = '';
-        var delimiter = ', ';
-        _.each(contentMap.arrivedTimestamps, function(timestamp) {
-           arrivals += timestamp + delimiter;
-        });
+            return s(arrivals).rtrim(delimiter).value();
+        };
 
-        return {
-            columns: [
-                {
-                    width: 'auto',
-                    text: [
-                        'Vægter var ved adressen kl: ', {text: s(arrivals).rtrim(delimiter).value(), bold: true}
-                    ]
-                },
-                {
-                    width: '*',
-                    text: [
-                        {text: 'Rapport id: ' + report.get('reportId'), color: 'grey'}
-                    ],
-                    alignment: 'right'
-                }
-            ],
+
+        return pdfUtils.leftRightAlignedContent({
+            textLeft: ['Vægter var ved adressen kl: ', {text: arrivalTimestamps(), bold: true}],
+            textRight: [{text: 'Rapport id: ' + report.get('reportId'), color: 'grey'}],
             margin: [0, 10],
-            style: 'boldFont'
-        }
+            style: {bold: true}
+        });
     };
 
     var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
@@ -476,34 +375,17 @@ var regularReportDefinition = function (report, settings) {
         content: [
             defaultContentHeader(report, backgroundHeaderImage),
             guardArrivalText(),
-            {
-                table: {
-                    widths: tableHeaderWidths,
-                    headerRows: 1,
-                    body: _.isEmpty(reportContent) ? [[]] : contentWithHeader(reportContent)
-                },
-                layout: {
-                    hLineWidth: function (i, node) {
-                        return (i === 0 || i === node.table.body.length) ? 2 : 1;
-                    },
-                    vLineWidth: function (i, node) {
-                        return (i === 0 || i === node.table.widths.length) ? 2 : 1;
-                    },
-                    hLineColor: function (i, node) {
-                        return (i === 0 || i === node.table.body.length) ? 'black' : 'gray';
-                    },
-                    vLineColor: function (i, node) {
-                        return (i === 0 || i === node.table.widths.length) ? 'black' : 'gray';
-                    }
-                },
-                margin: [0, 30]
-            }
+            pdfUtils.tableBorderedWithHeader({
+                widths : ['*', 50, '*', '*', '*'],
+                header : ['Hændelse', 'Antal', 'Personer', 'Placering', 'Bemærkninger'],
+                content: _.zip(contentMap.eventName, contentMap.amount, contentMap.people, contentMap.location, contentMap.remarks)
+            })
         ],
 
         footer: defaultFooter(report),
 
 
-        styles: defaultStyles()
+        styles: pdfUtils.defaultStyles()
 
     });
 };
@@ -516,37 +398,32 @@ var regularReportDefinition = function (report, settings) {
  */
 var staticReportDefinition = function (report, settings) {
 
-    var contentMap = reportContentMap(report);
-
-    var tableHeaderWidths = [50, '*'];
-    var reportContent = _.zip(contentMap.timestamps, contentMap.remarks);
+    var contentMap = pdfUtils.eventsMap(report, timeZone);
 
 
-    var backgroundHeaderImage = defaultBackgroundHeaderImage(settings);
+    console.log('!!');
+    console.log(JSON.stringify(defaultHeader(report)));
+
+
 
     return _.extend(defaultDoc(report), {
 
-        background: backgroundHeaderImage,
+        background: defaultBackgroundHeaderImage(settings),
 
         header: defaultHeader(report),
 
         content: [
             defaultContentHeader(report),
-            {
-                table: {
-                    widths: tableHeaderWidths,
-                    headerRows: 0,
-                    body: _.isEmpty(reportContent) ? [[]] : reportContent
-                },
-                layout: 'noBorders',
-                margin: [0, 30]
-            }
+            pdfUtils.tableNoBorders({
+                widths: [50, '*'],
+                content: _.zip(contentMap.timestamps, contentMap.remarks)
+            })
         ],
 
         footer: defaultFooter(report),
 
 
-        styles: defaultStyles()
+        styles: pdfUtils.defaultStyles()
 
     });
 };

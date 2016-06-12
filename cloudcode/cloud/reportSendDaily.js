@@ -7,10 +7,12 @@ Parse.Cloud.job("dailyMailReports", function (request, status) {
     var now = moment();
     var yesterday = moment().subtract(1, 'days');
 
-    var query = new Parse.Query(Parse.User);
+    var query = new Parse.Query(Parse.company);
     query.each(
-        function (user) {
-            return sendReportsMatching(user, 'REGULAR', yesterday.toDate(), now.toDate());
+        function (company) {
+            var clientReports = sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'REGULAR');
+            var sendSummaryReportToCompany = sendRegularReportSummaryToCompany(company, yesterday.toDate(), now.toDate());
+
         })
         .then(function () {
             // todo generate daily summary
@@ -22,31 +24,39 @@ Parse.Cloud.job("dailyMailReports", function (request, status) {
         });
 });
 
-var sendReportsMatching = function (user, taskType, fromDate, toDate) {
+var restrictQuery = function(query) {
+    return function(company, fromDate, toDate) {
+        query.equalTo('owner', company);
+        query.greaterThan("deviceTimestamp", fromDate);
+        query.lessThan("deviceTimestamp", toDate);
+    }
+};
+
+var sendReportsToClients = function (company, fromDate, toDate, taskType) {
 
     var reportQuery = new Parse.Query("Report");
 
-    reportQuery.equalTo('owner', user);
     reportQuery.equalTo('taskTypeName', taskType);
-    reportQuery.greaterThan("deviceTimestamp", fromDate);
-    reportQuery.lessThan("deviceTimestamp", toDate);
 
-    console.log('taskTypeName', taskType);
-    console.log('from: ' + moment(fromDate).format('DD/MM-HH:mm'));
-    console.log('to: ' + moment(toDate).format('DD/MM-HH:mm'));
+    restrictQuery(reportQuery)(company, fromDate, toDate);
 
-    return reportQuery.count().then(function(count) {
-        console.log('Sending ' + count +' reports for user ' + user.get('username'));
-        return new Parse.Promise.as(count);
-    }).then(function() {
-        return reportQuery.each(function (report) {
-            console.log('Sending report ' + report.id);
-            return Parse.Cloud.run('sendReport', {
-                reportId: report.id
-            });
+    return reportQuery.each(function (report) {
+        return Parse.Cloud.run('sendReport', {
+            reportId: report.id
         });
     })
+};
 
+var sendRegularReportSummaryToCompany = function(company, fromDate, toDate) {
+    var reportQuery = new Parse.Query('CircuitStarted');
+
+    restrictQuery(reportQuery)(company, fromDate, toDate);
+
+    return reportQuery.each(function (group) {
+        return Parse.Cloud.run('sendSummaryReport', {
+            taskGroup: group.id
+        });
+    })
 };
 
 
