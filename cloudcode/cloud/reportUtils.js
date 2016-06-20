@@ -64,7 +64,7 @@ exports.eventsMap = function (eventLogs, timeZone) {
 		}),
 
 		amount: _.map(otherEvents, function (log) {
-			return log.has('amount') ? log.get('amount').toString() : '';
+			return (log.has('amount') && log.get('amount') !== 0) ? log.get('amount').toString() : '';
 		}),
 
 		people: _.map(otherEvents, function (log) {
