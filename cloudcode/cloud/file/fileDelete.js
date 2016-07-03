@@ -1,4 +1,4 @@
-var static = require('cloud/static.js');
+var global = require('cloud/global.js');
 
 /**
  * Delete a file written to Parse
@@ -31,8 +31,8 @@ Parse.Cloud.define("fileDelete", function (request, response) {
         url: 'https://api.parse.com/1/files/' + deleteUrl,
         headers: {
             "X-Parse-Application-Id": Parse.applicationId,
-            "X-Parse-REST-API-Key" : static.PARSE_REST_API_KEY,
-            "X-Parse-Master-Key" : static.PARSE_MASTER_KEY
+            "X-Parse-REST-API-Key" : global.PARSE_REST_API_KEY,
+            "X-Parse-Master-Key" : global.PARSE_MASTER_KEY
         }
     }).then(function() {
         var msg = 'File successfully deleted';

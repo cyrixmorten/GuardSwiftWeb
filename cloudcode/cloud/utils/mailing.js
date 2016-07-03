@@ -149,9 +149,5 @@ Parse.Cloud.define("sendHTMLmail", function(request, response) {
 	}).fail(function(error) {
 		response.error("An error occured while sending email")
 	});
-
-
-
-
-
+	
 });

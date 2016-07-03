@@ -2,41 +2,7 @@ var moment = require('cloud/lib/moment/moment-timezone.js');
 var _ = require('cloud/lib/underscore.js');
 
 
-exports.getReportSettings = function (report) {
-
-	var fetchReportSettings = function (user, settingsCol) {
-		if (_.isEmpty(settingsCol)) {
-			return new Parse.Promise.error('No definition matching report');
-		}
-
-		return user.fetch().then(function (user) {
-			return user.get(settingsCol).fetch();
-		});
-	};
-
-
-	var getSettingsColumn = function(report) {
-		if (report.has('circuitUnit')) {
-			return 'regularReportSettings';
-		}
-		if (report.has('staticTask')) {
-			return 'staticReportSettings';
-		}
-	};
-
-	var settingsColumn = getSettingsColumn(report);
-
-	return fetchReportSettings(report.get('owner'), settingsColumn)
-};
-
-/**
- * Extracts categorised event information for given report
- */
-exports.reportEventsMap = function (report, timeZone) {
-	return exports.eventsMap(report.get('eventLogs'), timeZone);
-};
-
-exports.eventsMap = function (eventLogs, timeZone) {
+var eventsMap = function (eventLogs, timeZone) {
 
 	var arrivedEvents = _.filter(eventLogs, function (eventLog) {
 		return eventLog.get('task_event') === 'ARRIVE';
@@ -79,4 +45,11 @@ exports.eventsMap = function (eventLogs, timeZone) {
 			return log.get('remarks') || '';
 		})
 	};
+};
+
+/**
+ * Extracts categorised event information for given report
+ */
+exports.reportEvents = function (report, timeZone) {
+	return eventsMap(report.get('eventLogs'), timeZone);
 };

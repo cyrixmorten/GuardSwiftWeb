@@ -7,11 +7,11 @@ Parse.Cloud.job("dailyMailReports", function (request, status) {
     var now = moment();
     var yesterday = moment().subtract(1, 'days');
 
-    var query = new Parse.Query(Parse.company);
+    var query = new Parse.Query(Parse.User);
     query.each(
         function (company) {
-            var clientReports = sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'REGULAR');
-            var sendSummaryReportToCompany = sendRegularReportSummaryToCompany(company, yesterday.toDate(), now.toDate());
+            return sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'REGULAR');
+            //var sendSummaryReportToCompany = sendRegularReportSummaryToCompany(company, yesterday.toDate(), now.toDate());
 
         })
         .then(function () {

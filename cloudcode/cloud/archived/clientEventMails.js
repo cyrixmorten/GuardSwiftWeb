@@ -1,6 +1,6 @@
 var moment = require('cloud/lib/moment/moment-timezone.js');
 
-var Mailing = require("cloud/mailing.js");
+var Mailing = require("cloud/utils/mailing.js");
 
 var timeZone = 'Europe/Copenhagen'; // todo load from user(owner)
 

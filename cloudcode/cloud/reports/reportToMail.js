@@ -167,9 +167,6 @@ Parse.Cloud.define("sendReport", function (request, response) {
 
 
         return mail
-            //.jsonProperty('x-smtpapi', { // https://sendgrid.com/docs/API_Reference/SMTP_API/index.html
-            //    to: ['Morten Rasmussen <cyrixmorten@gmail.com>', 'Katia Midtgaard <katiamidtgaard@gmail.com>']
-            //})
             .attach(reportSettings.fileName + '.pdf', 'application/pdf', new Buffer(result.httpResponse.buffer))
             .send()
 

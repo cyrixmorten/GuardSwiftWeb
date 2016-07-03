@@ -34,21 +34,29 @@
 //
 //});
 //
-//Parse.Cloud.job("MarkAllCircuitStartedMailsSent", function(request, status) {
-//	Parse.Cloud.useMasterKey();
-//
-//	var query = new Parse.Query("CircuitStarted");
-//	query.each(function(object) {
-//		object.set("sentMails", true);
-//		return object.save();
-//	}).then(function() {
-//		status.success("completed successfully.");
-//	}, function(err) {
-//		console.error(err);
-//		status.error(err.message);
-//	});
-//
-//});
+
+var moment = require('cloud/lib/moment/moment.min.js');
+
+Parse.Cloud.job("ReSaveLastWeeksEventLogs", function(request, status) {
+	Parse.Cloud.useMasterKey();
+
+    var now = moment();
+    var oneweekago = moment().subtract(7, 'days');
+    
+	var query = new Parse.Query("EventLog");
+    query.greaterThan("deviceTimestamp", oneweekago.toDate());
+    query.lessThan("deviceTimestamp", now.toDate());
+    
+	query.each(function(object) {
+		return object.save();
+	}).then(function() {
+		status.success("completed successfully.");
+	}, function(err) {
+		console.error(err);
+		status.error(err.message);
+	});
+
+});
 //
 //
 //Parse.Cloud.job("ResetAllCircuitUnits", function(request, status) {

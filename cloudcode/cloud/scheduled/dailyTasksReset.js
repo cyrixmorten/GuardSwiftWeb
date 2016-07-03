@@ -1,54 +1,30 @@
+var Global = require('cloud/global.js');
 var _ = require('underscore');
-var Mailing = require("cloud/mailing.js");
 
-var timeStringHourToInt = function(timeString) {
-	if (timeString.indexOf('.') != -1) {
-		var hourString = timeString.substring(0, timeString.indexOf('.'));
-		return parseInt(hourString, 10);
-	} else {
-		return parseInt(timeString, 10);
-	}
-};
 
-var adjustHourToTimezone = function(hour, user) {
-	// TODO use user info
-	// TODO hack
-	return hour - 1;
-};
-
-Parse.Cloud.job("forceManageActiveCircuitsStartedDebug", function(request, status) {
+Parse.Cloud.job("forceResetAllTasks", function(request, status) {
 	Parse.Cloud.useMasterKey();
-    Parse.Cloud.httpRequest({
+    return Parse.Cloud.httpRequest({
         method: "POST",
-        url: "https://api.parse.com/1/jobs/manageActiveCircuitsStarted",
+        url: "https://api.parse.com/1/jobs/resetAllTasks",
         headers: {
-            'X-Parse-Application-Id': "7fynHGuQW5NZLROiIDcCzLddbINcUSwPdoE0L72d",
-            'X-Parse-Master-Key': "B5hCuMpSLE67dImYzkvX68IcZ1rtJzPPLZYstMqI",
+			'X-Parse-Application-Id': Global.PARSE_APPLICATION_ID,
+			'X-Parse-Master-Key': Global.PARSE_MASTER_KEY,
             'Content-Type': "application/json"
         },
         body: {
            'forceUpdate': true
         }
-    });
+    })
+	.then(function () {
+		status.success("Successfully forced reset of all tasks");
+	})
+	.fail(function(error) {
+		status.error(error.message);
+	});
 });
 
-Parse.Cloud.job("forceManageActiveCircuitsStartedRelease", function(request, status) {
-	Parse.Cloud.useMasterKey();
-    Parse.Cloud.httpRequest({
-        method: "POST",
-        url: "https://api.parse.com/1/jobs/manageActiveCircuitsStarted",
-        headers: {
-            'X-Parse-Application-Id': "gejAg1OFJrBwepcORHB3U7V7fawoDjlymRe8grHJ",
-            'X-Parse-Master-Key': "ljtd179EvUdJ4K4zrGrAxHQVn0EvfspvUPg16EHB",
-            'Content-Type': "application/json"
-        },
-        body: {
-           'forceUpdate': true
-        }
-    });
-});
-
-Parse.Cloud.job("manageActiveCircuitsStarted", function(request, status) {
+Parse.Cloud.job("resetAllTasks", function(request, status) {
 	Parse.Cloud.useMasterKey();
 
 	var forceUpdate = request.params.forceUpdate;
@@ -119,8 +95,6 @@ var manageCircuits = function(now_dayOfWeek, now_hour, forceUpdate) {
 										// adjust time according to timeZone
 										var timeResetDate = circuit.get('timeResetDate');
 										var timeEnd = timeResetDate.getHours();
-//										var timeEndInt = timeStringHourToInt(timeEnd);
-//										var timeEnd = adjustHourToTimezone(timeEndInt);
 
 										var hours_to_restart = timeEnd - now_hour;
 
@@ -179,10 +153,8 @@ var manageCircuits = function(now_dayOfWeek, now_hour, forceUpdate) {
 															function() {
 																// save/update
 																// complete
-																console
-																		.log("save/update complete - circuit");
 																circuitsStartedPromise
-																		.resolve();
+																		.resolve('save/update complete - circuit');
 															},
 															function(error) {
 																console
@@ -216,7 +188,7 @@ var manageCircuits = function(now_dayOfWeek, now_hour, forceUpdate) {
 
 					}).then(function() {
 				console.log("manageCircuits done");
-				promise.resolve();
+				promise.resolve('reset circuits done');
 			}, function(error) {
 				console.error("manageCircuits " + error.message);
 				promise.reject(error);
@@ -257,8 +229,6 @@ var manageDistrictWatches = function(now_dayOfWeek, now_hour, forceUpdate) {
 
 										var timeResetDate = districtWatch.get('timeResetDate');
 										var timeEnd = timeResetDate.getHours();
-//										var timeEndInt = timeStringHourToInt(timeEnd);
-//										var timeEnd = adjustHourToTimezone(timeEndInt);
 										var hours_to_restart = timeEnd - now_hour;
 
 										console.log(" -- | "
@@ -314,10 +284,8 @@ var manageDistrictWatches = function(now_dayOfWeek, now_hour, forceUpdate) {
 															function() {
 																// save/update
 																// complete
-																console
-																		.log("save/update complete - districtWatch");
 																districtWatchesStartedPromise
-																		.resolve();
+																		.resolve('save/update complete - districtWatch');
 															},
 															function(error) {
 																console
@@ -349,7 +317,7 @@ var manageDistrictWatches = function(now_dayOfWeek, now_hour, forceUpdate) {
 
 					}).then(function() {
 				console.log("manageDistrictWatches done");
-				promise.resolve();
+				promise.resolve('reset districtwatches done');
 			}, function(error) {
 				console.error("manageDistrictWatches " + error.message);
 				promise.reject(error);
@@ -410,16 +378,13 @@ var resetCircuitUnits = function(circuit) {
 	var counter = 0;
 
 	var queryCompleted = new Parse.Query("CircuitUnit");
-//	queryCompleted.equalTo('circuit', circuit);
 	queryCompleted.notEqualTo('guardId', 0);
 	
 	var queryExtras = new Parse.Query("CircuitUnit");
-//	queryCompleted.equalTo('circuit', circuit);
 	queryExtras.equalTo('isExtra', true);
 	queryExtras.doesNotExist('isHidden');
 	
 	var queryHasCheckpoints = new Parse.Query("CircuitUnit");
-//	queryHasCheckpoints.equalTo('circuit', circuit);
 	queryHasCheckpoints.exists("checkedCheckpoints");
 	
 	var queryMarkedArrived = new Parse.Query("CircuitUnit");
@@ -445,7 +410,7 @@ var resetCircuitUnits = function(circuit) {
 		return object.save();
 	}).then(function() {
 		console.log("has reset " + counter + " circuitunits");
-		promise.resolve();
+		promise.resolve('regular tasks reset success');
 	}, function(err) {
 		promise.reject(err);
 	});
@@ -479,7 +444,7 @@ var resetDistrictWatchClients = function(districtWatch) {
 		object.set('completed', false);
 		return object.save();
 	}).then(function() {
-		promise.resolve();
+		promise.resolve('district watch clients reset success');
 	}, function(err) {
 		promise.reject(err);
 	});
@@ -498,7 +463,7 @@ var resetGeofencedTaskValues = function(object) {
 	object.unset('enterTriggerDateGPS');
 	object.unset('exitTriggerDateGeofence');
 	object.unset('exitTriggerDateGPS');
-}
+};
 
 Parse.Cloud.define("createCircuitStarted", function(request, response) {
 	var objectId = request.params.objectId;
