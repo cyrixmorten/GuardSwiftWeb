@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Declare app level module which depends on filters, and services
 angular.module('GuardSwiftApp', [
         'chart.js',
@@ -97,6 +96,7 @@ angular.module('GuardSwiftApp', [
         when('/report/circuitunit', 'circuitunitreports'). // all circuitunit reports
         when('/report/circuitunit/:id', 'circuitunitreport').  // report for selected circuitunit
         when('/report/static', 'staticreports'). // all static reports
+        when('/report/district', 'districtwatchreports'). // all district reports
 
         // -- GPS
         when('/gps', 'gps'). // searchable GPS tracker
@@ -801,6 +801,16 @@ angular.module('GuardSwiftApp', [
                 }],
                 parseQuery: ['ParseReport', function (ParseReport) {
                     return ParseReport.circuitUnitsQuery()
+                }]
+            }
+        }).segment('districtwatchreports', {
+            templateUrl: 'partials/report/districtwatch_list_reports.html', controller: 'ParseSearchWithQueryCtrl',
+            resolve: {
+                ParseObject: ['ParseReport', function (ParseReport) {
+                    return ParseReport
+                }],
+                parseQuery: ['ParseReport', function (ParseReport) {
+                    return ParseReport.districtWatchQuery()
                 }]
             }
         }).segment('staticreports', {

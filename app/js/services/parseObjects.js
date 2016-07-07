@@ -732,6 +732,15 @@ app.factory('ParseReport', [
 					});
 
 			return angular.extend(ParseObject, {
+				districtWatchQuery : function() {
+					var query = ParseObject.fetchAllQuery();
+
+					query.exists('districtWatchStarted');
+
+					query.include('districtWatchStarted');
+
+					return query;
+				},
 				circuitUnitsQuery : function() {
 					var query = ParseObject.fetchAllQuery();
 

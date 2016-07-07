@@ -5,11 +5,13 @@ require("cloud/global.js");
 require("cloud/file/fileDelete.js");
 require("cloud/file/fileToDatauri.js");
 
-require("cloud/reports/docDefaults.js");
-require("cloud/reports/reportToDoc.js");
-require("cloud/reports/reportToPDF.js");
-require("cloud/reports/reportToMail.js");
-require("cloud/reports/reportUtils.js");
+require("cloud/pdf/definitions/docDefaults.js");
+require("cloud/pdf/definitions/regularReport.js");
+require("cloud/pdf/definitions/staticReport.js");
+require("cloud/pdf/definitions/taskReport.js");
+require("cloud/pdf/reportToMail.js");
+require("cloud/pdf/reportToPDF.js");
+require("cloud/pdf/reportUtils.js");
 
 require("cloud/scheduled/dailyMailReports.js");
 require("cloud/scheduled/dailyTasksReset.js");

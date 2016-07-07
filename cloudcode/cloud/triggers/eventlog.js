@@ -38,7 +38,8 @@ Parse.Cloud.afterSave("EventLog", function (request) {
             return EventLog.get('circuitStarted').id + EventLog.get('circuitUnit').id
         }
         if (EventLog.has('districtWatchClient')) {
-            return EventLog.get('districtWatchStarted').id + EventLog.get('districtWatchClient').id
+            // combine all district watch events for a group
+            return EventLog.get('districtWatchStarted').id
         }
     };
 
