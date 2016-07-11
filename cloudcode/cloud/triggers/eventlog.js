@@ -47,7 +47,6 @@ Parse.Cloud.afterSave("EventLog", function (request) {
     var findReport = function () {
         var reportId = getReportId();
 
-        console.log('findReport: ' + getReportId());
 
         if (!reportId) {
             throw new Error('Unable to get reportId')
@@ -88,6 +87,8 @@ Parse.Cloud.afterSave("EventLog", function (request) {
         Object.keys(EventLog.attributes).forEach(function (fieldName) {
             report.set(fieldName, EventLog.get(fieldName));
         });
+
+
 
         return report.save();
     };

@@ -12,49 +12,19 @@
 
 		<table ng-table="tableParams" show-filter="true"
 			class="table table-hover table-condensed table-striped table-responsive">
-			<!-- <tbody ng-repeat="group in $groups">
-				<tr class="ng-table-group">
-					<td colspan="{{$columns.length}}"><a href=""
-						ng-click="group.$hideRows = !group.$hideRows"> <span
-							class="glyphicon"
-							ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
-							<strong>{{ group.value }}</strong>
-					</a></td>
-				</tr> 
-				<tr ng-hide="group.$hideRows" ng-repeat="crudObject in group.data"-->
 			<tr ng-repeat="crudObject in $data"
 				ng-click="showDetails(crudObject)">
-				<td data-title="'Kreds'" header-class="'col-xs-1 text-center'"
-					sortable="'circuitName'" filter="{ 'circuitName': 'text' }">{{crudObject.circuitName}}</td>
-				<td data-title="'Type'" header-class="'col-xs-1 text-center'"
-					sortable="'type'" filter="{ 'type': 'text' }">{{crudObject.type}}</td>
-				<td data-title="'Kunde'" header-class="'col-xs-5 text-center'"
-					sortable="'clientName'" filter="{ 'clientName': 'text' }">{{crudObject.clientName}}</td>
-				<!--<td data-title="'Extra tid'" header-class="'col-xs-1 text-center'"-->
-					<!--sortable="'extraTimeSpent'" filter="{ 'extraTimeSpent': 'text' }">{{crudObject.extraTimeSpent}}</td>-->
-				<!-- <td class="col-md-3" data-title="'Vagt'" header-class="'text-center'"
-					sortable="'guardName'" filter="{ 'guardName': 'text' }">{{crudObject.guardName}}</td> -->
-				<!-- <td data-title="'Placering'" header-class="'col-xs-2 text-center'"
-					sortable="'clientLocation'" filter="{ 'clientLocation': 'text' }">{{crudObject.clientLocation}}</td>
-				<td data-title="'Bemærkninger'"
-					header-class="'col-xs-2 text-center'" sortable="'remarks'"
-					filter="{ 'remarks': 'text' }">{{crudObject.remarks}}</td>
-				<td data-title="'Vægter'" header-class="'col-xs-2 text-center'"
-					sortable="'guardName'" filter="{ 'guardName': 'text' }">{{crudObject.guardName}}</td> -->
+				<td data-title="'Områdevagt'" header-class="'col-xs-9 text-center'"
+					sortable="'districtName'" filter="{ 'districtName': 'text' }">{{crudObject.districtName}}</td>
 				<td data-title="'Oprettet'" header-class="'col-xs-2 text-center'">{{crudObject.deviceTimestamp
 					| date:'HH:mm dd-MM-yyyy'}}</td>
-				<!--<td data-title="'Hændelser'" header-class="'col-xs-1 text-center'">{{crudObject.eventLogs.length}}</td>-->
 				<td class="col-xs-1 text-right"><gs-link-button type="info"
 						size="sm" target="_blank"
 						report="crudObject"
 						fa-left="file-text-o" fa-right="angle-right"
 						button-text="{{
-							'SHOW_REPORT' | translate}}" /> <!-- <td class="col-xs-1 text-right"><button class="btn btn-primary btn-sm"
-				ng-click="showDetails(crudObject.objectId)">{{
-					'DETAILS' | translate}}</button></td> -->
+							'SHOW_REPORT' | translate}}" />
 			</tr>
-			<!-- </tbody> -->
-
 		</table>
 	</div>
 </div>

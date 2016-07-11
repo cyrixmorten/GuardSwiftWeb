@@ -1,7 +1,9 @@
 var _ = require('cloud/lib/underscore.js');
 
 var regularReport = require('cloud/pdf/definitions/regularReport.js');
+var districtReport = require('cloud/pdf/definitions/districtReport.js');
 var staticReport = require('cloud/pdf/definitions/staticReport.js');
+
 
 var reportUtils = require('cloud/pdf/reportUtils.js');
 
@@ -11,6 +13,9 @@ var fetchReportSettings = function (report) {
         if (report.has('circuitUnit')) {
             return 'regularReportSettings';
         }
+        if (report.has('districtWatchUnit')) {
+            return 'districtReportSettings';
+        }
         if (report.has('staticTask')) {
             return 'staticReportSettings';
         }
@@ -19,7 +24,7 @@ var fetchReportSettings = function (report) {
     var fetchReportSettings = function () {
         var settingsCol = getSettingsColumn();
 
-        console.log('settingsCol: ', JSON.stringify(settingsCol));
+        console.log('settingsCol: ' + settingsCol);
 
         if (_.isEmpty(settingsCol)) {
             return new Parse.Promise.error('No definition matching report');
@@ -48,6 +53,9 @@ exports.createDoc = function (report) {
         .then(function(settings) {
             if (report.has('circuitUnit')) {
                 return regularReport.createDoc(report, settings, timeZone);
+            }
+            if (report.has('districtWatchUnit')) {
+                return districtReport.createDoc(report, settings, timeZone);
             }
             if (report.has('staticTask')) {
                 return staticReport.createDoc(report, settings, timeZone);

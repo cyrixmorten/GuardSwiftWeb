@@ -652,8 +652,8 @@ var diffMinutes = function(date1, date2) {
 }
 
 app.factory('ParseReport', [
-		'StandardParseObject', 'ParseCircuitStarted', 'ParseEventLog',
-		function(StandardParseObject, ParseCircuitStarted, ParseEventLog) {
+		'StandardParseObject', 'ParseCircuitStarted', 'ParseDistrictWatchStarted', 'ParseEventLog',
+		function(StandardParseObject, ParseCircuitStarted, ParseDistrictWatchStarted, ParseEventLog) {
 			var ParseObject = new StandardParseObject(
 					{
 						objectname : 'Report',
@@ -701,6 +701,10 @@ app.factory('ParseReport', [
 								}(),
 								circuitUnit : object.getCircuitUnit(),
 								districtWatchStarted : object.getDistrictWatchStarted(),
+								districtName : function() {
+									var districtWatchStarted = ParseDistrictWatchStarted.getScopedObject(object.getDistrictWatchStarted());
+									return (districtWatchStarted && districtWatchStarted.name) ? districtWatchStarted.name : '';
+								}(),
 								alarm : object.getAlarm(),
 								client : object.getClient(),
 								clientName : object.getClientName(),

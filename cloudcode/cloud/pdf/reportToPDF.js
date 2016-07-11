@@ -1,4 +1,3 @@
-
 var reportToDoc = require('cloud/pdf/definitions/taskReport.js');
 var reportUtils = require('cloud/pdf/reportUtils.js');
 
@@ -10,16 +9,11 @@ Parse.Cloud.define("reportToPDF", function (request, response) {
         return;
     }
 
-    var query = new Parse.Query('Report');
-    query.equalTo('objectId', request.params.reportId);
-    query.include('eventLogs');
-
-
     var createdPDF = false;
     var reportObject = {};
-    
 
-    query.first().then(function (report) {
+
+    reportUtils.fetcReport(request.params.reportId).then(function (report) {
 
         reportObject = report;
 

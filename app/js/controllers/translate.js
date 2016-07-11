@@ -148,6 +148,7 @@ controllerModule.config(['$translateProvider', function($translateProvider) {
 		"REPORTS" : "Reports",
 		"ALARMREPORTS" : "Alarm reports",
 		"CIRCUITUNITREPORTS" : "Circuitunit reports",
+		"DISTRICTWATCHREPORTS" : "District watch reports",
 		// REPORTS
 		"ALARM_REPORTS" : "Alarm reports",
 		// ERROR MESSAGES
@@ -302,6 +303,7 @@ controllerModule.config(['$translateProvider', function($translateProvider) {
 		"REPORTS" : "Rapporter",
 		"ALARMREPORTS" : "Alarm rapporter",
 		"CIRCUITUNITREPORTS" : "Tilsyns rapporter",
+		"DISTRICTWATCHREPORTS" : "Områdevagt rapporter",
 		// REPORTS
 		"ALARM_REPORTS" : "Alarm rapporter",
 		// ERROR MESSAGES

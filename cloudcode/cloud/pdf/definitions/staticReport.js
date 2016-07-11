@@ -1,9 +1,9 @@
 var _ = require('cloud/lib/underscore.js');
 
 var pdfUtils = require('cloud/utils/pdf.js');
-var eventUtils =  require('cloud/utils/events.js');
 
 var docDefaults = require('cloud/pdf/definitions/docDefaults.js');
+var reportUtils = require('cloud/pdf/reportUtils.js');
 
 
 /**
@@ -15,7 +15,7 @@ var docDefaults = require('cloud/pdf/definitions/docDefaults.js');
  */
 exports.createDoc = function (report, settings, timeZone) {
 
-    var events = eventUtils.reportEvents(report, timeZone);
+    var events = reportUtils.reportEventsMap(report, timeZone);
 
     return _.extend(docDefaults.doc(report, timeZone), {
 
