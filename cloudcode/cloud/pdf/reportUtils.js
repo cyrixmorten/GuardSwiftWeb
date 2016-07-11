@@ -111,7 +111,9 @@ exports.eventsMap = function (eventLogs, timeZone) {
         arrivedGuardNames: _.map(arrivedEvents, function (log) {
             return log.get('guardName') || '';
         }),
-
+        arrivedClientNames: _.map(arrivedEvents, function (log) {
+            return log.get('clientName') || '';
+        }),
         arrivedClientAddress: _.map(arrivedEvents, function (log) {
             return log.has('clientAddress') ? log.get('clientAddress') + ' ' + log.get('clientAddressNumber') : '';
         }),

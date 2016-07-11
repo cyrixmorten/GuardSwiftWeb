@@ -35,8 +35,8 @@ exports.createDoc = function (report, settings, timeZone) {
         content: [
             pdfUtils.header(districtName, '', 60),
             pdfUtils.tableNoBorders({
-                widths: [50, 150, 400],
-                content: _.zip(events.arrivedTimestamps, events.arrivedGuardNames, events.arrivedClientAddress)
+                widths: [50, '*', '*', '*'], // 150, 200, 400],
+                content: _.zip(events.arrivedTimestamps, events.arrivedClientAddress, events.arrivedClientNames, events.arrivedGuardNames)
             })
         ],
 
