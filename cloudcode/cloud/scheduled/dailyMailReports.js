@@ -10,8 +10,14 @@ Parse.Cloud.job("dailyMailReports", function (request, status) {
     var query = new Parse.Query(Parse.User);
     query.each(
         function (company) {
-            return sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'REGULAR');
+            var promises = [
+                sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'REGULAR'),
+                sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'DISTRICTWATCH')
+            ];
+
             //var sendSummaryReportToCompany = sendRegularReportSummaryToCompany(company, yesterday.toDate(), now.toDate());
+
+            return Parse.Promise.when(promises);
 
         })
         .then(function () {
@@ -19,7 +25,7 @@ Parse.Cloud.job("dailyMailReports", function (request, status) {
             status.success('Done generating mail reports');
         }, function (error) {
             console.error(error);
-            status.error(error);
+            status.error(error.message);
 
         });
 });

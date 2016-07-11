@@ -4,6 +4,8 @@ var _ = require('cloud/lib/underscore.js');
 var Mailer = require("cloud/lib/sendgrid-mailer.js");
 var mailer = new Mailer("cyrixmorten", "spinK27N2");
 
+var reportUtils = require('cloud/pdf/reportUtils.js');
+
 var Buffer = require('buffer').Buffer;
 
 var taskSettings = function(report) {
@@ -26,12 +28,22 @@ var taskSettings = function(report) {
         errorNoReceiversText : errorNoReceiversText
     };
 
-    if (report.has('circuitUnit')) {
+    if (report.has('circuitStarted')) {
         taskSettings.settingsPointerName = 'regularReportSettings';
         taskSettings.taskType = "Tilsyn";
         taskSettings.subject = clientName + ' - ' + taskSettings.taskType + ' ' + createdAt;
         taskSettings.fileName = clientName + '-' + taskSettings.taskType + '-' + createdAt;
     }
+    
+    if (report.has('districtWatchStarted')) {
+        var districtName = report.get('districtWatchStarted').get('name');
+        
+        taskSettings.settingsPointerName = 'districtReportSettings';
+        taskSettings.taskType = "Områdevagt";
+        taskSettings.subject = districtName + ' - ' + taskSettings.taskType + ' ' + createdAt;
+        taskSettings.fileName = districtName + '-' + taskSettings.taskType + '-' + createdAt;
+    }
+    
     if (report.has('staticTask')) {
         taskSettings.settingsPointerName = 'staticReportSettings';
         taskSettings.taskType = "Fastvagt";
@@ -66,11 +78,7 @@ Parse.Cloud.define("sendReport", function (request, response) {
         errors: false
     };
 
-    var query = new Parse.Query('Report');
-    query.equalTo('objectId', request.params.reportId);
-    query.include('owner');
-    query.include('client.contacts');
-    query.first().then(function (report) {
+    reportUtils.fetcReport(request.params.reportId).then(function (report) {
         _report = report;
 
         var contacts = _.filter(

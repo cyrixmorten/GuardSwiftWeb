@@ -10,6 +10,9 @@ exports.fetchUser = function (report) {
 exports.fetcReport = function (reportId) {
     var query = new Parse.Query('Report');
     query.equalTo('objectId', reportId);
+
+    query.include('owner');
+    query.include('client.contacts');
     query.include('eventLogs');
 
     query.include('staticTask');
