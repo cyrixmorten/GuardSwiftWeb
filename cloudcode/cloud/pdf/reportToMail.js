@@ -13,19 +13,12 @@ var taskSettings = function(report) {
     var createdAt = moment(report.get('createdAt')).format('DD-MM-YYYY');
     var clientName = report.get('client').get('name');
 
-    var errorNoReceiversSubject = clientName + ' mangler modtager af rapport';
-    var errorNoReceiversText =  'Denne rapport mangler modtagere!\n\n' +
-    'For at oprette en modtager gå til www.guardswift.com -> data -> kunder, find ' + clientName + ' på listen, vælg detaljer og opret en kontaktperson\n\n' +
-    'Ved yderligere spørgsmål eller problemer kontaktes udvikleren af GuardSwift';
-
     var taskSettings = {
         settingsPointerName: '',
         taskType: '',
         subject: '',
         text: 'Rapporten er vedhæftet som PDF dokument',
-        fileName: '',
-        errorNoReceiversSubject : errorNoReceiversSubject,
-        errorNoReceiversText : errorNoReceiversText
+        fileName: ''
     };
 
     if (report.has('circuitStarted')) {
@@ -34,7 +27,14 @@ var taskSettings = function(report) {
         taskSettings.subject = clientName + ' - ' + taskSettings.taskType + ' ' + createdAt;
         taskSettings.fileName = clientName + '-' + taskSettings.taskType + '-' + createdAt;
     }
-    
+
+    if (report.has('staticTask')) {
+        taskSettings.settingsPointerName = 'staticReportSettings';
+        taskSettings.taskType = "Fastvagt";
+        taskSettings.subject = clientName + ' - ' + taskSettings.taskType + ' ' + createdAt;
+        taskSettings.fileName = clientName + '-' + taskSettings.taskType + '-' + createdAt;
+    }
+
     if (report.has('districtWatchStarted')) {
         var districtName = report.get('districtWatchStarted').get('name');
         
@@ -44,12 +44,7 @@ var taskSettings = function(report) {
         taskSettings.fileName = districtName + '-' + taskSettings.taskType + '-' + createdAt;
     }
     
-    if (report.has('staticTask')) {
-        taskSettings.settingsPointerName = 'staticReportSettings';
-        taskSettings.taskType = "Fastvagt";
-        taskSettings.subject = clientName + ' - ' + taskSettings.taskType + ' ' + createdAt;
-        taskSettings.fileName = clientName + '-' + taskSettings.taskType + '-' + createdAt;
-    }
+
 
     return taskSettings;
 };
@@ -149,9 +144,6 @@ Parse.Cloud.define("sendReport", function (request, response) {
         mail.property('bcc[]', 'cyrixmorten@gmail.com');
 
 
-        //.property('cc[]', 'truttie_fruttie89@hotmail.com')
-        //.property('ccname[]', 'Truttie Fruttie')
-
         var reportSettings = taskSettings(_report);
 
         console.log('isempty: ' + _.isEmpty(mailSetup.toEmails));
@@ -166,12 +158,10 @@ Parse.Cloud.define("sendReport", function (request, response) {
             mail.property('toname[]', mailSetup.toNames[0]);
             mail.property('to[]', mailSetup.toEmails[0]);
 
-            mail.property('subject', reportSettings.errorNoReceiversSubject);
-            mail.property('text', reportSettings.errorNoReceiversText);
-        } else {
-            mail.property('subject', reportSettings.subject);
-            mail.property('text', reportSettings.text);
         }
+
+        mail.property('subject', reportSettings.subject);
+        mail.property('text', reportSettings.text);
 
 
         return mail
