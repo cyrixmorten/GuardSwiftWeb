@@ -4,11 +4,12 @@ var _ = require('underscore');
 
 Parse.Cloud.job("forceResetAllTasks", function(request, status) {
 	Parse.Cloud.useMasterKey();
+
     return Parse.Cloud.httpRequest({
         method: "POST",
         url: "https://api.parse.com/1/jobs/resetAllTasks",
         headers: {
-			'X-Parse-Application-Id': Global.PARSE_APPLICATION_ID,
+			'X-Parse-Application-Id': Parse.applicationId,
 			'X-Parse-Master-Key': Global.PARSE_MASTER_KEY,
             'Content-Type': "application/json"
         },
@@ -20,12 +21,14 @@ Parse.Cloud.job("forceResetAllTasks", function(request, status) {
 		status.success("Successfully forced reset of all tasks");
 	})
 	.fail(function(error) {
+		console.log('error' + JSON.stringify(error));
 		status.error(error.message);
 	});
 });
 
 Parse.Cloud.job("resetAllTasks", function(request, status) {
 	Parse.Cloud.useMasterKey();
+
 
 	var forceUpdate = request.params.forceUpdate;
 	// var circuitPointer = {__type: "Pointer", className: "Circuit", objectId:
@@ -60,7 +63,39 @@ Parse.Cloud.job("resetAllTasks", function(request, status) {
 		status.success("completed successfully");
 	}, function(error) {
 		console.error("failed - " + error.message);
-		status.error("an error occured");
+		status.error("an error occurred: " + JSON.stringify(error));
+	});
+
+});
+
+Parse.Cloud.define("createCircuitStarted", function(request, response) {
+	var objectId = request.params.objectId;
+	var Circuit = Parse.Object.extend("Circuit");
+	var query = new Parse.Query(Circuit);
+	query.get(objectId).then(function(circuit) {
+		createCircuitStarted(circuit).then(function() {
+			response.success("Successfully created circuitStarted");
+		}, function(error) {
+			response.error(error.message);
+		});
+	}, function(error) {
+		response.error(error.message);
+	});
+
+});
+
+Parse.Cloud.define("createDistrictWatchStarted", function(request, response) {
+	var objectId = request.params.objectId;
+	var DistrictWatch = Parse.Object.extend("DistrictWatch");
+	var query = new Parse.Query(DistrictWatch);
+	query.get(objectId).then(function(districtWatch) {
+		createDistrictWatchStarted(districtWatch).then(function() {
+			response.success("Successfully created districtWatch");
+		}, function(error) {
+			response.error(error.message);
+		});
+	}, function(error) {
+		response.error(error.message);
 	});
 
 });
@@ -421,7 +456,7 @@ var resetCircuitUnits = function(circuit) {
 
 var resetDistrictWatchClients = function(districtWatch) {
 
-	 console.log("reseting districtwatches for " + districtWatch.get('name'));
+	 console.log("resetting districtwatches for " + districtWatch.get('name'));
 
 	var promise = new Parse.Promise();
 
@@ -453,6 +488,7 @@ var resetDistrictWatchClients = function(districtWatch) {
 
 };
 
+// todo: cleanup - no longer needed
 var resetGeofencedTaskValues = function(object) {
 	object.set('isWithinGeofence', false);
 	object.set('isArrivedReported', false);
@@ -465,21 +501,7 @@ var resetGeofencedTaskValues = function(object) {
 	object.unset('exitTriggerDateGPS');
 };
 
-Parse.Cloud.define("createCircuitStarted", function(request, response) {
-	var objectId = request.params.objectId;
-	var Circuit = Parse.Object.extend("Circuit");
-	var query = new Parse.Query(Circuit);
-	query.get(objectId).then(function(circuit) {
-		createCircuitStarted(circuit).then(function() {
-			response.success("Successfully created circuitStarted");	
-		}, function(error) {
-			response.error(error.message);
-		});		
-	}, function(error) {
-		response.error(error.message);
-	});
 
-});
 
 var createCircuitStarted = function(circuit) {
 
@@ -511,21 +533,7 @@ var createCircuitStarted = function(circuit) {
 	return Parse.Promise.when(promises);
 };
 
-Parse.Cloud.define("createDistrictWatchStarted", function(request, response) {
-	var objectId = request.params.objectId;
-	var DistrictWatch = Parse.Object.extend("DistrictWatch");
-	var query = new Parse.Query(DistrictWatch);
-	query.get(objectId).then(function(districtWatch) {
-		createDistrictWatchStarted(districtWatch).then(function() {
-			response.success("Successfully created districtWatch");	
-		}, function(error) {
-			response.error(error.message);
-		});		
-	}, function(error) {
-		response.error(error.message);
-	});
 
-});
 
 var createDistrictWatchStarted = function(districtWatch) {
 

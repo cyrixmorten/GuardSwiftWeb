@@ -32,7 +32,7 @@ exports.hasExistingPDF = function (report) {
     var pdfCreatedAt = report.get('pdfCreatedAt');
     var updatedAt = report.get('updatedAt');
     var missingOrUpdated = pdfCreatedAt ? Math.abs(moment(pdfCreatedAt).diff(moment(updatedAt), 'seconds')) < 10 : true;
-    console.log('hasPdf ' + (!Global.isDev() && missingOrUpdated));
+    
     return !Global.isDev() && missingOrUpdated;
 };
 
