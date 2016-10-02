@@ -2,6 +2,8 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('GuardSwiftApp', [
+        'GSConstants',
+        'GSModules',
         'chart.js',
         'angularPayments',
         'ngRoute',
@@ -26,7 +28,7 @@ angular.module('GuardSwiftApp', [
         delay: 0,
         minDuration: 700
     })
-    .config(['$routeSegmentProvider', '$routeProvider', 'uiGmapGoogleMapApiProvider', function ($routeSegmentProvider, $routeProvider, uiGmapGoogleMapApiProvider) {
+    .config(['$routeSegmentProvider', '$routeProvider', 'uiGmapGoogleMapApiProvider', 'smallHorizontalLoader', function ($routeSegmentProvider, $routeProvider, uiGmapGoogleMapApiProvider, smallHorizontalLoader) {
 
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyBJxeP1LuaYrWmzOKDKo3l4a_nc4G7OaFU',
@@ -38,7 +40,6 @@ angular.module('GuardSwiftApp', [
 
         $routeSegmentProvider.options.autoLoadTemplates = true;
 
-        var smallHorizontalLoader = 'views/loading/smallHorizontal.html';
 
         // Setting routes. This consists of two parts:
         // 1. `when` is similar to vanilla $route `when` but takes segment name
@@ -75,9 +76,12 @@ angular.module('GuardSwiftApp', [
         when('/checklist/startup', 'checklist_startup').when('/checklist/ending', 'checklist_ending').
 
         // -- Planning
-        when('/plan/circuits', 'circuits').when('/plan/circuitunits/:circuitId', 'circuitunits'). // list circuitunits under specific circuit
+        when('/plan/circuits', 'circuits').
+        when('/plan/circuitunits/:circuitId', 'circuitunits'). // list circuitunits under specific circuit
         when('/plan/circuitunit/:id', 'circuitunit'). // details of specific circuitunit
-        when('/plan/circuitunit/:id/description', 'circuitunit.description').when('/plan/districtwatches', 'districtwatches').when('/plan/districtwatchunits/:districtWatchId', 'districtwatchunits').
+        when('/plan/circuitunit/:id/description', 'circuitunit.description').
+        // when('/plan/group/district', 'districtGroup').
+        // when('/plan/task/district/:id', 'districtTask').
 
 
         // -- Logs
@@ -420,7 +424,7 @@ angular.module('GuardSwiftApp', [
                         var pointer = ParseCircuit.getPointerObjectFromRouteParamId('circuitId');
                         var query = ParseCircuitUnit.getQuery(pointer);
                         return ParseCircuitUnit.fetchAll(query); // load objects before showing the partial
-                    }],
+                    }]
                 }
                 , untilResolved: {
                     templateUrl: smallHorizontalLoader
@@ -437,7 +441,7 @@ angular.module('GuardSwiftApp', [
                 }],
                 scopedObject: ['ParseCircuitUnit', function (ParseCircuitUnit) {
                     return ParseCircuitUnit.getScopedObjectFromRouteParamId('id', 'client');
-                }],
+                }]
             }
             , untilResolved: {
                 templateUrl: smallHorizontalLoader
@@ -447,7 +451,7 @@ angular.module('GuardSwiftApp', [
             .segment('description', {
                 default: true,
                 templateUrl: 'partials/crud/planning/circuitunit/description.html'
-            }).up().
+            }).up()
             //	segment('circuitselect', {templateUrl: 'partials/crud/crud-parent-select.html', controller: 'CircuitSelectCtrl',
             //		resolve : {
             //			scopedCircuits : function(ParseCircuit) {
@@ -499,38 +503,38 @@ angular.module('GuardSwiftApp', [
             //            templateUrl: smallHorizontalLoader
             //        }})
             //        .up().
-            segment('districtwatches', {
-                templateUrl: 'partials/crud/planning/districtwatch.html', controller: 'StandardCRUDCtrl',
-                resolve: {
-                    ParseObject: function (ParseDistrictWatch) {
-                        return ParseDistrictWatch;
-                    },
-                    scopedDistrictWatches: function (ParseDistrictWatch) {
-                        return ParseDistrictWatch.fetchAll(); // load objects before showing the partial
-                    }
-                }
-                , untilResolved: {
-                    templateUrl: smallHorizontalLoader
-                }
-            })
+            // segment('districtGroup', {
+            //     templateUrl: 'partials/crud/planning/district.group.html', controller: 'StandardCRUDCtrl',
+            //     resolve: {
+            //         ParseObject: function (DistrictGroup) {
+            //             return DistrictGroup;
+            //         },
+            //         scopedDistrictWatches: function (DistrictGroup) {
+            //             return DistrictGroup.fetchAll(); // load objects before showing the partial
+            //         }
+            //     }
+            //     , untilResolved: {
+            //         templateUrl: smallHorizontalLoader
+            //     }
+            // })
             //	.within()
             .segment('districtwatchunits', {
-                templateUrl: 'partials/crud/planning/districtwatchunits.html',
-                dependencies: ['districtWatchId'],
+                templateUrl: 'partials/crud/planning/task/district.html',
+                dependencies: ['taskGroup'], // id to group
                 controller: 'StandardCRUDCtrl',
                 resolve: {
-                    ParseObject: ['ParseDistrictWatchUnit', 'ParseDistrictWatch', function (ParseDistrictWatchUnit, ParseDistrictWatch) {
-                        var pointer = ParseDistrictWatch.getPointerObjectFromRouteParamId('districtWatchId');
-                        ParseDistrictWatchUnit.addHiddenData({
-                            districtWatch: pointer
+                    ParseObject: ['DistrictTaskGroup','DistrictTask', function (DistrictTaskGroup, DistrictTask) {
+                        var pointer = DistrictTaskGroup.getPointerObjectFromRouteParamId('taskGroup');
+                        DistrictTask.addHiddenData({
+                            taskGroup: pointer
                         });
-                        return ParseDistrictWatchUnit;
+                        return DistrictTask;
                     }],
-                    scopedObjects: ['ParseDistrictWatchUnit', 'ParseDistrictWatch', function (ParseDistrictWatchUnit, ParseDistrictWatch) {
-                        var pointer = ParseDistrictWatch.getPointerObjectFromRouteParamId('districtWatchId');
-                        var query = ParseDistrictWatchUnit.getQuery(pointer);
-                        return ParseDistrictWatchUnit.fetchAll(query); // load objects before showing the partial
-                    }],
+                    scopedObjects: ['DistrictTaskGroup', 'DistrictTask', function (DistrictTaskGroup, DistrictTask) {
+                        var pointer = DistrictTaskGroup.getPointerObjectFromRouteParamId('taskGroup');
+                        var query = DistrictTask.getQuery(pointer);
+                        return DistrictTask.fetchAll(query); // load objects before showing the partial
+                    }]
                 }
                 , untilResolved: {
                     templateUrl: smallHorizontalLoader

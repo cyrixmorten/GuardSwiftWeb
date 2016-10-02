@@ -9,14 +9,14 @@ app.factory('ParseFactory' , [
              'ParseClientContact', 'ParseClientLocation',
              'ParseChecklistStart', 'ParseChecklistEnd',
              'ParseCircuit', 'ParseCircuitStarted', 'ParseCircuitUnit',
-             'ParseDistrictWatch', 'ParseDistrictWatchUnit', 'ParseDistrictWatchStarted',
+             'DistrictGroup', 'DistrictTask',
              'ParseAlarm', 'ParseReport', 'ParseEventLog', 'ParseGPSTracker',
              function(ParseClient, ParseGuard, ParseGroup,
                      ParseChecklistStart, ParseChecklistEnd,
                      ParseEventType, ParseMessage,
                      ParseClientContact, ParseClientLocation,
                      ParseCircuit, ParseCircuitStarted, ParseCircuitUnit,
-                     ParseDistrictWatch, ParseDistrictWatchUnit, ParseDistrictWatchStarted,
+					  DistrictGroup, ParseDistrictWatchStarted,
                      ParseAlarm, ParseReport, ParseEventLog, ParseGPSTracker) {
 
              var data = {
@@ -32,14 +32,13 @@ app.factory('ParseFactory' , [
             		 'Circuit' : ParseCircuit,
             		 'CircuitStarted' : ParseCircuitStarted,
             		 'CircuitUnit' : ParseCircuitUnit,
-            		 'DistrictWatch' : ParseDistrictWatch,
-            		 'DistrictWatchStarted' : ParseDistrictWatchStarted,
-            		 'DistrictWatchUnit' : ParseDistrictWatchUnit,
+            		 'DistrictGroup' : DistrictGroup,
+            		 'DistrictTask' : DistrictTask,
             		 'Alarm' : ParseAlarm,
             		 'Report' : ParseReport,
             		 'EventLog' : ParseEventLog,
             		 'GPSTracker' : ParseGPSTracker
-             }
+             };
 
 
              return {
@@ -411,30 +410,15 @@ app.factory('ParseCircuitUnit', [
 			});
 		}]);
 
-app.factory('ParseDistrictWatch', [
+app.factory('DistrictWatch', [
 		'StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
-				objectname : 'DistrictWatch',
-				attrs : ['name', 'city', 'zipcode', 'timeStartDate',
-						'timeEndDate', 'timeResetDate', 'days'],
+				objectname : 'TaskGroup',
+				attrs : ['name',  'days', 'resetAt'],
 				emptyTemplate : {
 					name : '',
-					city : '',
-					zipcode : '',
-					timeStartDate : function() {
-						var date = new Date();
-						date.setHours(13);
-						date.setMinutes(0);
-						return date;
-					}(),
-					timeEndDate : function() {
-						var date = new Date();
-						date.setHours(20);
-						date.setMinutes(0);
-						return date;
-					}(),
-					timeResetDate : function() {
+					resetAt : function() {
 						var date = new Date();
 						date.setHours(6);
 						date.setMinutes(0);
@@ -446,11 +430,7 @@ app.factory('ParseDistrictWatch', [
 				filledTemplate : function(object) {
 					return {
 						name : object.getName(),
-						city : object.getCity(),
-						zipcode : object.getZipcode(),
-						timeStartDate : object.getTimeStartDate(),
-						timeEndDate : object.getTimeEndDate(),
-						timeResetDate : object.getTimeResetDate(),
+						resetAt : object.getTimeResetDate(),
 						days : object.getDays()
 					};
 				}
@@ -460,56 +440,217 @@ app.factory('ParseDistrictWatch', [
 			});
 		}]);
 
-app.factory('ParseDistrictWatchUnit', [
-		'StandardParseObject',
-		'ParseClient',
-		function(StandardParseObject, ParseClient) {
-			var ParseObject = new StandardParseObject({
-				objectname : 'DistrictWatchUnit',
-				attrs : ['type', 'address', 'addressNumbers', 'client',
-						'supervisions', 'days', 'districtWatch', 'position'],
-				emptyTemplate : {
-					type : '',
-					address : '',
-					addressNumbers : [],
-					supervisions : 1,
-					days : [0, 1, 2, 3, 4, 5, 6],
-					client : '',
-					districtWatch : '',
-					position : '',
-				},
-				filledTemplate : function(object) {
-					return {
-						type : object.getType(),
-						address : object.getAddress(),
-						addressNumbers : object.getAddressNumbers(),
-						days : object.getDays(),
-						client : ParseClient.getScopedObject(object.getClient()),
-						clientName : function() {
-							var client = ParseClient.getScopedObject(object.getClient());
-							return (client) ? client.name : '';
-						}(),
-						supervisions : object.getSupervisions(),
-						districtWatch : object.getDistrictWatch(),
-						position : object.getPosition()
-					};
-				}
-			});
+//------------
+// TASKS
+//----
 
+var TaskGroup = Object.freeze({
+	objectname : 'TaskGroup',
+	attrs : ['name', 'taskType', 'days', 'resetAt'],
+	emptyTemplate: {
+		name: '',
+		taskType: '',
+		days: [0, 1, 2, 3, 4, 5, 6],
+		resetAt : function() {
+			var date = new Date();
+			date.setHours(6);
+			date.setMinutes(0);
+			return date;
+		}()
+	},
+	filledTemplate: function(object) {
+		return {
+			name: object.getName(),
+			taskType: object.getTaskType(),
+			days: object.getDays(),
+			resetAt: object.getResetAt(),
+			createdAt : object.createdAt,
+			updatedAt : object.updatedAt
+		}
+	}
+});
+
+
+//------------
+// TASK GROUP STARTED
+//----
+
+var TaskGroupStarted = Object.freeze({
+	objectname : 'TaskGroupStarted',
+	// 'name', 'taskType', 'days', 'resetAt', 'owner'
+	attrs : _.union(TaskGroup.attrs, []),
+	emptyTemplate : _.extend({}, TaskGroup.emptyTemplate, {
+		guard: {},
+		timeStarted : new Date(),
+		timeEnded : new Date()
+	}),
+	filledTemplate: function (object) {
+		return _.extend({}, TaskGroup.filledTemplate(object), {
+			guard: object.getGuard(),
+			timeStarted: object.getTimeStarted(),
+			timeEnded: object.getTimeEnded()
+		})
+	}
+});
+
+
+//------------
+// TASK
+//----
+
+var Task = Object.freeze({
+			objectname : 'Task',
+			// 'taskType', 'days', '
+			attrs : _.union(_.without(TaskGroupStarted.attrs, ['name', 'resetAt']), TaskGroupStarted.attrs, [
+				'taskGroup',
+				'taskGroupStarted',
+				'placeObject',
+				'placeId',
+				'postalCode',
+				'city',
+				'street',
+				'streetNumber',
+				'formattedAddress',
+				'position'
+			]),
+			emptyTemplate : _.extend({}, TaskGroupStarted.emptyTemplate, {
+				taskGroup: '',
+				taskGroupStarted: {},
+				placeObject : {},
+				placeId : '',
+				postalCode : '',
+				city : '',
+				street : '',
+				streetNumber : '',
+				formattedAddress: '',
+				position : new Parse.GeoPoint()
+			}),
+			filledTemplate : function(object) {
+				return {
+					taskGroup : object.getTaskGroup(),
+					taskGroupStarted: object.getTaskGroupStarted(),
+					placeObject : object.getPlaceObject(),
+					placeId : object.getPlaceId(),
+					formattedAddress: object.getFormattedAddress(),
+					postalCode : object.getPostalCode(),
+					ciry : object.getCity(),
+					street : object.getStreet(),
+					streetNumber: object.getStreetNumber(),
+					position : object.getPosition()
+				};
+			}
+		});
+
+
+
+
+var createGroup = function(taskType, serviceName) {
+	var group = {
+		objectname : TaskGroup.objectname,
+		attrs : _.union(TaskGroup.attrs, []),
+		emptyTemplate: _.extend({}, TaskGroup.emptyTemplate, {
+			taskType: taskType
+		}),
+		filledTemplate: function(object) {
+			return _.extend({}, TaskGroup.filledTemplate(object), {
+
+			})
+		}
+	};
+
+	app.factory(serviceName, [
+		'StandardParseObject',
+		function(StandardParseObject) {
+			var ParseObject = new StandardParseObject(group);
 
 			return angular.extend(ParseObject, {
-				sorting : {
-					clientName : 'asc'
-				},
-				getQuery : function(districtWatchPointer) {
+				getQuery : function(taskGroup) {
 					var query = ParseObject.fetchAllQuery();
-					query.include('client');
-					if (districtWatchPointer)
-						query.equalTo('districtWatch', districtWatchPointer);
+					if (taskGroup) {
+						query.equalTo('taskGroup', taskGroup);
+					}
 					return query;
 				}
 			});
 		}]);
+};
+
+var createGroupStarted = function(taskType, serviceName) {
+	var groupStarted = {
+		objectname : TaskGroupStarted.objectname,
+		attrs : _.union(TaskGroupStarted.attrs, []),
+		emptyTemplate: _.extend({}, TaskGroupStarted.emptyTemplate, {
+			taskType: taskType
+		}),
+		filledTemplate: function(object) {
+			return _.extend({}, TaskGroupStarted.filledTemplate(object), {
+
+			})
+		}
+	};
+
+	app.factory(serviceName, [
+		'StandardParseObject',
+		function(StandardParseObject) {
+			var ParseObject = new StandardParseObject(groupStarted);
+
+			return angular.extend(ParseObject, {
+			});
+		}]);
+};
+
+var createTask = function(taskType, serviceName, attrs, emptyTemplate, filledTemplate) {
+	var task = {
+		objectname : Task.objectname,
+		attrs : _.union(Task.attrs, _.isArray(attrs) ? attrs : []),
+		emptyTemplate: _.extend({}, Task.emptyTemplate, {
+			taskType: taskType
+		}, _.isObject(emptyTemplate) ? emptyTemplate : {}),
+		filledTemplate: function(object) {
+			return _.extend({}, Task.filledTemplate(object), _.isFunction(filledTemplate) ? filledTemplate(object) : {})
+		}
+	};
+
+	app.factory(serviceName, [
+		'StandardParseObject',
+		function(StandardParseObject) {
+			var ParseObject = new StandardParseObject(task);
+
+
+			return angular.extend(ParseObject, {
+				getQuery : function(taskGroup) {
+					var query = ParseObject.fetchAllQuery();
+					if (taskGroup) {
+						query.equalTo('taskGroup', taskGroup);
+					}
+					return query;
+				}
+			});
+		}]);
+};
+
+
+var TaskTypes = {
+	DISTRICT : 'District'
+};
+
+//--------------
+// DISTRICT
+//--------------
+
+createGroup(TaskTypes.DISTRICT, 'DistrictGroup');
+createGroupStarted(TaskTypes.DISTRICT, 'DistrictGroupStarted');
+createTask(TaskTypes.DISTRICT, 'DistrictTask',
+	['supervisions', 'days'],
+	{
+		supervisions: 1,
+		days: [0, 1, 2, 3, 4, 5, 6]
+	}, function(task) {
+		return {
+			supervisions: task.getSupervisions(),
+			days: task.getDays()
+		}
+	});
 
 
 app.factory('ParseCircuitStarted', [
@@ -525,7 +666,7 @@ app.factory('ParseCircuitStarted', [
 					guard : '',
 					timeStarted : '',
 					timeEnded : '',
-					eventCount : '',
+					eventCount : ''
 				},
 				filledTemplate : function(object) {
 					return {
@@ -557,7 +698,7 @@ app.factory('ParseDistrictWatchStarted', [
 					guard : '',
 					timeStarted : '',
 					timeEnded : '',
-					eventCount : '',
+					eventCount : ''
 				},
 				filledTemplate : function(object) {
 					return {

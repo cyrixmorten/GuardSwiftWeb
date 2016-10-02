@@ -28,9 +28,8 @@ app
 								});
 
 								this.setConfiguration = function(config) {
-									console.log(config);
 									configuration = config;
-								}
+								};
 
 								// returns a safe copy of the empty template
 								this.getTemplate = function() {
@@ -86,6 +85,49 @@ app
 									return scopedObject;
 								};
 
+								/*
+								 * Special handling of entries named 'placeObject'
+								 * These are assumed to be return value from google reverse geocoding api
+								 */
+								function unwrapPlaceObject(scopedParseObject) {
+
+									var placeObject = scopedParseObject.placeObject;
+
+									if (!_.isEmpty(placeObject)) {
+
+										var adressComponentByType = function(components, type) {
+											if (_.isEmpty(components)) {
+												return '';
+											}
+
+											var component = _.find(components, function(component) {
+												return _.includes(component.types, type);
+											});
+
+											if (component) {
+												return component.long_name;
+											}
+
+											return '';
+										};
+
+										scopedParseObject.placeId = placeObject.place_id;
+										scopedParseObject.formattedAddress = placeObject.formatted_address;
+										scopedParseObject.street = adressComponentByType(placeObject.address_components, 'route');
+										scopedParseObject.streetNumber = adressComponentByType(placeObject.address_components, 'street_number');
+										scopedParseObject.city = adressComponentByType(placeObject.address_components, 'locality');
+										scopedParseObject.postalCode = adressComponentByType(placeObject.address_components, 'postal_code');
+										if (placeObject.geometry) {
+											scopedParseObject.position = new Parse.GeoPoint({
+												latitude: placeObject.geometry.location.lat(),
+												longitude: placeObject.geometry.location.lng()
+											});
+										}
+
+										// console.log('written placeObject: ', scopedParseObject);
+									}
+								}
+
 								// needed to let child of array holder
 								// push new values to array
 								this.storeParseObject = function(parseObject) {
@@ -127,7 +169,7 @@ app
 								// expose for login/logout
 								this.clearStoredParseObjects = function() {
 									clearStoredParseObjects();
-								}
+								};
 								
 								function clearStoredParseObjects() {
 									parseObjectHolder = [];
@@ -212,19 +254,11 @@ app
 								 * of the column holding the array
 								 */
 								this.getScopedPointerArrayObjects = function(scopedObject, TargetParseObject, columnName) {
-									console.log('getScopedPointerArrayObjects');
-									console.log(scopedObject);
-									console.log(TargetParseObject);
-									console.log(columnName);
 									// look up in case it has been updated
 									scopedObject = _this.getScopedObject(scopedObject);
-									console.log('after lookup');
-									console.log(scopedObject);
 									var arrayValues = scopedObject[columnName];
 									
 									if (arrayValues) {
-										console.log('storing array values');
-										console.log(arrayValues);
 										TargetParseObject
 												.storeParseObjects(arrayValues);
 										return TargetParseObject
@@ -252,7 +286,7 @@ app
 								this.getPointerObjectFromRouteParamId = function(paramName) {
 									return _this
 											.getPointerObject($routeSegment.$routeParams[paramName]);
-								}
+								};
 								
 
 								this.getScopedObjectFromRouteParamId = function(paramName, includes) {
@@ -270,17 +304,13 @@ app
 								
 								this.findScopedObjectEqualToParam = function(paramName, colName, includes) {
 									
-									console.log('findScopedObjectEqualToParam');
-									
 									var promise = new Parse.Promise();
 									
 									var paramValue = $routeSegment.$routeParams[paramName];
 									if (!paramValue) {
-										console.error('paramValue missing for ' + paramName);
 										promise.reject('paramValue missing for ' + paramName);
 									}
 									if (!colName) {
-										console.error('colName missing');
 										promise.reject('colName missing');
 									}
 									
@@ -306,7 +336,6 @@ app
 														promise
 																.resolve(scopedObject);
 													}, function(error) {
-														console.error(error);
 														promise.reject(error);
 													});
 									return promise;
@@ -326,11 +355,11 @@ app
 										// align with filled template (in case
 										// of
 										// default values such as ACL)
-										console.log(data);
+										// console.log(data);
 										
 										var aligned_data = alignDataWithTemplate(data);
 
-										console.log(aligned_data);
+										// console.log(aligned_data);
 
 										var ParseObject = new Parse.Object(
 												construct.objectname);
@@ -339,13 +368,13 @@ app
 											ParseObject.set(attrname,
 													aligned_data[attrname])
 										}
-										console.log(configuration);
+										// console.log(configuration);
 
 										// if configured to store in an array
 										if (configuration
 												&& configuration.toArray) {
-											console
-													.log("configured to save to array");
+											// console
+											// 		.log("configured to save to array");
 											var arrayHolderObject = configuration.toArray.parseObject;
 											var arrayHolderScoped = configuration.toArray.scopedObject;
 											// parseObject of arrayHolder
@@ -353,8 +382,8 @@ app
 													.getParseObject(arrayHolderScoped);
 											var arrayName = configuration.toArray.arrayName;
 											if (arrayHolder && arrayName) {
-												console
-														.log("arrayName and arrayHolder set");
+												// console
+												// 		.log("arrayName and arrayHolder set");
 												ParseObject
 														.save()
 														.then(
@@ -481,12 +510,12 @@ app
 
 									var parseObject = holder.object;
 									if (parseObject) {
-										console.error("performing archive");
+										// console.error("performing archive");
 										// if configured to store in an array
 										if (configuration
 												&& configuration.toArray) {
-											console
-													.log("configured to save to array");
+											// console
+											// 		.log("configured to save to array");
 											var arrayHolderObject = configuration.toArray.parseObject;
 											var arrayHolderScoped = configuration.toArray.scopedObject;
 											// parseObject of arrayHolder
@@ -494,13 +523,13 @@ app
 													.getParseObject(arrayHolderScoped);
 											var arrayName = configuration.toArray.arrayName;
 											if (arrayHolder && arrayName) {
-												console
-														.log("arrayName and arrayHolder set");
-												console
-														.log("removing object from "
-																+ arrayName
-																+ " in:");
-												console.log(parseObject);
+												// console
+												// 		.log("arrayName and arrayHolder set");
+												// console
+												// 		.log("removing object from "
+												// 				+ arrayName
+												// 				+ " in:");
+												// console.log(parseObject);
 												arrayHolder.remove(arrayName,
 														parseObject);
 												
@@ -624,12 +653,12 @@ app
 										if (angular.isArray(includes)) {
 											angular.forEach(includes,
 													function(include) {
-														console.log("include: "
-																+ include)
+														// console.log("include: "
+														// 		+ include)
 														query.include(include);
 													});
 										} else {
-											console.log("include: " + includes)
+											// console.log("include: " + includes)
 											query.include(includes);
 										}
 									}
@@ -638,8 +667,8 @@ app
 								};
 
 								this.get = function(objectId, includes) {
-									console.log('get: ' + construct.objectname
-											+ " - " + objectId);
+									// console.log('get: ' + construct.objectname
+									// 		+ " - " + objectId);
 									var promise = new Parse.Promise();
 									var query = new Parse.Query(
 											construct.objectname);
@@ -652,9 +681,9 @@ app
 														_this.storeParseObject(parseObject);
 														var scopedObject = _this
 																.getScopedObject(parseObject);
-														console.log('resolve');
-														console
-																.log(scopedObject);
+														// console.log('resolve');
+														// console
+														// 		.log(scopedObject);
 														promise
 																.resolve(scopedObject);
 													}, function(error) {
@@ -694,10 +723,8 @@ app
 
 									// add missing properties
 									for ( var attrname in hiddenData) {
-										if (!data.hasOwnProperty(attrname)) {
+										if (!data.hasOwnProperty(attrname) || !data[attrname]) {
 											data[attrname] = hiddenData[attrname];
-											// console.log('add hidden ' +
-											// attrname);
 										}
 									}
 
@@ -728,6 +755,8 @@ app
 										}
 									}
 
+									unwrapPlaceObject(data);
+
 									return data;
 								}
 
@@ -740,24 +769,25 @@ app
 									var template = angular
 											.copy(construct.emptyTemplate);
 
-									console.log("matching data "
-											+ objectKeysStringified(data)
-											+ " with template "
-											+ objectKeysStringified(template));
+									// console.log("matching data "
+									// 		+ objectKeysStringified(data)
+									// 		+ " with template "
+									// 		+ objectKeysStringified(template));
+
 									// delete empty properties
 									// allows adding partially filled objects
 									for ( var attrname in template) {
-										console.log('checking ' + attrname);
+										// console.log('checking ' + attrname);
 										if (!data.hasOwnProperty(attrname)) {
-											console.log("deleting " + attrname);
+											// console.log("deleting " + attrname);
 
 											delete data[attrname];
 											delete template[attrname];
-											console.log('delete ' + attrname);
+											// console.log('delete ' + attrname);
 										} else {
-											console.log("not deleting "
-													+ attrname + " with value "
-													+ data);
+											// console.log("not deleting "
+											// 		+ attrname + " with value "
+											// 		+ data);
 										}
 
 									}

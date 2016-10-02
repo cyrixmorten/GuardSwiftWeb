@@ -26,6 +26,8 @@ require("cloud/triggers/eventlog.js");
 require("cloud/triggers/eventtype.js");
 require("cloud/triggers/user.js");
 
+require("cloud/tasks/taskGroup.js");
+
 require("cloud/utils/geocode.js");
 require("cloud/utils/mailing.js");
 require("cloud/utils/pdf.js");

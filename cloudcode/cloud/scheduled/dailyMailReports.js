@@ -11,7 +11,7 @@ Parse.Cloud.job("dailyMailReports", function (request, status) {
     query.each(
         function (company) {
             var promises = [
-                sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'REGULAR'),
+                // sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'REGULAR'),
                 sendReportsToClients(company, yesterday.toDate(), now.toDate(), 'DISTRICTWATCH')
             ];
 

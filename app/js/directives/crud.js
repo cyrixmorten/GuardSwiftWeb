@@ -19,7 +19,7 @@ myApp.directive('gsCrudPanelCreate', function() {
 	return {
 		restrict : 'E',
 		scope : {
-			title : '@',
+			title : '@'
 		},
 		transclude : true,
 		templateUrl : 'views/crud/crud_panel_create.html'
@@ -30,7 +30,7 @@ myApp.directive('gsCrudPanelUpdateRemove', function() {
 	return {
 		restrict : 'E',
 		scope : {
-			title : '@',
+			title : '@'
 		},
 		transclude : true,
 		templateUrl : 'views/crud/crud_panel_update_remove.html',
@@ -229,17 +229,17 @@ myApp
 																	function() {
 																		ctrl.saving = false;
 																	});
-												}
+												};
 
 												ctrl.edit = function(scopedObject) {
 													ctrl.editing = true;
 //													ctrl.editObject = scopedObject;
-												}
+												};
 
 												ctrl.cancel = function(scopedObject) {
 													ctrl.editing = false;
 //													ctrl.editObject = scopedObject;
-												}
+												};
 
 												ctrl.update = function(updatedScopedObject, successCallback, errorCallback) {
 													ctrl.updating = true;
@@ -273,7 +273,7 @@ myApp
 																	function() {
 																		ctrl.updating = false;
 																	});
-												}
+												};
 
 												ctrl.remove = function(scopedObject, successCallback, errorCallback) {
 													var yesnoDialog = $modal

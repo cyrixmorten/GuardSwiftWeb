@@ -13,7 +13,7 @@ var fetchReportSettings = function (report) {
         if (report.has('circuitUnit')) {
             return 'regularReportSettings';
         }
-        if (report.has('districtWatchUnit')) {
+        if (report.has('districtWatchClient')) {
             return 'districtReportSettings';
         }
         if (report.has('staticTask')) {
@@ -54,7 +54,7 @@ exports.createDoc = function (report) {
             if (report.has('circuitUnit')) {
                 return regularReport.createDoc(report, settings, timeZone);
             }
-            if (report.has('districtWatchUnit')) {
+            if (report.has('districtWatchClient')) {
                 return districtReport.createDoc(report, settings, timeZone);
             }
             if (report.has('staticTask')) {

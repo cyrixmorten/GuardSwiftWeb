@@ -1,0 +1,80 @@
+<gs-crud-panel-create title="{{'DISTRICTWATCH_CREATE' | translate}}">
+	<table class="table">
+		<thead>
+			<tr>
+				<td class="col-xs-7 text-center">{{'NAME' | translate}}</td>
+				<td class="col-xs-1 text-center">{{'TIMERESET' | translate}}</td>
+				<td class="col-xs-1 text-center">{{'DAYS' | translate}}</td>
+				<td class="col-xs-*"></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr gs-crud parse-object="parseObject"
+				notify-as="{{'DISTRICTWATCH' | translate}}" state-saving="saving">
+				<td class="vert-align">
+					<input
+					placeholder="{{'NAME' | translate}}" class="form-control"
+					type="text" ng-model="createData.name" ng-disabled="saving"
+					auto-focus focus-on="addSuccess" /></td>
+				<td><timepicker ng-model="createData.resetAt"
+						show-spinners="true" hour-step="1" minute-step="60"
+						show-meridian="false" ng-disabled="saving"></timepicker></td>
+				</select>
+				</td>
+				<td class="vert-align"><select class="multiselect"
+					ng-model="createData.days" ng-disabled="saving"
+					ng-options="item.id as item.name for item in days"
+					multiple="multiple" multiselect-dropdown-input-days>
+				</select></td>
+				<td class="vert-align" data-title="''"><gs-crud-create
+						data="createData" success="notifyDataSetChanged()" /></td>
+			</tr>
+		</tbody>
+	</table>
+</gs-crud-panel-create>
+
+<gs-crud-panel-update-remove
+	title="{{'DISTRICTWATCH_LIST' | translate}}">
+	<table ng-table="tableParams" show-filter="true" class="table">
+		<tbody>
+			<tr ng-repeat="crudObject in $data" parse-object="parseObject"
+				notify-as="{{'DISTRICTWATCH' | translate}}" editing="editMode"
+				gs-crud>
+				<td class="vert-align col-xs-7" data-title="'Navn'"
+					header-class="'text-center'" sortable="'name'"
+					filter="{ 'name': 'text' }"><input ng-readonly="!editMode"
+					class="form-control" type="text" ng-model="crudObject.name" /></td>
+
+				<td data-title="'Genstart'" class="vert-align col-xs-1"
+					header-class="'text-center'">
+
+					<fieldset ng-disabled="!editMode">
+						<timepicker ng-model="crudObject.resetAt" hour-step="1"
+							minute-step="15" show-meridian="false" show-spinners="false"></timepicker>
+					</fieldset>
+
+				</td>
+
+				<!-- days START -->
+				<td class="vert-align col-xs-1" data-title="'Dage'"
+					header-class="'text-center'">
+					<select class="multiselect"
+					ng-model="crudObject.days"
+					ng-options="item.id as item.name for item in days"
+					multiple="multiple" multiselect-dropdown-input-days
+					ng-disabled="!editMode">
+					</select>
+				</td>
+				<!-- days END -->
+				<td class="vert-align col-xs-2" data-title="''"><gs-crud-update-delete
+						scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
+
+				<td class="vert-align col-xs-1" header-class="''" data-title="''"
+					ng-if="!editMode"><gs-link-button type="warning" size="sm"
+						link="{{ 'districtTasks' | routeSegmentUrl: {taskGroup: crudObject.id} }}"
+						fa-left="shield" fa-right="angle-right"
+						button-text="{{'SUPERVISION' | translate}}" /></td>
+
+			</tr>
+	</table>
+</gs-crud-panel-update-remove>

@@ -30,15 +30,15 @@
 	href="bower_components/font-awesome/css/font-awesome.min.css">
 
 <link rel="stylesheet"
-	href="bower_components/angular-payments/lib/angular-payments.css">
-
-<link rel="stylesheet"
 	href="bower_components/ladda/dist/ladda-themeless.min.css">
 
 <link rel="stylesheet"
 	href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
 
 <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+
+<link rel="stylesheet" href="/bower_components/angular-google-places-autocomplete/src/autocomplete.css">
+
 
 
 <link rel="stylesheet" href="css/app.css">
@@ -65,20 +65,10 @@
 		<gs-navbar-logged-in />
 	</div>
 
-
-
 	<div class="container" id="content" ng-if="!pathContains('gps')">
 		<div class="row anim" app-view-segment="0"></div>
 	</div>
 
-	<!--<div class="container-fluid" id="content" ng-if="pathContains('gps')">-->
-		<!--<div class="row anim" app-view-segment="0"></div>-->
-	<!--</div>-->
-
-
-	<div ng-show="loader.show" class="center-block">
-		<div ng-include="'views/loading.html'"></div>
-	</div>
 
 
 
@@ -140,12 +130,9 @@
 
 
 	<!-- Google Maps -->
-	<script src="bower_components/lodash/lodash.min.js"></script>
-	<script
-		src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-
-	    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places"></script>
+	<script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+	<script src="bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
 
 
 	<!-- Moment -->
@@ -166,6 +153,8 @@
 
 	<!-- Internal libraries -->
 	<script src="js/app.js"></script>
+
+	<script src="js/constants.js"></script>
 
 	<!-- Filters -->
 	<script src="js/filters.js"></script>
@@ -202,6 +191,10 @@
 	<script src="js/controllers/dialogs.js"></script>
 	<script src="js/controllers/logs.js"></script>
 
+	<!-- Modules -->
+	<script src="modules/district/district.module.js"></script>
+
+	<script src="modules/modules.module.js"></script>
 
 </body>
 </html>
