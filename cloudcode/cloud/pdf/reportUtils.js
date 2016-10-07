@@ -29,11 +29,12 @@ exports.getPDFUrl = function (report) {
 
 exports.hasExistingPDF = function (report) {
 
+    var hasPdf = report.has('pdf');
     var pdfCreatedAt = report.get('pdfCreatedAt');
     var updatedAt = report.get('updatedAt');
     var missingOrUpdated = pdfCreatedAt ? Math.abs(moment(pdfCreatedAt).diff(moment(updatedAt), 'seconds')) < 10 : true;
     
-    return !Global.isDev() && missingOrUpdated;
+    return !Global.isDev() && hasPdf && missingOrUpdated;
 };
 
 exports.readExistingPDF = function (report) {
