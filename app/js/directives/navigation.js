@@ -89,12 +89,12 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
                     };
 
 
-                    var pdfFile = parseReport.get('pdf');
-                    if (pdfFile) {
-                        openInNewTab(pdfFile.url());
-
-                        finish();
-                    } else {
+                    // var pdfFile = parseReport.get('pdf');
+                    // if (pdfFile) {
+                    //     openInNewTab(pdfFile.url());
+                    //
+                    //     finish();
+                    // } else {
                         Parse.Cloud.run("reportToPDF", {reportId: iScope.report.id},
                             {
                                 success: function (result) {
@@ -108,7 +108,7 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
                                     finish();
                                 }
                             });
-                    }
+                    // }
                 });
 
 
