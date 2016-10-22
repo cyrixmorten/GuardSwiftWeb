@@ -12,7 +12,7 @@ Parse.Cloud.beforeSave("Client", function (request, response) {
 
     var dirtyKeys = Client.dirtyKeys();
     var lookupAddress = false;
-    var addressKeys = ["cityName", "zipcode", "addressName", "addressNumber"]
+    var addressKeys = ["cityName", "zipcode", "addressName", "addressNumber"];
     for (var dirtyKey in dirtyKeys) {
         var dirtyValue = dirtyKeys[dirtyKey];
         if (_.contains(addressKeys, dirtyValue)) {

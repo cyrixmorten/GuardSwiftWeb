@@ -25,10 +25,16 @@ require("cloud/triggers/districtwatchclient.js");
 require("cloud/triggers/eventlog.js");
 require("cloud/triggers/eventtype.js");
 require("cloud/triggers/user.js");
+require("cloud/triggers/task.js");
 
 require("cloud/utils/geocode.js");
 require("cloud/utils/mailing.js");
 require("cloud/utils/pdf.js");
 require("cloud/utils/stripe.js");
+
+require("cloud/alarm/parse.js");
+require("cloud/archived/cleanUp.js");
+
+
 
 

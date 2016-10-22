@@ -1,131 +1,101 @@
 <gs-crud-panel-create title="{{'DISTRICTWATCH_CREATE' | translate}}">
-<table class="table">
-	<thead>
-		<tr>
-			<td class="col-xs-4 text-center">{{'NAME' | translate}}</td>
-			<td class="col-xs-2 text-center">{{'CITY' | translate}}</td>
-			<td class="col-xs-1 text-center">{{'ZIPCODE' | translate}}</td>
-			<td class="col-xs-1 text-center">{{'TIMERESET' | translate}}</td>
-			<td class="col-xs-1 text-center">{{'DAYS' | translate}}</td>
-			<td class="col-xs-*"></td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr gs-crud parse-object="parseObject"
-			notify-as="{{'DISTRICTWATCH' | translate}}" state-saving="saving">
-			<td class="vert-align"><input
-				placeholder="{{'NAME' | translate}}" class="form-control"
-				type="text" ng-model="createData.name" ng-disabled="saving"
-				auto-focus focus-on="addSuccess" /></td>
-			<td class="vert-align"><input
-				placeholder="{{'CITY' | translate}}" class="form-control"
-				type="text" ng-model="createData.city" ng-disabled="saving" /></td>
-			<td class="vert-align"><input
-				placeholder="{{'ZIPCODE' | translate}}" class="form-control"
-				type="text" ng-model="createData.zipcode" ng-disabled="saving" /></td>
-			<!--<td><timepicker ng-model="createData.timeStartDate"-->
-					<!--show-spinners="true" hour-step="1" minute-step="15"-->
-					<!--show-meridian="false" ng-disabled="saving"></timepicker></td>-->
-			<!--<td><timepicker ng-model="createData.timeEndDate"-->
-					<!--show-spinners="true" hour-step="1" minute-step="15"-->
-					<!--show-meridian="false" ng-disabled="saving"></timepicker></td>-->
-			<td><timepicker ng-model="createData.timeResetDate"
-					show-spinners="true" hour-step="1" minute-step="60"
-					show-meridian="false" ng-disabled="saving"></timepicker></td>
-			</select>
-			</td>
-			<td class="vert-align"><select class="multiselect"
-				ng-model="createData.days" ng-disabled="saving"
-				ng-options="item.id as item.name for item in days"
-				multiple="multiple" multiselect-dropdown-input-days>
-			</select></td>
-			<td class="vert-align" data-title="''"><gs-crud-create
-					data="createData" success="notifyDataSetChanged()" /></td>
-		</tr>
-	</tbody>
-</table>
+    <table class="table">
+        <thead>
+        <tr>
+            <td class="col-xs-4 text-center">{{'NAME' | translate}}</td>
+            <td class="col-xs-2 text-center">{{'CITY' | translate}}</td>
+            <td class="col-xs-1 text-center">{{'ZIPCODE' | translate}}</td>
+            <td class="col-xs-1 text-center">{{'TIMERESET' | translate}}</td>
+            <td class="col-xs-1 text-center">{{'DAYS' | translate}}</td>
+            <td class="col-xs-*"></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr gs-crud parse-object="parseObject"
+            notify-as="{{'DISTRICTWATCH' | translate}}" state-saving="saving">
+            <td class="vert-align"><input
+                    placeholder="{{'NAME' | translate}}" class="form-control"
+                    type="text" ng-model="createData.name" ng-disabled="saving"
+                    auto-focus focus-on="addSuccess"/></td>
+            <td class="vert-align"><input
+                    placeholder="{{'CITY' | translate}}" class="form-control"
+                    type="text" ng-model="createData.city" ng-disabled="saving"/></td>
+            <td class="vert-align"><input
+                    placeholder="{{'ZIPCODE' | translate}}" class="form-control"
+                    type="text" ng-model="createData.zipcode" ng-disabled="saving"/></td>
+            <td>
+                <timepicker ng-model="createData.timeResetDate"
+                            show-spinners="true" hour-step="1" minute-step="60"
+                            show-meridian="false" ng-disabled="saving"></timepicker>
+            </td>
+            </select>
+            </td>
+            <td class="vert-align"><select class="multiselect"
+                                           ng-model="createData.days" ng-disabled="saving"
+                                           ng-options="item.id as item.name for item in days"
+                                           multiple="multiple" multiselect-dropdown-input-days>
+            </select></td>
+            <td class="vert-align" data-title="''">
+                <gs-crud-create
+                        data="createData" success="notifyDataSetChanged()"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </gs-crud-panel-create>
 <gs-crud-panel-update-remove
-	title="{{'DISTRICTWATCH_LIST' | translate}}">
-<table ng-table="tableParams" show-filter="true" class="table">
-	<tbody>
-		<tr ng-repeat="crudObject in $data" parse-object="parseObject"
-			notify-as="{{'DISTRICTWATCH' | translate}}" editing="editMode"
-			gs-crud>
-			<td class="vert-align col-xs-4" data-title="'Navn'"
-				header-class="'text-center'" sortable="'name'"
-				filter="{ 'name': 'text' }"><input ng-readonly="!editMode"
-				class="form-control" type="text" ng-model="crudObject.name" /></td>
-			<td class="vert-align col-xs-2" data-title="'By'"
-				header-class="'text-center'" sortable="'city'"
-				filter="{ 'city': 'text' }"><input ng-readonly="!editMode"
-				class="form-control" type="text" ng-model="crudObject.city" /></td>
-			<td class="vert-align col-xs-1" data-title="'Postnummer'"
-				header-class="'text-center'" sortable="'zipcode'"
-				filter="{ 'zipcode': 'text' }"><input ng-readonly="!editMode"
-				class="form-control" type="text" ng-model="crudObject.zipcode" /></td>
+        title="{{'DISTRICTWATCH_LIST' | translate}}">
+    <table ng-table="tableParams" show-filter="true" class="table">
+        <tbody>
+        <tr ng-repeat="crudObject in $data" parse-object="parseObject"
+            notify-as="{{'DISTRICTWATCH' | translate}}" editing="editMode"
+            gs-crud>
+            <td class="vert-align col-xs-4" data-title="'Navn'"
+                header-class="'text-center'" sortable="'name'"
+                filter="{ 'name': 'text' }"><input ng-readonly="!editMode"
+                                                   class="form-control" type="text" ng-model="crudObject.name"/></td>
+            <td class="vert-align col-xs-2" data-title="'By'"
+                header-class="'text-center'" sortable="'city'"
+                filter="{ 'city': 'text' }"><input ng-readonly="!editMode"
+                                                   class="form-control" type="text" ng-model="crudObject.city"/></td>
+            <td class="vert-align col-xs-1" data-title="'Postnummer'"
+                header-class="'text-center'" sortable="'zipcode'"
+                filter="{ 'zipcode': 'text' }"><input ng-readonly="!editMode"
+                                                      class="form-control" type="text" ng-model="crudObject.zipcode"/>
+            </td>
 
 
-			<!--<td data-title="'Start'" class="vert-align col-xs-1"-->
-				<!--header-class="'text-center'">-->
+            <td data-title="'Genstart'" class="vert-align col-xs-1"
+                header-class="'text-center'">
 
-				<!--<fieldset ng-disabled="!editMode">-->
-					<!--<timepicker ng-model="crudObject.timeStartDate"-->
-						<!--show-meridian="false" show-spinners="false"></timepicker>-->
-				<!--</fieldset>-->
+                <fieldset ng-disabled="!editMode">
+                    <timepicker ng-model="crudObject.timeResetDate" hour-step="1"
+                                minute-step="15" show-meridian="false" show-spinners="false"></timepicker>
+                </fieldset>
 
-			<!--</td>-->
-			<!--<td data-title="'Slut'" class="vert-align col-xs-1"-->
-				<!--header-class="'text-center'">-->
+            </td>
 
-				<!--<fieldset ng-disabled="!editMode">-->
-					<!--<timepicker ng-model="crudObject.timeEndDate" hour-step="1"-->
-						<!--minute-step="15" show-meridian="false" show-spinners="false"></timepicker>-->
-				<!--</fieldset>-->
+            <!-- days START -->
+            <td class="vert-align col-xs-1" data-title="'Dage'"
+                header-class="'text-center'"><select class="multiselect"
+                                                     ng-model="crudObject.days"
+                                                     ng-options="item.id as item.name for item in days"
+                                                     multiple="multiple" multiselect-dropdown-input-days
+                                                     ng-disabled="!editMode">
+            </select>
+                <!-- days END -->
+            <td class="vert-align col-xs-2" data-title="''">
+                <gs-crud-update-delete
+                        scoped-object="crudObject" success="notifyDataSetChanged()"/>
+            </td>
 
-			<!--</td>-->
-
-			<td data-title="'Genstart'" class="vert-align col-xs-1"
-				header-class="'text-center'">
-
-				<fieldset ng-disabled="!editMode">
-					<timepicker ng-model="crudObject.timeResetDate" hour-step="1"
-						minute-step="15" show-meridian="false" show-spinners="false"></timepicker>
-				</fieldset>
-
-			</td>
-
-			<!-- days START -->
-			<td class="vert-align col-xs-1" data-title="'Dage'"
-				header-class="'text-center'"><select class="multiselect"
-				ng-model="crudObject.days"
-				ng-options="item.id as item.name for item in days"
-				multiple="multiple" multiselect-dropdown-input-days
-				ng-disabled="!editMode">
-			</select> <!-- 
-				<select class="multiselect"
-				ng-model="crudObject.days"
-				ng-options="item.id as item.name for item in days"
-				multiple="multiple" multiselect-dropdown-input-days disabled
-				ng-if="!editMode">
-			</select> <select class="multiselect" ng-model="crudObject.days"
-				ng-options="item.id as item.name for item in days"
-				multiple="multiple" multiselect-dropdown-input-days ng-if="editMode">
-			</select> --></td>
-			<!-- days END -->
-			<td class="vert-align col-xs-2" data-title="''"><gs-crud-update-delete
-					scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
-
-			<td class="vert-align col-xs-1" header-class="''" data-title="''"
-				ng-if="!editMode"><gs-link-button type="warning" size="sm"
-					link="{{ 'districtwatchunits' | routeSegmentUrl: {districtWatchId: crudObject.id} }}"
-					fa-left="shield" fa-right="angle-right"
-					button-text="{{'SUPERVISION' | translate}}" /></td>
-
-			<!-- <td class="vert-align col-xs-1 text-right" ng-if="!editMode"><a
-				class="btn btn-primary"
-				href="#{{ 'districtwatchunits' | routeSegmentUrl: {districtWatchId: crudObject.id} }}">{{
-					'SUPERVISIONS' | translate}}</a></td> -->
-		</tr>
-</table>
+            <td class="vert-align col-xs-1" header-class="''" data-title="''"
+                ng-if="!editMode">
+                <gs-link-button type="warning" size="sm"
+                                link="{{ 'districtwatchunits' | routeSegmentUrl: {districtWatchId: crudObject.id} }}"
+                                fa-left="shield" fa-right="angle-right"
+                                button-text="{{'SUPERVISION' | translate}}"/>
+            </td>
+        </tr>
+    </table>
 </gs-crud-panel-update-remove>

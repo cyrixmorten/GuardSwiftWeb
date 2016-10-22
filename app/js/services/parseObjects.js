@@ -39,7 +39,7 @@ app.factory('ParseFactory' , [
             		 'Report' : ParseReport,
             		 'EventLog' : ParseEventLog,
             		 'GPSTracker' : ParseGPSTracker
-             }
+             };
 
 
              return {
@@ -58,16 +58,17 @@ app.factory('ParseClient', [
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
 				objectname : 'Client',
-				attrs : ['number', 'name', 'addressName', 'addressNumber',
-						'cityName', 'zipcode', 'email', 'receiveEventEmail',
+				attrs : ['clientId', 'name', 'addressName', 'addressNumber',
+						'cityName', 'zipcode', 'fullAddress', 'email', 'receiveEventEmail',
 						'position', 'contacts', 'roomLocations', 'messages'],
 				emptyTemplate : {
-					number : undefined,
+					clientId : '',
 					name : '',
 					addressName : '',
 					addressNumber : '',
 					cityName : '',
 					zipcode : '',
+					fullAddress: '',
 					email : '',
 					receiveEventEmail : false,
 					position : new Parse.GeoPoint({latitude: 40.0, longitude: -30.0}),
@@ -77,12 +78,13 @@ app.factory('ParseClient', [
 				},
 				filledTemplate : function(client) {
 					return {
-						number : client.getNumber(),
+						clientId : client.getClientId(),
 						name : client.getName(),
 						addressName : client.getAddressName(),
 						addressNumber : client.getAddressNumber(),
 						cityName : client.getCityName(),
 						zipcode : client.getZipcode(),
+						fullAddress: client.getFullAddress(),
 						email : client.getEmail(),
 						receiveEventEmail : client.getReceiveEventEmail(),
 						position : client.getPosition(),

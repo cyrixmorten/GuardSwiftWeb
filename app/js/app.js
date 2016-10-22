@@ -345,9 +345,11 @@ angular.module('GuardSwiftApp', [
                     ParseObject: function (ParseEventType) {
                         return ParseEventType;
                     },
-                    scopedEventTypes: function (ParseEventType) {
-                        return ParseEventType.fetchAll(); // load objects before showing the partial
-                    }
+                    scopedEventTypes: ['ParseEventType', 'ParseClient', function (ParseEventType, ParseClient) {
+                        var query = ParseEventType.fetchAllQuery();
+                        query.doesNotExist('client');
+                        return ParseEventType.fetchAll(query); // load objects before showing the partial
+                    }]
                 }
                 , untilResolved: {
                     templateUrl: smallHorizontalLoader
@@ -420,7 +422,7 @@ angular.module('GuardSwiftApp', [
                         var pointer = ParseCircuit.getPointerObjectFromRouteParamId('circuitId');
                         var query = ParseCircuitUnit.getQuery(pointer);
                         return ParseCircuitUnit.fetchAll(query); // load objects before showing the partial
-                    }],
+                    }]
                 }
                 , untilResolved: {
                     templateUrl: smallHorizontalLoader
@@ -437,7 +439,7 @@ angular.module('GuardSwiftApp', [
                 }],
                 scopedObject: ['ParseCircuitUnit', function (ParseCircuitUnit) {
                     return ParseCircuitUnit.getScopedObjectFromRouteParamId('id', 'client');
-                }],
+                }]
             }
             , untilResolved: {
                 templateUrl: smallHorizontalLoader

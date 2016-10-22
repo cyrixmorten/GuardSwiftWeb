@@ -1,6 +1,6 @@
 <select class="form-control"
 	ng-model="value"
 	ng-change="clientSelected(value)"
-	ng-options="client as client.name for client in clients | orderBy:'name'">
+	ng-options="client as client.clientId + ' ' + client.name + ' ' + client.fullAddress for client in clients | orderBy:['clientId', 'name' ]">
 	<option value="">{{'CLIENTS_SELECT' | translate}}</option>
 </select>

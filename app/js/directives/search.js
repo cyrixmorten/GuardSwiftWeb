@@ -18,6 +18,7 @@ myApp.directive('gsClientSelect', [
 				link : function(scope, element, attrs) {
 					ParseClient.fetchAll().then(function(result) {
 						scope.clients = result;
+						console.log('scope.clients: ', scope.clients);
 					});
 
 					scope.clientSelected = function(client) {

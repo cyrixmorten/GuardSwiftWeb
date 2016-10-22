@@ -20,6 +20,8 @@ Parse.Cloud.beforeSave("CircuitUnit", function (request, response) {
     var clientPointer = CircuitUnit.get('client');
     if (clientPointer) {
         clientPointer.fetch().then(function (client) {
+            CircuitUnit.set('clientId', client.get('clientId'));
+            CircuitUnit.set('clientName', client.get('name'));
             CircuitUnit.set('clientPosition', client.get('position'));
             response.success();
         }, function (error) {

@@ -60,7 +60,7 @@ var linkHTMLref = function(url) {
 var linkHTMLmailto = function(mail, name) {
 	var email = (name) ? name + "(" + mail + ")" : mail;
 	return "<a href='mailto:" + name + "'>" + mail + "</a>";
-}
+};
 
 var mailReport_DK = function(user, client, reports, datemoment) {
 

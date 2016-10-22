@@ -1,41 +1,107 @@
-<!-- <div ng-controller="ClientEventTypeCtrl"> -->
-<!-- 	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title">{{'EVENT_TYPE_CREATE' | translate}}</h3>
-		</div>
-		<div class="panel-body"> -->
 <div class="alert alert-info" role="alert">Hændelsestyper der kun
 	er relevant for denne kunde.</div>
-<form name="crudForm" novalidate>
 	<table class="table">
 		<thead>
-			<tr>
-				<td class="col-xs-10 text-center">{{'EVENT_TYPE' | translate}}</td>
-				<td class="col-xs-2"></td>
-			</tr>
+		<tr>
+			<td class="col-xs-6 text-center">{{'EVENT_TYPE' | translate}}</td>
+			<td class="col-xs-1 text-center">Antal</td>
+			<td class="col-xs-1 text-center">Hvem</td>
+			<td class="col-xs-1 text-center">Hvor</td>
+			<td class="col-xs-1 text-center">Hvad</td>
+			<td class="col-xs-2"></td>
+		</tr>
 		</thead>
 		<tbody>
-			<tr gs-crud parse-object="parseObject"
-				notify-as="{{'EVENT_TYPE' | translate}}" state-saving="saving">
-				<td><input placeholder="{{'EVENT_TYPE' | translate}}"
-					class="form-control" type="text" ng-model="createData.name"
-					ng-disabled="saving" auto-focus focus-on="addSuccess" /></td>
-
-				<td data-title="''"><gs-crud-create data="createData"
-						success="notifyDataSetChanged()" /></td>
-			</tr>
+		<tr gs-crud parse-object="parseObject"
+			notify-as="{{'EVENT_TYPE' | translate}}" state-saving="saving">
+			<td class="col-xs-6"><input
+					placeholder="{{'TYPE' | translate}}" class="form-control"
+					type="text" ng-model="createData.name" ng-disabled="saving"
+					auto-focus focus-on="addSuccess" /></td>
+			<td class="vert-align text-center"><input bs-switch
+													  type="checkbox" ng-model="createData.hasAmount" ng-disabled="saving"
+													  switch-on-text="{{'YES' | translate}}"
+													  switch-off-text="{{'NO' | translate}}"></td>
+			<td class="vert-align text-center"><input bs-switch
+													  type="checkbox" ng-model="createData.hasPeople" ng-disabled="saving"
+													  switch-on-text="{{'YES' | translate}}"
+													  switch-off-text="{{'NO' | translate}}"></td>
+			<td class="vert-align text-center"><input bs-switch
+													  type="checkbox" ng-model="createData.hasLocations"
+													  ng-disabled="saving" switch-on-text="{{'YES' | translate}}"
+													  switch-off-text="{{'NO' | translate}}"></td>
+			<td class="vert-align text-center"><input bs-switch
+													  type="checkbox" ng-model="createData.hasRemarks"
+													  ng-disabled="saving" switch-on-text="{{'YES' | translate}}"
+													  switch-off-text="{{'NO' | translate}}"></td>
+			<td class="col-xs-2" data-title="''"><gs-crud-create
+					data="createData" success="notifyDataSetChanged()" /></td>
+		</tr>
 		</tbody>
 	</table>
-</form>
-<table ng-table="tableParams" show-filter="true" class="table" ng-show="$data.length">
+	<table ng-table="tableParams" show-filter="true" class="table">
 		<tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"
 			notify-as="{{'EVENT_TYPE' | translate}}" editing="editMode">
-			<td data-title="'Type'" class="col-xs-10"
-				header-class="'text-center'" sortable="'name'"
-				filter="{ 'name': 'text' }"><input ng-readonly="!editMode"
-				class="form-control" type="text" ng-model="crudObject.name" /></td>
-			<td class="col-xs-2" data-title="''" header-class="''"><gs-crud-update-delete
+			<td class="col-xs-6" data-title="'Type'" header-class="'text-center'"
+				sortable="'name'" filter="{ 'name': 'text' }"><input
+					ng-readonly="!editMode" class="form-control" type="text"
+					ng-model="crudObject.name" /></td>
+			<td class="vert-align col-xs-1" data-title="'Antal'"
+				header-class="'text-center'"><input bs-switch type="checkbox"
+													switch-active="{{editMode}}" ng-model="crudObject.hasAmount"
+													switch-on-text="{{'YES' | translate}}"
+													switch-off-text="{{'NO' | translate}}" /></td>
+			<td class="vert-align col-xs-1" data-title="'Hvem'"
+				header-class="'text-center'"><input bs-switch type="checkbox"
+													switch-active="{{editMode}}" ng-model="crudObject.hasPeople"
+													switch-on-text="{{'YES' | translate}}"
+													switch-off-text="{{'NO' | translate}}" /></td>
+			<td class="vert-align col-xs-1" data-title="'Hvor'"
+				header-class="'text-center'"><input bs-switch type="checkbox"
+													switch-active="{{editMode}}" ng-model="crudObject.hasLocations"
+													switch-on-text="{{'YES' | translate}}"
+													switch-off-text="{{'NO' | translate}}" /></td>
+			<td class="vert-align col-xs-1" data-title="'Hvad'"
+				header-class="'text-center'"><input bs-switch type="checkbox"
+													switch-active="{{editMode}}" ng-model="crudObject.hasRemarks"
+													switch-on-text="{{'YES' | translate}}"
+													switch-off-text="{{'NO' | translate}}" /></td>
+			<td data-title="''" class="col-xs-2" header-class="''"><gs-crud-update-delete
 					scoped-object="crudObject" success="notifyDataSetChanged()" /></td>
 		</tr>
-</table>
+	</table>
+<!--<div class="alert alert-info" role="alert">Hændelsestyper der kun-->
+	<!--er relevant for denne kunde.</div>-->
+<!--<form name="crudForm" novalidate>-->
+	<!--<table class="table">-->
+		<!--<thead>-->
+			<!--<tr>-->
+				<!--<td class="col-xs-10 text-center">{{'EVENT_TYPE' | translate}}</td>-->
+				<!--<td class="col-xs-2"></td>-->
+			<!--</tr>-->
+		<!--</thead>-->
+		<!--<tbody>-->
+			<!--<tr gs-crud parse-object="parseObject"-->
+				<!--notify-as="{{'EVENT_TYPE' | translate}}" state-saving="saving">-->
+				<!--<td><input placeholder="{{'EVENT_TYPE' | translate}}"-->
+					<!--class="form-control" type="text" ng-model="createData.name"-->
+					<!--ng-disabled="saving" auto-focus focus-on="addSuccess" /></td>-->
+
+				<!--<td data-title="''"><gs-crud-create data="createData"-->
+						<!--success="notifyDataSetChanged()" /></td>-->
+			<!--</tr>-->
+		<!--</tbody>-->
+	<!--</table>-->
+<!--</form>-->
+<!--<table ng-table="tableParams" show-filter="true" class="table" ng-show="$data.length">-->
+		<!--<tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"-->
+			<!--notify-as="{{'EVENT_TYPE' | translate}}" editing="editMode">-->
+			<!--<td data-title="'Type'" class="col-xs-10"-->
+				<!--header-class="'text-center'" sortable="'name'"-->
+				<!--filter="{ 'name': 'text' }"><input ng-readonly="!editMode"-->
+				<!--class="form-control" type="text" ng-model="crudObject.name" /></td>-->
+			<!--<td class="col-xs-2" data-title="''" header-class="''"><gs-crud-update-delete-->
+					<!--scoped-object="crudObject" success="notifyDataSetChanged()" /></td>-->
+		<!--</tr>-->
+<!--</table>-->
 <!-- </div> -->

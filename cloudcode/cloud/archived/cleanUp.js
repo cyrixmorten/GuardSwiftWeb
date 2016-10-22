@@ -57,6 +57,32 @@ Parse.Cloud.job("ReSaveLastWeeksEventLogs", function(request, status) {
 	});
 
 });
+
+Parse.Cloud.job("FixClientNumbers", function(request, status) {
+	Parse.Cloud.useMasterKey();
+
+	var query = new Parse.Query("Client");
+
+	query.each(function(object) {
+		var number = object.get('number') || '';
+		object.set('clientId', ''+number);
+		return object.save();
+	}).then(function() {
+		var query = new Parse.Query("CircuitUnit");
+
+		return query.each(function(object) {
+			return object.save();
+		});
+		
+	}
+	).then(function() {
+		status.success("completed successfully.");
+	}, function(err) {
+		console.error(err);
+		status.error(err.message);
+	});
+
+});
 //
 //
 //Parse.Cloud.job("ResetAllCircuitUnits", function(request, status) {

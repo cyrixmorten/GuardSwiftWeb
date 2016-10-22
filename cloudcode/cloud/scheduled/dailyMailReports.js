@@ -1,6 +1,7 @@
 var moment = require('cloud/lib/moment/moment.min.js');
 var _ = require('underscore');
 
+
 Parse.Cloud.job("dailyMailReports", function (request, status) {
     Parse.Cloud.useMasterKey();
 

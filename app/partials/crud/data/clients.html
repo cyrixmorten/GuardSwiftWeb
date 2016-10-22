@@ -15,7 +15,7 @@
 		<tr gs-crud parse-object="parseObject"
 			notify-as="{{'CLIENT' | translate}}" state-saving="saving">
 			<td><input placeholder="{{'NUMBER' | translate}}"
-				class="form-control" type="number" ng-model="createData.number"
+				class="form-control" type="text" ng-model="createData.clientId"
 				ng-disabled="saving" auto-focus focus-on="addSuccess" /></td>
 			<td><input placeholder="{{'NAME' | translate}}"
 				class="form-control" type="text" ng-model="createData.name"
@@ -50,8 +50,8 @@
 		>
 		<td data-title="'Nr'" class="col-xs-1" header-class="'text-center'"
 			sortable="'number'" filter="{ 'number': 'text' }"><input
-			ng-readonly="!editMode" class="form-control" type="number"
-			ng-model="crudObject.number" /></td>
+			ng-readonly="!editMode" class="form-control" type="text"
+			ng-model="crudObject.clientId" /></td>
 		<td data-title="'Navn'" class="col-xs-2" header-class="'text-center'"
 			sortable="'name'" filter="{ 'name': 'text' }"><input
 			ng-readonly="!editMode" class="form-control" type="text"
