@@ -1,16 +1,16 @@
 var GuardSwiftVersion = 325;
 
-require("dotenv").config({ path: 'local.env' });
-var requireEnv = require("require-environment-variables");
-requireEnv([
-  'FILE_KEY',
-  'MASTER_KEY',
-  'PARSE_SERVER_URL',
-  'S3_KEY',
-  'S3_SECRET',
-  'DEPLOYMENT_MODE',
-  'GOOGLE_GEOCODE_API_KEY'
-]);
+// require("dotenv").config({ path: 'local.env' });
+// var requireEnv = require("require-environment-variables");
+// requireEnv([
+//   'FILE_KEY',
+//   'MASTER_KEY',
+//   'PARSE_SERVER_URL',
+//   'S3_KEY',
+//   'S3_SECRET',
+//   'DEPLOYMENT_MODE',
+//   'GOOGLE_GEOCODE_API_KEY'
+// ]);
 
 
 /**
@@ -110,7 +110,7 @@ http.createServer(app).listen(app.get('port'), function () {
   console.log('GuardSwift running on port ' + app.get('port'));
 });
 
-console.log('Starting Parse Server');
-parseServer.start();
-console.log('Starting Parse Dashboard');
-parseDashboard.start();
+// console.log('Starting Parse Server');
+// parseServer.start();
+// console.log('Starting Parse Dashboard');
+// parseDashboard.start();
