@@ -5,7 +5,7 @@ var requireEnv = require("require-environment-variables");
 requireEnv([
   'FILE_KEY',
   'MASTER_KEY',
-  'SERVER_URL',
+  'PARSE_SERVER_URL',
   'S3_KEY',
   'S3_SECRET',
   'DEPLOYMENT_MODE',
