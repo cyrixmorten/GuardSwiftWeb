@@ -9,17 +9,22 @@
     "body-parser": "^1.0.2",
     "consolidate": "^0.14.0",
     "datauri": "^1.0.4",
+    "dotenv": "^2.0.0",
     "error-handler": "^0.1.4",
     "express": "~4.1.1",
     "jade": "~0.31.2",
+    "lodash": "^4.16.4",
     "method-override": "^1.0.0",
+    "moment-timezone-all": "^0.5.5",
     "morgan": "^1.0.0",
     "node": "0.0.0",
     "nodejs": "0.0.0",
-    "pdfmake": "^0.1.18",
-    "swig": "^1.4.2",
     "parse": "~1.8.0",
-    "parse-server": "*"
+    "parse-dashboard": "^1.0.19",
+    "parse-server": "*",
+    "pdfmake": "^0.1.18",
+    "require-environment-variables": "^1.1.2",
+    "swig": "^1.4.2"
   },
   "engines": {
     "node": ">=4.3"

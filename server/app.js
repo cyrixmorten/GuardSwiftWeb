@@ -1,72 +1,33 @@
 var GuardSwiftVersion = 325;
 
+require("dotenv").config({ path: 'local.env' });
+var requireEnv = require("require-environment-variables");
+requireEnv([
+  'FILE_KEY',
+  'MASTER_KEY',
+  'SERVER_URL',
+  'S3_KEY',
+  'S3_SECRET',
+  'DEPLOYMENT_MODE',
+  'GOOGLE_GEOCODE_API_KEY'
+]);
+
+
 /**
  * Module dependencies
  */
 var express = require('express'),
-  router = require('express').Router(),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  errorHandler = require('error-handler'),
   morgan = require('morgan'),
   routes = require('./routes'),
   api = require('./routes/api'),
   http = require('http'),
-  path = require('path');
+  path = require('path'),
+  parseServer = require('./parse/parse-server'),
+  parseDashboard = require('./parse/parse-dashboard');
 
 var app = module.exports = express();
-
-/**
- * SETUP PARSE SERVER
- */
-
-var S3Adapter = require('parse-server').S3Adapter;
-var ParseServer = require('parse-server').ParseServer;
-
-var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
-
-if (!databaseUri) {
-  console.log('DATABASE_URI not specified, falling back to localhost.');
-}
-
-var parseApi = new ParseServer({
-  databaseURI: databaseUri, //'mongodb://localhost:27017/dev',
-  cloud: process.env.CLOUD_CODE_MAIN, // || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID,
-  fileKey: process.env.FILE_KEY,
-  masterKey: process.env.MASTER_KEY, //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
-  liveQuery: {
-    classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  },
-  filesAdapter: new S3Adapter(
-      process.env.S3_KEY,
-      process.env.S3_SECRET,
-      process.env.S3_BUCKET,
-      { directAccess: true }
-  )
-});
-
-// Serve static assets from the /public folder
-app.use('/public', express.static(path.join(__dirname, '/public')));
-
-// Serve the Parse API on the /parse URL prefix
-var mountPath = process.env.PARSE_MOUNT || '/parse';
-app.use(mountPath, parseApi);
-
-
-var port = process.env.PORT || 1337;
-var httpServer = require('http').createServer(app);
-httpServer.listen(port, function() {
-  console.log('parse-server-example running on port ' + port + '.');
-});
-
-// This will enable the Live Query real-time server
-ParseServer.createLiveQueryServer(httpServer);
-
-/**
- * CONFIGURE SERVER
- */
 
 
 var clientPath = path.join(__dirname, '../app');
@@ -146,5 +107,10 @@ app.use('/api', apiRouter);
  */
 
 http.createServer(app).listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('GuardSwift running on port ' + app.get('port'));
 });
+
+console.log('Starting Parse Server');
+parseServer.start();
+console.log('Starting Parse Dashboard');
+parseDashboard.start();

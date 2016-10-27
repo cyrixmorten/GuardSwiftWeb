@@ -21,7 +21,6 @@ exports.pdfmake = function (req, res) {
     res.set('Content-Type: application/octet-stream');
 
     var pdfDoc = printer.createPdfKitDocument(req.body);
-    //pdfDoc.pipe(fs.createWriteStream('basics.pdf'));
     pdfDoc.pipe(res);
     pdfDoc.end();
 };
