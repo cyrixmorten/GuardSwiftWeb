@@ -5,17 +5,15 @@ var app = angular.module('GuardSwiftApp.services');
 
 app.factory('ParseFactory' , [
              'ParseClient', 'ParseGuard',
-             'ParseEventType', 'ParseMessage',
+             'ParseEventType',
              'ParseClientContact', 'ParseClientLocation',
              'ParseCircuit', 'ParseCircuitStarted', 'ParseCircuitUnit',
              'ParseDistrictWatch', 'ParseDistrictWatchUnit', 'ParseDistrictWatchStarted',
-             'ParseAlarm', 'ParseReport', 'ParseEventLog', 'ParseGPSTracker',
-             function(ParseClient, ParseGuard, ParseGroup,
-                     ParseChecklistStart, ParseChecklistEnd,
+             'ParseReport', 'ParseEventLog',
+             function(ParseClient, ParseGuard,
                      ParseEventType, ParseClientContact, ParseClientLocation,
                      ParseCircuit, ParseCircuitStarted, ParseCircuitUnit,
-                     ParseDistrictWatch, ParseDistrictWatchUnit, ParseDistrictWatchStarted,
-					  ParseReport, ParseEventLog) {
+                     ParseDistrictWatch, ParseDistrictWatchUnit, ParseDistrictWatchStarted, ParseReport, ParseEventLog) {
 
              var data = {
             		 'Client' : ParseClient,

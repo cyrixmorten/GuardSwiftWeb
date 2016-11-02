@@ -30,7 +30,7 @@ controllerModule.controller('LoginCtrl', [
 						var p = ParseFactory.getAll();
 						for (var key in p) {
 							  if (p.hasOwnProperty(key)) {
-//							    console.log(key + " -> " + p[key]);
+							    console.log(key + " -> " + p[key]);
 							    var parseObject = p[key];
 							    parseObject.clearStoredParseObjects();
 							    parseObject.setDefaultHiddenData();

@@ -6,9 +6,12 @@ var app = angular.module('GuardSwiftApp.services');
 app.service('ParseService', function() {
 
 	Parse.initialize("guardswift");
+	Parse.User.enableRevocableSession();
+
 	if (document.location.hostname == "localhost") {
 		// Development
-		Parse.serverURL = 'http://gsdev-server.herokuapp.com/parse'; //'http://localhost:1337/parse';
+		Parse.serverURL = 'http://localhost:1337/parse';
+		// Parse.serverURL = 'http://gsdev-server.herokuapp.com/parse';
 	} else {
 		// Release
 		Parse.initialize("gejAg1OFJrBwepcORHB3U7V7fawoDjlymRe8grHJ",
