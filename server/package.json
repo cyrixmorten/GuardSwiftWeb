@@ -21,7 +21,6 @@
     "nodejs": "0.0.0",
     "parse": "~1.8.0",
     "parse-dashboard": "^1.0.19",
-    "parse-server": "*",
     "pdfmake": "^0.1.18",
     "require-environment-variables": "^1.1.2",
     "swig": "^1.4.2"
