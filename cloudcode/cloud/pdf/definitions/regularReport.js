@@ -37,7 +37,7 @@ exports.createDoc = function (report, settings, timeZone) {
     var backgroundHeaderImage = docDefaults.backgroundHeaderImage(settings);
 
 
-    var uniqueEvents = function () {
+    var processedEvents = function () {
         var combinedContent = [];
         for (var i = 0; i < events.eventName.length; i++) {
             combinedContent.push(
@@ -55,7 +55,7 @@ exports.createDoc = function (report, settings, timeZone) {
             if (!_.includes(uniqueContent, combinedContent[j])) {
                 uniqueContent.push(combinedContent[j]);
             } else if (!_.isEmpty(combinedContent[j])) {
-                // strip of duplicate from events
+                // strip off duplicates from events
                 events.eventName.splice(j, 1);
                 events.amount.splice(j, 1);
                 events.people.splice(j, 1);
@@ -65,6 +65,16 @@ exports.createDoc = function (report, settings, timeZone) {
         }
 
 
+        if (_.isEmpty(events.eventName)) {
+            events = [{
+                eventName: "Ingen uregelmæssigheder blev observeret under tilsynet",
+                amount: '',
+                people: '',
+                location: '',
+                remarks: ''
+            }];
+        }
+        
         return _.zip(events.eventName, events.amount, events.people, events.location, events.remarks);
     };
 
@@ -86,7 +96,7 @@ exports.createDoc = function (report, settings, timeZone) {
             pdfUtils.tableBorderedWithHeader({
                 widths: ['*', 50, '*', '*', '*'],
                 header: ['Hændelse', 'Antal', 'Personer', 'Placering', 'Bemærkninger'],
-                content: uniqueEvents()
+                content: processedEvents()
             })
         ],
 

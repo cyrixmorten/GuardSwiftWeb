@@ -23,9 +23,7 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
   http = require('http'),
-  path = require('path'),
-  parseServer = require('./parse/parse-server'),
-  parseDashboard = require('./parse/parse-dashboard');
+  path = require('path');
 
 var app = module.exports = express();
 
@@ -110,7 +108,6 @@ http.createServer(app).listen(app.get('port'), function () {
   console.log('GuardSwift running on port ' + app.get('port'));
 });
 
-// console.log('Starting Parse Server');
-// parseServer.start();
+
 // console.log('Starting Parse Dashboard');
 // parseDashboard.start();
