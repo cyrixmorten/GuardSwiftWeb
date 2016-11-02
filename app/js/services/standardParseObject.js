@@ -418,7 +418,7 @@ app
 									} else {
 										promise
 												.reject("data does not match template");
-									};
+									}
 
 									return promise;
 								};
@@ -690,6 +690,7 @@ app
 												// attrname);
 											}
 										}
+
 									}
 
 									// add missing properties

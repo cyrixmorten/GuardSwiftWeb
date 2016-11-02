@@ -5,10 +5,10 @@ var app = angular.module('GuardSwiftApp.services');
 
 app.service('ParseService', function() {
 
+	Parse.initialize("guardswift");
 	if (document.location.hostname == "localhost") {
 		// Development
-		Parse.initialize("7fynHGuQW5NZLROiIDcCzLddbINcUSwPdoE0L72d",
-				"nauoHYYcCFXHNIBvEfjmC0plOQKxJKTCVZbgaytg");
+		Parse.serverURL = 'http://gsdev-server.herokuapp.com/parse'; //'http://localhost:1337/parse';
 	} else {
 		// Release
 		Parse.initialize("gejAg1OFJrBwepcORHB3U7V7fawoDjlymRe8grHJ",
@@ -19,15 +19,13 @@ app.service('ParseService', function() {
 
 
 		var isLoggedIn = function() {
-			if (Parse.User.current()) {
-				return true;
-			}
-			return false;
+			return !!Parse.User.current();
+			
 		};
 		
 		var getUser = function() {
 			return Parse.User.current();
-		}
+		};
 
 		var getUsername = function() {
 			return Parse.User.current().get('username');
