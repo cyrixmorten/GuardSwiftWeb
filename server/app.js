@@ -1,4 +1,4 @@
-var GuardSwiftVersion = 350;
+var GuardSwiftVersion = 355;
 
 // require("dotenv").config({ path: 'local.env' });
 // var requireEnv = require("require-environment-variables");
