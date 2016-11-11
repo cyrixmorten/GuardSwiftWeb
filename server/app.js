@@ -1,16 +1,8 @@
-var GuardSwiftVersion = 355;
-
-// require("dotenv").config({ path: 'local.env' });
-// var requireEnv = require("require-environment-variables");
-// requireEnv([
-//   'FILE_KEY',
-//   'MASTER_KEY',
-//   'PARSE_SERVER_URL',
-//   'S3_KEY',
-//   'S3_SECRET',
-//   'DEPLOYMENT_MODE',
-//   'GOOGLE_GEOCODE_API_KEY'
-// ]);
+require("dotenv").config({ path: 'local.env' });
+var requireEnv = require("require-environment-variables");
+requireEnv([
+  'GS_VERSION'
+]);
 
 
 /**
@@ -86,7 +78,7 @@ apiRouter.route('/pdfmake').post(api.pdfmake);
 apiRouter.route('/datauri').post(api.datauri);
 
 apiRouter.route('/version').get(function(req, res) {
-  res.send(GuardSwiftVersion.toString());
+  res.send(process.env.GS_VERSION.toString());
 });
 
 apiRouter.route('/download').get(function(req, res){
