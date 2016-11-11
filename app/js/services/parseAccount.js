@@ -6,13 +6,15 @@ var app = angular.module('GuardSwiftApp.services');
 app.service('ParseService', function() {
 
 	Parse.initialize("guardswift");
+	Parse.User.enableRevocableSession();
+
 	if (document.location.hostname == "localhost") {
 		// Development
-		Parse.serverURL = 'http://gsdev-server.herokuapp.com/parse'; //'http://localhost:1337/parse';
+		// Parse.serverURL = 'http://localhost:1337/parse';
+		Parse.serverURL = 'https://gsdev-server.herokuapp.com/parse';
 	} else {
 		// Release
-		Parse.initialize("gejAg1OFJrBwepcORHB3U7V7fawoDjlymRe8grHJ",
-				"TZDGcjak3YJfmkLzTCacZvgAjrQOSUOGvO7IEDHU");
+		Parse.serverURL = 'https://guardswift-server.herokuapp.com/parse';
 	}
 
 	this.Account = new function() {

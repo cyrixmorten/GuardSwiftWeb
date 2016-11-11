@@ -5,13 +5,12 @@ var app = angular.module('GuardSwiftApp.services');
 
 app.factory('ParseFactory' , [
              'ParseClient', 'ParseGuard',
-             'ParseEventType', 'ParseMessage',
+             'ParseEventType',
              'ParseClientContact', 'ParseClientLocation',
              'ParseCircuit', 'ParseCircuitStarted', 'ParseCircuitUnit',
              'ParseDistrictWatch', 'ParseDistrictWatchUnit', 'ParseDistrictWatchStarted',
-             'ParseAlarm', 'ParseReport', 'ParseEventLog', 'ParseGPSTracker',
-             function(ParseClient, ParseGuard, ParseGroup,
-                     ParseChecklistStart, ParseChecklistEnd,
+             'ParseReport', 'ParseEventLog',
+             function(ParseClient, ParseGuard,
                      ParseEventType, ParseClientContact, ParseClientLocation,
                      ParseCircuit, ParseCircuitStarted, ParseCircuitUnit,
                      ParseDistrictWatch, ParseDistrictWatchUnit, ParseDistrictWatchStarted,
@@ -508,7 +507,6 @@ app.factory('ParseReport', [
 								headerLogo : function() {
 									var owner = object.get('owner');
 									if (owner && owner.has('logoUrl')) {
-										console.log(owner.get('logoUrl'));
 										return owner.get('logoUrl');
 									}
 									return '';

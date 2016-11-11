@@ -95,10 +95,12 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
                     //
                     //     finish();
                     // } else {
-                        Parse.Cloud.run("reportToPDF", {reportId: iScope.report.id},
+                        Parse.Cloud.run("reportToDoc", {reportId: iScope.report.id},
                             {
                                 success: function (result) {
-                                    openInNewTab(result.pdfUrl);
+                                    console.log('result: ', result);
+
+                                    pdfMake.createPdf(result).open();
 
                                     finish();
                                 },
