@@ -7,9 +7,16 @@ exports.start = function () {
     var dashboard = new ParseDashboard({
         "apps": [
             {
-                "serverURL": process.env.PARSE_SERVER_URL,
-                "appId": process.env.APP_ID,
-                "masterKey": process.env.MASTER_KEY,
+                "serverURL": process.env.GUARDSWIFT_PARSE_SERVER,
+                "appId": process.env.GUARDSWIFT_APP_ID,
+                "masterKey": process.env.GUARDSWIFT_MASTER_KEY,
+                "appName": "GuardSwift",
+                "production": true
+            },
+            {
+                "serverURL": process.env.GUARDSWIFTDEV_PARSE_SERVER,
+                "appId": process.env.GUARDSWIFTDEV_APP_ID,
+                "masterKey": process.env.GUARDSWIFTDEV_MASTER_KEY,
                 "appName": "GuardSwiftDev"
             }
         ],
