@@ -6,7 +6,6 @@ var app = angular.module('GuardSwiftApp.services');
 app.service('ParseService', function() {
 
 	Parse.initialize("guardswift");
-	Parse.User.enableRevocableSession();
 
 	if (document.location.hostname == "localhost") {
 		// Development
