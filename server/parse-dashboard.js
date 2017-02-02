@@ -18,6 +18,13 @@ exports.start = function () {
                 "appId": process.env.GUARDSWIFTDEV_APP_ID,
                 "masterKey": process.env.GUARDSWIFTDEV_MASTER_KEY,
                 "appName": "GuardSwiftDev"
+            },
+            {
+                "serverURL": process.env.TURIOS_PARSE_SERVER,
+                "appId": process.env.TURIOS_APP_ID,
+                "masterKey": process.env.TURIOS_MASTER_KEY,
+                "appName": "Turios",
+                "production": true
             }
         ],
         // "users": [

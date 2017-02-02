@@ -101,5 +101,5 @@ http.createServer(app).listen(app.get('port'), function () {
 });
 
 
-// console.log('Starting Parse Dashboard');
-// parseDashboard.start();
+console.log('Starting Parse Dashboard');
+require('./parse-dashboard').start();
