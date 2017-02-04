@@ -62,7 +62,8 @@ app.factory('ParseClient', [
 					position : new Parse.GeoPoint({latitude: 40.0, longitude: -30.0}),
 					roomLocations : [],
 					contacts : [],
-					messages : []
+					messages : [],
+					isAutoCreated: false
 				},
 				filledTemplate : function(client) {
 					return {
@@ -78,12 +79,18 @@ app.factory('ParseClient', [
 						position : client.get('position'),
 						roomLocations : client.get('roomLocations'),
 						contacts : client.get('contacts'),
-						messages : client.get('messages')
+						messages : client.get('messages'),
+                        isAutoCreated: client.get('isAutoCreated')
 					};
 				}
 			});
 
 			return angular.extend(ParseObject, {
+                notAutoCreatedQuery : function() {
+                    var query = ParseObject.fetchAllQuery();
+                    query.notEqualTo('isAutoCreated', true);
+                    return query;
+                },
 				sorting : {
 					name : 'asc'
 				}

@@ -193,7 +193,9 @@ angular.module('GuardSwiftApp', [
                     return ParseClient;
                 },
                 scopedClients: function (ParseClient) {
-                    return ParseClient.fetchAll(); // load objects before showing the partial
+                    var query = ParseClient.fetchAllQuery();
+                    query.notEqualTo('isAutoCreated', true);
+                    return ParseClient.fetchAll(query); // load objects before showing the partial
                 }
             }
             , untilResolved: {
