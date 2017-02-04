@@ -28,7 +28,7 @@ angular.module('GuardSwiftApp', [
     .config(['$routeSegmentProvider', '$routeProvider', 'uiGmapGoogleMapApiProvider', function ($routeSegmentProvider, $routeProvider, uiGmapGoogleMapApiProvider) {
 
         uiGmapGoogleMapApiProvider.configure({
-            key: 'AIzaSyBJxeP1LuaYrWmzOKDKo3l4a_nc4G7OaFU',
+            key: 'AIzaSyA-lBins4jnAtTVkaQMPBoFGFephQSyF_k',
             v: '3.17',
             libraries: 'weather,geometry,visualization'
         });
@@ -850,14 +850,21 @@ angular.module('GuardSwiftApp', [
          * --
          */
         segment('gps', {
-            templateUrl: 'partials/gps/gps.html', controller: 'GPSLogCtrl',
+            templateUrl: 'partials/gps/gps.html', controller: 'ParseSearchWithQueryCtrl',
             resolve: {
-                ParseObject: ['ParseGPSTracker', function (ParseGPSTracker) {
-                    return ParseGPSTracker
+                ParseObject: ['ParseTracker', function (ParseTracker) {
+                    console.log('ParseTracker 1');
+                    return ParseTracker
                 }],
-                parseQuery: ['ParseGPSTracker', function (ParseGPSTracker) {
-                    return ParseGPSTracker.fetchAllQuery().include('guard')
+                parseQuery: ['ParseTracker', function (ParseTracker) {
+                    return ParseTracker.fetchAllQuery().include('guard');
                 }]
+            },
+            resolveFailed: {
+                templateUrl: 'partials/error/report_not_found.html'
+            }
+            , untilResolved: {
+                templateUrl: smallHorizontalLoader
             }
         }).segment('experiments_regular_panel', {
             templateUrl: 'partials/gps/experiments.html', controller: 'ExperimentsCtrl',

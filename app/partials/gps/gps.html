@@ -1,4 +1,3 @@
-
 <div>
 	<div class="map-menu">
 		<gs-search-bar-day-date ng-if="!isPublic"
@@ -16,41 +15,41 @@
 		<ui-gmap-google-map id="my-map" bounds="map.bounds"
 			options="map.options" events="map.events" center="map.center"
 			zoom="map.zoom" draggable="true">
-			
+
 		<ui-gmap-markers
-			models='map.pathMarkers' fit="true" coords="'coords'" 
+			models='map.pathMarkers' fit="true" coords="'coords'"
 			options="'options'" icon="'icon'" labelAnchor="'labelAnchor'"
 			labelClass="'labelClass'" events="map.markerEvents">
-		</ui-gmap-markers> 
-		 
-		<!-- Client markers -->	
+		</ui-gmap-markers>
+
+		<!-- Client markers -->
 		<ui-gmap-markers
 			models='clientMarkers' fit="true" coords="'coords'"
 			options="'options'" icon="'icon'" labelAnchor="'labelAnchor'"
 			labelClass="'labelClass'" click="'onClick'" events="'events'">
 		</ui-gmap-markers>
-		
-		<!-- Path --> 
+
+		<!-- Path -->
 		<ui-gmap-polylines models="map.pathPolys" events="map.polyEvents"
 			path="'path'" stroke="'stroke'" visible="'visible'"
 			geodesic="'geodesic'" fit="false" control="polylineCtrl" static="true"
-			doRebuildAll="true"></ui-gmap-polylines> 
-		
-		<!-- Path --> 
+			doRebuildAll="true"></ui-gmap-polylines>
+
+		<!-- Path -->
 		<!-- <ui-gmap-polylines models="map.epolys" events="map.polyEvents"
 			path="'path'" stroke="'stroke'" visible="'visible'"
 			geodesic="'geodesic'" fit="true" control="polylineCtrl" static="true"
-			doRebuildAll="true"></ui-gmap-polylines> --> 
-			
-		<!-- Path start marker -->	
+			doRebuildAll="true"></ui-gmap-polylines> -->
+
+		<!-- Path start marker -->
 		<ui-gmap-marker
 			ng-if="startMarker" idKey="'startMarker'" coords="startMarker.coords"
-			options='startMarker.options' /> 
-		<!-- Path end marker -->	
+			options='startMarker.options' />
+		<!-- Path end marker -->
 		<ui-gmap-marker ng-if="endMarker"
 			idKey="'endMarker'" coords="endMarker.coords"
-			options="endMarker.options" /> 
-			
+			options="endMarker.options" />
+
 		<!-- Details marker -->
 		<ui-gmap-marker ng-if="marker"
 			idKey="'selectedMarker'" coords="marker.coords"

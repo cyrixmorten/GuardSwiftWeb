@@ -9,12 +9,12 @@ app.factory('ParseFactory' , [
              'ParseClientContact', 'ParseClientLocation',
              'ParseCircuit', 'ParseCircuitStarted', 'ParseCircuitUnit',
              'ParseDistrictWatch', 'ParseDistrictWatchUnit', 'ParseDistrictWatchStarted',
-             'ParseReport', 'ParseEventLog',
+             'ParseReport', 'ParseEventLog', 'ParseTracker',
              function(ParseClient, ParseGuard,
                      ParseEventType, ParseClientContact, ParseClientLocation,
                      ParseCircuit, ParseCircuitStarted, ParseCircuitUnit,
                      ParseDistrictWatch, ParseDistrictWatchUnit, ParseDistrictWatchStarted,
-					  ParseReport, ParseEventLog) {
+					  ParseReport, ParseEventLog, ParseTracker) {
 
              var data = {
             		 'Client' : ParseClient,
@@ -29,7 +29,8 @@ app.factory('ParseFactory' , [
             		 'DistrictWatchStarted' : ParseDistrictWatchStarted,
             		 'DistrictWatchUnit' : ParseDistrictWatchUnit,
             		 'Report' : ParseReport,
-            		 'EventLog' : ParseEventLog
+            		 'EventLog' : ParseEventLog,
+				 	'ParseTracker': ParseTracker
              };
 
 
@@ -96,6 +97,32 @@ app.factory('ParseClient', [
 				}
 			});
 		}]);
+
+app.factory('ParseTracker', ['StandardParseObject',
+    function(StandardParseObject) {
+        var ParseObject = new StandardParseObject({
+            objectname : 'Tracker',
+            emptyTemplate : {
+                start : new Date(),
+                end : new Date(),
+                minuts: 0,
+				guard: {},
+				gpsFile: {}
+            },
+            filledTemplate : function(tracker) {
+                return {
+                    start : tracker.get('start'),
+                    end : tracker.get('start'),
+                    minuts: tracker.get('minutes'),
+                    guard: tracker.get('guard'),
+                    gpsFile: tracker.get('gpsFile')
+                };
+            }
+        });
+
+        return angular.extend(ParseObject, {
+        });
+    }]);
 
 app.factory('ParseGuard', ['StandardParseObject',
 		function(StandardParseObject) {
