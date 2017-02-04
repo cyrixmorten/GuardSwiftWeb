@@ -195,6 +195,7 @@ angular.module('GuardSwiftApp', [
                 scopedClients: function (ParseClient) {
                     var query = ParseClient.fetchAllQuery();
                     query.notEqualTo('isAutoCreated', true);
+                    query.notEqualTo('automatic', true);
                     return ParseClient.fetchAll(query); // load objects before showing the partial
                 }
             }
