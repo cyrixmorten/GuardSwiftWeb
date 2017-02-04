@@ -460,6 +460,7 @@ app.factory('ParseReport', [
 							clientName : '',
 							clientAddress : '',
 							clientAddressNumber : '',
+                            clientFullAddress: '',
 							clientCity : '',
 							guardName : '',
 							guardId : '',
@@ -494,6 +495,7 @@ app.factory('ParseReport', [
 								clientCity : object.get('clientCity'),
 								clientAddress : object.get('clientAddress'),
 								clientAddressNumber : object.get('clientAddressNumber'),
+                                clientFullAddress : object.get('clientFullAddress'),
 								guardName : object.get('guardName'),
 								guardId : object.get('guardId'),
 								type : object.get('type'),
@@ -529,10 +531,7 @@ app.factory('ParseReport', [
 				circuitUnitsQuery : function() {
 					var query = ParseObject.fetchAllQuery();
 
-					query.exists('circuitStarted');
-					query.exists('circuitUnit');
-
-					query.include('circuitStarted');
+                    query.equalTo('taskTypeName', 'REGULAR');
 
 					return query;
 				},
@@ -542,7 +541,14 @@ app.factory('ParseReport', [
 					query.equalTo('taskTypeName', 'STATIC');
 
 					return query;
-				}
+				},
+                alarmsQuery: function() {
+                    var query = ParseObject.fetchAllQuery();
+
+                    query.equalTo('taskTypeName', 'ALARM');
+
+                    return query;
+                }
 			});
 		}]);
 

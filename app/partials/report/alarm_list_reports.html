@@ -15,12 +15,12 @@
 					<td data-title="'Sikr.niv.'" class="col-xs-1" header-class="'text-center'"
 						sortable="'securityLevel'" filter="{ 'securityLevel': 'text' }">{{crudObject.securityLevel
 						| default : '10'}}</td>
-					<td data-title="'Installatør'" class="col-xs-3" header-class="'text-center'"
-						sortable="'installer'" filter="{ 'installer': 'text' }">{{crudObject.installerName}}</td>
-					<td data-title="'Kunde'" class="col-xs-4" header-class="'text-center'"
-						sortable="'clientName'" filter="{ 'clientName': 'text' }">{{crudObject.clientName}}</td>
-					<td data-title="'By'" class="col-xs-2" header-class="'text-center'"
-						sortable="'clientCity'" filter="{ 'clientCity': 'text' }">{{crudObject.clientCity}}</td>
+					<!--<td data-title="'Installatør'" class="col-xs-3" header-class="'text-center'"-->
+						<!--sortable="'installer'" filter="{ 'installer': 'text' }">{{crudObject.installerName}}</td>-->
+					<td data-title="'Kunde'" class="col-xs-5" header-class="'text-center'"
+						sortable="'clientName'" filter="{ 'clientName': 'text' }">{{crudObject.clientName}} {{crudObject.clientFullAddress}}</td>
+					<!--<td data-title="'By'" class="col-xs-2" header-class="'text-center'"-->
+						<!--sortable="'clientCity'" filter="{ 'clientCity': 'text' }">{{crudObject.clientCity}}</td>-->
 					<!-- <td data-title="'Addresse'" header-class="'col-xs-1 text-center'"
 					sortable="'clientAddress'" filter="{ 'clientAddress': 'text' }">{{crudObject.clientFullAddress}}</td> -->
 					<!--<td data-title="'Indgået'" header-class="'col-xs-1 text-center'">{{crudObject.alarmTime
@@ -37,10 +37,12 @@
 					<td data-title="'Oprettet'" class="col-xs-1" header-class="'text-center'">{{crudObject.createdAt
 						| date:'dd-MM-yyyy'}}</td>
 
-					<td data-title="''" class="col-xs-1" header-class="''">
-						<gs-link-button ng-show="crudObject.report" type="info" size="sm" target="_blank" link="{{ 'alarmreport' | routeSegmentUrl : {id : crudObject.id} }}" fa-left="file-text-o" fa-right="angle-right" button-text="{{
-							'SHOW_REPORT' | translate}}"/>
-					</td>
+					<td class="col-xs-1 text-right"><gs-link-button type="info"
+																	size="sm" target="_blank"
+																	report="crudObject"
+																	fa-left="file-text-o" fa-right="angle-right"
+																	button-text="{{
+							'SHOW_REPORT' | translate}}" />
 
 					<!-- <td data-title="''" header-class="'col-xs-1'"><a
 					class="btn btn-primary btn-sm pull-right"

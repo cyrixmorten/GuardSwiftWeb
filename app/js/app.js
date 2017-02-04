@@ -775,10 +775,13 @@ angular.module('GuardSwiftApp', [
                 templateUrl: smallHorizontalLoader
             }
         }).segment('alarmreports', {
-            templateUrl: 'partials/report/alarm_list_reports.html', controller: 'StandardParseSearchCtrl',
+            templateUrl: 'partials/report/alarm_list_reports.html', controller: 'ParseSearchWithQueryCtrl',
             resolve: {
-                ParseObject: ['ParseAlarm', function (ParseAlarm) {
-                    return ParseAlarm
+               ParseObject: ['ParseReport', function (ParseReport) {
+                    return ParseReport
+                }],
+                parseQuery: ['ParseReport', function (ParseReport) {
+                    return ParseReport.alarmsQuery()
                 }]
             }
         }).segment('alarmreport', {
