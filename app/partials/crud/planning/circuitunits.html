@@ -66,8 +66,7 @@
         <tr ng-repeat="crudObject in $data" gs-crud parse-object="parseObject"
             notify-as="{{'CIRCUITUNIT' | translate}}" editing="editMode">
 
-            <td class="vert-align col-xs-2"
-            " data-title="'Type'"
+            <td class="vert-align col-xs-2" data-title="'Type'"
             header-class="'text-center'" sortable="'name'"
             filter="{ 'name': 'text' }"><input ng-readonly="!editMode"
                                                class="form-control" type="text" ng-model="crudObject.name"/></td>
