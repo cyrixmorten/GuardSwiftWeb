@@ -288,7 +288,8 @@ app.factory('ParseCircuitUnit', [
 						return date;
 					}(),
 					days : [0, 1, 2, 3, 4, 5, 6],
-					isRaid : false
+					isRaid : false,
+					supervisions: 1
 				},
 				filledTemplate : function(object) {
 					return {
@@ -302,7 +303,8 @@ app.factory('ParseCircuitUnit', [
 						timeStartDate : object.get('timeStartDate'),
 						timeEndDate : object.get('timeEndDate'),
 						days : object.get('days'),
-						isRaid : object.get('isRaid') || false
+						isRaid : object.get('isRaid') || false,
+                        supervisions: object.get('supervisions')
 					};
 				}
 			});
