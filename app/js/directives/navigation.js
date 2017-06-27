@@ -100,7 +100,7 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
                                 success: function (result) {
                                     console.log('result: ', result);
 
-                                    pdfMake.createPdf(result).open();
+                                    pdfMake.createPdf(result).download(iScope.report.clientName + ' ' + iScope.report.clientFullAddress + ' ' + moment(iScope.report.createdAt).format('DD-MM-YYYY'));
 
                                     finish();
                                 },

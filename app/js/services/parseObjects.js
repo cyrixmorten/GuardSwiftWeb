@@ -481,8 +481,8 @@ app.factory('ParseDistrictWatchStarted', [
 
 
 app.factory('ParseReport', [
-		'StandardParseObject', 'ParseCircuitStarted', 'ParseDistrictWatchStarted', 'ParseEventLog',
-		function(StandardParseObject, ParseCircuitStarted, ParseDistrictWatchStarted, ParseEventLog) {
+		'StandardParseObject', 'ParseCircuitStarted', 'ParseDistrictWatchStarted', 'ParseClient', 'ParseEventLog',
+		function(StandardParseObject, ParseCircuitStarted, ParseDistrictWatchStarted, ParseClient, ParseEventLog) {
 			var ParseObject = new StandardParseObject(
 					{
 						objectname : 'Report',
@@ -582,6 +582,9 @@ app.factory('ParseReport', [
                     var query = ParseObject.fetchAllQuery();
 
                     query.equalTo('taskTypeName', 'ALARM');
+
+                    // Hide test alarms
+                    query.notEqualTo('client', ParseClient.getPointerObject('onA5zT2dqq'));
 
                     return query;
                 }

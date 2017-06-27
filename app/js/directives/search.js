@@ -151,8 +151,8 @@ myApp
 													ParseSearch
 															.search(
 																	parseObject,
-																	ctrl.dt_datefrom,
-																	ctrl.dt_dateto,
+																	moment(ctrl.dt_datefrom).set({hour:0,minute:0,second:0,millisecond:0}).toDate(),
+																	moment(ctrl.dt_dateto).add(1, 'days').set({hour:0,minute:0,second:0,millisecond:0}).toDate(),
 																	parseQuery)
 															.then(
 																	function(scopedObjects) {
