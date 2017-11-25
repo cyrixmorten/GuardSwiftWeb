@@ -34,7 +34,7 @@ myApp.directive('gsEventLogDetails', ['ParseEventLog', '$modal',
 								eventLog : function() {
 									// to show busyLoader
 									scope.detailsPromise = ParseEventLog.get(scope.objectId, [
-										'client', 'circuitStarted', 'circuitUnit']);
+										'client', 'taskGroupStarted', 'task']);
 
 									return scope.detailsPromise;
 								}

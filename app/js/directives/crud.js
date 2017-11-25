@@ -74,6 +74,8 @@ myApp
 										scope.error);
 							};
 
+
+
 							scope.crudCtrl = crudCtrl;
 						}
 					};
@@ -180,6 +182,7 @@ myApp
 											'AN_ERROR_OCCURED'])
 									.then(
 											function(translations) {
+
 
 												// init variables
 												var ParseObject = ctrl.parseObject;

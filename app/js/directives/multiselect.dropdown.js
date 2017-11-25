@@ -318,7 +318,7 @@ myApp
 
 myApp
 		.directive(
-				'multiselectDropdownInputCircuits',
+				'multiselectDropdownInputTaskGroups',
 				[
 						'$translate',
 						function($translate) {

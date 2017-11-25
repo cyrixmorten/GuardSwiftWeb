@@ -7,13 +7,11 @@ app.factory('ParseFactory' , [
              'ParseClient', 'ParseGuard',
              'ParseEventType',
              'ParseClientContact', 'ParseClientLocation',
-             'ParseCircuit', 'ParseCircuitStarted', 'ParseCircuitUnit',
-             'ParseDistrictWatch', 'ParseDistrictWatchUnit', 'ParseDistrictWatchStarted',
+             'ParseTaskGroup', 'ParseTaskGroupStarted', 'ParseTask',
              'ParseReport', 'ParseEventLog', 'ParseTracker',
              function(ParseClient, ParseGuard,
                      ParseEventType, ParseClientContact, ParseClientLocation,
-                     ParseCircuit, ParseCircuitStarted, ParseCircuitUnit,
-                     ParseDistrictWatch, ParseDistrictWatchUnit, ParseDistrictWatchStarted,
+                     ParseTaskGroup, ParseTaskGroupStarted, ParseTask,
 					  ParseReport, ParseEventLog, ParseTracker) {
 
              var data = {
@@ -22,12 +20,9 @@ app.factory('ParseFactory' , [
             		 'EventType' : ParseEventType,
             		 'ClientContact' : ParseClientContact,
             		 'ClientLocation' : ParseClientLocation,
-            		 'Circuit' : ParseCircuit,
-            		 'CircuitStarted' : ParseCircuitStarted,
-            		 'CircuitUnit' : ParseCircuitUnit,
-            		 'DistrictWatch' : ParseDistrictWatch,
-            		 'DistrictWatchStarted' : ParseDistrictWatchStarted,
-            		 'DistrictWatchUnit' : ParseDistrictWatchUnit,
+            		 'TaskGroup' : ParseTaskGroup,
+            		 'taskGroupStarted' : ParseTaskGroupStarted,
+            		 'TaskGroupUnit' : ParseTask,
             		 'Report' : ParseReport,
             		 'EventLog' : ParseEventLog,
 				 	'ParseTracker': ParseTracker
@@ -234,11 +229,11 @@ app.factory('ParseClientLocation', ['StandardParseObject',
  * PLANNING
  */
 
-app.factory('ParseCircuit', [
+app.factory('ParseTaskGroup', [
 		'StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
-				objectname : 'Circuit',
+				objectname : 'TaskGroup',
 				emptyTemplate : {
 					name : '',
 					timeResetDate : function() {
@@ -265,16 +260,17 @@ app.factory('ParseCircuit', [
 			});
 		}]);
 
-app.factory('ParseCircuitUnit', [
+app.factory('ParseTask', [
 		'StandardParseObject',
 		'ParseClient',
 		function(StandardParseObject, ParseClient) {
 			var ParseObject = new StandardParseObject({
-				objectname : 'CircuitUnit',
+				objectname : 'Task',
 				emptyTemplate : {
 					name : '',
 					description : '',
 					client : '',
+                    clientName: '',
 					timeStartDate : function() {
 						var date = new Date();
 						date.setHours(13);
@@ -289,32 +285,31 @@ app.factory('ParseCircuitUnit', [
 					}(),
 					days : [0, 1, 2, 3, 4, 5, 6],
 					isRaid : false,
-					supervisions: 1
+					supervisions: 1,
+                    taskType: 'Regular'
 				},
 				filledTemplate : function(object) {
 					return {
 						name : object.get('name'),
 						description : object.get('Description'),
 						client : ParseClient.getScopedObject(object.get('client')),
-						clientName : function() {
-							var client = ParseClient.getScopedObject(object.get('client'));
-							return (client) ? client.name : '';
-						}(),
+						clientName : object.get('clientName'),
 						timeStartDate : object.get('timeStartDate'),
 						timeEndDate : object.get('timeEndDate'),
 						days : object.get('days'),
-						isRaid : object.get('isRaid') || false,
-                        supervisions: object.get('supervisions')
+						isRaid : object.get('taskType') === 'Raid',
+                        supervisions: object.get('supervisions'),
+                        taskType : object.get('taskType')
 					};
 				}
 			});
 
 
 			return angular.extend(ParseObject, {
-				getQuery : function(circuitPointer) {
+				getQuery : function(taskGroupPointer) {
 					var query = ParseObject.fetchAllQuery();
-					if (circuitPointer)
-						query.equalTo('circuit', circuitPointer);
+					if (taskGroupPointer)
+						query.equalTo('taskGroup', taskGroupPointer);
 					query.notEqualTo('isExtra', true);
 					query.include('client');
 					return query;
@@ -325,110 +320,16 @@ app.factory('ParseCircuitUnit', [
 			});
 		}]);
 
-app.factory('ParseDistrictWatch', [
+
+
+app.factory('ParseTaskGroupStarted', [
 		'StandardParseObject',
 		function(StandardParseObject) {
 			var ParseObject = new StandardParseObject({
-				objectname : 'DistrictWatch',
+				objectname : 'TaskGroupStarted',
 				emptyTemplate : {
 					name : '',
-					city : '',
-					zipcode : '',
-					timeStartDate : function() {
-						var date = new Date();
-						date.setHours(13);
-						date.setMinutes(0);
-						return date;
-					}(),
-					timeEndDate : function() {
-						var date = new Date();
-						date.setHours(20);
-						date.setMinutes(0);
-						return date;
-					}(),
-					timeResetDate : function() {
-						var date = new Date();
-						date.setHours(6);
-						date.setMinutes(0);
-						return date;
-					}(),
-					days : [0, 1, 2, 3, 4, 5, 6]
-
-				},
-				filledTemplate : function(object) {
-					return {
-						name : object.get('name'),
-						city : object.get('city'),
-						zipcode : object.get('zipcode'),
-						timeStartDate : object.get('timeStartDate'),
-						timeEndDate : object.get('timeEndDate'),
-						timeResetDate : object.get('timeResetDate'),
-						days : object.get('days')
-					};
-				}
-			});
-
-			return angular.extend(ParseObject, {});
-		}]);
-
-app.factory('ParseDistrictWatchUnit', [
-		'StandardParseObject',
-		'ParseClient',
-		function(StandardParseObject, ParseClient) {
-			var ParseObject = new StandardParseObject({
-				objectname : 'DistrictWatchUnit',
-				emptyTemplate : {
-					type : '',
-					address : '',
-					addressNumbers : [],
-					supervisions : 1,
-					days : [0, 1, 2, 3, 4, 5, 6],
-					client : '',
-					districtWatch : '',
-					position : ''
-				},
-				filledTemplate : function(object) {
-					return {
-						type : object.get('type'),
-						address : object.get('address'),
-						addressNumbers : object.get('addressNumbers'),
-						days : object.get('days'),
-						client : ParseClient.getScopedObject(object.get('client')),
-						clientName : function() {
-							var client = ParseClient.getScopedObject(object.get('client'));
-							return (client) ? client.name : '';
-						}(),
-						supervisions : object.get('supervisions'),
-						districtWatch : object.get('districtWatch'),
-						position : object.get('position')
-					};
-				}
-			});
-
-
-			return angular.extend(ParseObject, {
-				sorting : {
-					clientName : 'asc'
-				},
-				getQuery : function(districtWatchPointer) {
-					var query = ParseObject.fetchAllQuery();
-					query.include('client');
-					if (districtWatchPointer)
-						query.equalTo('districtWatch', districtWatchPointer);
-					return query;
-				}
-			});
-		}]);
-
-
-app.factory('ParseCircuitStarted', [
-		'StandardParseObject',
-		function(StandardParseObject) {
-			var ParseObject = new StandardParseObject({
-				objectname : 'CircuitStarted',
-				emptyTemplate : {
-					name : '',
-					circuit : '',
+					taskGroup : '',
 					guard : '',
 					timeStarted : '',
 					timeEnded : '',
@@ -437,7 +338,7 @@ app.factory('ParseCircuitStarted', [
 				filledTemplate : function(object) {
 					return {
 						name : object.get('name'),
-						circuit : object.get('circuit'),
+						taskGroup : object.get('taskGroup'),
 						guard : object.get('guard'),
 						timeStarted : object.get('timeStarted'),
 						timeEnded : object.get('timeEnded'),
@@ -450,48 +351,20 @@ app.factory('ParseCircuitStarted', [
 			return angular.extend(ParseObject, {});
 		}]);
 
-app.factory('ParseDistrictWatchStarted', [
-		'StandardParseObject',
-		function(StandardParseObject) {
-			var ParseObject = new StandardParseObject({
-				objectname : 'DistrictWatchStarted',
-				emptyTemplate : {
-					name : '',
-					districtWatch : '',
-					guard : '',
-					timeStarted : '',
-					timeEnded : '',
-					eventCount : ''
-				},
-				filledTemplate : function(object) {
-					return {
-						name : object.get('name'),
-						districtWatch : object.get('districtWatch'),
-						guard : object.get('guard'),
-						timeStarted : object.get('timeStarted'),
-						timeEnded : object.get('timeEnded'),
-						eventCount : object.get('eventCount'),
-						createdAt : object.createdAt
-					};
-				}
-			});
 
-			return angular.extend(ParseObject, {});
-		}]);
 
 
 app.factory('ParseReport', [
-		'StandardParseObject', 'ParseCircuitStarted', 'ParseDistrictWatchStarted', 'ParseClient', 'ParseEventLog',
-		function(StandardParseObject, ParseCircuitStarted, ParseDistrictWatchStarted, ParseClient, ParseEventLog) {
+		'StandardParseObject', 'ParseTaskGroupStarted', 'ParseClient', 'ParseEventLog',
+		function(StandardParseObject, ParseTaskGroupStarted, ParseClient, ParseEventLog) {
 			var ParseObject = new StandardParseObject(
 					{
 						objectname : 'Report',
 						emptyTemplate : {
 							reportId : '',
                             taskTypeName: '',
-							circuitStarted : '',
-							circuitUnit : '',
-							districtWatchStarted : '',
+							taskGroupStarted : '',
+							task : '',
 							client : '',
 							clientName : '',
 							clientAddress : '',
@@ -515,17 +388,12 @@ app.factory('ParseReport', [
 							return {
 								reportId : object.get('reportId'),
                 				taskTypeName : object.get('taskTypeName'),
-								circuitStarted : ParseCircuitStarted.getScopedObject(object.get('circuitStarted')),
-								circuitName : function() {
-									var circuitStarted = ParseCircuitStarted.getScopedObject(object.get('circuitStarted'));
-									return (circuitStarted && circuitStarted.name) ? circuitStarted.name : '';
+								taskGroupStarted : ParseTaskGroupStarted.getScopedObject(object.get('taskGroupStarted')),
+								taskGroupName : function() {
+									var taskGroupStarted = ParseTaskGroupStarted.getScopedObject(object.get('taskGroupStarted'));
+									return (taskGroupStarted && taskGroupStarted.name) ? taskGroupStarted.name : '';
 								}(),
-								circuitUnit : object.get('circuitUnit'),
-								districtWatchStarted : object.get('districtWatchStarted'),
-								districtName : function() {
-									var districtWatchStarted = ParseDistrictWatchStarted.getScopedObject(object.get('districtWatchStarted'));
-									return (districtWatchStarted && districtWatchStarted.name) ? districtWatchStarted.name : '';
-								}(),
+								task : object.get('task'),
 								client : object.get('client'),
 								clientName : object.get('clientName'),
 								clientCity : object.get('clientCity'),
@@ -555,35 +423,29 @@ app.factory('ParseReport', [
 					});
 
 			return angular.extend(ParseObject, {
-				districtWatchQuery : function() {
-					var query = ParseObject.fetchAllQuery();
+				tasksQuery : function() {
+					var regular = ParseObject.fetchAllQuery();
+                    regular.equalTo('taskType', 'Regular');
 
-					query.exists('districtWatchStarted');
+                    var raid = ParseObject.fetchAllQuery();
+                    raid.equalTo('taskType', 'Raid');
 
-					query.include('districtWatchStarted');
-
-					return query;
-				},
-				circuitUnitsQuery : function() {
-					var query = ParseObject.fetchAllQuery();
-
-                    query.equalTo('taskTypeName', 'REGULAR');
-
-					return query;
+					return Parse.Query.or(regular, raid);
 				},
 				staticSupervisionQuery: function() {
 					var query = ParseObject.fetchAllQuery();
 
-					query.equalTo('taskTypeName', 'STATIC');
+					query.equalTo('taskType', 'Static');
 
 					return query;
 				},
                 alarmsQuery: function() {
                     var query = ParseObject.fetchAllQuery();
 
-                    query.equalTo('taskTypeName', 'ALARM');
+                    query.equalTo('taskType', 'Alarm');
 
-                    // Hide test alarms
+                    // Hide test alarms (for JVH)
+					// Todo: create more generic method of filtering away test alarms
                     query.notEqualTo('client', ParseClient.getPointerObject('onA5zT2dqq'));
 
                     return query;
@@ -601,8 +463,8 @@ app
 									{
 										objectname : 'EventLog',
 										emptyTemplate : {
-											circuitStarted : '',
-											circuitUnit : '',
+											taskGroupStarted : '',
+											task : '',
 											districtWatchStarted : '',
 											client : '',
 											contactClient : '',
@@ -631,8 +493,8 @@ app
 										},
 										filledTemplate : function(eventlog) {
 											return {
-												circuitStarted : eventlog.get('circuitStarted'),
-												circuitUnit : eventlog.get('circuitUnit'),
+												taskGroupStarted : eventlog.get('taskGroupStarted'),
+												task : eventlog.get('task'),
 												districtWatchStarted : eventlog.get('districtWatchStarted'),
 												client : eventlog.get('client'),
 												contactClient : eventlog.get('contactClient'),

@@ -92,20 +92,20 @@ controllerModule
 
 							}
 
-							var circuitStarted = eventLog.circuitStarted;
-							$scope.circuitStarted = circuitStarted;
-							if (circuitStarted) {
-								circuitStarted.name = circuitStarted
+							var taskGroupStarted = eventLog.taskGroupStarted;
+							$scope.taskGroupStarted = taskGroupStarted;
+							if (taskGroupStarted) {
+								taskGroupStarted.name = taskGroupStarted
 										.get('name');
 							}
 
-							var circuitUnit = eventLog.circuitUnit;
-							$scope.circuitUnit = circuitUnit;
-							if (circuitUnit) {
-								circuitUnit.name = circuitUnit.get('name');
-								circuitUnit.timeStart = circuitUnit
+							var task = eventLog.task;
+							$scope.task = task;
+							if (task) {
+								task.name = task.get('name');
+								task.timeStart = task
 										.get('timeStart');
-								circuitUnit.timeEnd = circuitUnit
+								task.timeEnd = task
 										.get('timeEnd');
 							}
 

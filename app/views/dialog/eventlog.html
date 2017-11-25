@@ -51,18 +51,18 @@
 							<td>{{eventlog.guardName}}</td>
 						</tr>
 					</table>
-					<table class="table log" ng-if="circuitStarted">
+					<table class="table log" ng-if="taskGroupStarted">
 						<tr>
 							<td class="col-xs-4"><strong>Kreds:</strong></td>
-							<td>{{circuitStarted.name}}</td>
+							<td>{{taskGroupStarted.name}}</td>
 						</tr>
 						<tr>
 							<td><strong>Tilsyn:</strong></td>
-							<td>{{circuitUnit.name}}</td>
+							<td>{{task.name}}</td>
 						</tr>
 						<tr>
 							<td><strong>Planlagt tid:</strong></td>
-							<td>{{circuitUnit.timeStart}} - {{circuitUnit.timeEnd}}</td>
+							<td>{{task.timeStart}} - {{task.timeEnd}}</td>
 						</tr>
 					</table>
 					<table class="table log" ng-if="client">

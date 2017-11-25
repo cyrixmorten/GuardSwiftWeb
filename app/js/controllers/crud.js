@@ -10,6 +10,11 @@ controllerModule.controller('StandardCRUDCtrl', ['$scope', 'TableParams',
 			$scope.parseObject = ParseObject;
 			$scope.createData = ParseObject.getTemplate();
 
+			// used when ng-model is not tied directly to model
+        	$scope.setData = function(object, key, value) {
+				object[key] = value;
+			};
+
 			var table = TableParams.StandardTable({
 				page : 1,
 				count : 100,

@@ -326,11 +326,11 @@ app
 										// align with filled template (in case
 										// of
 										// default values such as ACL)
-										console.log(data);
+										console.log('data', data);
 										
 										var aligned_data = alignDataWithTemplate(data);
 
-										console.log(aligned_data);
+										console.log('aligned_data', aligned_data);
 
 										var ParseObject = new Parse.Object(
 												construct.objectname);

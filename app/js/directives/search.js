@@ -13,12 +13,21 @@ myApp.directive('gsClientSelect', [
 				scope : {
 					value : "=ngModel",
 					addressName : "=?",
-					addressNumbers : "=?"
+					addressNumbers : "=?",
+                    ngChange: '&'
 				},
 				link : function(scope, element, attrs) {
+                    if (scope.ngChange) {
+                    	scope.$watch('value', function(newVal, lastVal) {
+                    		if (newVal !== lastVal) {
+                            	scope.ngChange();
+                            }
+						}, true)
+
+                    }
+
 					ParseClient.fetchAll().then(function(result) {
 						scope.clients = result;
-						console.log('scope.clients: ', scope.clients);
 					});
 
 					scope.clientSelected = function(client) {
@@ -33,6 +42,7 @@ myApp.directive('gsClientSelect', [
 							scope.addressNumbers = addressNumbers;
 							console.log('setting address numbers '
 									+ scope.addressNumbers);
+
 						}
 					}
 				}

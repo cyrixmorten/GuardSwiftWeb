@@ -22,7 +22,8 @@
                     auto-focus focus-on="addSuccess"/></td>
             <td class="vert-align">
                 <gs-client-select
-                        ng-model="createData.client"/>
+                        ng-model="createData.client"
+                        ng-change="setData(createData, 'clientName', createData.client['name'])"/>
             </td>
 
             <td>
@@ -47,7 +48,10 @@
             /></td>
 
             <td class="vert-align text-center"><input bs-switch
-                                                      type="checkbox" ng-model="createData.isRaid" ng-disabled="saving"
+                                                      type="checkbox"
+                                                      ng-model="createData.isRaid"
+                                                      ng-disabled="saving"
+                                                      ng-change="setData(createData, 'taskType', createData.isRaid ? 'Raid': 'Regular')"
                                                       switch-on-text="{{'YES' | translate}}"
                                                       switch-off-text="{{'NO' | translate}}"></td>
 
@@ -118,7 +122,9 @@
             <td class="vert-align col-xs-1" data-title="'Kørende'" header-class="'text-center'">
                 <input bs-switch type="checkbox"
                        switch-active="{{editMode}}"
-                       ng-model="crudObject.isRaid" switch-on-text="{{'YES' | translate}}"
+                       ng-model="crudObject.isRaid"
+                       ng-change="setData(crudObject, 'taskType', crudObject.isRaid ? 'Raid': 'Regular')"
+                       switch-on-text="{{'YES' | translate}}"
                        switch-off-text="{{'NO' | translate}}"/>
             </td>
 
@@ -130,7 +136,7 @@
                 header-class="'text-right'" data-title="''">
                 <gs-link-button
                         type="info" size="sm"
-                        link="{{ 'circuitunit' | routeSegmentUrl: {id: crudObject.id} }}"
+                        link="{{ 'task' | routeSegmentUrl: {id: crudObject.id} }}"
                         fa-left="pencil" fa-right="angle-right"
                         button-text="Rundering"/>
             </td>
