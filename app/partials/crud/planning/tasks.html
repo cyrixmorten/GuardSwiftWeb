@@ -79,7 +79,7 @@
                 header-class="'text-center'" sortable="'clientName'"
                 filter="{ 'clientName': 'text' }"><input ng-readonly="true"
                                                          class="form-control" type="text"
-                                                         ng-model="crudObject.clientName"/></td>
+                                                         value="{{ crudObject.clientId ? crudObject.clientId + '&nbsp;' + crudObject.clientName: crudObject.clientName }}"/></td>
 
 
             <td data-title="'Start'" class="vert-align col-xs-1"

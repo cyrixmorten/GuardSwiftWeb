@@ -270,6 +270,7 @@ app.factory('ParseTask', [
 					name : '',
 					description : '',
 					client : '',
+					clientId: '',
                     clientName: '',
 					timeStartDate : function() {
 						var date = new Date();
@@ -293,6 +294,7 @@ app.factory('ParseTask', [
 						name : object.get('name'),
 						description : object.get('Description'),
 						client : ParseClient.getScopedObject(object.get('client')),
+                        clientId : object.get('clientId'),
 						clientName : object.get('clientName'),
 						timeStartDate : object.get('timeStartDate'),
 						timeEndDate : object.get('timeEndDate'),
