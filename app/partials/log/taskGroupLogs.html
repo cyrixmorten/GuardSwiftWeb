@@ -1,0 +1,49 @@
+<div class="panel panel-primary anim">
+    <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">{{'Alarms' | translate}}</h3>
+        <!-- <div class="btn-group pull-right">
+            <crud-search search-from-date="searchFromDate"
+                search-to-date="searchToDate" search="search()"> </search-by-date-table>
+        </div> -->
+    </div>
+    <div class="panel-body">
+        <gs-search-bar-day-date search-options="searchOptions" search-result="searchResult(result)"></gs-search-bar-day-date>
+        <table ng-table="tableParams" show-filter="true"
+               class="table table-hover table-condensed table-striped table-responsive"
+               export-csv="csv">
+            <tr ng-repeat="crudObject in $data">
+                <td data-title="'Sikr.niv.'" header-class="'col-xs-1 text-center'"
+                    sortable="'securityLevel'" filter="{ 'securityLevel': 'text' }">{{crudObject.securityLevel | default : '10'}}</td>
+                <td data-title="'Navn'" header-class="'col-xs-2 text-center'"
+                    sortable="'clientName'" filter="{ 'clientName': 'text' }">{{crudObject.clientName}}</td>
+                <td data-title="'By'" header-class="'col-xs-1 text-center'"
+                    sortable="'clientCity'" filter="{ 'clientCity': 'text' }">{{crudObject.clientCity}}</td>
+                <!-- <td data-title="'Addresse'" header-class="'col-xs-1 text-center'"
+                    sortable="'clientAddress'" filter="{ 'clientAddress': 'text' }">{{crudObject.clientFullAddress}}</td> -->
+                <td data-title="'Indgået'" header-class="'col-xs-1 text-center'">{{crudObject.alarmTime
+                    | date:'HH:mm'}}</td>
+                <td data-title="'Accepteret'" header-class="'col-xs-1 text-center'">{{crudObject.timeAccepted
+                    | date:'HH:mm'}}</td>
+                <td data-title="'Ankommet'" header-class="'col-xs-1 text-center'">{{crudObject.timeStarted
+                    | date:'HH:mm'}}</td>
+                <td data-title="'Reaktion'" header-class="'col-xs-1 text-center'"><span
+                        ng-hide="crudObject.reactionTime == 0">{{crudObject.reactionTime}}</span></td>
+                <!-- <td data-title="'#H'" header-class="'text-center'"
+                    sortable="'eventCount'" filter="{ 'eventCount': 'text' }"
+                    class="col-xs-1">{{crudObject.eventCount}}</td> -->
+                <td data-title="'Oprettet'" header-class="'col-xs-1 text-center'">{{crudObject.createdAt
+                    | date:'dd-MM-yyyy'}}</td>
+
+                <!-- <td data-title="''" header-class="'col-xs-1'">
+                <a  ng-if="crudObject.report"
+                    class="btn btn-danger btn-sm pull-right"
+                    href="#{{ 'report.alarm' | routeSegmentUrl : {id : crudObject.objectId} }}">{{
+                        'REPORT' | translate}}<!-- <span class="badge">{{crudObject.eventCount}}</span>
+                </a></td> -->
+
+                <td data-title="''" header-class="'col-xs-1'">
+                    <gs-link-button type="info" size="sm" link="{{ 'alarmeventlog' | routeSegmentUrl : {id : crudObject.id} }}" fa-left="tags" fa-right="angle-right" button-text="{{'SHOW_EVENTS' | translate}}"/>
+                </td>
+            </tr>
+        </table>
+    </div>

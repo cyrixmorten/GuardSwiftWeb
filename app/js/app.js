@@ -447,7 +447,7 @@ angular.module('GuardSwiftApp', [
          */
         // shows the complete set of events
         segment('eventlog', {
-            templateUrl: 'partials/logs/eventlog.html', controller: 'StandardParseSearchCtrl',
+            templateUrl: 'partials/log/eventlog.html', controller: 'StandardParseSearchCtrl',
             resolve: {
                 ParseObject: ['ParseEventLog', function (ParseEventLog) {
                     return ParseEventLog
@@ -456,7 +456,7 @@ angular.module('GuardSwiftApp', [
         }).
         // alarms
         segment('alarmlog', {
-            templateUrl: 'partials/logs/alarmlog.html', controller: 'StandardParseSearchCtrl',
+            templateUrl: 'partials/log/alarmlog.html', controller: 'StandardParseSearchCtrl',
             resolve: {
                 ParseObject: ['ParseAlarm', function (ParseAlarm) {
                     return ParseAlarm
@@ -465,7 +465,7 @@ angular.module('GuardSwiftApp', [
         }).
         // alarms list events of a selected alarm
         segment('alarmeventlog', {
-            templateUrl: 'partials/logs/eventlog.html', dependencies: ['id'], controller: 'ParseLogResultCtrl',
+            templateUrl: 'partials/log/eventlog.html', dependencies: ['id'], controller: 'ParseLogResultCtrl',
             resolve: {
                 ParseObject: ['ParseEventLog', function (ParseEventLog) {
                     return ParseEventLog
@@ -487,7 +487,7 @@ angular.module('GuardSwiftApp', [
         }).
         // regular tasks
         segment('taskGroupLogs', {
-            templateUrl: 'partials/logs/taskGroupLogs.html', controller: 'StandardParseSearchCtrl',
+            templateUrl: 'partials/log/taskGroupLogs.html', controller: 'StandardParseSearchCtrl',
             resolve: {
                 ParseObject: ['ParseTaskGroupStarted', function (ParseTaskGroupStarted) {
                     return ParseTaskGroupStarted
@@ -496,7 +496,7 @@ angular.module('GuardSwiftApp', [
         }).
         // regular tasks list events of selected taskGroup
         segment('taskGroupEventlogs', {
-            templateUrl: 'partials/logs/eventlog.html', dependencies: ['id'], controller: 'ParseLogResultCtrl',
+            templateUrl: 'partials/log/eventlog.html', dependencies: ['id'], controller: 'ParseLogResultCtrl',
             resolve: {
                 ParseObject: ['ParseEventLog', function (ParseEventLog) {
                     return ParseEventLog
