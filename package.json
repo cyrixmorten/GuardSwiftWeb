@@ -8,6 +8,5 @@
     "postinstall": "cd app && node_modules/.bin/bower --config.analytics=false install",
     "start": "cd server && node app.js"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
