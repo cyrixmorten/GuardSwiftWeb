@@ -59,7 +59,8 @@ app.factory('ParseClient', [
 					roomLocations : [],
 					contacts : [],
 					messages : [],
-					isAutoCreated: false
+					isAutoCreated: false,
+                    useAltHeaderLogo: false,
 				},
 				filledTemplate : function(client) {
 					return {
@@ -76,7 +77,8 @@ app.factory('ParseClient', [
 						roomLocations : client.get('roomLocations'),
 						contacts : client.get('contacts'),
 						messages : client.get('messages'),
-                        isAutoCreated: client.get('isAutoCreated')
+                        isAutoCreated: client.get('isAutoCreated'),
+                        useAltHeaderLogo: client.get('useAltHeaderLogo')
 					};
 				}
 			});
