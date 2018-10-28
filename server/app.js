@@ -1,8 +1,6 @@
 require("dotenv").config({ path: 'local.env' });
 var requireEnv = require("require-environment-variables");
-requireEnv([
-  'GS_VERSION'
-]);
+
 
 
 /**
@@ -40,16 +38,6 @@ app.set('view engine', 'html');
 
 var env = process.env.NODE_ENV || 'development';
 
-// development only
-if (env === 'development') {
-  //app.use(express.errorHandler());
-}
-
-// production only
-if (env === 'production') {
-
-}
-
 
 /**
  * Routes
@@ -77,14 +65,6 @@ var apiRouter = express.Router();
 apiRouter.route('/pdfmake').post(api.pdfmake);
 apiRouter.route('/datauri').post(api.datauri);
 
-apiRouter.route('/version').get(function(req, res) {
-  res.send(process.env.GS_VERSION.toString());
-});
-
-apiRouter.route('/download').get(function(req, res){
-  var path = __dirname  + '/files/guardswift.apk';
-  res.download(path);
-});
 
 app.use('/api', apiRouter);
 
@@ -100,6 +80,18 @@ http.createServer(app).listen(app.get('port'), function () {
   console.log('GuardSwift running on port ' + app.get('port'));
 });
 
+// development only
+if (env === 'development') {
+    //app.use(express.errorHandler());
+    requireEnv([
+        'GUARDSWIFT_PARSE_SERVER',
+        'GUARDSWIFT_APP_ID',
+        'GUARDSWIFT_MASTER_KEY',
+        'GUARDSWIFTDEV_PARSE_SERVER',
+        'GUARDSWIFTDEV_APP_ID',
+        'GUARDSWIFTDEV_MASTER_KEY'
+    ]);
 
-console.log('Starting Parse Dashboard');
-require('./parse-dashboard').start();
+    console.log('Starting Parse Dashboard');
+    require('./parse-dashboard').start();
+}

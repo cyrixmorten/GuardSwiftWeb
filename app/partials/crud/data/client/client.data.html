@@ -64,13 +64,15 @@
 							class="form-control" placeholder="Email"
 							ng-model="scopedObject.email">
 					</div>
-				</div>
-				<div class="checkbox">
-					<label> <input type="checkbox"
-						ng-model="scopedObject.receiveEventEmail"> Ønsker at
-						modtage automatisk email med hændelser
-					</label>
 				</div> -->
+
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="scopedObject.useAltHeaderLogo" />
+						Brug alternativ logo for rapporter til denne kunde
+					</label>
+				</div>
+
 				<div class="form-group">
 					<div class="col-xs-10" gs-crud parse-object="parseObject"
 						notify-as="{{'CLIENT' | translate}}">
