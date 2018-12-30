@@ -25,14 +25,14 @@ app.factory('TimeStrings', [
                      			
                      			var deferDays = $q.defer();
                      			$translate(
-                     					['WEEKDAY_SUNDAY', 'WEEKDAY_MONDAY', 'WEEKDAY_TUESDAY',
+                     					['WEEKDAY_SUNDAY_AND_HOLIDAYS', 'WEEKDAY_MONDAY', 'WEEKDAY_TUESDAY',
                      							'WEEKDAY_WEDNESDAY', 'WEEKDAY_THURSDAY', 'WEEKDAY_FRIDAY',
                      							'WEEKDAY_SATURDAY']).then(function(translations) {
 
                      					// show all
                      					var days = [{
                      						id : 0,
-                     						name : translations.WEEKDAY_SUNDAY
+                     						name : translations.WEEKDAY_SUNDAY_AND_HOLIDAYS
                      					}, {
                      						id : 1,
                      						name : translations.WEEKDAY_MONDAY

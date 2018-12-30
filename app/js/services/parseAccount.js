@@ -10,8 +10,8 @@ app.service('ParseService', function() {
 	if (document.location.hostname === "localhost") {
 		// Development
         console.warn('RUNNING LOCAL');
-		// Parse.serverURL = 'http://localhost:1337/parse';
-		Parse.serverURL = 'https://gsdev-server.herokuapp.com/parse';
+		Parse.serverURL = 'http://localhost:1337/parse';
+		// Parse.serverURL = 'https://gsdev-server.herokuapp.com/parse';
 	} else {
 		// Release
 		Parse.serverURL = 'https://guardswift-server.herokuapp.com/parse';
