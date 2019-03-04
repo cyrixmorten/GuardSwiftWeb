@@ -572,7 +572,7 @@ app
                                                 .current());
 
 
-                                        query.notEqual('archive', true);
+                                        query.notEqualTo('archive', true);
 
                                     }
 
