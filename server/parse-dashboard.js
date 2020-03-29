@@ -14,18 +14,24 @@ exports.start = function () {
                 "production": true
             },
             {
-                "serverURL": process.env.GUARDSWIFTDEV_PARSE_SERVER,
-                "appId": process.env.GUARDSWIFTDEV_APP_ID,
-                "masterKey": process.env.GUARDSWIFTDEV_MASTER_KEY,
-                "appName": "GuardSwiftDev"
+                "serverURL": process.env.GUARDSWIFT_DEV_PARSE_SERVER,
+                "appId": process.env.GUARDSWIFT_APP_ID,
+                "masterKey": process.env.GUARDSWIFT_MASTER_KEY,
+                "appName": "GuardSwift dev"
             },
-            // {
-            //     "serverURL": process.env.TURIOS_PARSE_SERVER,
-            //     "appId": process.env.TURIOS_APP_ID,
-            //     "masterKey": process.env.TURIOS_MASTER_KEY,
-            //     "appName": "Turios",
-            //     "production": true
-            // }
+            {
+                "serverURL": process.env.GUARDSWIFT_LOCAL_PARSE_SERVER,
+                "appId": process.env.GUARDSWIFT_APP_ID,
+                "masterKey": process.env.GUARDSWIFT_MASTER_KEY,
+                "appName": "GuardSwift local"
+            },
+            {
+                "serverURL": process.env.TURIOS_PARSE_SERVER,
+                "appId": process.env.TURIOS_APP_ID,
+                "masterKey": process.env.TURIOS_MASTER_KEY,
+                "appName": "Turios",
+                "production": true
+            }
         ],
         // "users": [
         //     {

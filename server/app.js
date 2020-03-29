@@ -85,11 +85,10 @@ if (env === 'development') {
     //app.use(express.errorHandler());
     requireEnv([
         'GUARDSWIFT_PARSE_SERVER',
+        'GUARDSWIFT_DEV_PARSE_SERVER',
+        'GUARDSWIFT_LOCAL_PARSE_SERVER',
         'GUARDSWIFT_APP_ID',
-        'GUARDSWIFT_MASTER_KEY',
-        'GUARDSWIFTDEV_PARSE_SERVER',
-        'GUARDSWIFTDEV_APP_ID',
-        'GUARDSWIFTDEV_MASTER_KEY'
+        'GUARDSWIFT_MASTER_KEY'
     ]);
 
     console.log('Starting Parse Dashboard');
