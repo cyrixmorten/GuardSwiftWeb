@@ -10,7 +10,7 @@
             <td class="col-xs-1 text-center">Dage</td>
             <td class="col-xs-1 text-center">Tilsyn</td>
             <td class="col-xs-1 text-center">Kørende</td>
-            <td class="col-xs-3"></td>
+            <td class="col-xs-2"></td>
         </tr>
         </thead>
         <tbody>
@@ -75,7 +75,7 @@
             filter="{ 'name': 'text' }"><input ng-readonly="!editMode"
                                                class="form-control" type="text" ng-model="crudObject.name"/></td>
 
-            <td class="vert-align col-xs-3" data-title="'Kunde'"
+            <td class="vert-align col-xs-2" data-title="'Kunde'"
                 header-class="'text-center'" sortable="'clientName'"
                 filter="{ 'clientName': 'text' }"><input ng-readonly="true"
                                                          class="form-control" type="text"
@@ -127,18 +127,15 @@
                        switch-on-text="{{'YES' | translate}}"
                        switch-off-text="{{'NO' | translate}}"/>
             </td>
-
+            <td class="vert-align col-xs-1" data-title="''">
+                    <button class="btn" ng-disabled="!editMode" ng-class="crudObject.isPaused ? 'btn-warning' : 'btn-success'" 
+                        ng-click="setData(crudObject, 'isPaused', crudObject.isPaused ? false : true)">
+                        <fa name="{{crudObject.isPaused ? 'pause' : 'play'}}-circle" />
+                    </button>
+            </td>
             <td class="vert-align col-xs-2" data-title="''" header-class="''">
                 <gs-crud-update-delete
                         scoped-object="crudObject" success="notifyDataSetChanged()"/>
-            </td>
-            <td ng-if="!editMode" class="vert-align col-xs-1"
-                header-class="'text-right'" data-title="''">
-                <gs-link-button
-                        type="info" size="sm"
-                        link="{{ 'task' | routeSegmentUrl: {id: crudObject.id} }}"
-                        fa-left="pencil" fa-right="angle-right"
-                        button-text="Rundering"/>
             </td>
         </tr>
     </table>

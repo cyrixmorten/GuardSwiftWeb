@@ -288,6 +288,7 @@ app.factory('ParseTask', [
 					}(),
 					days : [0, 1, 2, 3, 4, 5, 6],
 					isRaid : false,
+					isPaused: false,
 					supervisions: 1,
                     taskType: 'Regular'
 				},
@@ -302,6 +303,7 @@ app.factory('ParseTask', [
 						timeEndDate : object.get('timeEndDate'),
 						days : object.get('days'),
 						isRaid : object.get('taskType') === 'Raid',
+						isPaused: !!object.get('isPaused'),
                         supervisions: object.get('supervisions'),
                         taskType : object.get('taskType')
 					};
