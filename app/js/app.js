@@ -8,6 +8,7 @@ angular.module('GuardSwiftApp', [
         'view-segment',
         'ngTable',
         'picardy.fontawesome',
+        'nemLogging',
         'uiGmapgoogle-maps',
         'cgBusy',
         'focusOn',

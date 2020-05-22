@@ -60,7 +60,8 @@ app.factory('ParseClient', [
 					contacts : [],
 					messages : [],
 					isAutoCreated: false,
-                    useAltHeaderLogo: false,
+					useAltHeaderLogo: false,
+					useCustomPosition: false,
 				},
 				filledTemplate : function(client) {
 					return {
@@ -78,7 +79,8 @@ app.factory('ParseClient', [
 						contacts : client.get('contacts'),
 						messages : client.get('messages'),
                         isAutoCreated: client.get('isAutoCreated'),
-                        useAltHeaderLogo: client.get('useAltHeaderLogo')
+						useAltHeaderLogo: client.get('useAltHeaderLogo'),
+						useCustomPosition: client.get('useCustomPosition'),
 					};
 				}
 			});
