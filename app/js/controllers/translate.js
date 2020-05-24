@@ -315,4 +315,5 @@ controllerModule.config(['$translateProvider', function($translateProvider) {
 		"NO_RESULTS_FOUND" : "Fandt ingen resultater",
 	});
 	$translateProvider.preferredLanguage('da');
+	$translateProvider.useSanitizeValueStrategy(null);
 }]);
