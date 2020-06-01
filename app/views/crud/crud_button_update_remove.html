@@ -1,19 +1,19 @@
 <div ng-if="!editOther()">
 	<div ng-if="!crudCtrl.editing">
 		<!-- Edit button -->
-		<button class="btn btn-primary btn-sm" ng-click="edit()"><fa name="edit" /> {{'EDIT'
+		<button class="btn btn-primary btn-sm" ng-click="edit()"><fa name="edit"></fa> {{'EDIT'
 			| translate}}</button>
 		<!-- Delete button -->
 		<button ladda="crudCtrl.removing" class="btn btn-danger btn-sm"
-			ng-click="remove()"><fa name="trash-o" /> {{'DELETE' | translate}}</button>
+			ng-click="remove()"><fa name="trash-o"></fa> {{'DELETE' | translate}}</button>
 	</div>
 	<div ng-if="crudCtrl.editing">
 		<!-- Update button -->
 		<Button ladda="crudCtrl.updating"
-			class="btn btn-success btn-sm" ng-click="update()"><fa name="check" /> {{'UPDATE'
+			class="btn btn-success btn-sm" ng-click="update()"><fa name="check"></fa> {{'UPDATE'
 			| translate}}</Button>
 		<!-- Cancel button -->
-		<Button class="btn btn-warning btn-sm" ng-click="cancel()"><fa name="close" /> {{'CANCEL'
+		<Button class="btn btn-warning btn-sm" ng-click="cancel()"><fa name="close"></fa> {{'CANCEL'
 			| translate}}</Button>
 	</div>
 </div>

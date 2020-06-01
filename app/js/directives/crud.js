@@ -275,6 +275,7 @@ myApp
 															.always(
 																	function() {
 																		ctrl.updating = false;
+																		ctrl.editing = false;
 																	});
 												}
 

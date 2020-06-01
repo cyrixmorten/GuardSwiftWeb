@@ -4,6 +4,14 @@ body {
 	height: 100%;
 }
 
+.input-row {
+	padding: 2px 0;
+}
+
+.input-row div {
+	margin: 0 2px;
+}
+
 .table-scrollable {
 	overflow: auto;
 }
