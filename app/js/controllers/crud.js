@@ -31,6 +31,9 @@ controllerModule.controller('StandardCRUDCtrl', ['$scope', 'TableParams',
 
 				// clear entered data after successful add
 				$scope.createData = ParseObject.getTemplate();
+				$scope.results = ParseObject.getScopedObjects();
+
+				$scope.$applyAsync();
 			}
 
 			$scope.handleError = function(error) {
