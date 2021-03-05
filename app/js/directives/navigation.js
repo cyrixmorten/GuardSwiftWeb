@@ -95,12 +95,41 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
                     //
                     //     finish();
                     // } else {
+                        // create the window before the callback
+                        var win = window.open('', '_blank');
+
                         Parse.Cloud.run("reportToDoc", {reportId: iScope.report.id},
                             {
                                 success: function (result) {
                                     console.log('result: ', result);
 
-                                    pdfMake.createPdf(result).download(iScope.report.clientName + ' ' + iScope.report.clientFullAddress + ' ' + moment(iScope.report.createdAt).format('DD-MM-YYYY'));
+                                    var options = {
+                                        tableLayouts: {
+                                            regularRaid: {
+                                                hLineWidth(i, node) {
+                                                    if (i === 0 || i === node.table.body.length) {
+                                                        return 0;
+                                                    }
+                                                    return (i === node.table.headerRows) ? 2 : 2;
+                                                },
+                                                vLineWidth(i) {
+                                                    return 0;
+                                                },
+                                                hLineColor(i) {
+                                                    return 'black'
+                                                },
+                                                paddingLeft(i) {
+                                                    return i === 0 ? 0 : 8;
+                                                },
+                                                paddingRight(i, node) {
+                                                    return (i === node.table.widths.length - 1) ? 0 : 8;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    pdfMake.createPdf(result).open(options, win);
+                                    //pdfMake.createPdf(result).download(iScope.report.clientName + ' ' + iScope.report.clientFullAddress + ' ' + moment(iScope.report.createdAt).format('DD-MM-YYYY'));
 
                                     finish();
                                 },
