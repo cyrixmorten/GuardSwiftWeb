@@ -34,7 +34,7 @@
     "angular-translate": "~2.7.0",
     "angular-ui-notification": "~0.0.5",
     "angular-wysiwyg": "~1.1.2",
-    "bootstrap": "4.6.0",
+    "bootstrap": "~3.3.7",
     "bootstrap-colorpicker": "*",
     "bootstrap-multiselect": "~0.9.12",
     "moment": "~2.10.2",
