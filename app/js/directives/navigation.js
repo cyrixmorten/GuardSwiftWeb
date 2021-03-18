@@ -98,10 +98,20 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
                         // create the window before the callback
                         var win = window.open('', '_blank');
 
-                        Parse.Cloud.run("reportToDoc", {reportId: iScope.report.id},
+                        Parse.Cloud.run("reportToDoc", {
+                            reportId: iScope.report.id,
+                            customerFacing: true
+                            },
                             {
                                 success: function (result) {
-                                    console.log('result: ', result);
+
+                                    result.info = {
+                                        title: iScope.report.clientName + ' ' + iScope.report.clientFullAddress + ' ' + moment(iScope.report.createdAt).format('DD-MM-YYYY')
+                                    }
+
+                                    console.log(result);
+
+
 
                                     var options = {
                                         tableLayouts: {
