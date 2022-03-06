@@ -289,6 +289,7 @@ app.factory('ParseTask', [
 						return date;
 					}(),
 					days : [0, 1, 2, 3, 4, 5, 6],
+					disableAutomaticArrival: false,
 					isRaid : false,
 					isWeekly : false,
 					isPaused: false,
@@ -305,6 +306,7 @@ app.factory('ParseTask', [
 						timeStartDate : object.get('timeStartDate'),
 						timeEndDate : object.get('timeEndDate'),
 						days : object.get('days'),
+						disableAutomaticArrival: object.get('disableAutomaticArrival') || false,
 						isRaid : object.get('taskType') === 'Raid',
 						isWeekly : !!object.get('isWeekly'),
 						isPaused: !!object.get('isPaused'),
@@ -318,8 +320,9 @@ app.factory('ParseTask', [
 			return angular.extend(ParseObject, {
 				getQuery : function(taskGroupPointer) {
 					var query = ParseObject.fetchAllQuery();
-					if (taskGroupPointer)
+					if (taskGroupPointer) {
 						query.equalTo('taskGroup', taskGroupPointer);
+					}
 					query.notEqualTo('isExtra', true);
 					query.include('client');
 					return query;

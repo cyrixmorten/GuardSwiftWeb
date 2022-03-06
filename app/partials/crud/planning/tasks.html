@@ -43,8 +43,8 @@
                                            multiple="multiple" multiselect-dropdown-input-days>
             </select></td>
 
-            <td class="vert-align"><input  class="form-control"
-                                           type="number" ng-model="createData.supervisions" ng-disabled="saving"
+            <td class="vert-align"><input class="form-control"
+                                          type="number" ng-model="createData.supervisions" ng-disabled="saving"
             /></td>
 
             <td class="vert-align text-center"><input bs-switch
@@ -55,7 +55,6 @@
                                                       switch-inverse="true"
                                                       switch-on-text="{{'YES' | translate}}"
                                                       switch-off-text="{{'NO' | translate}}"></td>
-
 
 
             <td class="vert-align" data-title="''">
@@ -69,98 +68,127 @@
 <gs-crud-panel-update-remove title="{{'CIRCUITUNITS_LIST' | translate}}">
 
     <div ng-repeat="crudObject in results | orderBy : 'clientName'" gs-crud parse-object="parseObject"
-        notify-as="{{'CIRCUITUNIT' | translate}}" editing="editMode" style="">
+         notify-as="{{'CIRCUITUNIT' | translate}}" editing="editMode" style="">
+        <!-- Kunde -->
+        <div class="input-row" style="display: flex; flex-direction: row;">
+            <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Kunde:</div>
+            <div style="flex-basis: 400px;">
+                <input ng-readonly="true" class="form-control" type="text"
+                       value="{{ crudObject.clientId ? crudObject.clientId + '&nbsp;' + crudObject.clientName: crudObject.clientName }}"/>
+            </div>
+        </div>
+        <!-- Type & gående/kørende -->
+        <div class="input-row" style="display: flex; flex-direction: row;">
+            <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Type:</div>
+            <div style="flex-basis: 155px;">
+                <input ng-readonly="!editMode" class="form-control" type="text" ng-model="crudObject.name"
+                       placeholder="Kort beskrivelse"/>
+            </div>
 
-            <div class="input-row" style="display: flex; flex-direction: row;">
-                <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Kunde:</div>
-                <div style="flex-basis: 400px;">
-                    <input ng-readonly="true" class="form-control" type="text" value="{{ crudObject.clientId ? crudObject.clientId + '&nbsp;' + crudObject.clientName: crudObject.clientName }}"/>
+            <div style="flex-basis: 100px;">
+                <input bs-switch type="checkbox"
+                       switch-active="{{editMode}}"
+                       ng-model="crudObject.isRaid"
+                       ng-change="setData(crudObject, 'taskType', crudObject.isRaid ? 'Raid': 'Regular')"
+                       switch-inverse="true"
+                       switch-on-text="Kørende"
+                       switch-off-text="Gående"/>
+            </div>
+        </div>
+        <!-- Tid og dage -->
+        <div class="input-row" style="display: flex; flex-direction: row;">
+
+            <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Tid:</div>
+
+            <div style="flex: 0">
+                <fieldset ng-disabled="!editMode">
+                    <timepicker ng-model="crudObject.timeStartDate"
+                                show-meridian="false" show-spinners="false"></timepicker>
+                </fieldset>
+            </div>
+
+            <div style="align-self: center;">&nbsp;-&nbsp;</div>
+
+            <div style="flex: 0">
+                <fieldset ng-disabled="!editMode">
+                    <timepicker ng-model="crudObject.timeEndDate" hour-step="1"
+                                minute-step="15" show-meridian="false" show-spinners="false"></timepicker>
+                </fieldset>
+            </div>
+
+
+            <div>
+                <select class="multiselect"
+                        ng-model="crudObject.days"
+                        ng-options="item.id as item.name for item in days"
+                        multiple="multiple" multiselect-dropdown-input-days
+                        ng-disabled="!editMode">
+                </select>
+            </div>
+        </div>
+        <!-- Antal tilsyn & dagligt/ugentligt -->
+        <div class="input-row" style="display: flex; flex-direction: row;">
+
+            <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Antal:</div>
+
+            <div style="flex-basis: 55px">
+                <input ng-readonly="!editMode"
+                       class="form-control" type="number"
+                       ng-model="crudObject.supervisions"/>
+            </div>
+
+            <!-- <div style="align-self: center;">Tilsyn</div> -->
+
+            <div style="flex-basis: 100px;">
+                <input bs-switch type="checkbox"
+                       switch-active="{{editMode}}"
+                       ng-model="crudObject.isWeekly"
+                       ng-change="setData(crudObject, 'isWeekly', crudObject.isWeekly)"
+                       switch-inverse="true"
+                       switch-on-text="Ugentligt"
+                       switch-off-text="Dagligt"/>
+            </div>
+
+            <div ng-if="crudObject.isWeekly" style="align-self: center;">Nulstilles hver mandag</div>
+
+        </div>
+        <!-- Automatic arrival -->
+        <div class="input-row" style="display: flex; flex-direction: row;">
+            <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Automatik:</div>
+            <div style="flex-basis: 100px;">
+                <input bs-switch type="checkbox"
+                       switch-active="{{editMode}}"
+                       ng-model="crudObject.disableAutomaticArrival"
+                       ng-change="setData(crudObject, 'disableAutomaticArrival', crudObject.disableAutomaticArrival)"
+                       switch-inverse="true"
+                       switch-off-color="success"
+                       switch-on-color="warning"
+                       switch-on-text="Inaktiv"
+                       switch-off-text="Aktiv"/>
+            </div>
+                <div style="flex-basis: 400px;align-self: center;color: grey;">
+                <div ng-if="crudObject.disableAutomaticArrival">
+                    GuardSwift vil ikk automatisk melde ankomst
+                </div>
+                <div ng-if="!crudObject.disableAutomaticArrival">
+                    GuardSwift skriver automatisk ankomst til rapport
                 </div>
             </div>
-            <div class="input-row" style="display: flex; flex-direction: row;">
-                <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Type:</div>
-                <div style="flex-basis: 155px;">
-                    <input ng-readonly="!editMode" class="form-control" type="text" ng-model="crudObject.name" placeholder="Kort beskrivelse"/>
-                </div>
 
-                <div style="flex-basis: 100px;">
-                    <input bs-switch type="checkbox"
-                        switch-active="{{editMode}}"
-                        ng-model="crudObject.isRaid"
-                        ng-change="setData(crudObject, 'taskType', crudObject.isRaid ? 'Raid': 'Regular')"
-                        switch-inverse="true"
-                        switch-on-text="Kørende"
-                        switch-off-text="Gående"/>
-                </div>
-            </div>
-            <div class="input-row" style="display: flex; flex-direction: row;">
-
-                <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Tid:</div>
-
-                <div style="flex: 0">
-                    <fieldset ng-disabled="!editMode">
-                        <timepicker ng-model="crudObject.timeStartDate"
-                                    show-meridian="false" show-spinners="false"></timepicker>
-                    </fieldset>
-                </div>
-
-                <div style="align-self: center;">&nbsp;-&nbsp;</div>
-
-                <div style="flex: 0">
-                    <fieldset ng-disabled="!editMode">
-                        <timepicker ng-model="crudObject.timeEndDate" hour-step="1"
-                                    minute-step="15" show-meridian="false" show-spinners="false"></timepicker>
-                    </fieldset>
-                </div>
-
-
-                <div>
-                    <select class="multiselect"
-                            ng-model="crudObject.days"
-                            ng-options="item.id as item.name for item in days"
-                            multiple="multiple" multiselect-dropdown-input-days
-                            ng-disabled="!editMode">
-                    </select>
-                </div>
-            </div>
-            <div class="input-row" style="display: flex; flex-direction: row;">
-
-                <div style="flex-basis: 100px;align-self: center;text-align: right;color: grey;">Antal:</div>
-
-                <div style="flex-basis: 55px">
-                    <input ng-readonly="!editMode"
-                        class="form-control" type="number"
-                        ng-model="crudObject.supervisions"/>
-                </div>
-
-                <!-- <div style="align-self: center;">Tilsyn</div> -->
-
-                <div style="flex-basis: 100px;">
-                    <input bs-switch type="checkbox"
-                        switch-active="{{editMode}}"
-                        ng-model="crudObject.isWeekly"
-                        ng-change="setData(crudObject, 'isWeekly', crudObject.isWeekly)"
-                        switch-inverse="true"
-                        switch-on-text="Ugentligt"
-                        switch-off-text="Dagligt"/>
-                </div>
-
-                <div ng-if="crudObject.isWeekly" style="align-self: center;">Nulstilles hver mandag</div>
-
-                <div style="flex: 1"></div>
-                <div style="flex: 0">
-                    <button class="btn btn-sm" ng-disabled="!editMode" ng-class="crudObject.isPaused ? 'btn-warning' : 'btn-success'" 
+            <div style="flex: 1"></div>
+            <div style="flex: 0">
+                <button class="btn btn-sm" ng-disabled="!editMode"
+                        ng-class="crudObject.isPaused ? 'btn-warning' : 'btn-success'"
                         ng-click="setData(crudObject, 'isPaused', crudObject.isPaused ? false : true)">
-                        {{crudObject.isPaused ? 'Pause' : 'Aktiv'}}
-                        <fa name="{{crudObject.isPaused ? 'pause' : 'play'}}-circle" />
-                    </button>
-                </div>
-                
-                <gs-crud-update-delete style="flex-basis: 175px"
-                        scoped-object="crudObject" success="notifyDataSetChanged()"/>
+                    {{crudObject.isPaused ? 'Pause' : 'Aktiv'}}
+                    <fa name="{{crudObject.isPaused ? 'pause' : 'play'}}-circle"/>
+                </button>
             </div>
 
-            <hr />
+            <gs-crud-update-delete style="flex-basis: 175px"
+                                   scoped-object="crudObject" success="notifyDataSetChanged()"/>
+        </div>
+        <hr/>
     </div>
 </gs-crud-panel-update-remove>
 
