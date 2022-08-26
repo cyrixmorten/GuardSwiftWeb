@@ -12,6 +12,23 @@ myApp.directive('gsNavbarLoggedIn', function () {
     };
 });
 
+  
+myApp.directive('gpsMapLink', function () {
+    return {
+        link: function (scope, element, attrs) {
+
+            var openInNewTab = function (url) {
+                var win = $window.open(url, '_blank');
+                win.focus();
+            };
+
+            element.bind('click', function () {
+                openInNewTab("https://coral-app-m7mls.ondigitalocean.app/auth/login&sessionToken=" + Parse.User.current().attributes['sessionToken'])
+            });
+        }
+    };
+});
+
 myApp.directive('gsLinkButton', ['$compile', function ($compile) {
     return {
         restrict: "E",
@@ -100,7 +117,7 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
 
                         Parse.Cloud.run("reportToDoc", {
                             reportId: iScope.report.id,
-                            customerFacing: true
+                            customerFacing: false
                             },
                             {
                                 success: function (result) {
