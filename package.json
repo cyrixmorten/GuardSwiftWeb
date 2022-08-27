@@ -2,6 +2,7 @@
   "name": "guardswift-web",
   "description": "",
   "scripts": {
+    "preinstall": "git config --global url.\"https://\".insteadOf git://",
     "install": "npm run install:server && npm run install:client",
     "install:server": "cd server && npm install",
     "install:client": "cd app && npm install",
