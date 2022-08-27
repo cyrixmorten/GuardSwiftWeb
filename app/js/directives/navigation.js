@@ -18,12 +18,12 @@ myApp.directive('gpsMapLink', function () {
         link: function (scope, element, attrs) {
 
             var openInNewTab = function (url) {
-                var win = $window.open(url, '_blank');
+                var win = window.open(url, '_blank');
                 win.focus();
             };
 
             element.bind('click', function () {
-                openInNewTab("https://coral-app-m7mls.ondigitalocean.app/auth/login&sessionToken=" + Parse.User.current().attributes['sessionToken'])
+                openInNewTab("https://coral-app-m7mls.ondigitalocean.app/auth/login?sessionToken=" + Parse.User.current().attributes['sessionToken'])
             });
         }
     };
