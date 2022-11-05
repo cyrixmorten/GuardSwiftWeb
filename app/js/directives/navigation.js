@@ -117,7 +117,7 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
 
                         Parse.Cloud.run("reportToDoc", {
                             reportId: iScope.report.id,
-                            customerFacing: false
+                            customerFacing: true
                             },
                             {
                                 success: function (result) {
@@ -137,13 +137,13 @@ myApp.directive('gsLinkButton', ['$compile', '$window', 'ParseReport', function 
                                                     if (i === 0 || i === node.table.body.length) {
                                                         return 0;
                                                     }
-                                                    return (i === node.table.headerRows) ? 2 : 2;
+                                                    return 1;
                                                 },
                                                 vLineWidth(i) {
                                                     return 0;
                                                 },
-                                                hLineColor(i) {
-                                                    return 'black'
+                                                hLineColor(i, node) {
+                                                    return (i === node.table.headerRows) ? 'grey' : 'lightgrey';
                                                 },
                                                 paddingLeft(i) {
                                                     return i === 0 ? 0 : 8;
